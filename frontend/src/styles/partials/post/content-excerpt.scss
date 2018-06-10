@@ -1,0 +1,39 @@
+.content-excerpt {
+  .arrow-placement {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+  }
+  .card {
+    border: 0;
+    box-shadow: 0 0 0;
+
+    .featured-image {
+      background-size: cover !important;
+      height: 250px;
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .btn-success {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+  }
+
+  .card-title {
+    a {
+      color: black;
+      font-weight: bold;
+    }
+  }
+}
+
+.read-more {
+  border: 0 !important;
+  transition: initial !important;
+  &:hover {
+    box-shadow: initial !important;
+  }
+}

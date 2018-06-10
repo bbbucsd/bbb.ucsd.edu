@@ -1,0 +1,62 @@
+.index.page {
+  .hero {
+    background-image: url(/static/images/headers/front-page-header-bg.png);
+    height: 400px;
+    background-size: cover;
+    background-position-y: center;
+  }
+
+  h5 {
+    font-weight: bold;
+    font-family: $font-family-primary;
+  }
+
+  .footer-cta {
+  }
+}
+
+@media only screen and (max-width : 1200px) {
+  .index {
+    .hero {
+      background-position-y: -280px;
+      height: 400px;
+    }
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+  .index {
+    .hero {
+      background-position-y: -280px;
+    }
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+  .index {
+    .hero {
+      background-position-y: initial;
+    }
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+  .index {
+    .hero {
+      background-position-y: initial;
+      height: 400px;
+    }
+  }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+  .index {
+    .hero {
+      background: initial;
+    }
+  }
+}

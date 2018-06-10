@@ -1,0 +1,25 @@
+.single-landing_page {
+  .top-nav {
+    margin-bottom: -80px;
+  }
+
+  .hero {
+    height: 420px;
+    .container {
+      height: inherit;
+    }
+
+    .first-headline,
+    .second-headline {
+      position: relative;
+    }
+
+    .first-headline {
+      top: 150px;
+    }
+    .second-headline {
+      top: 175px;
+    }
+  }
+
+}

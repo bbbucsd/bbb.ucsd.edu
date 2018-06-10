@@ -1,0 +1,24 @@
+{
+  "name": "ericraio",
+  "description": "Eric Raio's WebSite",
+  "repositories":[
+    {
+      "type":"composer",
+      "url":"https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "php": "~7.1",
+    "ext-mbstring": "*",
+    "wpackagist-plugin/hookpress": "*",
+    "wpackagist-plugin/fancy-admin-ui": "*",
+    "wpackagist-plugin/custom-post-type-ui": "*",
+    "wpackagist-plugin/wp-rest-api-all-terms": "*",
+    "wpackagist-plugin/drip-gravity-forms": "*",
+    "wpackagist-plugin/acf-to-wp-api": "*",
+    "wpackagist-plugin/wp-rest-api-v2-menus": "*",
+    "wpackagist-plugin/wp-rest-api-sidebars": "*",
+    "wpackagist-plugin/broken-link-checker": "*",
+    "wpackagist-plugin/amazon-s3-and-cloudfront": "*"
+  }
+}

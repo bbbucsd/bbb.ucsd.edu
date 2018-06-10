@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald');
+@import "vendor/bootstrap4";
+@import "theme/theme-variables";  // <--------- Add your variables into this file. Also add variables to overwrite Bootstrap or UnderStrap variables here
+@import "theme/colors";
+@import "theme/typography";        // <-------- Loads the UnderStrap defaults. Just a few classes to incorporate BS in WP
+@import "theme/mixins";
+
+@import "theme/navbar";
+@import "theme/single";
+@import "theme/index";
+@import "theme/front-page";
+@import "theme/home";
+@import "theme/page";
+@import "theme/footer";
+@import "theme/single-landing_page";
+@import "shortcodes/table-of-contents";
+@import "widgets/posts";
+
+@import "page-templates/landing";
+@import "pages/services";
+
+@import "partials/post/content-excerpt";
+@import "partials/post/related-posts";
+
+@import "vendor/font-awesome";    // <------- Font Awesome Icon font
+@import "vendor/underscores";     // <------- Underscores media styles
+
+html, body {
+  background-color: #EFEFEF;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+.admin-bar {
+  .fixed-top {
+    top: 33px;
+  }
+}
+
+// Buttons
+
+.btn {
+  white-space: normal !important;
+  word-wrap: break-word;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px 25px;
+  font-size: 15px;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+  padding: 15px 115px;
+}
+
+.btn-group-md>.btn, .btn-md{
+  padding: 10px 75px;
+}
+
+.btn-fluid {
+  width: 100% !important;
+}
+
+.btn-outline {
+  color: white;
+  font-size: 20px;
+  border: solid 2px white;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+  margin-top: 15px;
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    color: $theme-success;
+    background: white;
+    border: solid 2px white;
+  }
+}
+
+.btn-primary {
+       @include button-variant(white, $theme-primary, $theme-primary);
+       font-weight: 700;
+}
+
+.btn-success {
+       @include button-variant(white, $theme-success, $theme-success);
+       font-weight: 700;
+}
+
+.btn-warning {
+       @include button-variant(white, $theme-warning, $theme-warning);
+       font-weight: 700;
+}
+
+.btn-info {
+       @include button-variant(white, $theme-info, $theme-info);
+       font-weight: 700;
+}
+
+.btn-danger {
+       @include button-variant(white, $theme-danger, $theme-danger);
+       font-weight: 700;
+}
+
+.btn-social {
+       display: inline-block;
+       height: 50px;
+       width: 50px;
+       border: 2px solid white;
+       border-radius: 100%;
+       text-align: center;
+       font-size: 20px;
+       line-height: 45px;
+}
+
+.btn:focus,
+.btn:active,
+.btn.active {
+       outline: none;
+}
+
+// Thrive Comments
+//
+#thrive-comments {
+  font-family: 'Open Sans',sans-serif;
+  color: #666;
+}
+
+@media(min-width:768px) {
+  #thrive-comments {
+    .tcm-reply-btn {
+      float: right;
+      top: -47.5px !important;
+      margin-bottom: -47.5px;
+    }
+  }
+}
+
+// Headroom
+.headroom {
+  will-change: transform;
+  transition: transform 200ms linear;
+}
+
+.headroom--pinned {
+  transform: translateY(0%);
+}
+
+.headroom--unpinned {
+  transform: translateY(-100%);
+}
+
+// Utilities
+.no-padding {
+  padding: 0;
+}
+
+.no-gutter.row,
+.no-gutter.container,
+.no-gutter.container-fluid{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.no-gutter>[class^="col-"]{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.hero {
+  text-align: center;
+  height: 400px;
+  background: no-repeat;
+  background-size: cover;
+  .headline.container {
+    padding-top: 130px;
+  }
+  img {
+    display: block;
+    margin: 0 auto 20px;
+  }
+  .intro-text {
+    .name {
+      display: block;
+      font-size: 2em;
+      margin-bottom: 50px;
+      color: $white;
+    }
+    .subheadline {
+      color: $white;
+      text-transform: initial;
+      font-family: 'Open Sans';
+      font-weight: 200;
+      font-size: 1.3em;
+      position: relative;
+      top: -25px;
+    }
+  }
+}
+
+@media(min-width:768px) {
+  .hero {
+    .intro-text {
+      .name {
+        font-size: 50px;
+      }
+      .subheadline {
+        font-size: 1.75em;
+      }
+    }
+  }
+}

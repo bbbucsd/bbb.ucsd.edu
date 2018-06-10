@@ -1,0 +1,92 @@
+/* ========== Top Navigation ========== */
+.top-nav {
+  height: 80px;
+  border-bottom: 3px solid transparent;
+
+  .navbar-nav {
+    li .nav-link {
+      color: $white;
+      font-size: 14px;
+      padding:29px 15px;
+      font-weight: 600;
+      border-bottom: 3px solid transparent;
+      text-transform: uppercase;
+      transition: 0.5s ease-in;
+      -webkit-transition: 0.5s ease-in;
+      -moz-transition: 0.5s ease-in;
+    }
+    li a.nav-link:hover {
+      border-bottom: 3px solid $white;
+      color: $white;
+      transition: 0.5s ease-in;
+      -webkit-transition: 0.5s ease-in;
+      -moz-transition: 0.5s ease-in;
+    }
+  }
+
+  .navbar-brand {
+    font-size: 28px;
+    color: $white;
+    max-width: 150px;
+    height: auto;
+    display: inline-block;
+    float: left;
+  }
+
+  .navbar-toggler {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    .navbar-toggler-icon {
+      color: $white;
+    }
+    .navbar-toggler-icon:before {
+      position: relative;
+      top: 5px;
+    }
+  }
+}
+
+.top-nav.light-header {
+  height: 60px;
+  background: $brand-secondary;
+  border-bottom: 3px solid transparent;
+  box-shadow: 0 0 10px rgba(0,0,0,0.23);
+  .navbar-brand {
+    color: $brand-light;
+  }
+}
+.top-nav.light-header .navbar-nav li .nav-link {
+  color: $brand-light;
+  padding: 19px 15px;
+  transition: 0.5s ease-in;
+  border-bottom: 3px solid transparent;
+}
+.top-nav.light-header li a.nav-link:hover {
+  border-bottom: 3px solid $brand-info;
+  color: $brand-info;
+}
+
+@media (max-width: 576px) {
+  .top-nav.navbar-toggleable-md>.container {
+    position: relative;
+    top: -5px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+    .nav {
+      position: absolute;
+      right: 0px;
+      top: 52px;
+      width: 150px;
+      background: $white;
+      li .nav-link {
+        color: #212121;
+      }
+    }
+  }
+}
