@@ -3,29 +3,20 @@
 		{
 			"type": "composer",
 			"url": "https://wpackagist.org"
-		},
-		{
-			"type": "path",
-			"url": "plugins/*/"
-		},
-		{
-			"type": "path",
-			"url": "themes/*/"
 		}
 	],
 	"extra": {
 		"wordpress-install-dir": "wordpress",
 		"installer-paths": {
-			"wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
-			"wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
-			"wp-content/themes/{$name}/": ["type:wordpress-theme"]
+			"wordpress/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+			"wordpress/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+			"wordpress/wp-content/themes/{$name}/": ["type:wordpress-theme"]
 		}
 	},
 	"require": {
 		"ext-gd": "*",
 		"wp-cli/wp-cli": "^1.1.0",
 		"johnpbloch/wordpress": "^4.5",
-		"wpackagist-plugin/amazon-s3-and-cloudfront": "^0.9.11",
     "wpackagist-plugin/hookpress": "*",
     "wpackagist-plugin/fancy-admin-ui": "*",
     "wpackagist-plugin/custom-post-type-ui": "*",
