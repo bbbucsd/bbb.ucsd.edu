@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import StandardHero from '../components/Page/StandardHero';
 import DoubleBlockSection from '../components/Page/DoubleBlockSection';
 import LogoBlock from '../components/Page/LogoBlock';
+import LogoBlockInline from '../components/Page/LogoBlockInline';
 import SingleImageSection from '../components/Page/SingleImageSection';
 
 
@@ -27,6 +28,8 @@ class Page extends Component {
         return <LogoBlock data={section} />
       case 'ContentfulLayoutSingleImageSection':
         return <SingleImageSection data={section} />
+      case 'ContentfulLayoutLogoBlockInline':
+        return <LogoBlockInline data={section} />
     }
   }
 
@@ -40,7 +43,7 @@ class Page extends Component {
         <Header />
         <StandardHero hero={hero} />
 
-        {sections.map((section, i) => this.renderSection(section) )}
+        {(sections||[]).map((section, i) => this.renderSection(section) )}
         <Footer />
       </div>
     );
@@ -61,6 +64,7 @@ export const pageQuery = graphql`
     contentfulPage(id: { eq: $id }) {
       hero {
         heroAsset {
+          title
           file {
             url
             contentType
@@ -82,6 +86,7 @@ export const pageQuery = graphql`
           subheadlineColor
           reverseDirection
           image {
+            title
             file {
               url
               contentType
@@ -105,12 +110,25 @@ export const pageQuery = graphql`
           headline
           subheadline
           image {
+            title
             file {
               url
               contentType
             }
           }
         }
+        
+        
+        ... on ContentfulLayoutLogoBlockInline {
+          logos {
+            title
+            file {
+              url
+              contentType
+            }
+          }
+        }
+        
       }
     }
   }
