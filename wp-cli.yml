@@ -1,5 +1,0 @@
-path: ./wordpress
-apache_modules: [ mod_rewrite ]
-disabled_commands: [ "core config" ]
-server:
-  host: 127.0.0.1
