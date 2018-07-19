@@ -2,7 +2,7 @@
   "name": "gatsby-starter-default",
   "description": "Proluxe",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Eric Raio <eric@ericraio.com>",
   "dependencies": {
     "bluebird": "^3.5.1",
     "gatsby": "^1.9.274",
