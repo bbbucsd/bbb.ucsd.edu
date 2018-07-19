@@ -50,6 +50,7 @@ const styles = theme => ({
     flex: '0 0 auto',
     fontSize: '28px',
     color: '#92A5B1',
+    textAlign: 'center',
     lineHeight: '75px',
   },
   footerNav: {
