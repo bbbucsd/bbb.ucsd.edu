@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Proluxe',
   },
+
   plugins: [
     'gatsby-plugin-react-helmet',
     `gatsby-transformer-remark`,
