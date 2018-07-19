@@ -3,8 +3,8 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withWidth from 'material-ui/utils/withWidth';
 import { withStyles } from 'material-ui/styles';
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import StandardHero from '../components/Page/StandardHero';
 import DoubleBlockSection from '../components/Page/DoubleBlockSection';
 import LogoBlock from '../components/Page/LogoBlock';
