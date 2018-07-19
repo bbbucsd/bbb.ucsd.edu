@@ -125,18 +125,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Privacy.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Legal/Privacy.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="54" column="54" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="54" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -248,13 +236,6 @@
               <item name="proluxe-site" type="b2602c69:ProjectViewProjectNode" />
               <item name="proluxe-site" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Legal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proluxe-site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proluxe-site" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -309,18 +290,17 @@
       <option name="presentableId" value="Default" />
       <updated>1531971168090</updated>
       <workItem from="1531971169410" duration="4811000" />
-      <workItem from="1531978852018" duration="14226000" />
+      <workItem from="1531978852018" duration="14350000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19037000" />
+    <option name="totallyTimeSpent" value="19161000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="112" y="64" width="1382" height="849" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3041881" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3041881" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -329,7 +309,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32880434" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32880434" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
