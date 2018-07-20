@@ -6,6 +6,7 @@ import { withStyles } from 'material-ui/styles';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StandardHero from '../components/Page/StandardHero';
+import HighlightHero from '../components/Page/HighlightHero';
 import DoubleBlockSection from '../components/Page/DoubleBlockSection';
 import LogoBlock from '../components/Page/LogoBlock';
 import LogoBlockInline from '../components/Page/LogoBlockInline';
@@ -34,6 +35,16 @@ class Page extends Component {
     }
   }
 
+  renderHero(hero) {
+    console.log(hero)
+    switch (hero.__typename) {
+      case 'ContentfulLayoutStandardHero':
+        return <StandardHero hero={hero} />
+      case 'ContentfulLayoutHighlightHero':
+        return <HighlightHero hero={hero} />
+    }
+  }
+
   render() {
     const { classes } = this.props;
     const page = this.props.data.contentfulPage
@@ -42,8 +53,7 @@ class Page extends Component {
     return (
       <div className={classes.home}>
         <Header />
-        <StandardHero hero={hero} />
-
+        {this.renderHero(hero[0])}
         {(sections||[]).map((section, i) => this.renderSection(section) )}
         <Footer />
       </div>
@@ -63,19 +73,35 @@ export default compose(withStyles(styles), withWidth())(Page);
 export const pageQuery = graphql`
   query pageQuery($id: String!) {
     contentfulPage(id: { eq: $id }) {
+      
       hero {
-        heroAsset {
-          title
-          file {
-            url
-            contentType
+        ... on ContentfulLayoutStandardHero {
+          headline
+          subheadline
+          ctaLabel
+          heroAsset {
+            title
+            file {
+              url
+              contentType
+            }
           }
         }
-
-        headline
-        subheadline
-        ctaLabel
-
+        
+        ... on ContentfulLayoutHighlightHero {
+          superheadline
+          headline
+          heroAsset {
+            file {
+              url
+              contentType
+            }
+          }
+          features {
+            headline
+            subheadline
+          }
+        }
       }
 
       sections {

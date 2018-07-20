@@ -27,12 +27,12 @@ class ProductNav extends Component {
       <SubNav text="Products" className={`${classes.root} ${this.props.className}`}>
         <SubNavGroup title="Cooking">
           <SubNavItem to="/products/smart-oven">Smart Ovens</SubNavItem>
-          <SubNavItem to="/products/stone-hearth-oven">Stone Hearth Ovens</SubNavItem>
+          <SubNavItem to="/products/stone-hearth-ovens">Stone Hearth Ovens</SubNavItem>
           <SubNavItem to="/products/custom-ovens">Custom Ovens</SubNavItem>
         </SubNavGroup>
 
         <SubNavGroup title="Grilling">
-          <SubNavItem to="/products/clam-shell-grills">Clamshell Grills</SubNavItem>
+          <SubNavItem to="/products/clamshell-grills">Clamshell Grills</SubNavItem>
           <SubNavItem to="/products/panini-grills">Panini Grills</SubNavItem>
           <SubNavItem to="/products/tortilla-grills">Tortilla Grills</SubNavItem>
         </SubNavGroup>
