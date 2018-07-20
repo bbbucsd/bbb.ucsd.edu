@@ -10,13 +10,14 @@ import DoubleBlockSection from '../components/Page/DoubleBlockSection';
 import LogoBlock from '../components/Page/LogoBlock';
 import LogoBlockInline from '../components/Page/LogoBlockInline';
 import SingleImageSection from '../components/Page/SingleImageSection';
+import airlytics from 'airlytics';
 
 
 const styles = theme => ({
   cta: {
     marginTop: '30px',
   },
-})
+});
 
 class Page extends Component {
 
@@ -70,13 +71,13 @@ export const pageQuery = graphql`
             contentType
           }
         }
-  
+
         headline
         subheadline
         ctaLabel
-        
+
       }
-      
+
       sections {
         ... on ContentfulLayoutDoubleBlockSection {
           backgroundColor
@@ -93,7 +94,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        
+
         ... on ContentfulLayoutLogoBlock {
           headline
           logos {
@@ -105,7 +106,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        
+
         ... on ContentfulLayoutSingleImageSection {
           headline
           subheadline
@@ -117,8 +118,8 @@ export const pageQuery = graphql`
             }
           }
         }
-        
-        
+
+
         ... on ContentfulLayoutLogoBlockInline {
           logos {
             title
@@ -128,7 +129,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        
+
       }
     }
   }
