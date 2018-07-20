@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import withWidth from 'material-ui/utils/withWidth';
 import { withStyles } from 'material-ui/styles';
 import ArrowLeft from 'material-ui-icons/KeyboardArrowLeft';
-import airlytics from 'airlytics';
+//import airlytics from 'airlytics';
 
 const styles = theme => ({
   root: {

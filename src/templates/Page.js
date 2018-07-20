@@ -10,7 +10,7 @@ import DoubleBlockSection from '../components/Page/DoubleBlockSection';
 import LogoBlock from '../components/Page/LogoBlock';
 import LogoBlockInline from '../components/Page/LogoBlockInline';
 import SingleImageSection from '../components/Page/SingleImageSection';
-import airlytics from 'airlytics';
+//import airlytics from 'airlytics';
 
 
 const styles = theme => ({

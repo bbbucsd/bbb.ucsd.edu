@@ -2,9 +2,8 @@
   "name": "proluxe-site",
   "description": "Proluxe",
   "version": "1.0.0",
-  "author": "Eric Raio <eric@ericraio.com>",
+  "author": "Scott Raio [scott@proluxe.com]",
   "dependencies": {
-    "airlytics": "git+ssh://git@github.com:Proluxe/airlytics.git",
     "bluebird": "^3.5.1",
     "gatsby": "^1.9.274",
     "gatsby-link": "^1.6.40",
