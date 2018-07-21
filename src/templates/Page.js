@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withWidth from 'material-ui/utils/withWidth';
@@ -22,16 +22,16 @@ const styles = theme => ({
 
 class Page extends Component {
 
-  renderSection(section) {
+  renderSection(section, index) {
     switch (section.__typename) {
       case 'ContentfulLayoutDoubleBlockSection':
-        return <DoubleBlockSection data={section} />
+        return <DoubleBlockSection key={`section_${index}`} data={section} />
       case 'ContentfulLayoutLogoBlock':
-        return <LogoBlock data={section} />
+        return <LogoBlock key={`section_${index}`} data={section} />
       case 'ContentfulLayoutSingleImageSection':
-        return <SingleImageSection data={section} />
+        return <SingleImageSection key={`section_${index}`} data={section} />
       case 'ContentfulLayoutLogoBlockInline':
-        return <LogoBlockInline data={section} />
+        return <LogoBlockInline key={`section_${index}`} data={section} />
     }
   }
 
@@ -54,7 +54,7 @@ class Page extends Component {
       <div className={classes.home}>
         <Header />
         {this.renderHero(hero[0])}
-        {(sections||[]).map((section, i) => this.renderSection(section) )}
+        {(sections||[]).map((section, i) => this.renderSection(section, i) )}
         <Footer />
       </div>
     );
