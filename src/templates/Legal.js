@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import withWidth from 'material-ui/utils/withWidth';
 import { withStyles } from 'material-ui/styles';
 import ArrowLeft from 'material-ui-icons/KeyboardArrowLeft';
-//import airlytics from 'airlytics';
+import { connect } from 'airlytics';
 
 const styles = theme => ({
   root: {
@@ -67,7 +67,7 @@ Privacy.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default compose(withStyles(styles), withWidth())(Privacy);
+export default compose(withStyles(styles), withWidth(), connect())(Privacy);
 
 export const legalQuery = graphql`
   query legalQuery($id: String!) {

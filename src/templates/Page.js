@@ -11,7 +11,7 @@ import DoubleBlockSection from '../components/Page/DoubleBlockSection';
 import LogoBlock from '../components/Page/LogoBlock';
 import LogoBlockInline from '../components/Page/LogoBlockInline';
 import SingleImageSection from '../components/Page/SingleImageSection';
-//import airlytics from 'airlytics';
+import { connect } from 'airlytics';
 
 
 const styles = theme => ({
@@ -68,12 +68,12 @@ Page.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default compose(withStyles(styles), withWidth())(Page);
+export default compose(withStyles(styles), withWidth(), connect())(Page);
 
 export const pageQuery = graphql`
   query pageQuery($id: String!) {
     contentfulPage(id: { eq: $id }) {
-      
+
       hero {
         ... on ContentfulLayoutStandardHero {
           headline
@@ -87,7 +87,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        
+
         ... on ContentfulLayoutHighlightHero {
           superheadline
           headline
