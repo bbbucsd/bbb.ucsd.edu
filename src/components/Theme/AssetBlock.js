@@ -75,19 +75,11 @@ class AssetBlock extends Component {
   }
 
   isVideo() {
-    if (this.props.contentType == 'video/mp4') {
-      return true
-    } else {
-      return false
-    }
+    return (this.props.contentType === 'video/mp4');
   }
 
   isImage() {
-    if (this.props.contentType == 'image/jpeg') {
-      return true
-    } else {
-      return false
-    }
+    return (this.props.contentType == 'image/jpeg');
   }
 
   render() {
