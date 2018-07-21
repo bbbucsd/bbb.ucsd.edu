@@ -10,9 +10,7 @@ import Waypoint from 'react-waypoint';
 import MenuIcon from 'material-ui-icons/Menu';
 import Drawer from 'material-ui/Drawer';
 
-import ProductNav from './Navigation/Header/ProductNav';
-import IndustriesNav from './Navigation/Header/IndustriesNav';
-import SupportNav from './Navigation/Header/SupportNav';
+import MainMenu from './Navigation/Header/MainMenu';
 import SideMenu from './Navigation/Header/SideMenu';
 
 
@@ -104,25 +102,25 @@ const styles = theme => ({
     position: 'absolute',
     right: '0',
   },
-})
+});
 
 class Header extends Component {
     constructor(props) {
       super(props);
       this.state = { floating: true, drawer: false  };
-    };
+    }
 
-    floatHeader = (e) => {
+    floatHeader() {
       this.setState({ floating: true });
-    };
+    }
 
-    unFloatHeader = (e) => {
+    unFloatHeader() {
       this.setState({ floating: false });
-    };
+    }
 
-    toggleDrawer = () => {
+    toggleDrawer() {
       this.setState({ drawer: !this.state.drawer });
-    };
+    }
 
     render() {
       const { classes } = this.props;
@@ -136,12 +134,7 @@ class Header extends Component {
                 </ListItem>
               </List>
 
-              <List className={classes.navBarCenter}>
-                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><ProductNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
-                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><IndustriesNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
-                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><SupportNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
-                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><Link to="/" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`}>How to buy</Link></ListItem>
-              </List>
+              <MainMenu className={classes.navBarCenter} />
 
               <List className={classes.navBarRight}>
                 <ListItem className={`${classes.listItem}`}>
@@ -160,11 +153,6 @@ class Header extends Component {
         </div>
       );
     }
-}
-
-function mapStateToProps(state) {
-  return {
-  }
 }
 
 Header.propTypes = {
