@@ -2,8 +2,12 @@
   "name": "proluxe-site",
   "description": "Proluxe",
   "version": "1.0.0",
-  "author": "Scott Raio [scott@proluxe.com]",
+  "contributors": [
+    "Eric Raio <eric@ericraio.com>",
+    "Scott Raio <scott@proluxe.com>"
+  ],
   "dependencies": {
+    "airlytics": "^1.0.16",
     "bluebird": "^3.5.1",
     "dotenv": "^6.0.0",
     "gatsby": "^1.9.274",
