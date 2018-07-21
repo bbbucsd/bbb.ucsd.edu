@@ -1,6 +1,0 @@
-[submodule "wordpress"]
-	path = wordpress
-	url = https://github.com/ericraio/automateyourbrand-wordpress
-[submodule "frontend"]
-	path = frontend
-	url = https://github.com/ericraio/automateyourbrand-frontend

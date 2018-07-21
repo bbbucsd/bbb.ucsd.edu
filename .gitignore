@@ -1,4 +1,8 @@
+# Project dependencies
+.cache
 node_modules
-npm-debug.log
 yarn-error.log
-wordpress/wp-content/languages/
+.idea
+# Build directory
+/public
+.DS_Store
