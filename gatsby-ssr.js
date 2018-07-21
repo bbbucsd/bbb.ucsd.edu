@@ -1,7 +1,15 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+import React from 'react'
+import { Provider, configureStore }  from 'airlytics';
+import { renderToString } from 'react-dom/server'
 
- // You can delete this file if you're not using it
+
+export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
+  const store = configureStore()
+
+  const ConnectedBody = () => (
+    <Provider store={store}>
+      {bodyComponent}
+    </Provider>
+  )
+  replaceBodyHTMLString(renderToString(<ConnectedBody/>))
+}
