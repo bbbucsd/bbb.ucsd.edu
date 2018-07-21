@@ -12,7 +12,6 @@ const styles = theme => ({
     margin: '50px auto',
   },
   h1: {
-    fontFamily: 'lato',
     fontSize: '40px',
     margin:'20px 0',
     fontWeight: '200',
@@ -22,7 +21,6 @@ const styles = theme => ({
   h2: {
     fontSize: '25px',
     margin:'40px 0 20px 0',
-    fontFamily: 'lato',
     fontWeight: '200',
     fontStyle: 'normal',
   },

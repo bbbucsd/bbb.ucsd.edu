@@ -10,7 +10,7 @@ const styles = theme => ({
   },
   scopeVerbiageH1: {
     color: '#fff',
-    fontFamily: 'lato',
+    fontFamily: 'Oswald',
     fontSize: '60px',
     margin:'0',
     fontWeight: '200',
@@ -21,7 +21,7 @@ const styles = theme => ({
     color: '#ccc',
     fontSize: '25px',
     margin:'10px 0 0 0',
-    fontFamily: 'lato',
+    fontFamily: 'Open Sans',
     fontWeight: '200',
     fontStyle: 'normal',
   },
@@ -29,11 +29,11 @@ const styles = theme => ({
     color: '#ccc',
     fontSize: '18px',
     margin:'10px 0 0 0',
-    fontFamily: 'lato',
+    fontFamily: 'Open Sans',
     fontWeight: '200',
     fontStyle: 'normal',
   },
-})
+});
 
 class HeroTypography extends Component {
   size() {

@@ -16,7 +16,6 @@ const styles = theme => ({
     textAlign: 'center',
   },
   headline: {
-    fontFamily: 'lato',
     fontWeight: '200',
     fontStyle: 'normal',
     margin: '100px 0 0 0',
@@ -68,7 +67,6 @@ const styles = theme => ({
     textTransform: 'uppercase',
     display: 'block',
     margin: '0 auto',
-    fontFamily: 'lato',
     fontWeight: '200',
     fontStyle: 'normal',
   },

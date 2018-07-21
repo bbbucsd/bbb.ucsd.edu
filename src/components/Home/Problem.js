@@ -28,7 +28,6 @@ const styles = theme => ({
     verticalAlign: 'middle',
     backgroundColor: '#5b8edc',
     color: '#fff',
-    fontFamily: 'lato',
     fontWeight: '300',
     fontStyle: 'normal',
   },
@@ -39,7 +38,6 @@ const styles = theme => ({
     backgroundPosition: 'center center',
   },
   subheadline: {
-    fontFamily: 'lato',
     fontWeight: '300',
     fontStyle: 'normal',
     margin:'0',

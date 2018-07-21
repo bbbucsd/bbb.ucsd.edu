@@ -52,7 +52,6 @@ const styles = theme => ({
     textAlign: 'left',
     verticalAlign: 'middle',
     backgroundColor: '#fcfcfc',
-    fontFamily: 'lato',
     fontWeight: '300',
     overflow:'hidden',
     fontStyle: 'normal',
@@ -64,7 +63,6 @@ const styles = theme => ({
     backgroundPosition: 'center center',
   },
   subheadline: {
-    fontFamily: 'lato',
     fontWeight: '300',
     fontStyle: 'normal',
     margin:'0',

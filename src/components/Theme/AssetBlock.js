@@ -9,7 +9,7 @@ import Button from '../Theme/Button';
 
 const styles = theme => ({
   scope: {
-    backgroundColor: '#000',
+    backgroundImage: 'linear-gradient(to right bottom, #35c3dd, #02a6cc, #0089b8, #006ca2, #005089)',
     textAlign: 'center',
     color: 'black',
     backgroundSize: 'cover',
@@ -35,7 +35,6 @@ const styles = theme => ({
     textAlign: 'center',
     [theme.breakpoints.down('sm')]: {
       top: '100px',
-
     }
   },
   backgroundVideo: {
