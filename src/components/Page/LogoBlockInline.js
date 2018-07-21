@@ -38,3 +38,15 @@ LogoBlockInline.propTypes = {
 };
 
 export default compose(withStyles(styles), withWidth())(LogoBlockInline);
+
+export const query = graphql`
+  fragment LogoBlockInline on ContentfulLayoutLogoBlockInline {
+    logos {
+      title
+      file {
+        url
+        contentType
+      }
+    }
+  }
+`;

@@ -122,3 +122,17 @@ LogoBlock.propTypes = {
 };
 
 export default compose(withStyles(styles), withWidth())(LogoBlock);
+
+export const query = graphql`
+  fragment LogoBlock on ContentfulLayoutLogoBlock {
+    headline
+    logos {
+      id
+      title
+      file {
+        url
+        contentType
+      }
+    }
+  }
+`;

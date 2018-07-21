@@ -6,19 +6,19 @@ import './index.css'
 
 // Styles
 import { createMuiTheme } from 'material-ui/styles';
-import Teal from 'material-ui/colors/teal';
-import Amber from 'material-ui/colors/amber';
+import Blue from 'material-ui/colors/blue';
+import Green from 'material-ui/colors/green';
 
 // colors
-global.primary = '#FADB5C';
-global.lighterGrey = '#fafafa';
-global.lightGrey = '#ebebeb';
-global.mediumGrey = '#656565';
-global.darkGrey = '#151515';
-global.blue = '#5b8edc';
+global.primary = '#005089';
+global.lighterGrey = '#FAFAFA';
+global.lightGrey = '#EFEFEF';
+global.mediumGrey = '#B5B6B7';
+global.darkGrey = '#666';
+global.blue = '#1B98CA';
 
 // general
-global.headerColor = '#0cadb7';
+global.headerColor = '#2D3B45';
 global.headerHeight = '56px';
 global.maxWidth = '1000px';
 global.smallPadding = '10px';
@@ -36,15 +36,15 @@ global.textField = {
   marginBottom: global.padding,
   minWidth: '260px'
 }
-global.fontFamily = 'pt-sans, helvetica, sans-serif'
+global.fontFamily = 'Open Sans, sans-serif'
 
 const theme = createMuiTheme({
   palette: {
-    primary: Amber,
-    secondary: Teal
+    primary: Blue,
+    secondary: Green
   },
   typography:  {
-    fontFamily: "'pt-sans', 'futura', 'trebuchet', 'helvetica', 'sans-serif'",
+    fontFamily: "'Oswald', 'sans-serif'",
     fontSize: '18px',
   },
   overrides: {
@@ -94,7 +94,6 @@ const Layout = ({ children, data }) => (
       >
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/brands.css" integrity="sha384-KtmfosZaF4BaDBojD9RXBSrq5pNEO79xGiggBxf8tsX+w2dBRpVW5o0BPto2Rb2F" crossOrigin="anonymous" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/fontawesome.css" integrity="sha384-8WwquHbb2jqa7gKWSoAwbJBV2Q+/rQRss9UXL5wlvXOZfSodONmVnifo/+5xJIWX" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://use.typekit.net/pqq2exl.css" />
       </Helmet>
 
       { children() }
@@ -118,3 +117,4 @@ export const query = graphql`
     }
   }
 `
+

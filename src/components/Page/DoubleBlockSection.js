@@ -96,7 +96,7 @@ class DoubleBlockSection extends Component {
   videoBlock() {
     return (
       <ListItem className={`${this.props.classes.containerItem} ${this.props.classes.image}`}>
-        <video loop autoPlay playsinline muted className={this.props.classes.backgroundVideo}>
+        <video loop autoPlay playsInline muted className={this.props.classes.backgroundVideo}>
           <source src={this.props.data.image.file.url} type="video/mp4"/>
         </video>
       </ListItem>
@@ -162,3 +162,21 @@ DoubleBlockSection.propTypes = {
 };
 
 export default compose(withStyles(styles), withWidth())(DoubleBlockSection);
+
+export const query = graphql`
+  fragment DoubleBlockSection on ContentfulLayoutDoubleBlockSection {
+    backgroundColor
+    headline
+    headlineColor
+    subheadline
+    subheadlineColor
+    reverseDirection
+    image {
+      title
+      file {
+        url
+        contentType
+      }
+    }
+  }
+`;
