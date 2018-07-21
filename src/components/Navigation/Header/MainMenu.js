@@ -23,19 +23,15 @@ const styles = theme => ({
 });
 
 class MainMenu extends Component {
-    constructor(props) {
-      super(props);
-      this.state = { floating: true, drawer: false  };
-    }
 
     render() {
       const { classes } = this.props;
       return (
         <List className={this.props.className}>
-          <ListItem className={`${classes.listItem} ${classes.centerItem}`}><ProductNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
-          <ListItem className={`${classes.listItem} ${classes.centerItem}`}><IndustriesNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
-          <ListItem className={`${classes.listItem} ${classes.centerItem}`}><SupportNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
-          <ListItem className={`${classes.listItem} ${classes.centerItem}`}><Link to="/" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`}>How to buy</Link></ListItem>
+          <ListItem className={`${classes.listItem} ${classes.centerItem}`}><ProductNav className={`${this.props.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
+          <ListItem className={`${classes.listItem} ${classes.centerItem}`}><IndustriesNav className={`${this.props.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
+          <ListItem className={`${classes.listItem} ${classes.centerItem}`}><SupportNav className={`${this.props.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
+          <ListItem className={`${classes.listItem} ${classes.centerItem}`}><Link to="/" className={`${this.props.floating ? classes.floatingCopy : classes.fixedCopy}`}>How to buy</Link></ListItem>
         </List>
       );
     }

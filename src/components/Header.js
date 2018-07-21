@@ -134,7 +134,7 @@ class Header extends Component {
                 </ListItem>
               </List>
 
-              <MainMenu className={classes.navBarCenter} />
+              <MainMenu className={classes.navBarCenter} floating={this.state.floating} />
 
               <List className={classes.navBarRight}>
                 <ListItem className={`${classes.listItem}`}>
