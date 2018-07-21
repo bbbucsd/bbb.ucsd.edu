@@ -73,89 +73,16 @@ export default compose(withStyles(styles), withWidth(), connect())(Page);
 export const pageQuery = graphql`
   query pageQuery($id: String!) {
     contentfulPage(id: { eq: $id }) {
-
       hero {
-        ... on ContentfulLayoutStandardHero {
-          headline
-          subheadline
-          ctaLabel
-          heroAsset {
-            title
-            file {
-              url
-              contentType
-            }
-          }
-        }
-
-        ... on ContentfulLayoutHighlightHero {
-          superheadline
-          headline
-          heroAsset {
-            file {
-              url
-              contentType
-            }
-          }
-          features {
-            headline
-            subheadline
-          }
-        }
+        ...StandardHero
+        ...HighlightHero
       }
 
       sections {
-        ... on ContentfulLayoutDoubleBlockSection {
-          backgroundColor
-          headline
-          headlineColor
-          subheadline
-          subheadlineColor
-          reverseDirection
-          image {
-            title
-            file {
-              url
-              contentType
-            }
-          }
-        }
-
-        ... on ContentfulLayoutLogoBlock {
-          headline
-          logos {
-            id
-            title
-            file {
-              url
-              contentType
-            }
-          }
-        }
-
-        ... on ContentfulLayoutSingleImageSection {
-          headline
-          subheadline
-          image {
-            title
-            file {
-              url
-              contentType
-            }
-          }
-        }
-
-
-        ... on ContentfulLayoutLogoBlockInline {
-          logos {
-            title
-            file {
-              url
-              contentType
-            }
-          }
-        }
-
+        ...DoubleBlockSection
+        ...LogoBlock
+        ...SingleImageSection
+        ...LogoBlockInline
       }
     }
   }

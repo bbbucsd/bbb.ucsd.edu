@@ -35,7 +35,7 @@ const styles = theme => ({
   },
 })
 
-class StandardHeroCopy extends Component {
+class HeroTypography extends Component {
   size() {
     switch(this.props.size) {
       case 'h1':
@@ -60,9 +60,9 @@ class StandardHeroCopy extends Component {
   }
 }
 
-StandardHeroCopy.propTypes = {
+HeroTypography.propTypes = {
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 }
 
-export default compose(withStyles(styles), withWidth())(StandardHeroCopy);
+export default compose(withStyles(styles), withWidth())(HeroTypography);

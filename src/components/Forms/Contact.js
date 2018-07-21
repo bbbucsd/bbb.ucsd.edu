@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import withWidth from 'material-ui/utils/withWidth';
 import { withStyles } from 'material-ui/styles';
 import StandardHero from '../Page/StandardHero';
-import StandardHeroCopy from '../Page/StandardHeroCopy';
+import StandardHeroCopy from '../Page/StandardHero/StandardHeroCopy';
 
 import TextField from 'material-ui/TextField';
 
