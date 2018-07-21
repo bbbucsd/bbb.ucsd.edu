@@ -5,6 +5,7 @@
   "author": "Scott Raio [scott@proluxe.com]",
   "dependencies": {
     "bluebird": "^3.5.1",
+    "dotenv": "^6.0.0",
     "gatsby": "^1.9.274",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
