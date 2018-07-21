@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link'
 import compose from 'recompose/compose';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import ArrowRight from 'material-ui-icons/KeyboardArrowRight';
+import { ArrowRight } from '@material-ui/icons';
 
 const styles = theme => ({
   button: {

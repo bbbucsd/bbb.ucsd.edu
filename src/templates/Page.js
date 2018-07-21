@@ -1,8 +1,8 @@
 import React, { Fragment, Component } from 'react';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import withWidth from 'material-ui/utils/withWidth';
-import { withStyles } from 'material-ui/styles';
+import withWidth from '@material-ui/core/withWidth';
+import { withStyles } from '@material-ui/core/styles';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StandardHero from '../components/Page/StandardHero';
@@ -32,7 +32,7 @@ class Page extends Component {
         return <SingleImageSection key={`section_${index}`} data={section} />
       case 'ContentfulLayoutLogoBlockInline':
         return <LogoBlockInline key={`section_${index}`} data={section} />
-    }
+    };
   }
 
   renderHero(hero) {

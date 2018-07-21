@@ -1,13 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './index.css'
 
 // Styles
-import { createMuiTheme } from 'material-ui/styles';
-import Blue from 'material-ui/colors/blue';
-import Green from 'material-ui/colors/green';
+import blue from '@material-ui/core/colors/blue';
+import green from '@material-ui/core/colors/green';
 
 // colors
 global.primary = '#005089';
@@ -31,17 +30,17 @@ global.wrapper = {
   margin: '0 auto',
   padding: "" + global.ultraPadding + " " + global.padding +"",
   position: 'relative'
-}
+};
 global.textField = {
   marginBottom: global.padding,
   minWidth: '260px'
-}
-global.fontFamily = 'Open Sans, sans-serif'
+};
+global.fontFamily = 'Open Sans, sans-serif';
 
 const theme = createMuiTheme({
   palette: {
-    primary: Blue,
-    secondary: Green
+    primary: blue,
+    secondary: green
   },
   typography:  {
     fontFamily: "'Oswald', 'sans-serif'",

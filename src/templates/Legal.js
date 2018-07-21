@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import withWidth from 'material-ui/utils/withWidth';
-import { withStyles } from 'material-ui/styles';
-import ArrowLeft from 'material-ui-icons/KeyboardArrowLeft';
+import { withStyles } from '@material-ui/core/styles';
+import withWidth from '@material-ui/core/withWidth';
+import { ArrowLeft } from '@material-ui/icons';
 import { connect } from 'airlytics';
 
 const styles = theme => ({
