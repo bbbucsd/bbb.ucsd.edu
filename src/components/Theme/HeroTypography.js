@@ -52,7 +52,10 @@ class HeroTypography extends Component {
 
     return (
       <div className={classes.root}>
-        <div style={this.props.color ? { color: this.props.color } : {}} className={this.size()}>{this.props.children}</div>
+        {React.createElement(this.props.size, {
+          style: this.props.color ? { color: this.props.color } : {},
+          className: this.size()
+        }, this.props.children)}
       </div>
     );
   }
