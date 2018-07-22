@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
 
-import List, { ListItem } from 'material-ui/List';
-import { Link } from 'react-router-dom';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import { withStyles } from '@material-ui/core/styles';
+import withWidth from '@material-ui/core/withWidth';
+import Link from 'gatsby-link';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import withWidth from 'material-ui/utils/withWidth';
-import { withStyles } from 'material-ui/styles';
 import Waypoint from 'react-waypoint';
-import MenuIcon from 'material-ui-icons/Menu';
-import Drawer from 'material-ui/Drawer';
+import { Menu as MenuIcon } from '@material-ui/icons';
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
+import classNames from 'classnames';
 
-import ProductNav from './Navigation/Header/ProductNav';
-import IndustriesNav from './Navigation/Header/IndustriesNav';
-import SupportNav from './Navigation/Header/SupportNav';
-import SideMenu from './Navigation/Header/SideMenu';
-
+import MainMenu from './Navigation/Header/MainMenu';
 
 const styles = theme => ({
   header: {
     position: 'fixed',
     top: '0',
     left: '0',
-    // backgroundColor: '#281f26',
     padding: global.smallPadding,
     zIndex: '99',
     backgroundColor: 'transparent',
@@ -29,10 +27,10 @@ const styles = theme => ({
     color: 'white',
   },
   floatingBg: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#2D3B45',
   },
   floatingCopy: {
-    color: '#000 !important',
+    color: '#fff !important',
     '&:hover': {
       color: '#fff',
     },
@@ -44,9 +42,6 @@ const styles = theme => ({
     },
   },
   logo: {
-    //fontFamily: 'aviano-sans, sans-serif !important',
-    //fontFamily: 'ff-ginger-pro !important',
-    fontFamily: 'termina !important',
     fontSize: '20px !important',
     position: 'relative',
     fontWeight: '600',
@@ -54,12 +49,21 @@ const styles = theme => ({
     transform: 'scaleX(.8)',
     left: '-12px',
   },
+  sideMenu: {
+    marginTop: '30px',
+    color: '#999',
+    width: '100%',
+    fontSize: '14px',
+    textTransform: 'uppercase',
+    fontWeight: '300',
+    fontStyle: 'normal',
+  },
   navBar: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    height: '75px',
+    height: '60px',
   },
   navBarLeft: {
     display: 'flex',
@@ -68,18 +72,11 @@ const styles = theme => ({
     flex: '0 0 135px',
     marginRight: 'auto',
   },
-  navBarCenter: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '500px',
-  },
   navBarRight: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    flex: '0 0 135px',
-    marginLeft: 'auto',
+    width: '500px',
   },
   listItem: {
     color: '#fff',
@@ -93,10 +90,7 @@ const styles = theme => ({
       color: '#fff',
     }
   },
-  centerItem: {
-    width: '100px',
-  },
-  sideMenu: {
+  sideDrawer: {
     position: 'fixed',
     width: '220px',
   },
@@ -104,66 +98,65 @@ const styles = theme => ({
     position: 'absolute',
     right: '0',
   },
-})
+});
 
 class Header extends Component {
-    constructor(props) {
-      super(props);
-      this.state = { floating: true, drawer: false  };
-    };
+  constructor(props) {
+    super(props);
+    this.state = { floating: true, drawer: false  };
+  }
 
-    floatHeader = (e) => {
-      this.setState({ floating: true });
-    };
+  floatHeader() {
+    this.setState({ floating: true });
+  }
 
-    unFloatHeader = (e) => {
-      this.setState({ floating: false });
-    };
+  unFloatHeader() {
+    this.setState({ floating: false });
+  }
 
-    toggleDrawer = () => {
-      this.setState({ drawer: !this.state.drawer });
-    };
+  toggleDrawer() {
+    this.setState({ drawer: !this.state.drawer });
+  }
 
-    render() {
-      const { classes } = this.props;
-      return (
-        <div>
-          <div className={`${classes.header} ${this.state.floating ? classes.floatingBg : ''}`}>
-            <div className={`wrapper ${classes.navBar}`}>
-              <List className={classes.navBarLeft}>
-                <ListItem className={classes.listItem}>
-                  <Link to="/" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy} ${classes.logo}`}>PROLUXE</Link>
-                </ListItem>
-              </List>
+  render() {
+    const { classes } = this.props;
+    return (
+      <div>
+        <div className={`${classes.header} ${this.state.floating ? classes.floatingBg : ''}`}>
+          <div className={`wrapper ${classes.navBar}`}>
+            <List className={classes.navBarLeft}>
+              <ListItem className={classes.listItem}>
+                <Link to="/" className={classNames("logo", classes.logo, {
+                  [classes.floatingCopy]: this.state.floating,
+                  [classes.fixedCopy]: !this.state.floating
+                })}>
+                  {process.env.SITE_NAME}
+                </Link>
+              </ListItem>
+            </List>
 
-              <List className={classes.navBarCenter}>
-                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><ProductNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
-                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><IndustriesNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
-                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><SupportNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
-                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><Link to="/" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`}>How to buy</Link></ListItem>
-              </List>
+            <Hidden smDown>
+              <MainMenu className={classes.navBarRight} listClassName={classNames(classes.listItem, classes.centerItem)} floating={this.state.floating} />
+            </Hidden>
 
+            <Hidden mdUp>
               <List className={classes.navBarRight}>
                 <ListItem className={`${classes.listItem}`}>
-                  <MenuIcon className={`${classes.menuIcon} ${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} onClick={this.toggleDrawer} />
+                  <MenuIcon className={`${classes.menuIcon} ${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} onClick={this.toggleDrawer.bind(this)} />
                 </ListItem>
 
-                <Drawer anchor='right' open={this.state.drawer} onClose={this.toggleDrawer} classes={{paperAnchorRight: classes.sideMenu}}>
+                <Drawer anchor='right' open={this.state.drawer} onClose={this.toggleDrawer.bind(this)} classes={{paperAnchorRight: classes.sideDrawer}}>
                   <div tabIndex={0} role="button" onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}></div>
-                  <SideMenu />
+                  <MainMenu listClassName={classes.sideMenu} />
                 </Drawer>
               </List>
-            </div>
+            </Hidden>
           </div>
-
-          <Waypoint onEnter={this.unFloatHeader} onLeave={this.floatHeader} />
         </div>
-      );
-    }
-}
 
-function mapStateToProps(state) {
-  return {
+        <Waypoint onEnter={this.unFloatHeader.bind(this)} onLeave={this.floatHeader.bind(this)} />
+      </div>
+    );
   }
 }
 

@@ -1,8 +1,19 @@
-import Red from './Red';
-
 // colors
-global.primary = Red[700];
+global.white = "#FFFFFF";
+global.lightGray = "#EFEFEF";
+global.gray = "#B5B6B7";
 global.mediumGrey = '#656565';
+global.darkGray = "#666";
+global.black = "#030";
+global.lightSuccess = "#E3EFEC";
+global.darkSuccess = "#3BA34F";
+global.brandPrimary = "#005089";
+global.brandSecondary  = "#2D3B45";
+global.brandInfo = "#1B98CA";
+global.brandSuccess = "#48C35F";
+global.brandWarning = "#F7B900";
+global.brandDanger = "#FF4E38";
+global.brandLight = "#C2C3C4";
 
 // general
 global.headerColor = '#0cadb7';
@@ -24,4 +35,5 @@ global.textField = {
   minWidth: '260px'
 };
 
-global.fontFamily = 'blambot-fx-pro, helvetica, sans-serif';
+global.fontFamilyTitle = "'Oswald', sans-serif";
+global.fontFamily = "'Open Sans', sans-serif";

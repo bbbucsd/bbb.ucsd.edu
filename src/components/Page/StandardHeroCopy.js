@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import withWidth from '@material-ui/core/withWidth';
+import withWidth from 'material-ui/utils/withWidth';
+import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
   root: {
@@ -10,7 +10,7 @@ const styles = theme => ({
   },
   scopeVerbiageH1: {
     color: '#fff',
-    fontFamily: global.fontFamilyTitle,
+    fontFamily: 'lato',
     fontSize: '60px',
     margin:'0',
     fontWeight: '200',
@@ -21,6 +21,7 @@ const styles = theme => ({
     color: '#ccc',
     fontSize: '25px',
     margin:'10px 0 0 0',
+    fontFamily: 'lato',
     fontWeight: '200',
     fontStyle: 'normal',
   },
@@ -28,12 +29,13 @@ const styles = theme => ({
     color: '#ccc',
     fontSize: '18px',
     margin:'10px 0 0 0',
+    fontFamily: 'lato',
     fontWeight: '200',
     fontStyle: 'normal',
   },
-});
+})
 
-class HeroTypography extends Component {
+class StandardHeroCopy extends Component {
   size() {
     switch(this.props.size) {
       case 'h1':
@@ -52,18 +54,15 @@ class HeroTypography extends Component {
 
     return (
       <div className={classes.root}>
-        {React.createElement(this.props.size, {
-          style: this.props.color ? { color: this.props.color } : {},
-          className: this.size()
-        }, this.props.children)}
+        <div style={this.props.color ? { color: this.props.color } : {}} className={this.size()}>{this.props.children}</div>
       </div>
     );
   }
 }
 
-HeroTypography.propTypes = {
+StandardHeroCopy.propTypes = {
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 }
 
-export default compose(withStyles(styles), withWidth())(HeroTypography);
+export default compose(withStyles(styles), withWidth())(StandardHeroCopy);

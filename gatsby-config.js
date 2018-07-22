@@ -18,7 +18,7 @@ let contentful = {
 
 module.exports = {
   siteMetadata: {
-    title: 'Proluxe',
+    title: process.env.SITE_NAME,
   },
 
   plugins: [
