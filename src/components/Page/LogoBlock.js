@@ -10,7 +10,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Button from '../Theme/Button';
 
-
 const styles = theme => ({
   root: {
     marginBottom: '150px',
