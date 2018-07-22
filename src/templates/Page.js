@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import StandardHero from '../components/Page/StandardHero';
 import HighlightHero from '../components/Page/HighlightHero';
+import ContentBlock from '../components/Page/ContentBlock';
 import DoubleBlockSection from '../components/Page/DoubleBlockSection';
 import LogoBlock from '../components/Page/LogoBlock';
 import LogoBlockInline from '../components/Page/LogoBlockInline';
@@ -28,6 +29,8 @@ class Page extends Component {
         return <DoubleBlockSection key={`section_${index}`} data={section} />
       case 'ContentfulLayoutLogoBlock':
         return <LogoBlock key={`section_${index}`} data={section} />
+      case 'ContentfulLayoutContentBlock':
+        return <ContentBlock key={`section_${index}`} data={section} />
       case 'ContentfulLayoutSingleImageSection':
         return <SingleImageSection key={`section_${index}`} data={section} />
       case 'ContentfulLayoutLogoBlockInline':
@@ -81,6 +84,7 @@ export const pageQuery = graphql`
       sections {
         ...DoubleBlockSection
         ...LogoBlock
+        ...ContentBlock
         ...SingleImageSection
         ...LogoBlockInline
       }
