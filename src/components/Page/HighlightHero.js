@@ -34,7 +34,7 @@ class HighlightHero extends Component {
     const { classes, hero } = this.props;
 
     return (
-      <AssetBlock url={this.props.hero.heroAsset.file.url} contentType={this.props.hero.heroAsset.file.contentType}>
+      <AssetBlock file={this.props.hero.heroAsset && this.props.hero.heroAsset.file}>
         <div>
           <HeroTypography size="h3">{hero.superheadline}</HeroTypography>
           <HeroTypography size="h1">{hero.headline}</HeroTypography>

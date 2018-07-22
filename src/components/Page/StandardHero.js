@@ -24,7 +24,7 @@ class StandardHero extends Component {
     const { classes, hero } = this.props;
 
     return (
-      <AssetBlock file={this.props.hero.heroAsset && this.props.hero.heroAsset.file.url}>
+      <AssetBlock file={this.props.hero.heroAsset && this.props.hero.heroAsset.file}>
         <div>
           <HeroTypography size="h1">{hero.headline}</HeroTypography>
           <HeroTypography size="h2">{hero.subheadline}</HeroTypography>

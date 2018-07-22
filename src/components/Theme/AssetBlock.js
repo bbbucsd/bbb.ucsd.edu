@@ -87,7 +87,7 @@ class AssetBlock extends Component {
     if (this.props.file) {
       return (
         <div>
-          <div style={ this.isImage() ? this.image() : {} } className={`scope ${classes.scope} ${this.props.reducedheight ? classes.reducedheight : ''}`}>
+          <div style={ this.isImage() ? this.image() : {} } className={`scope ${classes.scope} ${this.props.reducedHeight ? classes.reducedheight : ''}`}>
             { this.isVideo() ? this.video() : '' }
             <div className={`scope-verbiage ${classes.scopeVerbiage}`}>
               { this.props.children }
@@ -98,7 +98,7 @@ class AssetBlock extends Component {
     } else {
       return (
         <div>
-          <div className={`scope ${classes.scope} ${this.props.reducedheight ? classes.reducedheight : ''}`}>
+          <div className={`scope ${classes.scope} ${this.props.reducedHeight ? classes.reducedheight : ''}`}>
             <div className={`scope-verbiage ${classes.scopeVerbiage}`}>
               { this.props.children }
             </div>
