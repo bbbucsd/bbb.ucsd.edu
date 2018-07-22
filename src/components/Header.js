@@ -130,7 +130,7 @@ class Header extends Component {
                   [classes.floatingCopy]: this.state.floating,
                   [classes.fixedCopy]: !this.state.floating
                 })}>
-                  Automate Your Brand
+                  {process.env.SITE_NAME}
                 </Link>
               </ListItem>
             </List>

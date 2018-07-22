@@ -7,14 +7,7 @@ import './index.css'
 // Styles
 import blue from '@material-ui/core/colors/blue';
 import green from '@material-ui/core/colors/green';
-
-// colors
-global.primary = '#005089';
-global.lighterGrey = '#FAFAFA';
-global.lightGrey = '#EFEFEF';
-global.mediumGrey = '#B5B6B7';
-global.darkGrey = '#666';
-global.blue = '#1B98CA';
+import '../components/Theme/Globals';
 
 // general
 global.headerColor = '#2D3B45';
@@ -35,8 +28,6 @@ global.textField = {
   marginBottom: global.padding,
   minWidth: '260px'
 };
-global.fontFamily = 'Open Sans, sans-serif';
-
 const theme = createMuiTheme({
   palette: {
     primary: blue,
