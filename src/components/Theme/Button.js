@@ -2,15 +2,21 @@ import React, { Component } from 'react';
 import Link from 'gatsby-link'
 import compose from 'recompose/compose';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-import { ArrowRight } from '@material-ui/icons';
+import { KeyboardArrowRight as ArrowRight } from '@material-ui/icons';
 
 const styles = theme => ({
   button: {
     color: 'white',
-    padding: '20px',
-    backgroundColor: '#5b8edc',
-    borderRadius: '2px',
+    margin: theme.spacing.unit,
+    backgroundColor: global.brandInfo,
+    "&:hover": {
+      backgroundColor: global.brandPrimary,
+    },
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit,
   },
   arrow: {
     position: 'relative',
@@ -31,19 +37,10 @@ const styles = theme => ({
     height: '24px',
     top: '8px !important',
     left: '3px !important',
-  },
-  buttonoutlined: {
-    backgroundColor: 'transparent',
-    border: '2px solid #5b8edc',
-    color: '#000',
-    '&:hover': {
-      backgroundColor: '#5b8edc',
-      color: '#fff',
-    }
   }
-})
+});
 
-class Button extends Component {
+class ThemeButton extends Component {
 
   constructor(props) {
     super(props);
@@ -61,17 +58,20 @@ class Button extends Component {
       <Link to={this.props.to}
             onMouseOver={this.toggleArrow}
             onMouseOut={this.toggleArrow}
-            className={`${classes.button} ${classes['button' + this.props.size]} ${this.props.outlined ? classes['buttonoutlined'] : ''} ${this.props.className}`}
+            className={this.props.className || null}
             style={this.props.customStyle}>
-        {this.props.text}
-        <ArrowRight className={`${classes.arrow} ${classes['arrow' + this.props.size]} ${this.state.animateArrow ? classes.animateArrow : ''}`} />
+        <Button variant="extendedFab" aria-label={this.props.text}  className={classes.button}>
+          {this.props.text}
+          <ArrowRight className={`${classes.extendedIcon} ${this.state.animateArrow ? classes.animateArrow : ''}`} />
+        </Button>
       </Link>
     )
   }
 }
 
-Button.propTypes = {
+ThemeButton.propTypes = {
   classes: PropTypes.object.isRequired,
+  text: PropTypes.string.isRequired,
 }
 
-export default compose(withStyles(styles))(Button);
+export default compose(withStyles(styles))(ThemeButton);

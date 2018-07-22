@@ -110,7 +110,7 @@ class LogoBlock extends Component {
           </ListItem>
         </List>
 
-        <Button to="/" text="Read Case Study" size="small"></Button>
+        <Button to={data.ctaLink} text={data.ctaLabel} size="small" />
       </div>
     )
   }

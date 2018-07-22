@@ -39,7 +39,6 @@ class Page extends Component {
   }
 
   renderHero(hero) {
-    console.log(hero)
     switch (hero.__typename) {
       case 'ContentfulLayoutStandardHero':
         return <StandardHero hero={hero} />

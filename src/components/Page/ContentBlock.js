@@ -21,7 +21,7 @@ class ContentBlock extends Component {
     return (
       <div className={classNames("content", classes.content)}>
         <div dangerouslySetInnerHTML={{__html: data.body.childMarkdownRemark.html}} />
-          <style jsx global>{`
+          <style>{`
             .content h1 {
               font-family: ${global.fontFamilyTitle};
               color: ${global.brandPrimary};
