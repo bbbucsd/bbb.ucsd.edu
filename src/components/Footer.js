@@ -194,7 +194,7 @@ class Footer extends Component {
 
                 <div className={classes.footerLegal}>
                   <div className={classes.footerLegalLeft}>
-                    <div className={classes.footerLegalLink}>&copy; Proluxe 2018</div>
+                    <div className={classes.footerLegalLink}>&copy; Proluxe {new Date().getFullYear()}</div>
                     <div className={classes.footerLegalLink}><Link to="/terms">Terms of use</Link></div>
                     <div className={classes.footerLegalLink}><Link to="/privacy">Privacy Policy</Link></div>
                   </div>
