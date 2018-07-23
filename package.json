@@ -24,6 +24,7 @@
     "mixpanel-browser": "^2.22.4",
     "react": "^16.4.1",
     "react-helmet": "^5.2.0",
+    "react-html-parser": "^2.0.2",
     "react-waypoint": "^8.0.3",
     "redux-logger": "^3.0.6",
     "slash": "^2.0.0",

@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import StandardHero from './StandardHero';
 import SimpleHero from './SimpleHero';
 import HighlightHero from './HighlightHero';
-import ContentBlock from './ContentBlock';
+import ContentBlock from '../Theme/ContentBlock';
 import DoubleBlockSection from './DoubleBlockSection';
 import LogoBlock from './LogoBlock';
 import LogoBlockInline from './LogoBlockInline';
