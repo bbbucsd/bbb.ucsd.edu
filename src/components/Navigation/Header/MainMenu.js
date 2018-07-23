@@ -6,6 +6,7 @@ import ListItem from '@material-ui/core/ListItem';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 const styles = theme => ({
   listItem: {
@@ -39,8 +40,20 @@ class MainMenu extends Component {
 
     return (
       <List className={this.props.className || null}>
-        <ListItem className={this.props.listClassName || null}><Link to="/start-here" className={`${this.props.floating ? classes.floatingCopy : classes.fixedCopy}`}>Start Here</Link></ListItem>
-        <ListItem className={this.props.listClassName || null}><Link to="/about" className={`${this.props.floating ? classes.floatingCopy : classes.fixedCopy}`}>About</Link></ListItem>
+        <ListItem className={this.props.listClassName || null}>
+          <Link to="/start-here"
+            className={classNames(this.props.className, {
+              [classes.floatingCopy]: this.props.floating,
+              [classes.fixedCopy]: !this.props.floating,
+            })}>Start Here</Link>
+        </ListItem>
+        <ListItem className={this.props.listClassName || null}>
+          <Link to="/about"
+            className={classNames(this.props.className, {
+              [classes.floatingCopy]: this.props.floating,
+              [classes.fixedCopy]: !this.props.floating,
+            })}>About</Link>
+        </ListItem>
       </List>
     );
   }
