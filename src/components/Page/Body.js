@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
 import StandardHero from './StandardHero';
+import SimpleHero from './SimpleHero';
 import HighlightHero from './HighlightHero';
 import ContentBlock from './ContentBlock';
 import DoubleBlockSection from './DoubleBlockSection';
@@ -39,6 +40,8 @@ class Body extends Component {
         return <StandardHero hero={hero} />
       case 'ContentfulLayoutHighlightHero':
         return <HighlightHero hero={hero} />
+      case 'ContentfulLayoutSimpleHero':
+        return <SimpleHero hero={hero} />
     }
   }
 
@@ -69,6 +72,7 @@ export const query = graphql`
   fragment Body on ContentfulPage {
       hero {
         ...StandardHero
+        ...SimpleHero
         ...HighlightHero
       }
 
