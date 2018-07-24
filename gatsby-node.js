@@ -67,6 +67,48 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       graphql(
         `
           {
+            allContentfulPost(limit: 1000) {
+              edges {
+                node {
+                  id
+                  slug
+                }
+              }
+            }
+          }
+        `
+      ).then(result => {
+        if (result.errors) {
+          reject(result.errors)
+        }
+
+        // Create Category pages
+        const postComponent = path.resolve(`./src/templates/Post.js`)
+        // We want to create a detailed page for each
+        // category node. We'll just use the Contentful id for the slug.
+        _.each(result.data.allContentfulPost.edges, edge => {
+          // Gatsby uses Redux to manage its internal state.
+          // Plugins and sites can use functions like "createPage"
+          // to interact with Gatsby.
+          createPage({
+            // Each page is required to have a `path` as well
+            // as a template component. The `context` is
+            // optional but is often necessary so the template
+            // can query data specific to each page.
+            path: edge.node.slug,
+            component: slash(postComponent),
+            context: {
+              id: edge.node.id,
+            },
+          })
+        })
+
+        resolve()
+      })
+    }).then(() => {
+      graphql(
+        `
+          {
             allContentfulLegal(limit: 1000) {
               edges {
                 node {

@@ -69,7 +69,7 @@ Body.propTypes = {
 export default compose(withStyles(styles), withWidth(), connect())(Body);
 
 export const query = graphql`
-  fragment Body on ContentfulPage {
+  fragment PageBody on ContentfulPage {
       hero {
         ...StandardHero
         ...SimpleHero

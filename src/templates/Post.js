@@ -5,13 +5,13 @@ import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Body from '../components/Page/Body';
+import Body from '../components/Post/Body';
 
 const styles = theme => ({
 
 });
 
-class Page extends Component {
+class Post extends Component {
 
   render() {
     return (
@@ -25,18 +25,18 @@ class Page extends Component {
 }
 
 
-Page.propTypes = {
+Post.propTypes = {
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,
 }
 
-export default compose(withStyles(styles), withWidth())(Page);
+export default compose(withStyles(styles), withWidth())(Post);
 
 export const pageQuery = graphql`
-  query pageQuery($id: String!) {
-    contentfulPage(id: { eq: $id }) {
-      ...PageBody
+  query postQuery($id: String!) {
+    contentfulPost(id: { eq: $id }) {
+      ...PostBody
     }
   }
 `
