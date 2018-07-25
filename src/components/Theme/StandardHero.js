@@ -3,14 +3,22 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
-import AssetBlock from '../Theme/AssetBlock';
-import HeroTypography from '../Theme/HeroTypography';
+import AssetBlock from './AssetBlock';
+import HeroTypography from './HeroTypography';
+import Button from './Button';
 
 const styles = theme => ({
 
 });
 
-class AudioHero extends Component {
+class StandardHero extends Component {
+  cta() {
+    return (
+      <div className={this.props.classes.cta}>
+        <Button to={this.props.hero.ctaLink} text={this.props.hero.ctaLabel}></Button>
+      </div>
+    )
+  }
 
   render() {
     const { classes, hero } = this.props;
@@ -19,6 +27,8 @@ class AudioHero extends Component {
       <AssetBlock file={this.props.hero.heroAsset && this.props.hero.heroAsset.file}>
         <div>
           <HeroTypography size="h1">{hero.headline}</HeroTypography>
+          <HeroTypography size="h2">{hero.subheadline}</HeroTypography>
+          {this.cta()}
         </div>
       </AssetBlock>
     );
@@ -26,16 +36,18 @@ class AudioHero extends Component {
 }
 
 
-AudioHero.propTypes = {
+StandardHero.propTypes = {
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 }
 
-export default compose(withStyles(styles), withWidth())(AudioHero);
+export default compose(withStyles(styles), withWidth())(StandardHero);
 
 export const query = graphql`
-  fragment AudioHero on ContentfulLayoutPostTypeAudio {
+  fragment StandardHero on ContentfulLayoutStandardHero {
     headline
+    subheadline
+    ctaLabel
     heroAsset {
       title
       file {

@@ -43,7 +43,7 @@ class SimpleHero extends Component {
 
     return (
       <div>
-        <div className={classes.scope} style={{ backgroundColor: this.props.bgColor, height: this.props.height }}>
+        <div className={classes.scope} style={{ backgroundColor: hero.bgColor, height: this.props.height }}>
           <div className={`scope-verbiage ${classes.scopeVerbiage}`}>
             <HeroTypography size="h1">{hero.headline}</HeroTypography>
             <HeroTypography size="h2">{hero.subheadline}</HeroTypography>

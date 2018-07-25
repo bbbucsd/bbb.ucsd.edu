@@ -3,17 +3,27 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
-import ArticleHero from './ArticleHero';
-import AudioHero from './AudioHero';
-import VideoHero from './VideoHero';
 import ContentBlock from '../Theme/ContentBlock';
+import StandardVideoHero from '../Theme/StandardVideoHero';
+import StandardHero from '../Theme/StandardHero';
 import { connect } from 'airlytics';
 
 const styles = theme => ({
 
 });
 
-class Body extends Component {
+class PostTypeVideo extends Component {
+
+  renderHero(hero) {
+    switch (hero.__typename) {
+      case 'ContentfulLayoutStandardVideoHero':
+        return <StandardVideoHero hero={hero} />
+      case 'ContentfulLayoutSimpleHero':
+        return <SimpleHero hero={hero} />
+      case 'ContentfulLayoutStandardHero':
+        return <StandardHero hero={hero} />
+    }
+  }
 
   renderSection(section, index) {
     switch (section.__typename) {
@@ -22,25 +32,13 @@ class Body extends Component {
     };
   }
 
-  renderHero(hero) {
-    switch (hero.__typename) {
-      case 'ContentfulLayoutPostTypeArticle':
-        return <ArticleHero hero={hero} />
-      case 'ContentfulLayoutPostTypeAudio':
-        return <AudioHero hero={hero} />
-      case 'ContentfulLayoutPostTypeVideo':
-        return <VideoHero hero={hero} />
-    }
-  }
-
   render() {
     const { classes } = this.props;
-    const page = this.props.data.contentfulPost
-    const { type, sections } = page
+    const { hero, sections } = this.props.type;
 
     return (
       <div>
-        {this.renderHero(type[0])}
+        {this.renderHero(hero[0])}
         {(sections||[]).map((section, i) => this.renderSection(section, i) )}
       </div>
     );
@@ -48,24 +46,24 @@ class Body extends Component {
 }
 
 
-Body.propTypes = {
+PostTypeVideo.propTypes = {
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,
 }
 
-export default compose(withStyles(styles), withWidth(), connect())(Body);
+export default compose(withStyles(styles), withWidth(), connect())(PostTypeVideo);
 
 export const query = graphql`
-  fragment PostBody on ContentfulPost {
-      type {
-        ...ArticleHero
-        ...AudioHero
-        ...VideoHero
-      }
+  fragment PostTypeVideo on ContentfulPostTypeVideo {
+    hero {
+      ...StandardVideoHero
+      ...StandardHero
+      ...SimpleHero
+    }
 
-      sections {
-        ...ContentBlock
-      }
+    sections {
+      ...ContentBlock
+    }
   }
 `;

@@ -4,8 +4,8 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
-import StandardHero from '../Page/StandardHero';
-import StandardHeroCopy from '../Page/StandardHero/StandardHeroCopy';
+import StandardHero from '../Theme/StandardHero';
+import StandardHeroCopy from '../Theme/StandardHeroCopy';
 
 import TextField from 'material-ui/TextField';
 

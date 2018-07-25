@@ -5,7 +5,9 @@ import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Body from '../components/Post/Body';
+import PostTypeArticle from '../components/Post/PostTypeVideo';
+import PostTypeAudio from '../components/Post/PostTypeVideo';
+import PostTypeVideo from '../components/Post/PostTypeVideo';
 
 const styles = theme => ({
 
@@ -13,11 +15,26 @@ const styles = theme => ({
 
 class Post extends Component {
 
+  renderPostType(type) {
+    switch (type.__typename) {
+      case 'ContentfulPostTypeArticle':
+        return <PostTypeArticle type={type} />
+      case 'ContentfulPostTypeAudio':
+        return <PostTypeAudio type={type} />
+      case 'ContentfulPostTypeVideo':
+        return <PostTypeVideo type={type} />
+    }
+  }
+
   render() {
+    const { classes } = this.props;
+    const page = this.props.data.contentfulPost
+    const { type } = page
+
     return (
       <div>
         <Header />
-        <Body {...this.props} />
+        {this.renderPostType(type[0])}
         <Footer />
       </div>
     );
@@ -36,7 +53,11 @@ export default compose(withStyles(styles), withWidth())(Post);
 export const pageQuery = graphql`
   query postQuery($id: String!) {
     contentfulPost(id: { eq: $id }) {
-      ...PostBody
+      type {
+        ...PostTypeArticle
+        ...PostTypeAudio
+        ...PostTypeVideo
+      }
     }
   }
 `
