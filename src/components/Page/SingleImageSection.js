@@ -28,7 +28,7 @@ const styles = theme => ({
     display: 'block',
     margin: '50px 0 0 -30px'
   }
-});
+})
 
 class SingleImageSection extends Component {
   render() {
@@ -36,8 +36,8 @@ class SingleImageSection extends Component {
 
     return (
       <div className={classes.root}>
-        <h2 className={classes.headline}>{data.headline}</h2>
-        <h3 className={classes.subheadline}>{data.subheadline}</h3>
+        <h1 className={classes.headline}>{data.headline}</h1>
+        <h2 className={classes.subheadline}>{data.subheadline}</h2>
 
         <img alt={data.title} src={data.image.file.url} className={classes.image} />
       </div>
@@ -52,16 +52,16 @@ SingleImageSection.propTypes = {
 
 export default compose(withStyles(styles), withWidth())(SingleImageSection);
 
-//export const query = graphql`
-  //fragment SingleImageSection on ContentfulLayoutSingleImageSection {
-    //headline
-    //subheadline
-    //image {
-      //title
-      //file {
-        //url
-        //contentType
-      //}
-    //}
-  //}
-//`;
+export const query = graphql`
+  fragment SingleImageSection on ContentfulLayoutSingleImageSection {
+    headline
+    subheadline
+    image {
+      title
+      file {
+        url
+        contentType
+      }
+    }
+  }
+`;

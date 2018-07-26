@@ -28,6 +28,7 @@
   font-weight: 400;
   font-style: normal;
   font-size: 21px;
+  font-family: "Open Sans", sans-serif;
   line-height: 1.58;
   letter-spacing: -0.003em;
 }
@@ -67,6 +68,7 @@
   margin: 0 0 30px 0;
   list-style: none;
   padding: 30px;
+  border: 3px dashed #2D3B45;
   border-radius: 5px;
   display: block;
   width: fit-content;
@@ -74,6 +76,10 @@
 .content *:not(li) > ul li,
 .content *:not(li) > ol li, .content:not(li) > ul li, .content:not(li) > ol li {
   margin-bottom: 14px;
+}
+.content *:not(li) > ul li:before,
+.content *:not(li) > ol li:before, .content:not(li) > ul li:before, .content:not(li) > ol li:before {
+  color: #1B98CA;
 }
 .content *:not(li) > ol, .content:not(li) > ol {
   counter-reset: section;
