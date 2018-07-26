@@ -9,7 +9,7 @@ import StandardHero from '../components/Theme/StandardHero';
 import SimpleHero from '../components/Theme/SimpleHero';
 import HighlightHero from '../components/Page/HighlightHero';
 import ContentBlock from '../components/Theme/ContentBlock';
-//import DoubleBlockSection from './DoubleBlockSection';
+import DoubleBlock from '../components/Theme/DoubleBlock';
 //import LogoBlock from './LogoBlock';
 //import LogoBlockInline from './LogoBlockInline';
 //import SingleImageSection from './SingleImageSection';
@@ -29,8 +29,8 @@ class Page extends Component {
         return <SimpleHero key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyHighlightHero':
         return <HighlightHero key={`slice_${index}`} slice={slice} />
-      //case 'ContentfulLayoutDoubleBlockSection':
-        //return <DoubleBlockSection key={`slice_${index}`} data={section} />
+      case 'PrismicPageBodyDoubleBlock':
+        return <DoubleBlock key={`slice_${index}`} slice={slice} />
       //case 'ContentfulLayoutLogoBlock':
         //return <LogoBlock key={`slice_${index}`} data={section} />
       case 'PrismicPageBodyContentBlock':
@@ -80,6 +80,7 @@ export const pageQuery = graphql`
           ...SimpleHero
           ...HighlightHero
           ...ContentBlock
+          ...DoubleBlock
         }
       }
     }

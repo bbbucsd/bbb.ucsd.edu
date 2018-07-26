@@ -132,8 +132,8 @@ class Header extends Component {
 
               <List className={classes.navBarRight}>
                 <List className={classes.navBarCenter}>
-                  <ListItem className={`${classes.listItem} ${classes.centerItem}`}><Link to="/" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`}>Start Here</Link></ListItem>
-                  <ListItem className={`${classes.listItem} ${classes.centerItem}`}><Link to="/" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`}>About</Link></ListItem>
+                  <ListItem className={`${classes.listItem} ${classes.centerItem}`}><Link to="/start-here" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`}>Start Here</Link></ListItem>
+                  <ListItem className={`${classes.listItem} ${classes.centerItem}`}><Link to="/about" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`}>About</Link></ListItem>
                 </List>
 
                 <ListItem className={`${classes.listItem}`}>
