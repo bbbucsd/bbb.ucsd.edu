@@ -9,37 +9,11 @@ import Button from './Theme/Button';
 
 const styles = theme => ({
   footer: {
-<<<<<<< HEAD
     backgroundColor: global.brandSecondary,
-=======
-    backgroundColor: '#171F26',
->>>>>>> 0e571fe3adbf53d78251bf12fd9ade9c0bc0a4db
     height: '500px',
     width: '100%',
     color: '#92A5B1',
   },
-<<<<<<< HEAD
-=======
-  lastChanceCTA: {
-    backgroundColor: '#fafafa',
-    height: '400px',
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
-  lastChanceButton: {
-    fontSize: '16px',
-  },
-  subheadline: {
-    fontFamily: 'lato',
-    fontWeight: '300',
-    fontStyle: 'normal',
-    margin:'0',
-    marginBottom: '30px',
-  },
->>>>>>> 0e571fe3adbf53d78251bf12fd9ade9c0bc0a4db
   social: {
     display: 'flex',
     flexDirection: 'row',
