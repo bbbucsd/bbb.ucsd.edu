@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Link from 'gatsby-link';
+import Link from '../../Theme/Link';
 
 const styles = theme => ({
   root: {
@@ -18,7 +18,7 @@ const styles = theme => ({
     fontWeight: '300',
     fontStyle: 'normal',
   }
-})
+});
 
 class SideMenu extends Component {
   constructor(props) {
