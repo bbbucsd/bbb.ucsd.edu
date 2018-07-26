@@ -37,3 +37,11 @@ global.textField = {
 
 global.fontFamilyTitle = "'Oswald', sans-serif";
 global.fontFamily = "'Open Sans', sans-serif";
+
+global.siteTitle = "";
+global.siteTitleAlt = "";
+global.siteDescription = "";
+global.siteUrl = ""; // No trailing slash
+global.shareImage = "";
+global.shareImageWidth = "";
+global.shareImageHeight = "";

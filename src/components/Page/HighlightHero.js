@@ -31,13 +31,14 @@ const styles = theme => ({
 
 class HighlightHero extends Component {
   render() {
-    const { classes, hero } = this.props;
+    const { classes, slice } = this.props;
+    const data = slice.primary;
 
     return (
-      <AssetBlock file={this.props.hero.heroAsset && this.props.hero.heroAsset.file}>
+      <AssetBlock file={data.hero_asset && data.hero_asset.url}>
         <div>
-          <HeroTypography size="h3">{hero.superheadline}</HeroTypography>
-          <HeroTypography size="h1">{hero.headline}</HeroTypography>
+          <HeroTypography size="h3">{data.superheadline.text}</HeroTypography>
+          <HeroTypography size="h1">{data.headline.text}</HeroTypography>
 
           <div className={classes.highlightGroup}>
             <Highlight largeText="#1" smallText="Best Selling Press" color="white" />
@@ -61,18 +62,17 @@ HighlightHero.propTypes = {
 export default compose(withStyles(styles), withWidth())(HighlightHero);
 
 export const query = graphql`
-  fragment HighlightHero on ContentfulLayoutHighlightHero {
-    superheadline
-    headline
-    heroAsset {
-      file {
-        url
-        contentType
+  fragment HighlightHero on PrismicPageBodyHighlightHero  {
+    primary {
+      superheadline {
+        text
       }
-    }
-    features {
-      headline
-      subheadline
+      headline {
+        text
+      }
+      hero_asset {
+        url
+      }
     }
   }
 `;

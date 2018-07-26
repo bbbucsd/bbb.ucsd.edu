@@ -52,16 +52,16 @@ SingleImageSection.propTypes = {
 
 export default compose(withStyles(styles), withWidth())(SingleImageSection);
 
-export const query = graphql`
-  fragment SingleImageSection on ContentfulLayoutSingleImageSection {
-    headline
-    subheadline
-    image {
-      title
-      file {
-        url
-        contentType
-      }
-    }
-  }
-`;
+//export const query = graphql`
+  //fragment SingleImageSection on ContentfulLayoutSingleImageSection {
+    //headline
+    //subheadline
+    //image {
+      //title
+      //file {
+        //url
+        //contentType
+      //}
+    //}
+  //}
+//`;

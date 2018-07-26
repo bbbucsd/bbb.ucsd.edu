@@ -67,15 +67,15 @@ Privacy.propTypes = {
 
 export default compose(withStyles(styles), withWidth(), connect())(Privacy);
 
-export const legalQuery = graphql`
-  query legalQuery($id: String!) {
-    contentfulLegal(id: { eq: $id }) {
-      headline
-      body {
-        childMarkdownRemark {
-          html
-        }
-      }
-    }
-  }
-`
+//export const legalQuery = graphql`
+  //query legalQuery($id: String!) {
+    //contentfulLegal(id: { eq: $id }) {
+      //headline
+      //body {
+        //childMarkdownRemark {
+          //html
+        //}
+      //}
+    //}
+  //}
+//`
