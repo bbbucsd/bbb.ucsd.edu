@@ -1,24 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './index.css'
 
 // Styles
-import { createMuiTheme } from 'material-ui/styles';
-import Teal from 'material-ui/colors/teal';
-import Amber from 'material-ui/colors/amber';
-
-// colors
-global.primary = '#FADB5C';
-global.lighterGrey = '#fafafa';
-global.lightGrey = '#ebebeb';
-global.mediumGrey = '#656565';
-global.darkGrey = '#151515';
-global.blue = '#5b8edc';
+import blue from '@material-ui/core/colors/blue';
+import green from '@material-ui/core/colors/green';
+import '../components/Theme/Globals';
 
 // general
-global.headerColor = '#0cadb7';
+global.headerColor = '#2D3B45';
 global.headerHeight = '56px';
 global.maxWidth = '1000px';
 global.smallPadding = '10px';
@@ -31,20 +23,18 @@ global.wrapper = {
   margin: '0 auto',
   padding: "" + global.ultraPadding + " " + global.padding +"",
   position: 'relative'
-}
+};
 global.textField = {
   marginBottom: global.padding,
   minWidth: '260px'
-}
-global.fontFamily = 'pt-sans, helvetica, sans-serif'
-
+};
 const theme = createMuiTheme({
   palette: {
-    primary: Amber,
-    secondary: Teal
+    primary: blue,
+    secondary: green
   },
   typography:  {
-    fontFamily: "'pt-sans', 'futura', 'trebuchet', 'helvetica', 'sans-serif'",
+    fontFamily: "'Oswald', 'sans-serif'",
     fontSize: '18px',
   },
   overrides: {
@@ -94,7 +84,6 @@ const Layout = ({ children, data }) => (
       >
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/brands.css" integrity="sha384-KtmfosZaF4BaDBojD9RXBSrq5pNEO79xGiggBxf8tsX+w2dBRpVW5o0BPto2Rb2F" crossOrigin="anonymous" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/fontawesome.css" integrity="sha384-8WwquHbb2jqa7gKWSoAwbJBV2Q+/rQRss9UXL5wlvXOZfSodONmVnifo/+5xJIWX" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://use.typekit.net/pqq2exl.css" />
       </Helmet>
 
       { children() }
@@ -118,3 +107,4 @@ export const query = graphql`
     }
   }
 `
+

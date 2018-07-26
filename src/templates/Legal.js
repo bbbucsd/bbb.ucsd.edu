@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import withWidth from 'material-ui/utils/withWidth';
-import { withStyles } from 'material-ui/styles';
-import ArrowLeft from 'material-ui-icons/KeyboardArrowLeft';
+import { withStyles } from '@material-ui/core/styles';
+import withWidth from '@material-ui/core/withWidth';
+import { ArrowLeft } from '@material-ui/icons';
 import { connect } from 'airlytics';
 
 const styles = theme => ({
@@ -12,7 +12,6 @@ const styles = theme => ({
     margin: '50px auto',
   },
   h1: {
-    fontFamily: 'lato',
     fontSize: '40px',
     margin:'20px 0',
     fontWeight: '200',
@@ -22,7 +21,6 @@ const styles = theme => ({
   h2: {
     fontSize: '25px',
     margin:'40px 0 20px 0',
-    fontFamily: 'lato',
     fontWeight: '200',
     fontStyle: 'normal',
   },

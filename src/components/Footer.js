@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import withWidth from 'material-ui/utils/withWidth';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
+import withWidth from '@material-ui/core/withWidth';
 import { Link } from 'react-router-dom';
 import Button from './Theme/Button';
 
@@ -194,7 +194,7 @@ class Footer extends Component {
 
                 <div className={classes.footerLegal}>
                   <div className={classes.footerLegalLeft}>
-                    <div className={classes.footerLegalLink}>&copy; Proluxe 2018</div>
+                    <div className={classes.footerLegalLink}>&copy; {process.env.SITE_NAME} {new Date().getFullYear()}</div>
                     <div className={classes.footerLegalLink}><Link to="/terms">Terms of use</Link></div>
                     <div className={classes.footerLegalLink}><Link to="/privacy">Privacy Policy</Link></div>
                   </div>

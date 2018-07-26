@@ -1,6 +1,8 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+if (process.env.NODE_ENV != 'production') {
+  require('dotenv').config({
+    path: `.env`,
+  })
+};
 
 let contentful = {
   development: {
@@ -14,11 +16,11 @@ let contentful = {
     spaceId: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   }
-}
+};
 
 module.exports = {
   siteMetadata: {
-    title: 'Proluxe',
+    title: process.env.SITE_NAME,
   },
 
   plugins: [

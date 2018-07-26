@@ -1,12 +1,10 @@
-@fontface {
-  font-family: 'Amatic SC', cursive;
-  src: url('https://fonts.googleapis.com/css?family=Amatic+SC')
-}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald');
+@import url("logo.css");
 
 body {
-  font-family:'Lato', 'sans-serif';
+  font-family:'Open Sans', 'sans-serif';
   min-height:100%;
-  /*background-color:#fafafa;*/
+  background-color:#FEFEFE;
   color:#252525;
   font-size:18px;
   overflow-x: hidden;
@@ -38,7 +36,7 @@ body img {
 }
 
 .headline {
-  font-family:'pt-sans', 'futura', 'trebuchet', 'helvetica', 'sans-serif';
+  font-family: 'Oswald', 'sans-serif';
   font-size: 48px;
   line-height: 38px;
   font-weight: normal;
@@ -47,7 +45,7 @@ body img {
 }
 
 .subheadline {
-  font-family:'pt-sans' 'futura', 'trebuchet', 'helvetica', 'sans-serif';
+  font-family: 'Open Sans', 'sans-serif';
   font-size: 26px;
   line-height: 22px;
   font-weight: normal;
@@ -164,3 +162,4 @@ and (max-device-width: 768px) {
     transform: translateX(9px);
   }
 }
+

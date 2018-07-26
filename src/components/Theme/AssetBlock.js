@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import withWidth from 'material-ui/utils/withWidth';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
+import withWidth from '@material-ui/core/withWidth';
 import HeroTypography from '../Theme/HeroTypography';
-import Highlight from '../Theme/Highlight'
+import Highlight from '../Theme/Highlight';
 import Button from '../Theme/Button';
 
 const styles = theme => ({
   scope: {
-    backgroundColor: '#000',
+    backgroundColor: global.brandSecondary,
     textAlign: 'center',
-    color: 'black',
+    color: global.white,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'top center',
@@ -35,7 +35,6 @@ const styles = theme => ({
     textAlign: 'center',
     [theme.breakpoints.down('sm')]: {
       top: '100px',
-
     }
   },
   backgroundVideo: {
@@ -64,37 +63,49 @@ class AssetBlock extends Component {
     return (
       <div>
         <video loop autoPlay playsInline className={this.props.classes.backgroundVideo}>
-          <source src={this.props.url} type="video/mp4" />
+          <source src={this.props.file.url} type="video/mp4" />
         </video>
       </div>
     )
   }
 
   image() {
-    return { backgroundImage: 'url("' + this.props.url + '")' }
+    return { backgroundImage: 'url("' + this.props.file.url + '")' }
   }
 
   isVideo() {
-    return (this.props.contentType === 'video/mp4');
+    return (this.props.file.contentType === 'video/mp4');
   }
 
   isImage() {
-    return (this.props.contentType == 'image/jpeg');
+    return (this.props.file.contentType == 'image/jpeg');
   }
 
   render() {
     const { classes } = this.props;
 
-    return (
-      <div>
-        <div style={ this.isImage() ? this.image() : {} } className={`scope ${classes.scope} ${this.props.reducedHeight ? classes.reducedHeight : ''}`}>
-          { this.isVideo() ? this.video() : '' }
-          <div className={`scope-verbiage ${classes.scopeVerbiage}`}>
-            { this.props.children }
+    if (this.props.file) {
+      return (
+        <div>
+          <div style={ this.isImage() ? this.image() : {} } className={`scope ${classes.scope} ${this.props.reducedHeight ? classes.reducedheight : ''}`}>
+            { this.isVideo() ? this.video() : '' }
+            <div className={`scope-verbiage ${classes.scopeVerbiage}`}>
+              { this.props.children }
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div>
+          <div className={`scope ${classes.scope} ${this.props.reducedHeight ? classes.reducedheight : ''}`}>
+            <div className={`scope-verbiage ${classes.scopeVerbiage}`}>
+              { this.props.children }
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 }
 

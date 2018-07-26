@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 
-import List, { ListItem } from 'material-ui/List';
-import { Link } from 'react-router-dom';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import { withStyles } from '@material-ui/core/styles';
+import withWidth from '@material-ui/core/withWidth';
+import Link from 'gatsby-link';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import withWidth from 'material-ui/utils/withWidth';
-import { withStyles } from 'material-ui/styles';
 import Waypoint from 'react-waypoint';
-import MenuIcon from 'material-ui-icons/Menu';
-import Drawer from 'material-ui/Drawer';
+import SideMenu from './Navigation/Header/SideMenu';
+import { Menu as MenuIcon } from '@material-ui/icons';
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
+import classNames from 'classnames';
 
 import MainMenu from './Navigation/Header/MainMenu';
-import SideMenu from './Navigation/Header/SideMenu';
-
 
 const styles = theme => ({
   header: {
@@ -102,25 +104,25 @@ const styles = theme => ({
     position: 'absolute',
     right: '0',
   },
-});
+})
 
 class Header extends Component {
     constructor(props) {
       super(props);
       this.state = { floating: true, drawer: false  };
-    }
+    };
 
-    floatHeader() {
+    floatHeader = (e) => {
       this.setState({ floating: true });
-    }
+    };
 
-    unFloatHeader() {
+    unFloatHeader = (e) => {
       this.setState({ floating: false });
-    }
+    };
 
-    toggleDrawer() {
+    toggleDrawer = () => {
       this.setState({ drawer: !this.state.drawer });
-    }
+    };
 
     render() {
       const { classes } = this.props;
@@ -134,7 +136,12 @@ class Header extends Component {
                 </ListItem>
               </List>
 
-              <MainMenu className={classes.navBarCenter} floating={this.state.floating} />
+              <List className={classes.navBarCenter}>
+                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><ProductNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
+                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><IndustriesNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
+                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><SupportNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
+                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><Link to="/" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`}>How to buy</Link></ListItem>
+              </List>
 
               <List className={classes.navBarRight}>
                 <ListItem className={`${classes.listItem}`}>
@@ -153,6 +160,11 @@ class Header extends Component {
         </div>
       );
     }
+}
+
+function mapStateToProps(state) {
+  return {
+  }
 }
 
 Header.propTypes = {
