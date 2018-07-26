@@ -8,6 +8,12 @@ import Footer from '../components/Footer';
 import StandardHero from '../components/Theme/StandardHero';
 import SimpleHero from '../components/Theme/SimpleHero';
 import HighlightHero from '../components/Page/HighlightHero';
+import ContentBlock from '../components/Theme/ContentBlock';
+import DoubleBlock from '../components/Theme/DoubleBlock';
+//import LogoBlock from './LogoBlock';
+//import LogoBlockInline from './LogoBlockInline';
+//import SingleImageSection from './SingleImageSection';
+//import SEO from './SEO';
 
 const styles = theme => ({
 
@@ -23,10 +29,8 @@ class Page extends Component {
         return <SimpleHero key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyHighlightHero':
         return <HighlightHero key={`slice_${index}`} slice={slice} />
-      //case 'ContentfulLayoutSimpleHero':
-        //return <SimpleHero hero={hero} />
-      //case 'ContentfulLayoutDoubleBlockSection':
-        //return <DoubleBlockSection key={`slice_${index}`} data={section} />
+      case 'PrismicPageBodyDoubleBlock':
+        return <DoubleBlock key={`slice_${index}`} slice={slice} />
       //case 'ContentfulLayoutLogoBlock':
         //return <LogoBlock key={`slice_${index}`} data={section} />
       //case 'ContentfulLayoutContentBlock':
@@ -75,6 +79,11 @@ export const pageQuery = graphql`
           ...StandardHero
           ...SimpleHero
           ...HighlightHero
+<<<<<<< HEAD
+=======
+          ...ContentBlock
+          ...DoubleBlock
+>>>>>>> 5af1014... creating double content block
         }
       }
     }
