@@ -79,11 +79,8 @@ export const pageQuery = graphql`
           ...StandardHero
           ...SimpleHero
           ...HighlightHero
-<<<<<<< HEAD
-=======
           ...ContentBlock
           ...DoubleBlock
->>>>>>> 5af1014... creating double content block
         }
       }
     }
