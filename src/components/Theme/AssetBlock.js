@@ -63,14 +63,14 @@ class AssetBlock extends Component {
     return (
       <div>
         <video loop autoPlay playsInline className={this.props.classes.backgroundVideo}>
-          <source src={this.props.url} type="video/mp4" />
+          <source src={this.props.file.url} type="video/mp4" />
         </video>
       </div>
     )
   }
 
   image() {
-    return { backgroundImage: 'url("' + this.props.url + '")' }
+    return { backgroundImage: 'url("' + this.props.file.url + '")' }
   }
 
   isVideo() {
@@ -78,8 +78,7 @@ class AssetBlock extends Component {
   }
 
   isImage() {
-    return true;
-    //return (this.props.file.contentType == 'image/jpeg');
+    return (this.props.file.contentType == 'image/jpeg');
   }
 
   render() {

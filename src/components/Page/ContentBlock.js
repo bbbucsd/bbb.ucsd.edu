@@ -6,9 +6,6 @@ import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 import classNames from 'classnames';
 import "./ContentBlock.css";
-import InnerHTML from './InnerHTML';
-
-const __CONTENT_STYLES__ = `__CONTENT_STYLES__`;
 
 const styles = theme => ({
   content: {
@@ -18,10 +15,14 @@ const styles = theme => ({
 });
 
 class ContentBlock extends Component {
+  render() {
+    const { classes, data } = this.props;
 
-  getStyles() {
-    if (global[__CONTENT_STYLES__]) { return null; }
-    global[__CONTENT_STYLES__] = `.content h1 {
+    return (
+      <div className={classNames("content", classes.content)}>
+        <div dangerouslySetInnerHTML={{__html: data.body.childMarkdownRemark.html}} />
+          <style>{`
+            .content h1 {
               font-family: ${global.fontFamilyTitle};
               color: ${global.brandPrimary};
               --x-height-multiplier: 0.363;
@@ -54,27 +55,7 @@ class ContentBlock extends Component {
               color: ${global.darkGray};
               border-color: ${global.brandInfo};
             }
-            .content *:not(li) > ul,
-            .content *:not(li) > ol, .content:not(li) > ul, .content:not(li) > ol {
-              border: 3px dashed ${global.brandSecondary};
-            }
-            .content *:not(li) > ul li:before,
-            .content *:not(li) > ol li:before, .content:not(li) > ul li:before, .content:not(li) > ol li:before {
-              color: ${global.brandInfo};
-            }
-          `
-    return global[__CONTENT_STYLES__];
-  }
-
-  render() {
-    const { classes, data } = this.props;
-
-    return (
-      <div className={classNames("content", classes.content)}>
-        <InnerHTML>
-          {data.body.childMarkdownRemark.html}
-        </InnerHTML>
-        <style>{this.getStyles()}</style>
+          `}</style>
       </div>
     )
   }
@@ -87,12 +68,12 @@ ContentBlock.propTypes = {
 
 export default compose(withStyles(styles), withWidth())(ContentBlock);
 
-//export const query = graphql`
-  //fragment ContentBlock on ContentfulLayoutContentBlock {
-      //body {
-        //childMarkdownRemark {
-          //html
-        //}
-      //}
-  //}
-//`;
+export const query = graphql`
+  fragment ContentBlock on ContentfulLayoutContentBlock {
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
+  }
+`;

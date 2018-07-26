@@ -4,6 +4,20 @@ if (process.env.NODE_ENV != 'production') {
   })
 };
 
+let contentful = {
+  development: {
+    host: 'preview.contentful.com',
+    environment: process.env.CONTENTFUL_ENV,
+    spaceId: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  },
+  production: {
+    environment: process.env.CONTENTFUL_ENV,
+    spaceId: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  }
+};
+
 module.exports = {
   siteMetadata: {
     title: process.env.SITE_NAME,
@@ -11,14 +25,9 @@ module.exports = {
 
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-transformer-remark',
-    {
-      resolve: 'gatsby-source-prismic',
-      options: {
-        repositoryName: process.env.PRISMIC_REPOSITORY_NAME,
-        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-      }
+    `gatsby-transformer-remark`,
+    { resolve: `gatsby-source-contentful`,
+      options: contentful[process.env.NODE_ENV]
     },
   ],
-
-};
+}
