@@ -15,6 +15,9 @@ const styles = theme => ({
       backgroundColor: global.brandPrimary,
     },
   },
+  extendedIcon: {
+    marginRight: theme.spacing.unit,
+  },
   arrow: {
     position: 'relative',
     top: '10px',

@@ -10,11 +10,25 @@ const styles = theme => ({
     textAlign: 'center',
     width: '80%',
   },
+  headline: {
+    fontFamily: 'lato',
+    fontWeight: '300',
+    fontStyle: 'normal',
+    margin: '100px 0 0 0',
+    padding: '0',
+  },
+  subheadline: {
+    fontFamily: 'lato',
+    fontWeight: '200',
+    fontStyle: 'normal',
+    margin: '0',
+    padding: '0',
+  },
   image: {
     display: 'block',
     margin: '50px 0 0 -30px'
   }
-});
+})
 
 class SingleImageSection extends Component {
   render() {

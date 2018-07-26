@@ -15,7 +15,6 @@ import classNames from 'classnames';
 
 import SideMenu from './Navigation/Header/SideMenu';
 
-
 const styles = theme => ({
   header: {
     position: 'fixed',

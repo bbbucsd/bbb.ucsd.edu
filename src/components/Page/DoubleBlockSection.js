@@ -56,7 +56,7 @@ const styles = theme => ({
     }
   },
   subheadline: {
-    fontFamily: global.fontFamily,
+    fontFamily: 'lato',
     fontWeight: '300',
     fontStyle: 'normal',
     margin:'0',
