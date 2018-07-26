@@ -62,7 +62,7 @@ class ThemeButton extends Component {
             style={this.props.customStyle}>
         <Button variant="extendedFab" aria-label={this.props.text}  className={classes.button}>
           {this.props.text}
-          <ArrowRight className={`${this.state.animateArrow ? classes.animateArrow : ''}`} />
+          <ArrowRight className={`${classes.extendedIcon} ${this.state.animateArrow ? classes.animateArrow : ''}`} />
         </Button>
       </Link>
     )
