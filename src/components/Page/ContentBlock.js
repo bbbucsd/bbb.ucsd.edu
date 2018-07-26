@@ -4,14 +4,6 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
-<<<<<<< HEAD
-
-const styles = theme => ({
-  root: {
-    width: '900px',
-    margin: '50px auto',
-  }
-=======
 import classNames from 'classnames';
 import "./ContentBlock.css";
 
@@ -20,7 +12,6 @@ const styles = theme => ({
     width: '900px',
     margin: '50px auto',
   },
->>>>>>> 0e571fe3adbf53d78251bf12fd9ade9c0bc0a4db
 });
 
 class ContentBlock extends Component {
