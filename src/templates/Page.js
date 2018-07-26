@@ -33,8 +33,8 @@ class Page extends Component {
         return <DoubleBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyLogoBlock':
         return <LogoBlock key={`slice_${index}`} slice={slice} />
-      //case 'ContentfulLayoutContentBlock':
-        //return <ContentBlock key={`slice_${index}`} data={section} />
+      case 'PrismicPageBodyContentBlock':
+        return <ContentBlock key={`slice_${index}`} slice={slice} />
       //case 'ContentfulLayoutSingleImageSection':
         //return <SingleImageSection key={`slice_${index}`} data={section} />
       //case 'ContentfulLayoutLogoBlockInline':
@@ -81,6 +81,7 @@ export const pageQuery = graphql`
           ...HighlightHero
           ...DoubleBlock
           ...LogoBlock
+          ...ContentBlock
         }
       }
     }

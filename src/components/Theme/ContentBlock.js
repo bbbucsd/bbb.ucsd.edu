@@ -67,12 +67,13 @@ class ContentBlock extends Component {
   }
 
   render() {
-    const { classes, data } = this.props;
+    const { classes, slice } = this.props;
+    const data = slice.primary;
 
     return (
       <div className={classNames("content", classes.content)}>
         <InnerHTML>
-          {data.body.childMarkdownRemark.html}
+          {data.content.html}
         </InnerHTML>
         <style>{this.getStyles()}</style>
       </div>
@@ -82,17 +83,19 @@ class ContentBlock extends Component {
 
 ContentBlock.propTypes = {
   classes: PropTypes.object.isRequired,
+  slice: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 };
 
 export default compose(withStyles(styles), withWidth())(ContentBlock);
 
-//export const query = graphql`
-  //fragment ContentBlock on ContentfulLayoutContentBlock {
-      //body {
-        //childMarkdownRemark {
-          //html
-        //}
-      //}
-  //}
-//`;
+export const query = graphql`
+  fragment ContentBlock on PrismicPageBodyContentBlock {
+    primary {
+      content {
+        html
+      }
+    }
+  }
+`;
+
