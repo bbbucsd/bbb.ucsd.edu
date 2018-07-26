@@ -14,25 +14,6 @@ const styles = theme => ({
     width: '100%',
     color: '#92A5B1',
   },
-  lastChanceCTA: {
-    backgroundColor: '#fafafa',
-    height: '400px',
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
-  lastChanceButton: {
-    fontSize: '16px',
-  },
-  subheadline: {
-    fontFamily: 'lato',
-    fontWeight: '300',
-    fontStyle: 'normal',
-    margin:'0',
-    marginBottom: '30px',
-  },
   social: {
     display: 'flex',
     flexDirection: 'row',

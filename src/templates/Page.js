@@ -8,12 +8,6 @@ import Footer from '../components/Footer';
 import StandardHero from '../components/Theme/StandardHero';
 import SimpleHero from '../components/Theme/SimpleHero';
 import HighlightHero from '../components/Page/HighlightHero';
-//import ContentBlock from '../Theme/ContentBlock';
-//import DoubleBlockSection from './DoubleBlockSection';
-//import LogoBlock from './LogoBlock';
-//import LogoBlockInline from './LogoBlockInline';
-//import SingleImageSection from './SingleImageSection';
-//import SEO from './SEO';
 
 const styles = theme => ({
 

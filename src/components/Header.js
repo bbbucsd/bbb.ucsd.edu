@@ -8,13 +8,12 @@ import Link from 'gatsby-link';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import Waypoint from 'react-waypoint';
-import SideMenu from './Navigation/Header/SideMenu';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import classNames from 'classnames';
 
-import MainMenu from './Navigation/Header/MainMenu';
+import SideMenu from './Navigation/Header/SideMenu';
 
 const styles = theme => ({
   header: {

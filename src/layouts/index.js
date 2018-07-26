@@ -9,6 +9,14 @@ import blue from '@material-ui/core/colors/blue';
 import green from '@material-ui/core/colors/green';
 import '../components/Theme/Globals';
 
+// colors
+global.primary = '#005089';
+global.lighterGrey = '#FAFAFA';
+global.lightGrey = '#EFEFEF';
+global.mediumGrey = '#B5B6B7';
+global.darkGrey = '#666';
+global.blue = '#1B98CA';
+
 // general
 global.headerColor = '#2D3B45';
 global.headerHeight = '56px';
@@ -30,8 +38,8 @@ global.textField = {
 };
 const theme = createMuiTheme({
   palette: {
-    primary: blue,
-    secondary: green
+    primary: amber,
+    secondary: teal
   },
   typography:  {
     fontFamily: "'Oswald', 'sans-serif'",
@@ -107,4 +115,3 @@ export const query = graphql`
     }
   }
 `
-

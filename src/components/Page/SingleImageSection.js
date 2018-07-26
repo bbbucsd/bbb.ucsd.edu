@@ -36,9 +36,8 @@ class SingleImageSection extends Component {
 
     return (
       <div className={classes.root}>
-        <h1 className={classes.headline}>{data.headline}</h1>
-        <h2 className={classes.subheadline}>{data.subheadline}</h2>
-
+        <h2 className="headline">{data.headline}</h2>
+        <h3 className="subheadline">{data.subheadline}</h3>
         <img alt={data.title} src={data.image.file.url} className={classes.image} />
       </div>
     )
