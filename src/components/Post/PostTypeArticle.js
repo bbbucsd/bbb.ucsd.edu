@@ -52,15 +52,15 @@ PostTypeArticle.propTypes = {
 
 export default compose(withStyles(styles), withWidth(), connect())(PostTypeArticle);
 
-export const query = graphql`
-  fragment PostTypeArticle on ContentfulPostTypeArticle {
-    hero {
-      ...StandardHero
-      ...SimpleHero
-    }
+//export const query = graphql`
+  //fragment PostTypeArticle on ContentfulPostTypeArticle {
+    //hero {
+      //...StandardHero
+      //...SimpleHero
+    //}
 
-    sections {
-      ...ContentBlock
-    }
-  }
-`;
+    //sections {
+      //...ContentBlock
+    //}
+  //}
+//`;

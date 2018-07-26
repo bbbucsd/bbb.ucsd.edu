@@ -50,14 +50,14 @@ Post.propTypes = {
 
 export default compose(withStyles(styles), withWidth())(Post);
 
-export const pageQuery = graphql`
-  query postQuery($id: String!) {
-    contentfulPost(id: { eq: $id }) {
-      type {
-        ...PostTypeArticle
-        ...PostTypeAudio
-        ...PostTypeVideo
-      }
-    }
-  }
-`
+//export const pageQuery = graphql`
+  //query postQuery($id: String!) {
+    //contentfulPost(id: { eq: $id }) {
+      //type {
+        //...PostTypeArticle
+        //...PostTypeAudio
+        //...PostTypeVideo
+      //}
+    //}
+  //}
+//`

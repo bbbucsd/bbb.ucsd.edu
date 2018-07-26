@@ -54,16 +54,16 @@ PostTypeVideo.propTypes = {
 
 export default compose(withStyles(styles), withWidth(), connect())(PostTypeVideo);
 
-export const query = graphql`
-  fragment PostTypeVideo on ContentfulPostTypeVideo {
-    hero {
-      ...StandardVideoHero
-      ...StandardHero
-      ...SimpleHero
-    }
+//export const query = graphql`
+  //fragment PostTypeVideo on ContentfulPostTypeVideo {
+    //hero {
+      //...StandardVideoHero
+      //...StandardHero
+      //...SimpleHero
+    //}
 
-    sections {
-      ...ContentBlock
-    }
-  }
-`;
+    //sections {
+      //...ContentBlock
+    //}
+  //}
+//`;

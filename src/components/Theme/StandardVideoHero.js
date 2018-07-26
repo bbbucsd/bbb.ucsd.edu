@@ -43,16 +43,16 @@ StandardVideoHero.propTypes = {
 
 export default compose(withStyles(styles), withWidth())(StandardVideoHero);
 
-export const query = graphql`
-  fragment StandardVideoHero on ContentfulLayoutStandardVideoHero {
-    headline
-    videoUrl
-    heroAsset {
-      title
-      file {
-        url
-        contentType
-      }
-    }
-  }
-`;
+//export const query = graphql`
+  //fragment StandardVideoHero on ContentfulLayoutStandardVideoHero {
+    //headline
+    //videoUrl
+    //heroAsset {
+      //title
+      //file {
+        //url
+        //contentType
+      //}
+    //}
+  //}
+//`;

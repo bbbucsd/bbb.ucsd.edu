@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
 import AssetBlock from './AssetBlock';
+import {Link, RichText, Date} from 'prismic-reactjs';
 import HeroTypography from './HeroTypography';
 import Button from './Button';
 
@@ -12,23 +13,25 @@ const styles = theme => ({
 });
 
 class StandardHero extends Component {
-  cta() {
+
+  cta(data) {
     return (
       <div className={this.props.classes.cta}>
-        <Button to={this.props.hero.ctaLink} text={this.props.hero.ctaLabel}></Button>
+        <Button to={data.cta_link.url} text={data.cta_button_text}></Button>
       </div>
     )
   }
 
   render() {
-    const { classes, hero } = this.props;
+    const { classes, slice } = this.props;
+    const data = slice.primary;
 
     return (
-      <AssetBlock file={this.props.hero.heroAsset && this.props.hero.heroAsset.file}>
+      <AssetBlock file={data.hero_asset && data.hero_asset.url}>
         <div>
-          <HeroTypography size="h1">{hero.headline}</HeroTypography>
-          <HeroTypography size="h2">{hero.subheadline}</HeroTypography>
-          {this.cta()}
+          <HeroTypography size="h1">{data.headline.text}</HeroTypography>
+          <HeroTypography size="h2">{data.subheadline.text}</HeroTypography>
+          {this.cta(data)}
         </div>
       </AssetBlock>
     );
@@ -38,21 +41,27 @@ class StandardHero extends Component {
 
 StandardHero.propTypes = {
   classes: PropTypes.object.isRequired,
+  slice: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 }
 
 export default compose(withStyles(styles), withWidth())(StandardHero);
 
 export const query = graphql`
-  fragment StandardHero on ContentfulLayoutStandardHero {
-    headline
-    subheadline
-    ctaLabel
-    heroAsset {
-      title
-      file {
+  fragment StandardHero on PrismicPageBodyStandardHero {
+    primary {
+      headline {
+        text
+      }
+      subheadline {
+        text
+      }
+      hero_asset {
         url
-        contentType
+      }
+      cta_button_text
+      cta_link {
+        url
       }
     }
   }

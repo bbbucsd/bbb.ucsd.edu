@@ -60,19 +60,19 @@ HighlightHero.propTypes = {
 
 export default compose(withStyles(styles), withWidth())(HighlightHero);
 
-export const query = graphql`
-  fragment HighlightHero on ContentfulLayoutHighlightHero {
-    superheadline
-    headline
-    heroAsset {
-      file {
-        url
-        contentType
-      }
-    }
-    features {
-      headline
-      subheadline
-    }
-  }
-`;
+//export const query = graphql`
+  //fragment HighlightHero on ContentfulLayoutHighlightHero {
+    //superheadline
+    //headline
+    //heroAsset {
+      //file {
+        //url
+        //contentType
+      //}
+    //}
+    //features {
+      //headline
+      //subheadline
+    //}
+  //}
+//`;

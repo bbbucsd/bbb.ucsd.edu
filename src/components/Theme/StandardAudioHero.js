@@ -43,22 +43,22 @@ StandardAudioHero.propTypes = {
 
 export default compose(withStyles(styles), withWidth())(StandardAudioHero);
 
-export const query = graphql`
-  fragment StandardAudioHero on ContentfulLayoutStandardAudioHero {
-    headline
-    audio {
-      title
-      file {
-        url
-        contentType
-      }
-    }
-    heroAsset {
-      title
-      file {
-        url
-        contentType
-      }
-    }
-  }
-`;
+//export const query = graphql`
+  //fragment StandardAudioHero on ContentfulLayoutStandardAudioHero {
+    //headline
+    //audio {
+      //title
+      //file {
+        //url
+        //contentType
+      //}
+    //}
+    //heroAsset {
+      //title
+      //file {
+        //url
+        //contentType
+      //}
+    //}
+  //}
+//`;

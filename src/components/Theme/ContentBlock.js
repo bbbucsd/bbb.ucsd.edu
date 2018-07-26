@@ -87,12 +87,12 @@ ContentBlock.propTypes = {
 
 export default compose(withStyles(styles), withWidth())(ContentBlock);
 
-export const query = graphql`
-  fragment ContentBlock on ContentfulLayoutContentBlock {
-      body {
-        childMarkdownRemark {
-          html
-        }
-      }
-  }
-`;
+//export const query = graphql`
+  //fragment ContentBlock on ContentfulLayoutContentBlock {
+      //body {
+        //childMarkdownRemark {
+          //html
+        //}
+      //}
+  //}
+//`;
