@@ -9,29 +9,10 @@ import Button from './Theme/Button';
 
 const styles = theme => ({
   footer: {
-    backgroundColor: '#171F26',
+    backgroundColor: global.brandSecondary,
     height: '500px',
     width: '100%',
     color: '#92A5B1',
-  },
-  lastChanceCTA: {
-    backgroundColor: '#fafafa',
-    height: '400px',
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
-  lastChanceButton: {
-    fontSize: '16px',
-  },
-  subheadline: {
-    fontFamily: 'lato',
-    fontWeight: '300',
-    fontStyle: 'normal',
-    margin:'0',
-    marginBottom: '30px',
   },
   social: {
     display: 'flex',
@@ -125,13 +106,6 @@ class Footer extends Component {
 
         return (
           <div>
-            <div style={ this.props.lastChance !== false ? {} : {display: 'none'} }  className={`${classes.lastChanceCTA} wrapper`}>
-              <div>
-                <h1 className={classes.subheadline}>Ready to increase profit?</h1>
-                <Button to="/" text="Contact Sales" className={classes.lastChanceButton} />
-              </div>
-            </div>
-
             <div className={classes.footer}>
               <div className={classes.social}>
                 <div className={classes.socialSpacer}></div>

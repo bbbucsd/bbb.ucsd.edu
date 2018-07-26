@@ -27,16 +27,23 @@ export default class extends Component {
     //
   }
 
+  nonInternalProps() {
+    let nonInternalProps = Object.assign({}, this.props);
+    nonInternalProps.href = nonInternalProps.to;
+    delete nonInternalProps.to;
+    return nonInternalProps;
+  }
+
   render() {
     let classes = classNames(this.props.className);
 
     if (this.isExternalSite(this.props.to)) {
       return (
-        <a target="_blank" rel="noopener" {...this.props}>{this.props.children}</a>
+        <a target="_blank" rel="noopener" {...this.nonInternalProps()}>{this.props.children}</a>
       );
     } else if (this.isHashTag(this.props.to)) {
       return (
-        <a {...this.props}>{this.props.children}</a>
+        <a {...this.nonInternalProps()}>{this.props.children}</a>
       );
     } else {
       return (

@@ -3,15 +3,15 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
-import AssetBlock from '../Theme/AssetBlock';
-import HeroTypography from '../Theme/HeroTypography';
-import Button from '../Theme/Button';
+import AssetBlock from './AssetBlock';
+import HeroTypography from './HeroTypography';
+import Button from './Button';
 
 const styles = theme => ({
 
 });
 
-class StandardHero extends Component {
+class StandardAudioHero extends Component {
   cta() {
     return (
       <div className={this.props.classes.cta}>
@@ -36,24 +36,29 @@ class StandardHero extends Component {
 }
 
 
-StandardHero.propTypes = {
+StandardAudioHero.propTypes = {
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 }
 
-export default compose(withStyles(styles), withWidth())(StandardHero);
+export default compose(withStyles(styles), withWidth())(StandardAudioHero);
 
-export const query = graphql`
-  fragment StandardHero on ContentfulLayoutStandardHero {
-    headline
-    subheadline
-    ctaLabel
-    heroAsset {
-      title
-      file {
-        url
-        contentType
-      }
-    }
-  }
-`;
+//export const query = graphql`
+  //fragment StandardAudioHero on ContentfulLayoutStandardAudioHero {
+    //headline
+    //audio {
+      //title
+      //file {
+        //url
+        //contentType
+      //}
+    //}
+    //heroAsset {
+      //title
+      //file {
+        //url
+        //contentType
+      //}
+    //}
+  //}
+//`;

@@ -163,20 +163,20 @@ DoubleBlockSection.propTypes = {
 
 export default compose(withStyles(styles), withWidth())(DoubleBlockSection);
 
-export const query = graphql`
-  fragment DoubleBlockSection on ContentfulLayoutDoubleBlockSection {
-    backgroundColor
-    headline
-    headlineColor
-    subheadline
-    subheadlineColor
-    reverseDirection
-    image {
-      title
-      file {
-        url
-        contentType
-      }
-    }
-  }
-`;
+//export const query = graphql`
+  //fragment DoubleBlockSection on ContentfulLayoutDoubleBlockSection {
+    //backgroundColor
+    //headline
+    //headlineColor
+    //subheadline
+    //subheadlineColor
+    //reverseDirection
+    //image {
+      //title
+      //file {
+        //url
+        //contentType
+      //}
+    //}
+  //}
+//`;
