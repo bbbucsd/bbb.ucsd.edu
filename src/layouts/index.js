@@ -38,8 +38,8 @@ global.textField = {
 };
 const theme = createMuiTheme({
   palette: {
-    primary: amber,
-    secondary: teal
+    primary: blue,
+    secondary: green
   },
   typography:  {
     fontFamily: "'Oswald', 'sans-serif'",

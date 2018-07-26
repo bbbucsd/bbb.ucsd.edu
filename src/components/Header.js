@@ -21,7 +21,6 @@ const styles = theme => ({
     position: 'fixed',
     top: '0',
     left: '0',
-    // backgroundColor: '#281f26',
     padding: global.smallPadding,
     zIndex: '99',
     backgroundColor: 'transparent',
@@ -29,10 +28,10 @@ const styles = theme => ({
     color: 'white',
   },
   floatingBg: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: global.brandSecondary,
   },
   floatingCopy: {
-    color: '#000 !important',
+    color: global.white + ' !important',
     '&:hover': {
       color: '#fff',
     },
@@ -44,15 +43,10 @@ const styles = theme => ({
     },
   },
   logo: {
-    //fontFamily: 'aviano-sans, sans-serif !important',
-    //fontFamily: 'ff-ginger-pro !important',
-    fontFamily: 'termina !important',
     fontSize: '20px !important',
     position: 'relative',
     fontWeight: '600',
     fontStyle: 'normal',
-    transform: 'scaleX(.8)',
-    left: '-12px',
   },
   navBar: {
     display: 'flex',
@@ -132,18 +126,16 @@ class Header extends Component {
             <div className={`wrapper ${classes.navBar}`}>
               <List className={classes.navBarLeft}>
                 <ListItem className={classes.listItem}>
-                  <Link to="/" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy} ${classes.logo}`}>PROLUXE</Link>
+                  <Link to="/" className={`logo ${this.state.floating ? classes.floatingCopy : classes.fixedCopy} ${classes.logo}`}>Automate Your Brand</Link>
                 </ListItem>
               </List>
 
-              <List className={classes.navBarCenter}>
-                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><ProductNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
-                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><IndustriesNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
-                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><SupportNav className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} /></ListItem>
-                <ListItem className={`${classes.listItem} ${classes.centerItem}`}><Link to="/" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`}>How to buy</Link></ListItem>
-              </List>
-
               <List className={classes.navBarRight}>
+                <List className={classes.navBarCenter}>
+                  <ListItem className={`${classes.listItem} ${classes.centerItem}`}><Link to="/" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`}>Start Here</Link></ListItem>
+                  <ListItem className={`${classes.listItem} ${classes.centerItem}`}><Link to="/" className={`${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`}>About</Link></ListItem>
+                </List>
+
                 <ListItem className={`${classes.listItem}`}>
                   <MenuIcon className={`${classes.menuIcon} ${this.state.floating ? classes.floatingCopy : classes.fixedCopy}`} onClick={this.toggleDrawer} />
                 </ListItem>
@@ -160,11 +152,6 @@ class Header extends Component {
         </div>
       );
     }
-}
-
-function mapStateToProps(state) {
-  return {
-  }
 }
 
 Header.propTypes = {

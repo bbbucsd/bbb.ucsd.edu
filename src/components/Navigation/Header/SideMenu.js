@@ -31,11 +31,8 @@ class SideMenu extends Component {
 
     return (
       <List className={classes.root}>
-        <ListItem>Find a Sales Rep</ListItem>
-        <ListItem>Find a Dealer</ListItem>
-        <ListItem>Events</ListItem>
-        <ListItem>Training</ListItem>
-        <ListItem><Link to="/contact-us">Contact Us</Link></ListItem>
+        <ListItem><Link to="/start-here">Start Here</Link></ListItem>
+        <ListItem><Link to="/about">About</Link></ListItem>
       </List>
     );
   }
