@@ -9,8 +9,8 @@ import StandardHero from '../components/Theme/StandardHero';
 import SimpleHero from '../components/Theme/SimpleHero';
 import HighlightHero from '../components/Page/HighlightHero';
 import ContentBlock from '../components/Theme/ContentBlock';
-//import DoubleBlockSection from './DoubleBlockSection';
-//import LogoBlock from './LogoBlock';
+import DoubleBlock from '../components/Theme/DoubleBlock';
+import LogoBlock from '../components/Page/LogoBlock';
 //import LogoBlockInline from './LogoBlockInline';
 //import SingleImageSection from './SingleImageSection';
 //import SEO from './SEO';
@@ -29,12 +29,10 @@ class Page extends Component {
         return <SimpleHero key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyHighlightHero':
         return <HighlightHero key={`slice_${index}`} slice={slice} />
-      //case 'ContentfulLayoutSimpleHero':
-        //return <SimpleHero hero={hero} />
-      //case 'ContentfulLayoutDoubleBlockSection':
-        //return <DoubleBlockSection key={`slice_${index}`} data={section} />
-      //case 'ContentfulLayoutLogoBlock':
-        //return <LogoBlock key={`slice_${index}`} data={section} />
+      case 'PrismicPageBodyDoubleBlock':
+        return <DoubleBlock key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyLogoBlock':
+        return <LogoBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyContentBlock':
         return <ContentBlock key={`slice_${index}`} slice={slice} />
       //case 'ContentfulLayoutSingleImageSection':
@@ -81,6 +79,8 @@ export const pageQuery = graphql`
           ...StandardHero
           ...SimpleHero
           ...HighlightHero
+          ...DoubleBlock
+          ...LogoBlock
           ...ContentBlock
         }
       }

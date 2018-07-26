@@ -9,7 +9,7 @@ import Button from './Theme/Button';
 
 const styles = theme => ({
   footer: {
-    backgroundColor: '#171F26',
+    backgroundColor: global.brandSecondary,
     height: '500px',
     width: '100%',
     color: '#92A5B1',
