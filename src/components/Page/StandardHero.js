@@ -17,7 +17,7 @@ class StandardHero extends Component {
   cta(data) {
     return (
       <div className={this.props.classes.cta}>
-        <Button to={data.cta_link.url} text={data.cta_button_text}></Button>
+        <Button to={data.cta_link.url} text={data.cta_label}></Button>
       </div>
     )
   }
@@ -59,7 +59,7 @@ export const query = graphql`
       hero_asset {
         url
       }
-      cta_button_text
+      cta_label
       cta_link {
         url
       }
