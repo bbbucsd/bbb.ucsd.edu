@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
 
-import Header from '../components/Page/Header/index';
-import Footer from '../components/Page/Footer/Footer';
+import Header from '../components/Page/Header';
+import Footer from '../components/Page/Footer';
 import Meta from '../components/Page/Meta/Meta';
 
 import StandardHero from '../components/StandardHero';

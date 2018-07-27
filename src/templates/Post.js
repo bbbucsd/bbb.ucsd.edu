@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
 import Header from '../components/Page/Header/index';
-import Footer from '../components/Page/Footer/Footer';
+import Footer from '../components/Page/Footer/index';
 import PostTypeArticle from '../components/Post/PostTypeVideo';
 import PostTypeAudio from '../components/Post/PostTypeVideo';
 import PostTypeVideo from '../components/Post/PostTypeVideo';
