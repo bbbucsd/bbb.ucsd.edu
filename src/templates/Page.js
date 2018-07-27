@@ -16,6 +16,7 @@ import DoubleBlock from '../components/DoubleBlock';
 import DoubleBlockVideo from '../components/DoubleBlockVideo';
 import ContentBlock from '../components/ContentBlock';
 import LogoBlock from '../components/LogoBlock';
+import StatementBlock from '../components/StatementBlock';
 
 const styles = theme => ({
 
@@ -43,6 +44,8 @@ class Page extends Component {
         return <LogoBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyContentBlock':
         return <ContentBlock key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyStatementBlock':
+        return <StatementBlock key={`slice_${index}`} slice={slice} />
     };
   }
 
@@ -90,6 +93,7 @@ export const pageQuery = graphql`
           ...DoubleBlock
           ...LogoBlock
           ...ContentBlock
+          ...StatementBlock
         }
       }
     }

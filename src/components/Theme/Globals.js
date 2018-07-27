@@ -1,6 +1,7 @@
 // colors
 global.white = "#FFFFFF";
-global.lightGray = "#efefef";
+global.darkWhite = "#FAFAFA";
+global.lightGray = "#EFEFEF";
 global.gray = "#c6c8ca";
 global.mediumGrey = '#5c5d5f';
 global.darkGray = "#5c5d5f";
@@ -14,7 +15,7 @@ global.brandSuccess = "#5b8edc";
 global.brandWarning = "#ec663c";
 global.brandDanger = "#ec663c";
 global.brandLight = "#C2C3C4";
-global.headerColor = '#5b8edc'
+global.headerColor = '#5b8edc';
 
 // general;
 global.headerHeight = '56px';
