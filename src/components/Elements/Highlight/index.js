@@ -16,7 +16,7 @@ const styles = theme => ({
   }
 });
 
-class Highlight extends Component {
+class Index extends Component {
   render() {
     const { classes, largeText, smallText } = this.props;
 
@@ -29,9 +29,9 @@ class Highlight extends Component {
   }
 }
 
-Highlight.propTypes = {
+Index.propTypes = {
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 }
 
-export default compose(withStyles(styles), withWidth())(Highlight);
+export default compose(withStyles(styles), withWidth())(Index);

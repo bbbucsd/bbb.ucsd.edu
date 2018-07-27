@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 //import AssetBlock from './Theme/Heros/ImageScope';
 import Index from './Elements/HeroTypography/index';
-import Highlight from './Elements/Highlight';
+import Highlight from './Elements/Highlight/index';
 import Button from './Elements/Button/index';
 
 const styles = theme => ({

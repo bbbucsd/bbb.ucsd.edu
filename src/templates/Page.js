@@ -4,19 +4,20 @@ import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
 
-import Header from '../components/Layout/Header';
-import Footer from '../components/Layout/Footer';
-import Meta from '../components/Layout/Meta';
+import Header from '../components/Page/Header';
+import Footer from '../components/Page/Footer';
+import Meta from '../components/Page/Meta/Meta';
 import PageConfig from '../config/Page';
 
 import StandardHero from '../components/StandardHero';
-import StandardVideoHero from '../components/Slices/StandardVideoHero';
+import StandardVideoHero from '../components/Page/Slices/StandardVideoHero';
 import SimpleHero from '../components/SimpleHero';
 import HighlightHero from '../components/HighlightHero';
 import DoubleBlock from '../components/DoubleBlock';
 import DoubleBlockVideo from '../components/DoubleBlockVideo';
 import ContentBlock from '../components/ContentBlock';
 import LogoBlock from '../components/LogoBlock';
+import StatementBlock from '../components/StatementBlock';
 
 const styles = theme => ({
 
@@ -44,6 +45,8 @@ class Page extends Component {
         return <LogoBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyContentBlock':
         return <ContentBlock key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyStatementBlock':
+        return <StatementBlock key={`slice_${index}`} slice={slice} />
     };
   }
 
@@ -91,6 +94,7 @@ export const pageQuery = graphql`
           ...DoubleBlock
           ...LogoBlock
           ...ContentBlock
+          ...StatementBlock
         }
       }
     }

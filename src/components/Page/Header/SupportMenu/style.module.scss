@@ -1,0 +1,28 @@
+@import 'components/Theme/Globals';
+
+.icon {
+  color: #999;
+  height: 16px;
+  width: 16px;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+}
+
+.fastestRoute {
+  width: 100% !important;
+}
+
+.fastestRouteItem {
+  height: 20px;
+  margin-bottom: 35px;
+}
+
+.fastestRouteItemButton {
+  margin-right: 5px;
+}
+
+.or {
+  text-align: center;
+  width: 100%;
+}

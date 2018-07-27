@@ -1,30 +1,11 @@
 import React, { Component } from 'react';
-import compose from 'recompose/compose';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import withWidth from '@material-ui/core/withWidth';
+import SubNav, { SubNavGroup, SubNavItem } from 'components/Elements/SubNav';
 
-import SubNav from './SubNav'
-import SubNavGroup from './SubNavGroup'
-import SubNavItem from './SubNavItem'
-
-const styles = theme => ({
-  root: {
-
-  }
-})
-
-class ProductNav extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {open: false};
-  };
-
+class ProductMenu extends Component {
   render() {
-    const { classes } = this.props;
 
     return (
-      <SubNav text="Products" className={`${classes.root} ${this.props.className}`}>
+      <SubNav text="Products">
         <SubNavGroup title="Cooking">
           <SubNavItem to="/products/smart-oven">Smart Ovens</SubNavItem>
           <SubNavItem to="/products/stone-hearth-ovens">Stone Hearth Ovens</SubNavItem>
@@ -53,9 +34,4 @@ class ProductNav extends Component {
   }
 }
 
-ProductNav.propTypes = {
-  classes: PropTypes.object.isRequired,
-  width: PropTypes.string.isRequired,
-}
-
-export default compose(withStyles(styles), withWidth())(ProductNav);
+export default ProductMenu;

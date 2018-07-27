@@ -1,0 +1,98 @@
+@import 'components/Theme/Globals';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: $padding;
+  z-index: 99;
+  background-color: transparent;
+  width: 100%;
+  color: white;
+}
+
+.floatingBg {
+  background-color: #f0f0f0;
+}
+
+.floatingCopy {
+  color: $black !important;
+  &:hover {
+    color: $white;
+  }
+}
+
+.fixedCopy {
+  color: $white !important;
+  &:hover {
+    color: $white !important
+  }
+}
+
+.logo {
+  font-family: $fontFamilyLogo !important;
+  font-size: 20px !important;
+  position: relative;
+  font-weight: 600;
+  font-style: normal;
+  transform: scaleX(.8);
+  left: -12px;
+}
+
+.navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 75px;
+}
+
+.navBarLeft {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex: 0 0 135px;
+  margin-right: auto;
+}
+
+.navBarCenter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 500px;
+}
+
+.navBarRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex: 0 0 135px;
+  margin-left: auto;
+}
+
+.listItem {
+  color: $white;
+  font-family: $fontFamilyTitle;
+  font-size: 16px;
+  padding: 0 !important;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 32px;
+  &:hover {
+    color: $white;
+  }
+}
+
+.centerItem {
+  width: 100px;
+}
+
+.sideMenu {
+  position: fixed;
+  width: 220px;
+}
+
+.menuIcon {
+  position: absolute;
+  right: 0;
+}
