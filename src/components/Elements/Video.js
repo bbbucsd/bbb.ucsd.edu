@@ -6,16 +6,18 @@ import withWidth from '@material-ui/core/withWidth/index'
 
 
 const styles = theme => ({
-  left: 0,
-  right: 0,
-  top: 0,
-  opacity: '0.2',
-  objectFit: 'cover',
-  width: '100%',
-  height: '100%',
-  position: 'absolute',
-  zIndex: 0,
-  display: 'block'
+  root: {
+    left: 0,
+    right: 0,
+    top: 0,
+    opacity: '0.2',
+    objectFit: 'cover',
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    zIndex: 0,
+    display: 'block'
+  }
 })
 
 
@@ -35,7 +37,6 @@ class Video extends Component {
 
 Video.propTypes = {
   classes: PropTypes.object.isRequired,
-  slice: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 }
 
