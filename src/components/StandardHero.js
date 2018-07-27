@@ -3,6 +3,8 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
+
+// Elements
 import HeroTypography from './Elements/HeroTypography';
 import Button from './Elements/Button';
 
@@ -59,14 +61,6 @@ const styles = theme => ({
 
 class StandardHero extends Component {
 
-  cta(data) {
-    return (
-      <div className={this.props.classes.cta}>
-        <Button to={data.cta_link.url} text={data.cta_label}></Button>
-      </div>
-    )
-  }
-
   render() {
     const { classes, slice } = this.props;
     const data = slice.primary;
@@ -76,7 +70,10 @@ class StandardHero extends Component {
         <div>
           <HeroTypography size="h1">{data.headline.text}</HeroTypography>
           <HeroTypography size="h2">{data.subheadline.text}</HeroTypography>
-          {this.cta(data)}
+
+          <div className={this.props.classes.cta}>
+            <Button to={data.cta_link.url} text={data.cta_label}></Button>
+          </div>
         </div>
       </div>
     );
