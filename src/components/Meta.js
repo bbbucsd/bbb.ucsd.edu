@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-class Meta extends Component {
+class SEO extends Component {
   render() {
     const { seo, slug } = this.props;
     let title;
@@ -12,6 +12,7 @@ class Meta extends Component {
     let pageUrl;
     let openGraphTitle;
     let openGraphImage;
+    let openGraphLocale;
     let openGraphDescription;
     let twitterTitle;
     let twitterImage;
@@ -38,6 +39,10 @@ class Meta extends Component {
 
     if (seo.openGraphDescription) {
       openGraphDescription = seo.openGraphDescription;
+    }
+
+    if (seo.openGraphTitle) {
+      openGraphTitle = seo.openGraphTitle;
     }
 
     if (seo.openGraphTitle) {
@@ -93,15 +98,22 @@ class Meta extends Component {
         </script>
 
         {/* OpenGraph tags */}
+        {/* TODO: add type to component */}
+        <meta property="og:type" content="website" />
+
+        <meta property="og:locale" content={openGraphTitle} />
         <meta property="og:title" content={openGraphTitle} />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:image" content={image} />
         <meta property="og:image:width" content={imgWidth} />
         <meta property="og:image:height" content={imgHeight} />
         <meta property="og:description" content={openGraphDescription} />
+        {/* fb:app_id */}
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
+
+        {/* twitter site */}
         <meta
           name="twitter:creator"
           content={global.userTwitter ? global.userTwitter : ''}
@@ -114,7 +126,7 @@ class Meta extends Component {
   }
 }
 
-export default Meta;
+export default SEO;
 
 //export const query = graphql`
   //fragment PageSeo on ContentfulLayoutSeo {

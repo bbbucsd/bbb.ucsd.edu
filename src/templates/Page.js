@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Header from '../components/Layout/Header';
 import Footer from '../components/Layout/Footer';
-import Meta from '../components/Layout/Meta';
+import Meta from '../components/Meta';
 
 import StandardHero from '../components/StandardHero';
 import StandardVideoHero from '../components/Slices/StandardVideoHero';
@@ -50,6 +50,7 @@ class Page extends Component {
     const { classes } = this.props;
     const page = this.props.data.prismicPage.data;
     const { body } = page
+    debugger
 
         //<Meta seo={seo} />
     return (
@@ -73,6 +74,9 @@ export default compose(withStyles(styles), withWidth())(Page);
 
 export const pageQuery = graphql`
   query PageQuery($path: String!) {
+    prismicPageConfig(uid: { eq: "page_config" }) {
+      uid
+    }
     prismicPage(data: { path: { eq: $path }}) {
       data {
         path
