@@ -3,6 +3,7 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
+import Validator from '../utils/validator';
 
 // Elements
 import List from '@material-ui/core/List';
@@ -68,19 +69,24 @@ const styles = theme => ({
 
 class DoubleBlock extends Component {
   isReversed() {
-    if (this.props.slice.primary.direction == 'Asset on the left') {
-      return true
-    }
+    return !!data.direction.match(/left/i);
   }
 
   hasAsset() {
-    if (this.props.slice.primary.asset && this.props.slice.primary.asset.url) {
-      return true
-    } else {
-      return false
-    }
+    return (this.props.slice.primary.asset && this.props.slice.primary.asset.url);
   }
 
+  assetBlock() {
+    if (this.hasAsset()) {
+      if (Validator.isVideo(this.props.slice.primary.data.asset.url)) {
+        return this.videoBlock();
+      } else {
+        return this.imageBlock();
+      }
+    } else {
+      return <ListItem className={`${this.props.classes.containerItem} ${this.props.classes.image}`}></ListItem>
+    };
+  }
   assetBlock() {
     if (this.hasAsset()) {
       return this.imageBlock()
@@ -93,7 +99,7 @@ class DoubleBlock extends Component {
     return (
       <ListItem className={`${this.props.classes.containerItem} ${this.props.classes.image}`}>
         <video loop autoPlay playsInline muted className={this.props.classes.backgroundVideo}>
-          <source src={this.props.slice.image.file.url} type="video/mp4"/>
+          <source src={this.props.slice.primary.data.asset.url} type="video/mp4"/>
         </video>
       </ListItem>
     )
