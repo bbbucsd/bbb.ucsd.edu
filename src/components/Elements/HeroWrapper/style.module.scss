@@ -1,0 +1,19 @@
+@import '../../Theme/Globals';
+
+.root {
+  background-color: $black;
+  text-align: center;
+  color: $white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  min-height: 80vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.reducedHeight {
+  min-height: 50vh !important;
+}

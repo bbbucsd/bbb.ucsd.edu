@@ -1,0 +1,39 @@
+@import '../../Theme/Globals';
+
+.button {
+  color: white !important;
+  background-color: $brandInfo !important;
+  border-radius: 0 !important;
+  text-transform: none;
+  &:hover {
+    background-color: $brandInfo !important;
+  }
+}
+
+.extendedIcon {
+  margin-right: 5px;
+}
+
+.arrow {
+  position: relative;
+  top: 1px;
+  left: 5px;
+  width: 32px;
+  height: 32px;
+}
+
+.animateArrow {
+  animation: bounce 2s infinite;
+}
+
+.buttonsmall {
+  padding: 10px;
+  font-size: 12px;
+}
+
+.arrowsmall {
+  width: 24px;
+  height: 24px;
+  top: 8px !important;
+  left: 3px !important;
+}

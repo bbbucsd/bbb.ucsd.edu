@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
-
-import './Video.scss';
+import style from './style.module.scss'
 
 
 class Video extends Component {
-
   render() {
-    const { embed, src } = this.props;
+    const { src } = this.props;
 
     return (
-      <video loop autoPlay playsInline className="video-background">
+      <video loop autoPlay playsInline className={style.root}>
         <source src={src} type="video/mp4"/>
       </video>
     );

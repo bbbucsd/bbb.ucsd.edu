@@ -11,7 +11,7 @@ import SubNavItem from './SubNavItem';
 import EmailIcon from '@material-ui/icons/MailOutline';
 import PhoneIcon from '@material-ui/icons/Phone';
 
-import Button from '../../Elements/Button';
+import Button from '../../../Elements/Button/index';
 
 const styles = theme => ({
   icon: {

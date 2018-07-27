@@ -3,9 +3,12 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
-import HeroTypography from './Elements/HeroTypography';
-import Button from './Elements/Button';
-import Video from './Elements/Video'
+
+// Elements
+import HeroTypography from '../../Elements/HeroTypography/index';
+import Button from '../../Elements/Button/index';
+import Video from '../../Elements/Video/index'
+import HeroWrapper from '../../Elements/HeroWrapper/index'
 
 const styles = theme => ({
   scope: {
@@ -44,37 +47,37 @@ const styles = theme => ({
 
 
 
-class StandardVideoHero extends Component {
+class Index extends Component {
 
   render() {
     const { classes, slice } = this.props;
     const data = slice.primary;
 
     return (
-      <div className={`scope ${classes.scope} ${this.props.reducedHeight ? classes.reducedheight : ''}`}>
+      <HeroWrapper>
         <Video src={data.video_asset.url} />
 
         <div className={`scope-verbiage ${classes.scopeVerbiage}`}>
-          <HeroTypography size="h1">{data.headline.text}</HeroTypography>
-          <HeroTypography size="h2">{data.subheadline.text}</HeroTypography>
+          <HeroTypography h1>{data.headline.text}</HeroTypography>
+          <HeroTypography h2>{data.subheadline.text}</HeroTypography>
 
           <div className={classes.cta}>
             <Button to={data.cta_link.url} text={data.cta_label}></Button>
           </div>
         </div>
-      </div>
+      </HeroWrapper>
     );
   }
 }
 
 
-StandardVideoHero.propTypes = {
+Index.propTypes = {
   classes: PropTypes.object.isRequired,
   slice: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 }
 
-export default compose(withStyles(styles), withWidth())(StandardVideoHero);
+export default compose(withStyles(styles), withWidth())(Index);
 
 export const query = graphql`
   fragment StandardVideoHero on PrismicPageBodyStandardVideoHero {

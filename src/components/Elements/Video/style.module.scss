@@ -1,4 +1,6 @@
-.video-background {
+@import '../../Theme/Globals';
+
+.root {
   left: 0;
   right: 0;
   top: 0;
@@ -8,6 +10,5 @@
   height: 100%;
   position: absolute;
   z-index: 0;
-  display:block;
-
+  display: block;
 }
