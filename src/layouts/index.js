@@ -9,32 +9,13 @@ import blue from '@material-ui/core/colors/blue';
 import green from '@material-ui/core/colors/green';
 import '../components/Theme/Globals';
 
-// general
-global.headerColor = '#2D3B45';
-global.headerHeight = '56px';
-global.maxWidth = '1000px';
-global.smallPadding = '10px';
-global.padding = '20px';
-global.mediumPadding = '40px';
-global.largePadding = '60px';
-global.ultraPadding = '120px';
-global.wrapper = {
-  maxWidth: global.maxWidth,
-  margin: '0 auto',
-  padding: "" + global.ultraPadding + " " + global.padding +"",
-  position: 'relative'
-};
-global.textField = {
-  marginBottom: global.padding,
-  minWidth: '260px'
-};
 const theme = createMuiTheme({
   palette: {
     primary: blue,
     secondary: green
   },
   typography:  {
-    fontFamily: "'Oswald', 'sans-serif'",
+    fontFamily: "'Lato', 'sans-serif'",
     fontSize: '18px',
   },
   overrides: {
@@ -76,7 +57,6 @@ const Layout = ({ children, data }) => (
   <MuiThemeProvider theme={theme}>
     <div>
       <Helmet
-        title={data.site.siteMetadata.title}
         meta={[
           { name: 'description', content: 'Sample' },
           { name: 'keywords', content: 'sample, something' },
@@ -84,6 +64,7 @@ const Layout = ({ children, data }) => (
       >
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/brands.css" integrity="sha384-KtmfosZaF4BaDBojD9RXBSrq5pNEO79xGiggBxf8tsX+w2dBRpVW5o0BPto2Rb2F" crossOrigin="anonymous" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/fontawesome.css" integrity="sha384-8WwquHbb2jqa7gKWSoAwbJBV2Q+/rQRss9UXL5wlvXOZfSodONmVnifo/+5xJIWX" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://use.typekit.net/pqq2exl.css" />
       </Helmet>
 
       { children() }

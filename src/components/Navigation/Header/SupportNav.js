@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import withWidth from 'material-ui/utils/withWidth';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
+import withWidth from '@material-ui/core/withWidth';
 
 import SubNav from './SubNav';
 import SubNavGroup from './SubNavGroup';
 import SubNavItem from './SubNavItem';
 
-import EmailIcon from 'material-ui-icons/MailOutline';
-import PhoneIcon from 'material-ui-icons/Phone';
+import EmailIcon from '@material-ui/icons/MailOutline';
+import PhoneIcon from '@material-ui/icons/Phone';
 
-import Button from '../../Theme/Button';
+import Button from '../../Elements/Button';
 
 const styles = theme => ({
   icon: {

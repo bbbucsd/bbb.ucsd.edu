@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 import { Link } from 'react-router-dom';
-import Button from './Theme/Button';
+import Button from './Elements/Button';
 
 const styles = theme => ({
   footer: {
@@ -209,13 +209,6 @@ class Footer extends Component {
     }
 }
 
-function mapStateToProps(state) {
-  return {
-    signupSuccess: state.global.signupSuccess,
-    signupMsg: state.global.signupMsg,
-    mobile: state.global.mobile
-  }
-}
 
 Footer.propTypes = {
   classes: PropTypes.object.isRequired,

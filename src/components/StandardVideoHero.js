@@ -3,22 +3,27 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
-import HeroTypography from './HeroTypography';
-import Button from './Button';
+import HeroTypography from './Elements/HeroTypography';
+import Button from './Elements/Button';
+import Video from './Elements/Video'
 
 const styles = theme => ({
   scope: {
+    backgroundColor: global.black,
     textAlign: 'center',
     color: global.white,
-    backgroundColor: global.brandPrimary,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'top center',
+    minHeight: '80vh',
     width: '100%',
     position: 'relative',
     overflow: 'hidden',
     display: 'flex',
-    minHeight: '50vh',
+
+  },
+  reducedHeight: {
+    minHeight: '50vh !important',
   },
   scopeVerbiage: {
     width: '100%',
@@ -32,20 +37,29 @@ const styles = theme => ({
       top: '100px',
     }
   },
+  cta: {
+    marginTop: '30px',
+  }
 });
 
-class SimpleHero extends Component {
+
+
+class StandardVideoHero extends Component {
 
   render() {
     const { classes, slice } = this.props;
     const data = slice.primary;
 
     return (
-      <div>
-        <div className={classes.scope} style={{ height: this.props.height }}>
-          <div className={`scope-verbiage ${classes.scopeVerbiage}`}>
+      <div className={`scope ${classes.scope} ${this.props.reducedHeight ? classes.reducedheight : ''}`}>
+        <Video src={data.video_asset.url} />
+
+        <div className={`scope-verbiage ${classes.scopeVerbiage}`}>
           <HeroTypography size="h1">{data.headline.text}</HeroTypography>
           <HeroTypography size="h2">{data.subheadline.text}</HeroTypography>
+
+          <div className={classes.cta}>
+            <Button to={data.cta_link.url} text={data.cta_label}></Button>
           </div>
         </div>
       </div>
@@ -54,22 +68,29 @@ class SimpleHero extends Component {
 }
 
 
-SimpleHero.propTypes = {
+StandardVideoHero.propTypes = {
   classes: PropTypes.object.isRequired,
   slice: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 }
 
-export default compose(withStyles(styles), withWidth())(SimpleHero);
+export default compose(withStyles(styles), withWidth())(StandardVideoHero);
 
 export const query = graphql`
-  fragment SimpleHero on PrismicPageBodySimpleHero {
+  fragment StandardVideoHero on PrismicPageBodyStandardVideoHero {
     primary {
       headline {
         text
       }
       subheadline {
         text
+      }
+      video_asset {
+        url
+      }
+      cta_label
+      cta_link {
+        url
       }
     }
   }

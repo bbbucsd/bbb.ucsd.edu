@@ -3,10 +3,10 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
-import AssetBlock from '../Theme/AssetBlock';
-import HeroTypography from '../Theme/HeroTypography';
-import Highlight from '../Theme/Highlight';
-import Button from '../Theme/Button';
+import AssetBlock from './Theme/Heros/ImageScope';
+import HeroTypography from './Elements/HeroTypography';
+import Highlight from './Elements/Highlight';
+import Button from './Elements/Button';
 
 const styles = theme => ({
   highlightGroup: {

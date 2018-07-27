@@ -1,22 +1,22 @@
 // colors
 global.white = "#FFFFFF";
-global.lightGray = "#EFEFEF";
-global.gray = "#B5B6B7";
-global.mediumGrey = '#656565';
-global.darkGray = "#666";
-global.black = "#030";
-global.lightSuccess = "#E3EFEC";
-global.darkSuccess = "#3BA34F";
-global.brandPrimary = "#005089";
-global.brandSecondary  = "#2D3B45";
-global.brandInfo = "#1B98CA";
-global.brandSuccess = "#48C35F";
-global.brandWarning = "#F7B900";
-global.brandDanger = "#FF4E38";
+global.lightGray = "#efefef";
+global.gray = "#c6c8ca";
+global.mediumGrey = '#5c5d5f';
+global.darkGray = "#5c5d5f";
+global.black = "#000";
+global.lightSuccess = "#FFFFFF";
+global.darkSuccess = "#000000";
+global.brandPrimary = "#5b8edc";
+global.brandSecondary  = "#5b8edc";
+global.brandInfo = "#5b8edc";
+global.brandSuccess = "#5b8edc";
+global.brandWarning = "#ec663c";
+global.brandDanger = "#ec663c";
 global.brandLight = "#C2C3C4";
+global.headerColor = '#5b8edc'
 
-// general
-global.headerColor = '#0cadb7';
+// general;
 global.headerHeight = '56px';
 global.maxWidth = '1200px';
 global.padding = '20px';
@@ -26,7 +26,7 @@ global.ultraPadding = '120px';
 global.wrapper = {
   maxWidth: global.maxWidth,
   margin: '0 auto',
-  padding: '40px',
+  padding: "" + global.ultraPadding + " " + global.padding +"",
   position: 'relative'
 };
 
@@ -35,8 +35,13 @@ global.textField = {
   minWidth: '260px'
 };
 
-global.fontFamilyTitle = "'Oswald', sans-serif";
-global.fontFamily = "'Open Sans', sans-serif";
+global.textField = {
+  marginBottom: global.padding,
+  minWidth: '260px'
+};
+
+global.fontFamilyTitle = "'Lato', sans-serif";
+global.fontFamily = "'Lato', sans-serif";
 
 global.siteTitle = "";
 global.siteTitleAlt = "";

@@ -66,15 +66,15 @@ const styles = theme => ({
   },
 })
 
-class DoubleBlockSection extends Component {
+class DoubleBlock extends Component {
   isReversed() {
-    if (this.props.data.reverseDirection) {
+    if (this.props.slice.primary.direction == 'Asset on the left') {
       return true
     }
   }
 
   hasAsset() {
-    if (this.props.data.image) {
+    if (this.props.slice.primary.asset && this.props.slice.primary.asset.url) {
       return true
     } else {
       return false
@@ -83,11 +83,7 @@ class DoubleBlockSection extends Component {
 
   assetBlock() {
     if (this.hasAsset()) {
-      if (this.isVideo()) {
-        return this.videoBlock()
-      } else {
-        return this.imageBlock()
-      }
+      return this.imageBlock()
     } else {
       return <ListItem className={`${this.props.classes.containerItem} ${this.props.classes.image}`}></ListItem>
     }
@@ -97,7 +93,7 @@ class DoubleBlockSection extends Component {
     return (
       <ListItem className={`${this.props.classes.containerItem} ${this.props.classes.image}`}>
         <video loop autoPlay playsInline muted className={this.props.classes.backgroundVideo}>
-          <source src={this.props.data.image.file.url} type="video/mp4"/>
+          <source src={this.props.slice.image.file.url} type="video/mp4"/>
         </video>
       </ListItem>
     )
@@ -108,24 +104,24 @@ class DoubleBlockSection extends Component {
   }
 
   image() {
-    return { backgroundImage: 'url("' + this.props.data.image.file.url + '")' }
+    return { backgroundImage: 'url("' + this.props.slice.primary.asset.url + '")' }
   }
 
   backgroundColor() {
-    if (this.props.data.image && this.props.data.backgroundColor != '') {
-      return { backgroundColor: this.props.data.backgroundColor }
+    if (this.props.slice.primary.background_color != '') {
+      return { backgroundColor: this.props.slice.primary.background_color }
     }
   }
 
   headlineColor() {
-    if (this.props.data.headlineColor != '') {
-      return { color: this.props.data.headlineColor }
+    if (this.props.slice.primary.headline_color != '') {
+      return { color: this.props.slice.primary.headline_color }
     }
   }
 
   subheadlineColor() {
-    if (this.props.data.subheadlineColor != '') {
-      return { color: this.props.data.subheadlineColor }
+    if (this.props.slice.primary.subheadline_color != '') {
+      return { color: this.props.slice.primary.subheadline_color }
     }
   }
 
@@ -139,15 +135,17 @@ class DoubleBlockSection extends Component {
 
 
   render() {
-    const { classes, data } = this.props;
+    const { classes, slice } = this.props;
+    console.log(this.props)
+    const data = slice.primary;
 
     return (
       <div className={ classes.root }>
         <List className={ classes.container }>
           { this.isReversed() ? this.assetBlock() : '' }
           <ListItem className={ classes.containerItem } style={ this.backgroundColor() }>
-            <h1 className={classes.subheadline} style={ this.headlineColor() }>{data.headline}</h1>
-            <h2 className={`${classes.subheadline} ${classes.secondaryHeadline}`} style={ this.subheadlineColor() }>{data.subheadline}</h2>
+            <h1 className={classes.subheadline} style={ this.headlineColor() }>{data.headline.text}</h1>
+            <h2 className={`${classes.subheadline} ${classes.secondaryHeadline}`} style={ this.subheadlineColor() }>{data.subheadline.text}</h2>
           </ListItem>
           { !this.isReversed() ? this.assetBlock() : '' }
         </List>
@@ -156,27 +154,30 @@ class DoubleBlockSection extends Component {
   }
 }
 
-DoubleBlockSection.propTypes = {
+DoubleBlock.propTypes = {
   classes: PropTypes.object.isRequired,
+  slice: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 };
 
-export default compose(withStyles(styles), withWidth())(DoubleBlockSection);
+export default compose(withStyles(styles), withWidth())(DoubleBlock);
 
-//export const query = graphql`
-  //fragment DoubleBlockSection on ContentfulLayoutDoubleBlockSection {
-    //backgroundColor
-    //headline
-    //headlineColor
-    //subheadline
-    //subheadlineColor
-    //reverseDirection
-    //image {
-      //title
-      //file {
-        //url
-        //contentType
-      //}
-    //}
-  //}
-//`;
+export const query = graphql`
+  fragment DoubleBlock on PrismicPageBodyDoubleBlock {
+    primary {
+      direction
+      asset {
+        url
+      }
+      background_color
+      headline {
+        text
+      }
+      headline_color
+      subheadline {
+        text
+      }
+      subheadline_color
+    }
+  }
+`;

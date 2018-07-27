@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import compose from 'recompose/compose';
-import { withStyles } from 'material-ui/styles';
-import withWidth from 'material-ui/utils/withWidth';
+import { withStyles } from '@material-ui/core/styles';
+import withWidth from '@material-ui/core/withWidth';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 import PropTypes from 'prop-types';
-import List, { ListItem } from 'material-ui/List';
+
 
 const styles = theme => ({
   navGroup: {

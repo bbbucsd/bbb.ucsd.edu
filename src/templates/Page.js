@@ -3,17 +3,19 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import StandardHero from '../components/Theme/StandardHero';
-import SimpleHero from '../components/Theme/SimpleHero';
-import HighlightHero from '../components/Page/HighlightHero';
-//import ContentBlock from '../Theme/ContentBlock';
-//import DoubleBlockSection from './DoubleBlockSection';
-//import LogoBlock from './LogoBlock';
-//import LogoBlockInline from './LogoBlockInline';
-//import SingleImageSection from './SingleImageSection';
-//import SEO from './SEO';
+import Header from '../components/_Header';
+import Footer from '../components/_Footer';
+import StandardHero from '../components/StandardHero';
+import StandardVideoHero from '../components/StandardVideoHero';
+// import HighlightHero from '../components/HighlightHero';
+//import ContentBlock from '../components/ContentBlock';
+import DoubleBlock from '../components/DoubleBlock';
+import DoubleBlockVideo from '../components/DoubleBlockVideo';
+
+//import LogoBlock from '../components/LogoBlock';
+//import LogoBlockInline from '../components/LogoBlockInline';
+//import SingleImageSection from '../components/SingleImageSection';
+//import Meta from '../components/_Meta';
 
 const styles = theme => ({
 
@@ -23,16 +25,18 @@ class Page extends Component {
 
   renderSlice(slice, index) {
     switch (slice.__typename) {
-      case 'PrismicPageBodyStandardHero':
+      case 'PrismicPageBodyStandardhero':
         return <StandardHero key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodySimpleHero':
-        return <SimpleHero key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyHighlightHero':
-        return <HighlightHero key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyStandardVideoHero':
+        return <StandardVideoHero key={`slice_${index}`} slice={slice} />
+      //case 'PrismicPageBodyHighlightHero':
+        //return <HighlightHero key={`slice_${index}`} slice={slice} />
       //case 'ContentfulLayoutSimpleHero':
         //return <SimpleHero hero={hero} />
-      //case 'ContentfulLayoutDoubleBlockSection':
-        //return <DoubleBlockSection key={`slice_${index}`} data={section} />
+      case 'PrismicPageBodyDoubleBlock':
+        return <DoubleBlock key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyDoubleBlockVideo':
+        return <DoubleBlockVideo key={`slice_${index}`} slice={slice} />
       //case 'ContentfulLayoutLogoBlock':
         //return <LogoBlock key={`slice_${index}`} data={section} />
       //case 'ContentfulLayoutContentBlock':
@@ -49,7 +53,7 @@ class Page extends Component {
     const page = this.props.data.prismicPage.data
     const { body } = page
 
-        //<SEO seo={seo} />
+        //<Meta seo={seo} />
     return (
       <div>
         <Header />
@@ -74,13 +78,11 @@ export const pageQuery = graphql`
     prismicPage(data: { path: { eq: $path }}) {
       data {
         path
-        title {
-          text
-        }
         body {
           ...StandardHero
-          ...SimpleHero
-          ...HighlightHero
+          ...StandardVideoHero
+          ...DoubleBlock
+          ...DoubleBlockVideo
         }
       }
     }
