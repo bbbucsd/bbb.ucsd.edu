@@ -144,8 +144,8 @@ class DoubleBlock extends Component {
         <List className={ classes.container }>
           { this.isReversed() ? this.assetBlock() : '' }
           <ListItem className={ classes.containerItem } style={ this.backgroundColor() }>
-            <h1 className={classes.subheadline} style={ this.headlineColor() }>{data.headline.text}</h1>
-            <h2 className={`${classes.subheadline} ${classes.secondaryHeadline}`} style={ this.subheadlineColor() }>{data.subheadline.text}</h2>
+            <h2 className={classes.subheadline} style={ this.headlineColor() }>{data.headline.text}</h2>
+            <h3 className={`${classes.subheadline} ${classes.secondaryHeadline}`} style={ this.subheadlineColor() }>{data.subheadline.text}</h3>
           </ListItem>
           { !this.isReversed() ? this.assetBlock() : '' }
         </List>
