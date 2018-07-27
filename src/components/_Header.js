@@ -8,12 +8,15 @@ import Link from 'gatsby-link';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import Waypoint from 'react-waypoint';
+
+import ProductNav from './Navigation/Header/ProductNav';
+import IndustriesNav from './Navigation/Header/IndustriesNav';
+import SupportNav from './Navigation/Header/SupportNav';
+import SideMenu from './Navigation/Header/SideMenu';
+
 import { Menu as MenuIcon } from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import classNames from 'classnames';
 
-import SideMenu from './Navigation/Header/SideMenu';
 
 
 const styles = theme => ({
@@ -153,6 +156,7 @@ class Header extends Component {
       );
     }
 }
+
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,

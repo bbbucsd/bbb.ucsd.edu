@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import List from 'material-ui/List';
 import { Link } from 'react-router-dom';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import withWidth from 'material-ui/utils/withWidth';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
+import withWidth from '@material-ui/core/withWidth';
+import List from '@material-ui/core/List';
 
 
 var menuWidth = 900;

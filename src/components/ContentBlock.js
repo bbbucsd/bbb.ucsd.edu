@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 import classNames from 'classnames';
 import "./ContentBlock.css";
-import InnerHTML from './InnerHTML';
+import InnerHTML from '../utils/InnerHTML';
 
 const __CONTENT_STYLES__ = `__CONTENT_STYLES__`;
 

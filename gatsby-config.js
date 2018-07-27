@@ -12,6 +12,7 @@ module.exports = {
 
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sass',
     'gatsby-transformer-remark',
     'gatsby-transformer-remark',
     { resolve: 'gatsby-plugin-sitemap' },

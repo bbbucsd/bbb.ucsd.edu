@@ -3,10 +3,10 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
-import AssetBlock from '../Theme/AssetBlock';
-import HeroTypography from '../Theme/HeroTypography';
-import Highlight from '../Theme/Highlight';
-import Button from '../Theme/Button';
+//import AssetBlock from './Theme/Heros/ImageScope';
+import HeroTypography from './Elements/HeroTypography';
+import Highlight from './Elements/Highlight';
+import Button from './Elements/Button';
 
 const styles = theme => ({
   highlightGroup: {
@@ -35,7 +35,7 @@ class HighlightHero extends Component {
     const data = slice.primary;
 
     return (
-      <AssetBlock file={data.hero_asset && data.hero_asset.url}>
+      //<AssetBlock file={data.hero_asset && data.hero_asset.url}>
         <div>
           <HeroTypography size="h3">{data.superheadline.text}</HeroTypography>
           <HeroTypography size="h1">{data.headline.text}</HeroTypography>
@@ -48,7 +48,7 @@ class HighlightHero extends Component {
             <Highlight largeText='18"' smallText="Pressed Product" color="white" />
           </div>
         </div>
-      </AssetBlock>
+      //</AssetBlock>
     );
   }
 }

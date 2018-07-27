@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import processHtml from '../../utils/processHTML';
+import processHtml from './processHTML';
 
 export default class InnerHTML extends Component {
   render() {

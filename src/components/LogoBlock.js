@@ -8,7 +8,7 @@ import withWidth from '@material-ui/core/withWidth';
 // Elements
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Button from '../Theme/Button';
+import Button from './Elements/Button';
 
 const styles = theme => ({
   root: {
@@ -124,7 +124,7 @@ class LogoBlock extends Component {
           </ListItem>
         </List>
 
-        <Button to={data.cta_link.url} text={data.cta_label} size="small" />
+        <Button to={data.cta_link && data.cta_link.url} text={data.cta_label} size="small" />
       </div>
     )
   }

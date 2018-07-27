@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-class SEO extends Component {
+class Meta extends Component {
   render() {
     const { seo, slug } = this.props;
     let title;
@@ -114,7 +114,7 @@ class SEO extends Component {
   }
 }
 
-export default SEO;
+export default Meta;
 
 //export const query = graphql`
   //fragment PageSeo on ContentfulLayoutSeo {

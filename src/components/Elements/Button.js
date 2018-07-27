@@ -12,12 +12,17 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     backgroundColor: global.brandInfo,
     "&:hover": {
-      backgroundColor: global.brandPrimary,
+      backgroundColor: global.brandInfo,
     },
+    borderRadius: 0,
+    textTransform: 'none',
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit,
   },
   arrow: {
     position: 'relative',
-    top: '10px',
+    top: '1px',
     left: '5px',
     width: '32px',
     height: '32px',
@@ -57,9 +62,9 @@ class ThemeButton extends Component {
             onMouseOut={this.toggleArrow}
             className={this.props.className || null}
             style={this.props.customStyle}>
-        <Button variant="extendedFab" aria-label={this.props.text}  className={classes.button}>
+        <Button aria-label={this.props.text}  className={classes.button}>
           {this.props.text}
-          <ArrowRight className={`${this.state.animateArrow ? classes.animateArrow : ''}`} />
+          <ArrowRight className={`${classes.arrow} ${classes.extendedIcon} ${this.state.animateArrow ? classes.animateArrow : ''}`} />
         </Button>
       </Link>
     )

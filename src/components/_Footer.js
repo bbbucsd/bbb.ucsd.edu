@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 import { Link } from 'react-router-dom';
-import Button from './Theme/Button';
+import Button from './Elements/Button';
 
 const styles = theme => ({
   footer: {
@@ -13,6 +13,18 @@ const styles = theme => ({
     height: '500px',
     width: '100%',
     color: '#92A5B1',
+  },
+  lastChanceCTA: {
+    backgroundColor: '#fafafa',
+    height: '400px',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
+  lastChanceButton: {
+    fontSize: '16px',
   },
   social: {
     display: 'flex',
@@ -106,6 +118,13 @@ class Footer extends Component {
 
         return (
           <div>
+            <div style={ this.props.lastChance !== false ? {} : {display: 'none'} }  className={`${classes.lastChanceCTA} wrapper`}>
+              <div>
+                <h1 className={classes.subheadline}>Ready to increase profit?</h1>
+                <Button to="/" text="Contact Sales" className={classes.lastChanceButton} />
+              </div>
+            </div>
+
             <div className={classes.footer}>
               <div className={classes.social}>
                 <div className={classes.socialSpacer}></div>
@@ -183,13 +202,6 @@ class Footer extends Component {
     }
 }
 
-function mapStateToProps(state) {
-  return {
-    signupSuccess: state.global.signupSuccess,
-    signupMsg: state.global.signupMsg,
-    mobile: state.global.mobile
-  }
-}
 
 Footer.propTypes = {
   classes: PropTypes.object.isRequired,
