@@ -7,8 +7,10 @@ import './index.css'
 // Styles
 import '../components/Theme/Globals';
 
+const theme = createMuiTheme({})
+
 const Layout = ({ children, data }) => (
-  <MuiThemeProvider>
+  <MuiThemeProvider theme={theme}>
     <div>
       <Helmet>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/brands.css" integrity="sha384-KtmfosZaF4BaDBojD9RXBSrq5pNEO79xGiggBxf8tsX+w2dBRpVW5o0BPto2Rb2F" crossOrigin="anonymous" />

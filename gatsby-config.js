@@ -14,8 +14,13 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     'gatsby-transformer-remark',
-    'gatsby-transformer-remark',
-    { resolve: 'gatsby-plugin-sitemap' },
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-resolve-src',
+      options: {
+        addSassLoader: true,
+      },
+    },
     {
       resolve: 'gatsby-source-prismic',
       options: {

@@ -1,0 +1,44 @@
+@import '../../Theme/Globals';
+
+.root {
+  position: relative;
+  padding: $padding;
+}
+
+.subNavWrapper {
+  position:absolute;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0);
+  will-change: transform;
+  transition: opacity 0.2s linear, transform 0.2s linear, visibility 0.8s linear;
+}
+
+.subNavOpen, .subNavLink {
+  color: $white,
+}
+
+.animateOpen {
+  transform: translateY(-34px);
+  opacity: 1;
+  visibility: visible;
+}
+
+.subNav {
+  position: absolute;
+  background-color: #f6f6f6;
+  box-shadow: 0px 40px 100px rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  color: #000;
+}
+
+.arrow {
+  display: inline-block;
+  position: absolute;
+  width: 0;
+  height: 0;
+}

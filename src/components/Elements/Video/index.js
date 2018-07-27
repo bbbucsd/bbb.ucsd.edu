@@ -7,7 +7,7 @@ class Video extends Component {
     const { src } = this.props;
 
     return (
-      <video loop autoPlay playsInline className={style.root}>
+      <video loop autoPlay playsInline muted className={style.root}>
         <source src={src} type="video/mp4"/>
       </video>
     );
