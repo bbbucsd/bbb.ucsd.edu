@@ -7,8 +7,10 @@ import './index.css'
 // Styles
 import '../components/Theme/Globals';
 
+const theme = createMuiTheme({})
+
 const Layout = ({ children, data }) => (
-  <MuiThemeProvider>
+  <MuiThemeProvider theme={theme}>
     <div>
       <Helmet
         meta={[

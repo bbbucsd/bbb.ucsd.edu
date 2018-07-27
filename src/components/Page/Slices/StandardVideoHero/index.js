@@ -5,10 +5,10 @@ import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
 
 // Elements
-import HeroTypography from '../../Elements/HeroTypography/index';
-import Button from '../../Elements/Button/index';
-import Video from '../../Elements/Video/index'
-import HeroWrapper from '../../Elements/HeroWrapper/index'
+import HeroTypography from '../../../Elements/HeroTypography/index';
+import Button from '../../../Elements/Button/index';
+import Video from '../../../Elements/Video/index'
+import HeroWrapper from '../../../Elements/HeroWrapper/index'
 
 const styles = theme => ({
   scope: {

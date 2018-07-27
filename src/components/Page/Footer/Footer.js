@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 import { Link } from 'react-router-dom';
-import Button from '../Elements/Button/index';
+import Button from '../../Elements/Button/index';
 
 const styles = theme => ({
   footer: {

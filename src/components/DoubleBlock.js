@@ -69,7 +69,7 @@ const styles = theme => ({
 
 class DoubleBlock extends Component {
   isReversed() {
-    return !!data.direction.match(/left/i);
+    return !!this.props.slice.primary.direction.match(/left/i);
   }
 
   hasAsset() {
