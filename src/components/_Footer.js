@@ -9,7 +9,7 @@ import Button from './Elements/Button';
 
 const styles = theme => ({
   footer: {
-    backgroundColor: '#171F26',
+    backgroundColor: global.brandSecondary,
     height: '500px',
     width: '100%',
     color: '#92A5B1',
@@ -25,13 +25,6 @@ const styles = theme => ({
   },
   lastChanceButton: {
     fontSize: '16px',
-  },
-  subheadline: {
-    fontFamily: 'lato',
-    fontWeight: '300',
-    fontStyle: 'normal',
-    margin:'0',
-    marginBottom: '30px',
   },
   social: {
     display: 'flex',

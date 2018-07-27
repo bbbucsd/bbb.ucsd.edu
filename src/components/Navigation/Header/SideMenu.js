@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import { Link } from 'react-router-dom';
+import Link from 'gatsby-link';
 
 const styles = theme => ({
   root: {

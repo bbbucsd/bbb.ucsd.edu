@@ -3,19 +3,19 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
+
 import Header from '../components/_Header';
 import Footer from '../components/_Footer';
+import Meta from '../components/_Meta';
+
 import StandardHero from '../components/StandardHero';
 import StandardVideoHero from '../components/StandardVideoHero';
-// import HighlightHero from '../components/HighlightHero';
-//import ContentBlock from '../components/ContentBlock';
+import SimpleHero from '../components/SimpleHero';
+import HighlightHero from '../components/HighlightHero';
 import DoubleBlock from '../components/DoubleBlock';
 import DoubleBlockVideo from '../components/DoubleBlockVideo';
-
-//import LogoBlock from '../components/LogoBlock';
-//import LogoBlockInline from '../components/LogoBlockInline';
-//import SingleImageSection from '../components/SingleImageSection';
-//import Meta from '../components/_Meta';
+import ContentBlock from '../components/ContentBlock';
+import LogoBlock from '../components/LogoBlock';
 
 const styles = theme => ({
 
@@ -29,22 +29,20 @@ class Page extends Component {
         return <StandardHero key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyStandardVideoHero':
         return <StandardVideoHero key={`slice_${index}`} slice={slice} />
-      //case 'PrismicPageBodyHighlightHero':
-        //return <HighlightHero key={`slice_${index}`} slice={slice} />
-      //case 'ContentfulLayoutSimpleHero':
-        //return <SimpleHero hero={hero} />
       case 'PrismicPageBodyDoubleBlock':
         return <DoubleBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyDoubleBlockVideo':
         return <DoubleBlockVideo key={`slice_${index}`} slice={slice} />
-      //case 'ContentfulLayoutLogoBlock':
-        //return <LogoBlock key={`slice_${index}`} data={section} />
-      //case 'ContentfulLayoutContentBlock':
-        //return <ContentBlock key={`slice_${index}`} data={section} />
-      //case 'ContentfulLayoutSingleImageSection':
-        //return <SingleImageSection key={`slice_${index}`} data={section} />
-      //case 'ContentfulLayoutLogoBlockInline':
-        //return <LogoBlockInline key={`slice_${index}`} data={section} />
+      case 'PrismicPageBodySimpleHero':
+        return <SimpleHero key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyHighlightHero':
+        return <HighlightHero key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyDoubleBlock':
+        return <DoubleBlock key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyLogoBlock':
+        return <LogoBlock key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyContentBlock':
+        return <ContentBlock key={`slice_${index}`} slice={slice} />
     };
   }
 
@@ -83,6 +81,11 @@ export const pageQuery = graphql`
           ...StandardVideoHero
           ...DoubleBlock
           ...DoubleBlockVideo
+          ...SimpleHero
+          ...HighlightHero
+          ...DoubleBlock
+          ...LogoBlock
+          ...ContentBlock
         }
       }
     }

@@ -5,56 +5,10 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './index.css'
 
 // Styles
-import blue from '@material-ui/core/colors/blue';
-import green from '@material-ui/core/colors/green';
 import '../components/Theme/Globals';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: blue,
-    secondary: green
-  },
-  typography:  {
-    fontFamily: "'Lato', 'sans-serif'",
-    fontSize: '18px',
-  },
-  overrides: {
-    MuiTab: {
-      root: {
-        padding: global.padding / 2,
-        fontFamily: global.fontFamily,
-        margin: '0 5px',
-        // backgroundColor: Teal[100],
-        fontSize: '24px',
-        height: 'auto'
-      },
-      rootPrimary: {
-        color:'rgba(0,0,0,.7)',
-      },
-      rootPrimarySelected: {
-        color:'#000',
-        // backgroundColor: global.primary,
-        // borderColor: global.primary,
-        // color:'#fff'
-      },
-      label: {
-        fontSize: '20px'
-      }
-    },
-    MuiButton: {
-      root: {
-        padding: '15px 45px',
-        fontSize: '16px',
-      },
-      raisedPrimary: {
-        backgroundColor: global.primary,
-      },
-    },
-  },
-});
-
 const Layout = ({ children, data }) => (
-  <MuiThemeProvider theme={theme}>
+  <MuiThemeProvider>
     <div>
       <Helmet
         meta={[
@@ -88,4 +42,3 @@ export const query = graphql`
     }
   }
 `
-

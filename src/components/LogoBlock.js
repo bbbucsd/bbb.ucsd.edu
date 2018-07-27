@@ -42,9 +42,10 @@ const styles = theme => ({
     display: 'flex',
     flex: '5',
     flexDirection: 'row',
-  },
-  secondRow: {
     marginTop: '75px',
+  },
+  topRow: {
+    marginTop: '0px',
   },
   customer: {
     flex: '4',
@@ -72,45 +73,58 @@ const styles = theme => ({
     fontWeight: '200',
     fontStyle: 'normal',
   },
-})
+});
 
 class LogoBlock extends Component {
+
+  createMatrix(logos) {
+    let group = [];
+    let count = 0;
+    logos.forEach((logo, index) => {
+      if (index >= 3 && index % 3 === 0) { count++; }
+      group[count] = group[count] || [];
+      group[count].push(logo)
+    });
+    return group;
+  }
+
+  renderLogos(logos) {
+    if (!logos.length) { return null; }
+    const { classes } = this.props;
+    const matrix = this.createMatrix(logos);
+    return matrix.map((row, index) => {
+      let columns = row.map((column, index) => {
+        return (
+          <div key={`column_${index}`} className={`${classes.customer} ${classes.border}`}>
+            <img alt={column.logo.url.split("_")[1].split(".")[0]} src={column.logo.url} className={ classes.logo } />
+          </div>
+        );
+      });
+      return (
+        <div key={`row_${index}`} className={` ${classes.row} ${index === 0 ? classes.topRow : ''}`}>
+          {columns}
+        </div>
+      );
+    });
+  }
+
   render() {
-    const { classes, data } = this.props;
+    const { classes, slice } = this.props;
+    const data = slice.primary;
+    const logos = slice.items;
 
     return (
       <div className={classes.root}>
-        <h1 className={classes.headline}>{data.headline}</h1>
+        <h1 className={classes.headline}>{data.headline.text}</h1>
         <List className={ classes.container }>
           <ListItem className={ classes.containerItem }>
             <div className={ classes.customers }>
-              <div className={ classes.row }>
-                <div className={` ${classes.customer} ${classes.border} `}>
-                  <img alt={data.logos[0].title} src={data.logos[0].file.url} className={ classes.logo } />
-                </div>
-                <div className={` ${classes.customer} ${classes.border} `}>
-                  <img alt={data.logos[1].title} src={data.logos[1].file.url} className={ classes.logo } />
-                </div>
-                <div className={classes.customer}>
-                  <img alt={data.logos[2].title} src={data.logos[2].file.url} className={ classes.logo } />
-                </div>
-              </div>
-              <div className={`${classes.row} ${classes.secondRow}`}>
-                <div className={` ${classes.customer} ${classes.border} `}>
-                  <img alt={data.logos[3].title} src={data.logos[3].file.url} className={ classes.logo } />
-                </div>
-                <div className={` ${classes.customer} ${classes.border} `}>
-                  <img alt={data.logos[4].title} src={data.logos[4].file.url} className={ classes.logo } />
-                </div>
-                <div className={ classes.customer }>
-                  <img alt={data.logos[5].title} src={data.logos[5].file.url} className={ classes.logo } />
-                </div>
-              </div>
+              {this.renderLogos(logos)};
             </div>
           </ListItem>
         </List>
 
-        <Button to={data.ctaLink} text={data.ctaLabel} size="small" />
+        <Button to={data.cta_link && data.cta_link.url} text={data.cta_label} size="small" />
       </div>
     )
   }
@@ -118,21 +132,27 @@ class LogoBlock extends Component {
 
 LogoBlock.propTypes = {
   classes: PropTypes.object.isRequired,
+  slice: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 };
 
 export default compose(withStyles(styles), withWidth())(LogoBlock);
 
-//export const query = graphql`
-  //fragment LogoBlock on ContentfulLayoutLogoBlock {
-    //headline
-    //logos {
-      //id
-      //title
-      //file {
-        //url
-        //contentType
-      //}
-    //}
-  //}
-//`;
+export const query = graphql`
+  fragment LogoBlock on PrismicPageBodyLogoBlock {
+    primary {
+      headline {
+        text
+      }
+      cta_link {
+        url
+      }
+      cta_label
+    }
+    items {
+      logo {
+        url
+      }
+    }
+  }
+`;
