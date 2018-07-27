@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
 //import AssetBlock from './Theme/Heros/ImageScope';
-import HeroTypography from './Elements/HeroTypography';
+import Index from './Elements/HeroTypography/index';
 import Highlight from './Elements/Highlight';
-import Button from './Elements/Button';
+import Button from './Elements/Button/index';
 
 const styles = theme => ({
   highlightGroup: {
@@ -37,8 +37,8 @@ class HighlightHero extends Component {
     return (
       //<AssetBlock file={data.hero_asset && data.hero_asset.url}>
         <div>
-          <HeroTypography size="h3">{data.superheadline.text}</HeroTypography>
-          <HeroTypography size="h1">{data.headline.text}</HeroTypography>
+          <Index size="h3">{data.superheadline.text}</Index>
+          <Index size="h1">{data.headline.text}</Index>
 
           <div className={classes.highlightGroup}>
             <Highlight largeText="#1" smallText="Best Selling Press" color="white" />

@@ -8,7 +8,7 @@ import withWidth from '@material-ui/core/withWidth';
 // Elements
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Button from './Elements/Button';
+import Button from './Elements/Button/index';
 
 const styles = theme => ({
   root: {
