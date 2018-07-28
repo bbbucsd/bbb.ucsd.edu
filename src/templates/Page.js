@@ -4,9 +4,12 @@ import PropTypes from 'prop-types';
 import withWidth from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/core/styles';
 
+import Meta from '../components/Meta/index';
+import '../components/Page/Meta';
+import PageConfig from '../config/Page';
+
 import Header from '../components/Page/Header';
 import Footer from '../components/Page/Footer';
-import Meta from '../components/Page/Meta/Meta';
 
 import StandardHero from '../components/StandardHero';
 import StandardVideoHero from '../components/Page/Slices/StandardVideoHero';
@@ -51,12 +54,12 @@ class Page extends Component {
 
   render() {
     const { classes } = this.props;
-    const page = this.props.data.prismicPage.data
-    const { body } = page
-
-        //<Meta seo={seo} />
+    const page = this.props.data.prismicPage.data;
+    const { body, body2 } = page
+    const pageConfig = this.props.data.prismicPageConfig.data;
     return (
       <div>
+        <Meta defaultMeta={pageConfig} meta={body2} />
         <Header />
         {(body||[]).map((slice, i) => this.renderSlice(slice, i) )}
         <Footer />
@@ -76,7 +79,11 @@ export default compose(withStyles(styles), withWidth())(Page);
 
 export const pageQuery = graphql`
   query PageQuery($path: String!) {
+    prismicPageConfig(uid: { eq: "page_config" }) {
+      ...PageConfig
+    }
     prismicPage(data: { path: { eq: $path }}) {
+      ...Meta
       data {
         path
         body {
