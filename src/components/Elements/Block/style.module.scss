@@ -1,0 +1,42 @@
+@import 'components/Theme/Globals';
+
+.containerItem {
+  display: table-cell !important;
+  width: 50% !important;
+  padding: $padding !important;
+  text-align: left !important;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  font-family: lato;
+  font-weight: 300;
+  font-style: normal;
+  overflow: hidden;
+}
+
+.image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.backgroundVideo {
+  left: 0;
+  right: 0;
+  top: 0;
+  object-fit: cover;
+  display: block;
+  width: 100%;
+  position: absolute;
+  height: 600px;
+}
+
+.subheadline {
+  font-family: lato;
+  font-weight: 300;
+  font-style: normal;
+  margin:0;
+}
+
+.secondaryHeadline {
+  color: #777;
+}

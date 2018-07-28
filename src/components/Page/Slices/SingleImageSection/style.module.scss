@@ -1,0 +1,28 @@
+@import 'components/Theme/Globals';
+
+.root {
+  margin: 150px auto 150px auto;
+  text-align: center;
+  width: 80%;
+}
+
+.headline {
+  font-family: $fontFamily;
+  font-weight: 300;
+  font-style: normal;
+  margin: 100px 0 0 0;
+  padding: 0;
+}
+
+.subheadline {
+  font-family: $fontFamily;
+  font-eweight: 200;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.image {
+  display: block;
+  margin: 50px 0 0 -30px;
+}

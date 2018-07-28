@@ -1,21 +1,9 @@
 import React, { Component } from 'react';
+import InnerHTML from 'utils/InnerHTML';
 
-import compose from 'recompose/compose';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import withWidth from '@material-ui/core/withWidth';
-import classNames from 'classnames';
-import "./ContentBlock.css";
-import InnerHTML from '../utils/InnerHTML';
-
+// Style
+import style from './style.module.scss'
 const __CONTENT_STYLES__ = `__CONTENT_STYLES__`;
-
-const styles = theme => ({
-  content: {
-    width: '900px',
-    margin: '50px auto',
-  },
-});
 
 class ContentBlock extends Component {
 
@@ -67,11 +55,11 @@ class ContentBlock extends Component {
   }
 
   render() {
-    const { classes, slice } = this.props;
+    const { slice } = this.props;
     const data = slice.primary;
 
     return (
-      <div className={classNames("content", classes.content)}>
+      <div className={style.content}>
         <InnerHTML>
           {data.content.html}
         </InnerHTML>
@@ -81,13 +69,7 @@ class ContentBlock extends Component {
   }
 }
 
-ContentBlock.propTypes = {
-  classes: PropTypes.object.isRequired,
-  slice: PropTypes.object.isRequired,
-  width: PropTypes.string.isRequired,
-};
-
-export default compose(withStyles(styles), withWidth())(ContentBlock);
+export default ContentBlock;
 
 export const query = graphql`
   fragment ContentBlock on PrismicPageBodyContentBlock {

@@ -1,4 +1,10 @@
-@charset "UTF-8";
+@import 'components/Theme/Globals';
+
+.content {
+  width: 900px;
+  margin: 50px auto;
+}
+
 .content h1 {
   font-style: normal;
   font-size: 40px;

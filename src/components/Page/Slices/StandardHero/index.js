@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
-import compose from 'recompose/compose';
-import PropTypes from 'prop-types';
-import withWidth from '@material-ui/core/withWidth';
-import { withStyles } from '@material-ui/core/styles';
 
 // Elements
-import HeroWrapper from './Elements/HeroWrapper';
-import HeroTypography from './Elements/HeroTypography';
-import Button from './Elements/Button/index';
+import HeroWrapper from 'components/Elements/HeroWrapper';
+import HeroTypography from 'components/Elements/HeroTypography';
+import Button from 'components/Elements/Button/index';
 
-const styles = theme => ({
-  cta: {
-    marginTop: '30px',
-  }
-});
+// Style
+import style from './style.module.scss'
 
 class StandardHero extends Component {
 
   render() {
-    const { classes, slice } = this.props;
+    const { slice } = this.props;
     const data = slice.primary;
 
     return (
@@ -27,7 +20,7 @@ class StandardHero extends Component {
         <HeroTypography size="h1">{data.headline.text}</HeroTypography>
         <HeroTypography size="h2">{data.subheadline.text}</HeroTypography>
 
-        <div className={classes.cta}>
+        <div className={style.cta}>
           <Button to={data.cta_link.url} text={data.cta_label}></Button>
         </div>
 
@@ -36,14 +29,7 @@ class StandardHero extends Component {
   }
 }
 
-
-StandardHero.propTypes = {
-  classes: PropTypes.object.isRequired,
-  slice: PropTypes.object.isRequired,
-  width: PropTypes.string.isRequired,
-}
-
-export default compose(withStyles(styles), withWidth())(StandardHero);
+export default StandardHero;
 
 // Normally PrismicPageBodyStandardhero would be PrismicPageBodyStandardHero (capital Hero) but the original
 // api name was set to "lower case hero"
