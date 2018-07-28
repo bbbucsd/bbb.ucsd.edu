@@ -2,15 +2,24 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
+import OpenGraph from './OpenGraph';
+import SchemaPerson from './SchemaPerson';
 
 class Meta extends Component {
+
+  renderSlice(defaultSlice, slice) {
+    switch (defaultSlice.slice_type) {
+      case 'open_graph':
+        return <OpenGraph defaultSlice={defaultSlice} slice={slice} />
+    };
+  }
 
   renderSlices(defaultMeta, meta) {
     const defaultMetaSlices = defaultMeta.body;
 
-    return defaultMetaSlices.map((slice) => {
-    // if(_.find(meta, slice))
-
+    return defaultMetaSlices.map((defaultSlice) => {
+      let slice = _.find(meta, (slice) => slice.slice_type === defaultSlice.slice_type)
+      return this.renderSlice(defaultSlice, slice);
     });
   }
 
@@ -20,7 +29,7 @@ class Meta extends Component {
   }
 
   render() {
-    const { defaultMeta } = this.props;
+    const { defaultMeta, meta } = this.props;
     const schemaOrgJSONLD = [];
     let title = defaultMeta.site_title;
     let description = defaultMeta.meta_description;
@@ -131,7 +140,7 @@ class Meta extends Component {
         <meta name="keywords" content={keywords} />,
         <meta name="image" content={image} />
 
-        {this.renderSlices(defaultMeta, {})}
+        {this.renderSlices(defaultMeta, meta)}
 
         {/* Schema.org tags */}
         <script type="application/ld+json">
