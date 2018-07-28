@@ -3,6 +3,7 @@ import React, { Fragment, Component } from 'react';
 import Header from '../components/Page/Header';
 import Footer from '../components/Page/Footer';
 import Meta from '../components/Page/Meta/Meta';
+import PageConfig from '../config/Page';
 
 import StandardHero from '../components/Page/Slices/StandardHero/index';
 import StandardVideoHero from '../components/Page/Slices/StandardVideoHero';
@@ -43,6 +44,7 @@ class Page extends Component {
     const { body } = page
 
         //<Meta seo={seo} />
+    const pageConfig = this.props.data.prismicPageConfig.data;
     return (
       <div>
         <Header />
@@ -57,6 +59,9 @@ export default Page;
 
 export const pageQuery = graphql`
   query PageQuery($path: String!) {
+    prismicPageConfig(uid: { eq: "page_config" }) {
+      ...PageConfig
+    }
     prismicPage(data: { path: { eq: $path }}) {
       data {
         path
