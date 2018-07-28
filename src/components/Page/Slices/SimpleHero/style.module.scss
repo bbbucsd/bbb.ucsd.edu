@@ -1,19 +1,25 @@
 @import 'components/Theme/Globals';
 
-.root {
-  background-color: $black;
+.scope {
   text-align: center;
   color: $white;
+  background-color: $brandSecondary;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
-  min-height: 80vh;
   width: 100%;
   position: relative;
   overflow: hidden;
   display: flex;
+  min-height: 50vh;
 }
 
-.reducedHeight {
-  min-height: 50vh !important;
+.scopeVerbiage {
+  width: 100%;
+  display: flex;
+  z-index: 1;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
