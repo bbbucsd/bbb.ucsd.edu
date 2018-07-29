@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
+import Flag from './american-flag.png'
 
 // Style
 import style from './style.module.scss';
@@ -76,7 +77,7 @@ class Footer extends Component {
                 <div className={style.footerLegalLink}><Link to="/privacy">Privacy Policy</Link></div>
               </div>
               <div className={style.footerLegalRight}>
-                Designed &amp; Manufactured in California <img alt="Made in California" src="/images/american-flag.png" className={style.flag} />
+                Designed &amp; Manufactured in California <img alt="Made in California" src={Flag} className={style.flag} />
               </div>
             </div>
           </div>

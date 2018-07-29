@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import SubNav, { SubNavGroup, SubNavItem } from 'components/Elements/SubNav';
 
 class ProductMenu extends Component {
+
   render() {
+    const { floating } = this.props;
 
     return (
-      <SubNav text="Products">
+      <SubNav text="Products" floating={floating}>
         <SubNavGroup title="Cooking">
           <SubNavItem to="/products/smart-oven">Smart Ovens</SubNavItem>
           <SubNavItem to="/products/stone-hearth-ovens">Stone Hearth Ovens</SubNavItem>

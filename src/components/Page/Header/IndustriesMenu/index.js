@@ -4,8 +4,10 @@ import SubNav, { SubNavGroup, SubNavItem } from 'components/Elements/SubNav';
 class IndustriesMenu extends Component {
 
   render() {
+    const { floating } = this.props;
+
     return (
-      <SubNav text="Industries" menuWidth={280} offsetY={85} padding={40}>
+      <SubNav text="Industries" floating={floating} menuWidth={280} offsetY={85} padding={40}>
         <SubNavGroup>
           <SubNavItem to="/industries/restaurants">Restaurants</SubNavItem>
           <SubNavItem to="/industries/healthcare">Healthcare</SubNavItem>

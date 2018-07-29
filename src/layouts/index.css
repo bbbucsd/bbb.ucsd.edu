@@ -30,6 +30,10 @@ body img {
   max-width:100%;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+}
+
 .wrapper {
   max-width:1400px;
   margin: 0 auto;
@@ -41,23 +45,6 @@ body img {
   padding:60px 20px;
 }
 
-.headline {
-  font-family:'pt-sans', 'futura', 'trebuchet', 'helvetica', 'sans-serif';
-  font-size: 48px;
-  line-height: 38px;
-  font-weight: normal;
-  padding:0;
-  margin:0;
-}
-
-.subheadline {
-  font-family:'pt-sans' 'futura', 'trebuchet', 'helvetica', 'sans-serif';
-  font-size: 26px;
-  line-height: 22px;
-  font-weight: normal;
-  letter-spacing: 0px;
-  color:#242424;
-}
 
 /* material-ui 1.0 beta overrides (some properties arent available yet)*/
 
@@ -130,14 +117,3 @@ body img {
 
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(0);
-  }
-  40% {
-    transform: translateX(7px);
-  }
-  60% {
-    transform: translateX(9px);
-  }
-}

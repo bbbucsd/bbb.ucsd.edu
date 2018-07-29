@@ -27,7 +27,7 @@ class LogoBlock extends Component {
     return matrix.map((row, index) => {
       let columns = row.map((column, index) => {
         return (
-          <div key={`column_${index}`} className={`${style.customer} ${style.border}`}>
+          <div key={`column_${index}`} className={`${style.customer}`}>
             <img alt={column.logo.url.split("_")[1].split(".")[0]} src={column.logo.url} className={ style.logo } />
           </div>
         );

@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 
 import Meta from '../components/Meta/index';
 import '../components/Page/Meta';
@@ -8,7 +8,6 @@ import Header from '../components/Page/Header';
 import Footer from '../components/Page/Footer';
 
 import StandardHero from '../components/Page/Slices/StandardHero/index';
-import StandardVideoHero from '../components/Page/Slices/StandardVideoHero';
 import SimpleHero from '../components/Page/Slices/SimpleHero/index';
 import HighlightHero from '../components/Page/Slices/HighlightHero/index';
 import DoubleBlock from '../components/Page/Slices/DoubleBlock';
@@ -22,8 +21,6 @@ class Page extends Component {
     switch (slice.__typename) {
       case 'PrismicPageBodyStandardhero':
         return <StandardHero key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyStandardVideoHero':
-        return <StandardVideoHero key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyDoubleBlock':
         return <DoubleBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodySimpleHero':
@@ -46,6 +43,7 @@ class Page extends Component {
     const page = this.props.data.prismicPage.data;
     const { body, body2 } = page
     const pageConfig = this.props.data.prismicPageConfig.data;
+
     return (
       <div>
         <Meta defaultMeta={pageConfig} meta={body2} />
@@ -70,7 +68,6 @@ export const pageQuery = graphql`
         path
         body {
           ...StandardHero
-          ...StandardVideoHero
           ...DoubleBlock
           ...SimpleHero
           ...HighlightHero

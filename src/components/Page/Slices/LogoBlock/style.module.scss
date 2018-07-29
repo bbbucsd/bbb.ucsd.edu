@@ -52,14 +52,14 @@
   justify-content: center;
 }
 
+.customer + .customer {
+  border-left: 1px solid #ccc;
+}
+
 .logo {
   width: 100px;
   display: inline-block;
   margin: auto;
-}
-
-.border {
-  border-right: 1px solid #ccc;
 }
 
 .copyBlock {
