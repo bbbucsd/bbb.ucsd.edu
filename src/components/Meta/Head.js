@@ -27,7 +27,6 @@ class Meta extends Component {
     const schemaOrgJSONLD = [];
     let title = defaultMeta.site_title;
     let description = defaultMeta.meta_description;
-    let keywords = defaultMeta.meta_keywords;
     let image = defaultMeta.image;
     //let imgWidth;
     //let imgHeight;
@@ -131,7 +130,6 @@ class Meta extends Component {
         {/* General tags */}
         <title>{title}</title>,
         <meta name="description" content={description} />,
-        <meta name="keywords" content={keywords} />,
         <meta name="image" content={image} />
 
         {this.renderSlices(defaultMeta, {})}
