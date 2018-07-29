@@ -51,16 +51,9 @@ class Page extends Component {
     const { classes } = this.props;
     const page = this.props.data.prismicPage.data;
     const { body, body2 } = page
-    const pageConfig = this.props.data.prismicPageConfig.data;
 
-    //return (
-      //<div>
-        //<Meta defaultMeta={pageConfig} meta={body2} />
     return (
       <div>
-        <MetaFrontMatter data={page} />
-        {(body2||[]).map((slice, i) => this.renderMetaSlice(slice, i) )}
-
         <Header />
         {(body||[]).map((slice, i) => this.renderSlice(slice, i) )}
         <Footer />
@@ -73,14 +66,10 @@ export default Page;
 
 export const pageQuery = graphql`
   query PageQuery($path: String!) {
-    prismicPageConfig(uid: { eq: "page_config" }) {
-      ...PageConfig
-    }
     prismicPage(data: { path: { eq: $path }}) {
       ...Meta
       data {
         path
-        ...MetaFrontMatterFieldsFields
         body {
           ...StandardHero
           ...DoubleBlock

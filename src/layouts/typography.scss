@@ -1,0 +1,188 @@
+@import 'components/Theme/Globals';
+
+body {
+  font-family: $fontFamily;
+  color: $darkGray;
+  font-size: 16px;
+  font-style: normal;
+}
+
+b, strong {
+  color: black;
+}
+
+.headline {
+  --x-height-multiplier: 0.363;
+  --baseline-multiplier: 0.157;
+  color: $brandPrimary;
+  font-style: normal;
+  font-size: 52px;
+  font-family: $fontFamily;
+  margin-left: -2.5px;
+  line-height: 1.2;
+  letter-spacing: -.028em;
+}
+
+h1,h2,h3,h4 {
+  text-transform: uppercase;
+}
+
+h1 {
+  --x-height-multiplier: 0.363;
+  --baseline-multiplier: 0.157;
+  color: $brandPrimary;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 40px;
+  font-family: $fontFamilyTitle;
+  line-height: 1.2;
+  letter-spacing: -.028em;
+}
+
+h2 {
+  color: $brandInfo;
+  font-weight: 700;
+  font-style: normal;
+  font-family: $fontFamily;
+  font-size: 40px;
+  line-height: 1.04;
+  letter-spacing: -.03em;
+}
+
+h3 {
+  color: $brandInfo;
+  font-weight: 700;
+  font-style: normal;
+  font-family: $fontFamily;
+  font-size: 34px;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+}
+
+h4 {
+  color: $darkGray;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 28px;
+  font-family: $fontFamily;
+  line-height: 1.22;
+  letter-spacing: -.018em;
+}
+
+h5 {
+  color: $darkGray;
+  font-size: 21px;
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+}
+
+pre code {
+  background-color: $black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  overflow-x: auto;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+//.hljs {
+  //display: block;
+  //overflow-x: auto;
+  //padding: 0.5em;
+  //background: #232323;
+  //color: #e6e1dc;
+//}
+
+//.hljs-comment,
+//.hljs-quote {
+  //color: #bc9458;
+  //font-style: italic;
+//}
+
+//.hljs-keyword,
+//.hljs-selector-tag {
+  //color: #c26230;
+//}
+
+//.hljs-string,
+//.hljs-number,
+//.hljs-regexp,
+//.hljs-variable,
+//.hljs-template-variable {
+  //color: #a5c261;
+//}
+
+//.hljs-subst {
+  //color: #519f50;
+//}
+
+//.hljs-tag,
+//.hljs-name {
+  //color: #e8bf6a;
+//}
+
+//.hljs-type {
+  //color: #da4939;
+//}
+
+
+//.hljs-symbol,
+//.hljs-bullet,
+//.hljs-built_in,
+//.hljs-builtin-name,
+//.hljs-attr,
+//.hljs-link {
+  //color: #6d9cbe;
+//}
+
+//.hljs-params {
+  //color: #d0d0ff;
+//}
+
+//.hljs-attribute {
+  //color: #cda869;
+//}
+
+//.hljs-meta {
+  //color: #9b859d;
+//}
+
+//.hljs-title,
+//.hljs-section {
+  //color: #ffc66d;
+//}
+
+//.hljs-addition {
+  //background-color: #144212;
+  //color: #e6e1dc;
+  //display: inline-block;
+  //width: 100%;
+//}
+
+//.hljs-deletion {
+  //background-color: #600;
+  //color: #e6e1dc;
+  //display: inline-block;
+  //width: 100%;
+//}
+
+//.hljs-selector-class {
+  //color: #9b703f;
+//}
+
+//.hljs-selector-id {
+  //color: #8b98ab;
+//}
+
+//.hljs-emphasis {
+  //font-style: italic;
+//}
+
+//.hljs-strong {
+  //font-weight: bold;
+//}
+
+//.hljs-link {
+  //text-decoration: underline;
+//}

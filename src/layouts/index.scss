@@ -1,13 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald');
 @import 'components/Theme/Globals';
+@import 'typography';
 
 * {
   box-sizing: border-box;
 }
 
-@fontface {
-  font-family: 'Amatic SC', cursive;
-  src: url('https://fonts.googleapis.com/css?family=Amatic+SC')
-}
 
 body {
   font-family: $fontFamily;
