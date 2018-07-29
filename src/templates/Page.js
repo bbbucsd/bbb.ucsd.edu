@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 
-<<<<<<< HEAD
-import Meta from '../components/Meta/index';
-import '../components/Page/Meta';
-import PageConfig from '../config/Page';
-
-import Header from '../components/Page/Header';
-import Footer from '../components/Page/Footer';
-=======
 // Meta
 import MetaFrontMatter from 'components/Meta/FrontMatter'
 import MetaOpenGraph from 'components/Meta/OpenGraph'
->>>>>>> origin
 
 // Elements
 import Header from 'components/Page/Header';
