@@ -41,8 +41,8 @@ global.textField = {
   minWidth: '260px'
 };
 
-global.fontFamilyTitle = "'Lato', sans-serif";
-global.fontFamily = "'Lato', sans-serif";
+global.fontFamilyTitle = "'Oswald', sans-serif";
+global.fontFamily = "'Open Sans', sans-serif";
 
 global.siteTitle = "";
 global.siteTitleAlt = "";
