@@ -11,12 +11,14 @@ class SubNavGroup extends Component {
     const { children, title } = this.props;
 
     return (
-      <ListItem className={style.navGroup}>
-        <List className={style.navItemGroup} >
-          { title != null ? <ListItem className={style.navGroupTitle}>{ title }</ListItem> : '' }
-          { children }
-        </List>
-      </ListItem>
+      <List className={style.navGroupWrapper}>
+        <ListItem className={style.navGroup}>
+          <List className={style.navItemGroup}>
+            { title != null ? <ListItem className={style.navGroupTitle}>{ title }</ListItem> : '' }
+            { children }
+          </List>
+        </ListItem>
+      </List>
     );
   }
 }

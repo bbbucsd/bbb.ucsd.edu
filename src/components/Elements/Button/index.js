@@ -21,17 +21,17 @@ class ThemeButton extends Component {
   };
 
   render() {
-    const {to, text, className, customStyle} = this.props;
+    const {to, text, small, customStyle} = this.props;
 
     return (
-      <Link to={to}
+      <Link to={to || '#'}
             onMouseOver={this.toggleArrow}
             onMouseOut={this.toggleArrow}
-            className={className || null}
+            className={cx({ buttonLink:true  })}
             style={customStyle}>
-        <Button aria-label={text} className={style.button}>
+        <Button aria-label={text} className={cx({ button:true, buttonSmall: small })}>
           {text}
-          <ArrowRight className={cx({arrow: true, extendedIcon: true, animateArrow: this.state.animateArrow})} />
+          <ArrowRight className={cx({arrow: true, arrowSmall: small, extendedIcon: true, animateArrow: this.state.animateArrow})} />
         </Button>
       </Link>
     )
