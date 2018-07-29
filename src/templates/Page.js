@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 
+<<<<<<< HEAD
+import Meta from '../components/Meta/index';
+import '../components/Page/Meta';
+import PageConfig from '../config/Page';
+
+import Header from '../components/Page/Header';
+import Footer from '../components/Page/Footer';
+=======
 // Meta
 import MetaFrontMatter from 'components/Meta/FrontMatter'
 import MetaOpenGraph from 'components/Meta/OpenGraph'
+>>>>>>> origin
 
 // Elements
 import Header from 'components/Page/Header';
@@ -48,10 +57,14 @@ class Page extends Component {
   }
 
   render() {
-    const page = this.props.data.prismicPage.data
+    const { classes } = this.props;
+    const page = this.props.data.prismicPage.data;
     const { body, body2 } = page
+    const pageConfig = this.props.data.prismicPageConfig.data;
 
-
+    //return (
+      //<div>
+        //<Meta defaultMeta={pageConfig} meta={body2} />
     return (
       <div>
         <MetaFrontMatter data={page} />
@@ -69,7 +82,11 @@ export default Page;
 
 export const pageQuery = graphql`
   query PageQuery($path: String!) {
+    prismicPageConfig(uid: { eq: "page_config" }) {
+      ...PageConfig
+    }
     prismicPage(data: { path: { eq: $path }}) {
+      ...Meta
       data {
         path
         ...MetaFrontMatterFieldsFields
