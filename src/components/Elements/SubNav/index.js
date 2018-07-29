@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 
 // Style
 import style from './style.module.scss'
@@ -54,16 +55,18 @@ class SubNav extends Component {
   };
 
   render() {
-    const { children } = this.props;
+    const { children, floating } = this.props;
 
     return (
       <div className={style.root} onMouseLeave={this.close}>
-        <Link to={this.props.to || '/'} onMouseEnter={ this.open } className={cx({subNavOpen: this.state.open})}>{this.props.text}</Link>
+        <Link to={this.props.to || '/'} onMouseEnter={ this.open } className={cx({navLink: true, subNavOpen: this.state.open, floatingCopy: floating, fixedCopy: !floating})}>{this.props.text}</Link>
 
         <div style={this.wrapperStyle()} className={cx({subNavWrapper: true, animateOpen: this.state.open})}>
           <div style={this.arrowStyle()} className={style.arrow}></div>
           <List style={this.subNavStyle()} className={style.subNav}>
-            { children }
+            <ListItem className={style.subNavInner}>
+              { children }
+            </ListItem>
           </List>
         </div>
       </div>

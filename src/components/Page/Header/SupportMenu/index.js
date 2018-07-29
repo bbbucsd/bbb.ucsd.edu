@@ -12,17 +12,18 @@ import classNames from 'classnames/bind';
 let cx = classNames.bind(style);
 
 class SupportMenu extends Component {
+
   render() {
-    const { classes } = this.props;
+    const { floating } = this.props;
 
     return (
-      <SubNav text="Support" menuWidth={480} offsetY={85} padding={20}>
+      <SubNav text="Support" floating={floating} menuWidth={480} offsetY={85} padding={40}>
         <SubNavGroup>
           <SubNavItem>
             <SubNavGroup innerClassName={style.fastestRoute}>
               <SubNavItem>
                 <div className={style.fastestRouteItem}>
-                  <Button to="/" text="Get Help" size="small" className={style.fastestRouteItemButton} /> For the fastest and easiest way to get help.
+                  <Button to="/" text="Get Help" small={true} className={style.fastestRouteItemButton} /> For the fastest and easiest way to get help.
                 </div>
               </SubNavItem>
             </SubNavGroup>

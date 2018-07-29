@@ -15,14 +15,17 @@ class StandardHero extends Component {
     const data = slice.primary;
 
     return (
-      <HeroWrapper imageSrc={data.hero_asset.url}>
+      <HeroWrapper src={data.hero_asset && data.hero_asset.url}>
 
-        <HeroTypography size="h1">{data.headline.text}</HeroTypography>
-        <HeroTypography size="h2">{data.subheadline.text}</HeroTypography>
+        <HeroTypography h1>{data.headline.text}</HeroTypography>
+        <HeroTypography h2>{data.subheadline.text}</HeroTypography>
 
-        <div className={style.cta}>
-          <Button to={data.cta_link.url} text={data.cta_label}></Button>
-        </div>
+        {data.cta_label &&
+          <div className={style.cta}>
+            <Button to={data.cta_link.url} text={data.cta_label}></Button>
+          </div>
+        }
+
 
       </HeroWrapper>
     );

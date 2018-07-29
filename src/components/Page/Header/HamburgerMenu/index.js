@@ -10,6 +10,7 @@ let cx = classNames.bind(style);
 
 
 class HamburgerMenu extends Component {
+
   render() {
     return (
       <List className={style.root}>

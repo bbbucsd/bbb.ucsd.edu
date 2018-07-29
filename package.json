@@ -16,6 +16,7 @@
     "gatsby": "^1.9.274",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
+    "gatsby-plugin-react-next": "^1.0.11",
     "gatsby-plugin-resolve-src": "^1.1.4",
     "gatsby-plugin-sass": "^1.0.26",
     "gatsby-plugin-sitemap": "^1.2.25",
@@ -32,8 +33,7 @@
     "react-html-parser": "^2.0.2",
     "react-waypoint": "^8.0.3",
     "redux-logger": "^3.0.6",
-    "slash": "^2.0.0",
-    "video-react": "^0.13.0"
+    "slash": "^2.0.0"
   },
   "keywords": [
     "gatsby"
