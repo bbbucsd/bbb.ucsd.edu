@@ -1,0 +1,107 @@
+@import 'components/Theme/Globals';
+
+* {
+  box-sizing: border-box;
+}
+
+@fontface {
+  font-family: 'Amatic SC', cursive;
+  src: url('https://fonts.googleapis.com/css?family=Amatic+SC')
+}
+
+body {
+  font-family: $fontFamily;
+  min-height:100%;
+  overflow-x: hidden;
+  width: 100%;
+  font-smoothing: antialiased;
+  letter-spacing: .02em;
+  margin:0;
+}
+
+body img {
+  max-width:100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+}
+
+.wrapper {
+  max-width:1400px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 20px;
+}
+
+.wrapper.padded {
+  padding:60px 20px;
+}
+
+
+/* material-ui 1.0 beta overrides (some properties arent available yet)*/
+
+.white .MuiInput-underline-14:before {
+  background-color:#a9a9a9 !important;
+  color: $white !important;
+}
+
+.white .MuiInput-inkbar-8:after {
+  background-color: $white !important;
+}
+
+.white [class^="MuiInput-input-"] {
+  color: $white;
+}
+
+.full-width {
+  width:100%;
+}
+
+.full-width > * {
+  width:100%;
+}
+
+#header a:hover {
+  color: $black !important;
+}
+
+#logo {
+  display:inline-block;
+}
+
+#logo img {
+  max-height:48px;
+}
+
+
+.mui-ripple-circle {display: none}
+
+/*parallax component overrides*/
+
+.react-parallax-background-children {
+  width:100%;
+}
+
+
+@media only screen and (max-device-width: 768px) {
+
+  #header {
+
+  }
+
+  #logo {
+    height:60px;
+  }
+
+  #header ul a {
+    position:relative;
+    top:15px;
+  }
+
+  .headline {
+    font-size:32px;
+    line-height:32px;
+  }
+}
+
