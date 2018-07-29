@@ -1,0 +1,13 @@
+@import 'components/Theme/Globals';
+
+.root {
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo {
+  width: 200px;
+}

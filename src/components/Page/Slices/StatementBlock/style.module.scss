@@ -1,0 +1,24 @@
+@import 'components/Theme/Globals';
+
+.statementCTA {
+  background-color: $white;
+  height: 400px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.headline {
+  font-style: normal;
+  font-family: $fontFamily;
+  font-size: 2em;
+  font-weight: 300;
+  margin-bottom: 30;
+  color: $black;
+}
+
+.statementButton {
+  font-size: 16px;
+}

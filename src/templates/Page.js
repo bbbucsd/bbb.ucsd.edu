@@ -1,8 +1,4 @@
-import React, { Component } from 'react';
-import compose from 'recompose/compose';
-import PropTypes from 'prop-types';
-import withWidth from '@material-ui/core/withWidth';
-import { withStyles } from '@material-ui/core/styles';
+import React, { Fragment, Component } from 'react';
 
 import Meta from '../components/Meta/index';
 import '../components/Page/Meta';
@@ -11,19 +7,14 @@ import Header from '../components/Page/Header';
 import Footer from '../components/Page/Footer';
 import PageConfig from '../config/Page';
 
-import StandardHero from '../components/StandardHero';
+import StandardHero from '../components/Page/Slices/StandardHero/index';
 import StandardVideoHero from '../components/Page/Slices/StandardVideoHero';
-import SimpleHero from '../components/SimpleHero';
-import HighlightHero from '../components/HighlightHero';
-import DoubleBlock from '../components/DoubleBlock';
-import DoubleBlockVideo from '../components/DoubleBlockVideo';
-import ContentBlock from '../components/ContentBlock';
-import LogoBlock from '../components/LogoBlock';
-import StatementBlock from '../components/StatementBlock';
-
-const styles = theme => ({
-
-});
+import SimpleHero from '../components/Page/Slices/SimpleHero/index';
+import HighlightHero from '../components/Page/Slices/HighlightHero/index';
+import DoubleBlock from '../components/Page/Slices/DoubleBlock';
+import ContentBlock from '../components/Page/Slices/ContentBlock/index';
+import LogoBlock from '../components/Page/Slices/LogoBlock/index';
+import StatementBlock from '../components/Page/Slices/StatementBlock/index';
 
 class Page extends Component {
 
@@ -35,8 +26,6 @@ class Page extends Component {
         return <StandardVideoHero key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyDoubleBlock':
         return <DoubleBlock key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyDoubleBlockVideo':
-        return <DoubleBlockVideo key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodySimpleHero':
         return <SimpleHero key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyHighlightHero':
@@ -68,14 +57,7 @@ class Page extends Component {
   }
 }
 
-
-Page.propTypes = {
-  classes: PropTypes.object.isRequired,
-  width: PropTypes.string.isRequired,
-  data: PropTypes.object.isRequired,
-}
-
-export default compose(withStyles(styles), withWidth())(Page);
+export default Page;
 
 export const pageQuery = graphql`
   query PageQuery($path: String!) {
@@ -90,7 +72,6 @@ export const pageQuery = graphql`
           ...StandardHero
           ...StandardVideoHero
           ...DoubleBlock
-          ...DoubleBlockVideo
           ...SimpleHero
           ...HighlightHero
           ...DoubleBlock
