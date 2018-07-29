@@ -44,14 +44,14 @@ class Header extends Component {
             <div className={style.navBar}>
               <List className={style.navBarLeft}>
                 <ListItem className={style.listItem}>
-                  <Link to="/" className={cx({floatingCopy: this.state.floating, fixedCopy: !this.state.floating})}>PROLUXE</Link>
+                  <Link to="/" className={cx({logo: true, floatingCopy: this.state.floating, fixedCopy: !this.state.floating})}>PROLUXE</Link>
                 </ListItem>
               </List>
 
               <List className={style.navBarCenter}>
-                <ListItem className={cx({listItem: true, centerItem: true})}><ProductMenu className={cx({floatingCopy: this.state.floating, fixedCopy: !this.state.floating})} /></ListItem>
-                <ListItem className={cx({listItem: true, centerItem: true})}><IndustriesMenu className={cx({floatingCopy: this.state.floating, fixedCopy: !this.state.floating})} /></ListItem>
-                <ListItem className={cx({listItem: true, centerItem: true})}><SupportMenu className={cx({floatingCopy: this.state.floating, fixedCopy: !this.state.floating})} /></ListItem>
+                <ListItem className={cx({listItem: true, centerItem: true})}><ProductMenu floating={this.state.floating} /></ListItem>
+                <ListItem className={cx({listItem: true, centerItem: true})}><IndustriesMenu floating={this.state.floating} /></ListItem>
+                <ListItem className={cx({listItem: true, centerItem: true})}><SupportMenu floating={this.state.floating} /></ListItem>
                 <ListItem className={cx({listItem: true, centerItem: true})}><Link to="/" className={cx({floatingCopy: this.state.floating, fixedCopy: !this.state.floating})}>How to buy</Link></ListItem>
               </List>
 
@@ -60,9 +60,10 @@ class Header extends Component {
                   <MenuIcon className={cx({menuIcon: true, floatingCopy: this.state.floating, fixedCopy: !this.state.floating})} onClick={this.toggleDrawer} />
                 </ListItem>
 
-                <Drawer anchor='right' open={this.state.drawer} onClose={this.toggleDrawer} classes={{paperAnchorRight: style.sideMenu}}>
-                  <div tabIndex={0} role="button" onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}></div>
-                  <HamburgerMenu />
+                <Drawer anchor='right' open={this.state.drawer} onClose={this.toggleDrawer} >
+                  <div tabIndex={0} role="button" onClick={this.toggleDrawer} onKeyDown={this.toggleDrawer}>
+                    <HamburgerMenu />
+                  </div>
                 </Drawer>
               </List>
             </div>

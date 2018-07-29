@@ -12,8 +12,8 @@ export const query = graphql`
       meta_robots_advanced
       display_in_search_results
       body {
-        slice_type
         ... on PrismicPageConfigBodyOpenGraph {
+          slice_type
           primary {
             open_graph_title
             open_graph_description

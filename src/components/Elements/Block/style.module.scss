@@ -3,12 +3,12 @@
 .containerItem {
   display: table-cell !important;
   width: 50% !important;
-  padding: $padding !important;
+  padding: $largePadding !important;
   text-align: left !important;
   vertical-align: middle;
   background-color: #fcfcfc;
-  font-family: lato;
-  font-weight: 300;
+  font-family: $fontFamily !important;
+  font-weight: 300 !important;
   font-style: normal;
   overflow: hidden;
 }

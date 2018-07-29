@@ -4,8 +4,10 @@ import SubNav, { SubNavGroup, SubNavItem } from 'components/Elements/SubNav';
 class ContactMenu extends Component {
 
   render() {
+    const { floating } = this.props;
+
     return (
-      <SubNav text="Contact Us" menuWidth={280} offsetY={85} padding={40}>
+      <SubNav text="Contact Us" floating={floating} menuWidth={280} offsetY={85} padding={40}>
         <SubNavGroup>
           <SubNavItem>Restaurants</SubNavItem>
           <SubNavItem>Healthcare</SubNavItem>
