@@ -1,8 +1,12 @@
-@import '../../Theme/Globals';
+@import 'components/Theme/Globals';
 
 .root {
   position: relative;
   padding: $padding;
+}
+
+.navLink {
+  color:$white;
 }
 
 .subNavWrapper {
@@ -11,7 +15,24 @@
   visibility: hidden;
   transform: translateY(0);
   will-change: transform;
-  transition: opacity 0.2s linear, transform 0.2s linear, visibility 0.8s linear;
+}
+
+.floatingCopy {
+  color: $black !important;
+  &:hover {
+    color: $black;
+  }
+}
+
+.fixedCopy {
+  color: $white !important;
+  &:hover {
+    color: $white !important
+  }
+}
+
+.subNavInner {
+  padding:0 !important;
 }
 
 .subNavOpen, .subNavLink {
@@ -19,6 +40,7 @@
 }
 
 .animateOpen {
+  transition: opacity 0.2s linear, transform 0.2s linear, visibility 0.8s linear;
   transform: translateY(-34px);
   opacity: 1;
   visibility: visible;

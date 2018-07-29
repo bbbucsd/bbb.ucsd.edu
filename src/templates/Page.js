@@ -1,29 +1,35 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 
-import Meta from '../components/Meta/index';
-import '../components/Page/Meta';
+// Meta
+import MetaFrontMatter from 'components/Meta/FrontMatter'
+import MetaOpenGraph from 'components/Meta/OpenGraph'
 
-import Header from '../components/Page/Header';
-import Footer from '../components/Page/Footer';
-import PageConfig from '../config/Page';
-
-import StandardHero from '../components/Page/Slices/StandardHero/index';
-import StandardVideoHero from '../components/Page/Slices/StandardVideoHero';
-import SimpleHero from '../components/Page/Slices/SimpleHero/index';
-import HighlightHero from '../components/Page/Slices/HighlightHero/index';
-import DoubleBlock from '../components/Page/Slices/DoubleBlock';
-import ContentBlock from '../components/Page/Slices/ContentBlock/index';
-import LogoBlock from '../components/Page/Slices/LogoBlock/index';
-import StatementBlock from '../components/Page/Slices/StatementBlock/index';
+// Elements
+import Header from 'components/Page/Header';
+import Footer from 'components/Page/Footer';
+import StandardHero from 'components/Page/Slices/StandardHero/index';
+import SimpleHero from 'components/Page/Slices/SimpleHero/index';
+import HighlightHero from 'components/Page/Slices/HighlightHero/index';
+import DoubleBlock from 'components/Page/Slices/DoubleBlock';
+import ContentBlock from 'components/Page/Slices/ContentBlock/index';
+import LogoBlock from 'components/Page/Slices/LogoBlock/index';
+import StatementBlock from 'components/Page/Slices/StatementBlock/index';
 
 class Page extends Component {
+
+  renderMetaSlice(metaSlice, index) {
+    console.log(metaSlice.__typename)
+    switch (metaSlice.__typename) {
+      case 'PrismicPageBody2OpenGraph':
+        console.log('test')
+        return <MetaOpenGraph key={`slice_${index}`} slice={metaSlice} />
+    };
+  }
 
   renderSlice(slice, index) {
     switch (slice.__typename) {
       case 'PrismicPageBodyStandardhero':
         return <StandardHero key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyStandardVideoHero':
-        return <StandardVideoHero key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyDoubleBlock':
         return <DoubleBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodySimpleHero':
@@ -46,9 +52,15 @@ class Page extends Component {
     const page = this.props.data.prismicPage.data;
     const { body, body2 } = page
     const pageConfig = this.props.data.prismicPageConfig.data;
+
+    //return (
+      //<div>
+        //<Meta defaultMeta={pageConfig} meta={body2} />
     return (
       <div>
-        <Meta defaultMeta={pageConfig} meta={body2} />
+        <MetaFrontMatter data={page} />
+        {(body2||[]).map((slice, i) => this.renderMetaSlice(slice, i) )}
+
         <Header />
         {(body||[]).map((slice, i) => this.renderSlice(slice, i) )}
         <Footer />
@@ -68,9 +80,9 @@ export const pageQuery = graphql`
       ...Meta
       data {
         path
+        ...MetaFrontMatterFieldsFields
         body {
           ...StandardHero
-          ...StandardVideoHero
           ...DoubleBlock
           ...SimpleHero
           ...HighlightHero
@@ -78,6 +90,9 @@ export const pageQuery = graphql`
           ...LogoBlock
           ...ContentBlock
           ...StatementBlock
+        }
+        body2 {
+          ...MetaOpenGraphFields
         }
       }
     }

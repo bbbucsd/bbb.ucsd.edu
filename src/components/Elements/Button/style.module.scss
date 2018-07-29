@@ -1,10 +1,18 @@
-@import '../../Theme/Globals';
+@import 'components/Theme/Globals';
+
+.buttonLink {
+  display: inline-block;
+}
 
 .button {
+  text-align: center !important;
   color: white !important;
   background-color: $brandInfo !important;
-  border-radius: 0 !important;
-  text-transform: none;
+  border-radius: 2px !important;
+  text-transform: none !important;
+  min-height: auto !important;
+  min-width: auto !important;
+  font-family: $fontFamily;
   &:hover {
     background-color: $brandInfo !important;
   }
@@ -16,24 +24,34 @@
 
 .arrow {
   position: relative;
-  top: 1px;
-  left: 5px;
-  width: 32px;
-  height: 32px;
+  top: 0.5px;
+  right: -4px;
+  height: 28px;
+  margin:0 !important;
 }
 
 .animateArrow {
   animation: bounce 2s infinite;
 }
 
-.buttonsmall {
-  padding: 10px;
+.buttonSmall {
+  padding: 6px 10px;
   font-size: 12px;
 }
 
-.arrowsmall {
-  width: 24px;
-  height: 24px;
-  top: 8px !important;
-  left: 3px !important;
+.arrowSmall {
+  top: 0px;
+  height: 20px;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(7px);
+  }
+  60% {
+    transform: translateX(9px);
+  }
 }

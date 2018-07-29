@@ -15,6 +15,7 @@ module.exports = {
     'gatsby-plugin-sass',
     'gatsby-transformer-remark',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-react-next',
     {
       resolve: 'gatsby-plugin-resolve-src',
       options: {

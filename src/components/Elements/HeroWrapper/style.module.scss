@@ -12,6 +12,13 @@
   position: relative;
   overflow: hidden;
   display: flex;
+  width: 100%;
+  display: flex;
+  z-index: 1;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .reducedHeight {

@@ -17,7 +17,7 @@ class DoubleBlock extends Component {
     return (
       <BlockContainer direction={data.direction}>
         <Block backgroundColor={data.background_color}>
-          <h2 className={style.subheadline}
+          <h2 className={style.headline}
               style={{ color: (data.headline_color || 'inherited')} }>{data.headline.text}</h2>
 
           <h3 className={cx({subheadline: true, secondaryHeadline: true})}
