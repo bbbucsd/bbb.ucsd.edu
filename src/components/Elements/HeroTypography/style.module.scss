@@ -1,29 +1,31 @@
 @import '../../Theme/Globals';
 
-.h1 {
-  color: #fff;
-  font-family: $fontFamilyTitle;
-  font-size: 60px;
-  margin:0;
-  font-weight: 200;
-  font-style: normal;
-  letter-spacing: -3px;
-}
+.hero-typography {
+  h1 {
+    color: #fff;
+    font-family: $fontFamilyTitle;
+    font-size: 60px;
+    margin:0;
+    font-weight: 200;
+    font-style: normal;
+    letter-spacing: -3px;
+  }
 
-.h2 {
-  color: #ccc;
-  font-family: $fontFamilyTitle;
-  font-size: 25px;
-  margin:10px 0 0 0;
-  font-weight: 200;
-  font-style: normal;
-}
+  h2 {
+    color: #ccc;
+    font-family: $fontFamilyTitle;
+    font-size: 25px;
+    margin:10px 0 0 0;
+    font-weight: 200;
+    font-style: normal;
+  }
 
-.h3 {
-  color: #ccc;
-  font-family: $fontFamilyTitle;
-  font-size: 18px;
-  margin:10px 0 0 0;
-  font-weight: 200;
-  font-style: normal;
+  h3 {
+    color: #ccc;
+    font-family: $fontFamilyTitle;
+    font-size: 18px;
+    margin:10px 0 0 0;
+    font-weight: 200;
+    font-style: normal;
+  }
 }
