@@ -19,7 +19,7 @@ class BlockContainer extends Component {
   }
 
   render() {
-    const { children, reducedHeight } = this.props;
+    const { reducedHeight } = this.props;
 
     return (
       <div className={cx({ root: true, reducedHeight: reducedHeight }) }>

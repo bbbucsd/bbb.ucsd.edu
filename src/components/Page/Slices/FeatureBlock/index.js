@@ -21,6 +21,9 @@ class FeatureBlock extends Component {
             <h2 className={style.headline}>{item.headline.text}</h2>
             <h3 className={style.subheadline}>{item.subheadline.text}</h3>
 
+            {
+
+            }
             <div className={style.ctaButton}>
               <Button small={true} to={item.cta_link && item.cta_link.url} text={item.cta_label}></Button>
             </div>
