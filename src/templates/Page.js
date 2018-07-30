@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-
-// Elements
 import Meta from 'components/Page/Meta';
 import Header from 'components/Page/Header';
 import Footer from 'components/Page/Footer';
-import StandardHero from 'components/Page/Slices/StandardHero/index';
-import SimpleHero from 'components/Page/Slices/SimpleHero/index';
-import HighlightHero from 'components/Page/Slices/HighlightHero/index';
+import StandardHero from 'components/Page/Slices/StandardHero';
+import SimpleHero from 'components/Page/Slices/SimpleHero';
+import HighlightHero from 'components/Page/Slices/HighlightHero';
 import DoubleBlock from 'components/Page/Slices/DoubleBlock';
-import ContentBlock from 'components/Page/Slices/ContentBlock/index';
-import LogoBlock from 'components/Page/Slices/LogoBlock/index';
-import StatementBlock from 'components/Page/Slices/StatementBlock/index';
+import ContentBlock from 'components/Page/Slices/ContentBlock';
+import LogoBlock from 'components/Page/Slices/LogoBlock';
+import StatementBlock from 'components/Page/Slices/StatementBlock';
+import FeatureBlock from 'components/Page/Slices/FeatureBlock';
 
 class Page extends Component {
 
@@ -32,6 +31,8 @@ class Page extends Component {
         return <ContentBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyStatementBlock':
         return <StatementBlock key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyFeatureBlock':
+        return <FeatureBlock key={`slice_${index}`} slice={slice} />
     };
   }
 
@@ -67,6 +68,7 @@ export const pageQuery = graphql`
           ...LogoBlock
           ...ContentBlock
           ...StatementBlock
+          ...FeatureBlock
         }
       }
     }
