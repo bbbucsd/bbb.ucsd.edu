@@ -1,35 +1,25 @@
 import React, { Component } from 'react';
+import Config from '../../../../config';
 import FrontMatter from './FrontMatter'
 import OpenGraph from './OpenGraph';
-
 // TODO: Implement dummy data on prismic
 // import Twitter from './Twitter';
+//import SchemaPerson from './SchemaPerson';
 
-// TODO: Implement dummy data on prismic
-// import SchemaPerson from './SchemaPerson';
+
 
 class Meta extends Component {
 
-  renderSlice(slice, index) {
-    console.log(slice)
-    switch (slice.__typename) {
-      case 'PrismicPageBody2OpenGraph':
-        return <OpenGraph key={`slice_${index}`} data={slice} />
-      //case 'PrismicPageBody2SchemaPerson':
-        //return <SchemaPerson key={`slice_${index}`} data={slice} />
-    }
-  }
-
   render() {
-    const page = this.props.data;
-    const { body2 } = page
-    console.log(page)
-    console.log(body2)
+    const page = this.props.page;
+    const tags = page.tags;
+    const slices = page.data.body2;
+        //<SchemaPerson key={`slice_${index}`} data={slice} />
+        //<FrontMatter data={page} />
 
     return (
       <div>
-        <FrontMatter data={page} />
-        {( body2 || [] ).map((slice, i) => this.renderSlice(slice, i) )}
+        <OpenGraph tags={tags} slices={slices} />
       </div>
     )
   }

@@ -10,8 +10,10 @@ import Config from '../../config.js';
 
 const theme = createMuiTheme({})
 
-const Layout = ({ children, data }) => {
-  Config.set(data.site.siteMetadata);
+const Layout = ({ location, children, data }) => {
+  Config.set(Object.assign({}, {
+    currentUrl: location
+  }, data.site.siteMetadata));
   return (
     <MuiThemeProvider theme={theme}>
       <div>
@@ -38,7 +40,20 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
+        siteName
         hostname
+        locale
+        metaDescription
+        openGraph {
+          image
+          imageDescription
+          imageHeight
+          imageWidth
+        }
+        twitter {
+          image
+        }
       }
     }
   }
