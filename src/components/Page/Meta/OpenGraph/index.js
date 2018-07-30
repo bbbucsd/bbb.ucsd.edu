@@ -6,11 +6,10 @@ import _ from 'lodash';
 class OpenGraph extends Component {
 
   getTypeFromTags(tags) {
-    let type;
+    let type = "website";
+
     if(_.some(tags, (tag) => tag === "Post")) {
       type = "article";
-    } else {
-      type = "website";
     }
 
     if(_.some(tags, (tag) => tag === "Main")) {
