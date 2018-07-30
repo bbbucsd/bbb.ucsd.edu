@@ -20,9 +20,11 @@ class HighlightHero extends Component {
           <HeroTypography h3>{data.superheadline.text}</HeroTypography>
           <HeroTypography h1>{data.headline.text}</HeroTypography>
 
-          <div className={style.cta}>
-            <Button to={data.cta_link.url} text={data.cta_label}></Button>
-          </div>
+          {data.cta_link && data.cta_label ? (
+            <div className={style.cta}>
+              <Button to={data.cta_link.url} text={data.cta_label}></Button>
+            </div>
+          ) : null }
 
           <div className={style.highlightGroup}>
             <Highlight largeText="#1" smallText="Best Selling Press" color="white" />
