@@ -3,17 +3,11 @@ import Button from 'components/Elements/Button/index';
 import Testimonial from 'components/Elements/Testimonial';
 
 // Style
-import style from './style.module.scss'
+import style from './style.module.scss';
 import classNames from 'classnames/bind';
 let cx = classNames.bind(style);
 
 class TestimonialBlock extends Component {
-
-  headlineColor() {
-    if (this.props.slice.primary.headline_color !== '') {
-      return { color: this.props.slice.primary.headline_color };
-    }
-  }
 
   backgroundColor() {
     if (this.props.slice.primary.background_color !== '') {
@@ -27,7 +21,7 @@ class TestimonialBlock extends Component {
     const testimonial = data.testimonial.document[0].data;
 
     return (
-      <div className={`${style.statementCTA} wrapper`} style={ this.backgroundColor() }>
+      <div className={style.blockWrapper} style={ this.backgroundColor() }>
         <Testimonial data={testimonial} />
       </div>
     );

@@ -1,25 +1,15 @@
 @import 'components/Theme/Globals';
 
-.statementCTA {
+.blockWrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 20px;
   background-color: $white;
   height: 400px;
-  width: 100%;
+  width: 70%;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: left;
 }
-
-.headline {
-  font-style: normal;
-  font-family: $fontFamily;
-  font-size: 2em;
-  font-weight: 300;
-  margin-bottom: 30;
-  color: $black;
-}
-
-.statementButton {
-  font-size: 16px;
-}
-
