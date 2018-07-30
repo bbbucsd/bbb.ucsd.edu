@@ -1,3 +1,5 @@
+import Config from '../../config';
+
 export default class Validator {
 
   static IMAGE_REGEX = /^.*\.(?:gif|jpg|jpeg|tiff|png|webp)$/i;
@@ -25,7 +27,7 @@ export default class Validator {
   }
 
   static isCurrentSite(url) {
-    return url.match(process.env.HOSTNAME) || !url.match('http');
+    return url.match(Config.get("hostname")) || !url.match('http');
   }
 
   static isExternalSite(url) {

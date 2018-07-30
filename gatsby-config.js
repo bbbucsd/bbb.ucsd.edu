@@ -1,14 +1,18 @@
+var _ = require('lodash');
 if (process.env.NODE_ENV != 'production') {
   require('dotenv').config({
     path: `.env`,
   })
 };
 
+var config = _.cloneDeep({
+  hostname: process.env.HOSTNAME,
+  title: process.env.SITE_NAME,
+  siteUrl: process.env.SITE_URL,
+});
+
 module.exports = {
-  siteMetadata: {
-    title: process.env.SITE_NAME,
-    siteUrl: process.env.SITE_URL,
-  },
+  siteMetadata: config,
 
   plugins: [
     'gatsby-plugin-react-helmet',
