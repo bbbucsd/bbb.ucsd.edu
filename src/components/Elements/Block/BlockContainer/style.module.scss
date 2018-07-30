@@ -1,7 +1,7 @@
 @import 'components/Theme/Globals';
 
 .root {
-  min-height: 600px;
+  height: 600px;
 }
 
 .container {
@@ -12,5 +12,5 @@
 }
 
 .reducedHeight {
-  min-height: 300px !important;
+  height: 300px !important;
 }
