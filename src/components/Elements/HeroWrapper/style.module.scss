@@ -15,10 +15,22 @@
   width: 100%;
   display: flex;
   z-index: 1;
-  align-items: center;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+}
+
+.centerAlign {
+  align-items: center;
+}
+
+.leftAlign {
+  text-indent: 150px;
+  align-items: flex-start;
+}
+
+.rightAlign {
+  align-items: flex-end;
 }
 
 .reducedHeight {
