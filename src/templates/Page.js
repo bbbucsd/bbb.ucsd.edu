@@ -6,11 +6,10 @@ import StandardHero from 'components/Page/Slices/StandardHero';
 import SimpleHero from 'components/Page/Slices/SimpleHero';
 import HighlightHero from 'components/Page/Slices/HighlightHero';
 import DoubleBlock from 'components/Page/Slices/DoubleBlock';
-import ContentBlock from 'components/Page/Slices/ContentBlock/index';
-import LogoBlock from 'components/Page/Slices/LogoBlock/index';
-import StatementBlock from 'components/Page/Slices/StatementBlock/index';
-import LogoBlock from 'components/Page/Slices/LogoBlock/index';
-import TestimonialBlock from 'components/Page/Slices/TestimonialBlock/index';
+import ContentBlock from 'components/Page/Slices/ContentBlock';
+import StatementBlock from 'components/Page/Slices/StatementBlock';
+import DoubleTestimonialBlock from 'components/Page/Slices/DoubleTestimonialBlock';
+import TestimonialBlock from 'components/Page/Slices/TestimonialBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
 
 class Page extends Component {
@@ -75,10 +74,7 @@ export const pageQuery = graphql`
           ...StatementBlock
           ...TestimonialBlock
           ...DoubleTestimonialBlock
-<<<<<<< HEAD
-=======
           ...FeatureBlock
->>>>>>> testimonials
         }
       }
     }
