@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import MetaHelper from 'components/Meta/Helper';
 
 class OpenGraph extends Component {
 
@@ -22,3 +21,13 @@ class OpenGraph extends Component {
 
 
 export default OpenGraph;
+
+export const query = graphql`
+  fragment OpenGraph on PrismicPageBody2OpenGraph {
+    slice_type
+    primary {
+      open_graph_title
+      open_graph_description
+    }
+  }
+`;
