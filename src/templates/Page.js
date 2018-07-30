@@ -1,19 +1,7 @@
 import React, { Component } from 'react';
 
-<<<<<<< HEAD
-import Meta from '../components/Meta/index';
-import '../components/Page/Meta';
-import PageConfig from '../config/Page';
-
-import Header from '../components/Page/Header';
-import Footer from '../components/Page/Footer';
-=======
-// Meta
-import MetaFrontMatter from 'components/Meta/FrontMatter'
-import MetaOpenGraph from 'components/Meta/OpenGraph'
->>>>>>> origin
-
 // Elements
+import Meta from 'components/Page/Meta';
 import Header from 'components/Page/Header';
 import Footer from 'components/Page/Footer';
 import StandardHero from 'components/Page/Slices/StandardHero/index';
@@ -25,15 +13,6 @@ import LogoBlock from 'components/Page/Slices/LogoBlock/index';
 import StatementBlock from 'components/Page/Slices/StatementBlock/index';
 
 class Page extends Component {
-
-  renderMetaSlice(metaSlice, index) {
-    console.log(metaSlice.__typename)
-    switch (metaSlice.__typename) {
-      case 'PrismicPageBody2OpenGraph':
-        console.log('test')
-        return <MetaOpenGraph key={`slice_${index}`} slice={metaSlice} />
-    };
-  }
 
   renderSlice(slice, index) {
     switch (slice.__typename) {
@@ -57,21 +36,14 @@ class Page extends Component {
   }
 
   render() {
-    const { classes } = this.props;
     const page = this.props.data.prismicPage.data;
-    const { body, body2 } = page
-    const pageConfig = this.props.data.prismicPageConfig.data;
+    const { body } = page
 
-    //return (
-      //<div>
-        //<Meta defaultMeta={pageConfig} meta={body2} />
     return (
       <div>
-        <MetaFrontMatter data={page} />
-        {(body2||[]).map((slice, i) => this.renderMetaSlice(slice, i) )}
-
+        <Meta data={page} />
         <Header />
-        {(body||[]).map((slice, i) => this.renderSlice(slice, i) )}
+        {( body || [] ).map((slice, i) => this.renderSlice(slice, i) )}
         <Footer />
       </div>
     );
@@ -82,14 +54,10 @@ export default Page;
 
 export const pageQuery = graphql`
   query PageQuery($path: String!) {
-    prismicPageConfig(uid: { eq: "page_config" }) {
-      ...PageConfig
-    }
     prismicPage(data: { path: { eq: $path }}) {
       ...Meta
       data {
         path
-        ...MetaFrontMatterFieldsFields
         body {
           ...StandardHero
           ...DoubleBlock
@@ -99,9 +67,6 @@ export const pageQuery = graphql`
           ...LogoBlock
           ...ContentBlock
           ...StatementBlock
-        }
-        body2 {
-          ...MetaOpenGraphFields
         }
       }
     }
