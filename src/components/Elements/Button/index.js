@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Link from 'gatsby-link'
+import Link from 'components/Elements/Link';
 import Button from '@material-ui/core/Button';
 import { KeyboardArrowRight as ArrowRight } from '@material-ui/icons';
 
 // Style
-import style from './style.module.scss'
+import style from './style.module.scss';
 import classNames from 'classnames/bind';
 let cx = classNames.bind(style);
 
@@ -13,12 +13,12 @@ class ThemeButton extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { animateArrow: false }
-  };
+    this.state = { animateArrow: false };
+  }
 
   toggleArrow = () => {
-    this.setState({animateArrow: !this.state.animateArrow})
-  };
+    this.setState({animateArrow: !this.state.animateArrow});
+  }
 
   render() {
     const {to, text, small, customStyle} = this.props;

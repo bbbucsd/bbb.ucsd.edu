@@ -24,4 +24,16 @@ export default class Validator {
     return !!str.match(this.EMAIL_REGEX);
   }
 
+  static isCurrentSite(url) {
+    return url.match(process.env.HOSTNAME) || !url.match('http');
+  }
+
+  static isExternalSite(url) {
+    return !this.isCurrentSite(url);
+  }
+
+  static isHashTag(url) {
+    return !url.match('http') && url.match(/#/);
+  }
+
 }
