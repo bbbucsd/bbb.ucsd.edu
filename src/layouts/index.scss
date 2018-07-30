@@ -1,31 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald');
 @import 'components/Theme/Globals';
+@import 'typography';
 
 * {
   box-sizing: border-box;
 }
 
-@fontface {
-  font-family: 'Amatic SC', cursive;
-  src: url('https://fonts.googleapis.com/css?family=Amatic+SC')
-}
 
 body {
   font-family: $fontFamily;
   min-height:100%;
-  /*background-color:#fafafa;*/
-  color:#252525;
-  font-size:18px;
   overflow-x: hidden;
   width: 100%;
   font-smoothing: antialiased;
   letter-spacing: .02em;
-  /*padding-top: 74px;*/
   margin:0;
-}
-
-body a {
-  color:#447bb9;
-  text-decoration: none;
 }
 
 body img {
