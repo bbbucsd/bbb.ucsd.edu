@@ -11,6 +11,8 @@ import DoubleBlock from 'components/Page/Slices/DoubleBlock';
 import ContentBlock from 'components/Page/Slices/ContentBlock/index';
 import LogoBlock from 'components/Page/Slices/LogoBlock/index';
 import StatementBlock from 'components/Page/Slices/StatementBlock/index';
+import LogoBlock from 'components/Page/Slices/LogoBlock/index';
+import TestimonialBlock from 'components/Page/Slices/TestimonialBlock/index';
 
 class Page extends Component {
 
@@ -26,12 +28,16 @@ class Page extends Component {
         return <HighlightHero key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyDoubleBlock':
         return <DoubleBlock key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyDoubleTestimonialBlock':
+        return <DoubleTestimonialBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyLogoBlock':
         return <LogoBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyContentBlock':
         return <ContentBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyStatementBlock':
         return <StatementBlock key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyTestimonialBlock':
+        return <TestimonialBlock key={`slice_${index}`} slice={slice} />
     };
   }
 
@@ -63,10 +69,11 @@ export const pageQuery = graphql`
           ...DoubleBlock
           ...SimpleHero
           ...HighlightHero
-          ...DoubleBlock
           ...LogoBlock
           ...ContentBlock
           ...StatementBlock
+          ...TestimonialBlock
+          ...DoubleTestimonialBlock
         }
       }
     }
