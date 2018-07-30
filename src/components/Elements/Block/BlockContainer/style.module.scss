@@ -1,7 +1,7 @@
 @import 'components/Theme/Globals';
 
 .root {
-  height: 600px;
+  min-height: 600px;
 }
 
 .container {
@@ -9,4 +9,8 @@
   width: 100%;
   height: 100%;
   padding: 0 !important;
+}
+
+.reducedHeight {
+  min-height: 300px !important;
 }
