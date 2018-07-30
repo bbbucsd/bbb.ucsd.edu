@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import Link from 'gatsby-link'
-import Button from '@material-ui/core/Button';
-import { KeyboardArrowRight as ArrowRight } from '@material-ui/icons';
 
 // Style
 import style from './style.module.scss';
