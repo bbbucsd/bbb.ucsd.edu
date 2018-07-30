@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import './index.css'
+import './index.scss'
 
 // Styles
 import '../components/Theme/Globals';

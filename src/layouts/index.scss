@@ -1,3 +1,5 @@
+@import 'components/Theme/Globals';
+
 * {
   box-sizing: border-box;
 }
@@ -8,7 +10,7 @@
 }
 
 body {
-  font-family:'Lato', 'sans-serif';
+  font-family: $fontFamily;
   min-height:100%;
   /*background-color:#fafafa;*/
   color:#252525;
@@ -50,15 +52,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .white .MuiInput-underline-14:before {
   background-color:#a9a9a9 !important;
-  color:#fff !important;
+  color: $white !important;
 }
 
 .white .MuiInput-inkbar-8:after {
-  background-color:#fff !important;
+  background-color: $white !important;
 }
 
 .white [class^="MuiInput-input-"] {
-  color:#fff;
+  color: $white;
 }
 
 .full-width {
@@ -70,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header a:hover {
-  color: #000 !important;
+  color: $black !important;
 }
 
 #logo {
@@ -98,12 +100,10 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   #logo {
-    /*background-image: url('/images/logo-black.png');*/
     height:60px;
   }
 
   #header ul a {
-    /*color:black !important;*/
     position:relative;
     top:15px;
   }
@@ -112,8 +112,5 @@ h1, h2, h3, h4, h5, h6 {
     font-size:32px;
     line-height:32px;
   }
-
-  /*home*/
-
 }
 

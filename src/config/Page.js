@@ -7,7 +7,6 @@ export const query = graphql`
   fragment PageConfig on PrismicPageConfig {
     data {
       site_title
-      meta_keywords
       meta_description
       meta_robots_advanced
       display_in_search_results
