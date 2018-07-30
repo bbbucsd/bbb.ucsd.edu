@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 import List from '@material-ui/core/List';
 
 // Style
-import style from './style.module.scss'
+import style from './style.module.scss';
+import classNames from 'classnames/bind';
+let cx = classNames.bind(style);
 
 class BlockContainer extends Component {
   constructor(props) {
@@ -17,10 +19,10 @@ class BlockContainer extends Component {
   }
 
   render() {
-    const { children } = this.props
+    const { children, reducedHeight } = this.props;
 
     return (
-      <div className={ style.root }>
+      <div className={cx({ root: true, reducedHeight: reducedHeight }) }>
         <List className={ style.container }>
           { this.blocks }
         </List>
