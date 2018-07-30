@@ -27,12 +27,25 @@ class HeroWrapper extends Component {
     // change inline style
     this.isImage ? this.inlineStyle.backgroundImage = `url('${this.props.src}')` : false
     this.hasBackgroundColor ? this.inlineStyle.backgroundColor = this.props.backgroundColor : false
+
+    // alignment
+    if (props.alignment) {
+      this.centerAlign = !!props.alignment.match(/Center/i)
+      this.leftAlign = !!props.alignment.match(/Left/i)
+      this.rightAlign = !!props.alignment.match(/Right/i)
+    } else {
+      this.centerAlign = true
+    }
   }
   render() {
     const { children, reducedHeight, src } = this.props;
 
     return (
-      <div style={ this.inlineStyle } className={cx({ root: true, reducedHeight: reducedHeight }) }>
+      <div style={ this.inlineStyle } className={cx({ root: true,
+                                                      reducedHeight: reducedHeight,
+                                                      centerAlign: this.centerAlign,
+                                                      leftAlign: this.leftAlign,
+                                                      rightAlign: this.rightAlign }) }>
         { this.isVideo && <Video src={src} /> }
         {children}
       </div>

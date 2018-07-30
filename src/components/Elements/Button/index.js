@@ -29,7 +29,7 @@ class ThemeButton extends Component {
             onMouseOut={this.toggleArrow}
             className={cx({ buttonLink:true  })}
             style={customStyle}>
-        <Button aria-label={text} className={cx({ button:true, buttonSmall: small })}>
+        <Button aria-label={text} className={cx({ button: true, buttonSmall: small })}>
           {text}
           <ArrowRight className={cx({arrow: true, arrowSmall: small, extendedIcon: true, animateArrow: this.state.animateArrow})} />
         </Button>

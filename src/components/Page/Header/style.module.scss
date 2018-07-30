@@ -42,7 +42,7 @@
 .navBar {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   height: 75px;
 }
@@ -53,6 +53,7 @@
   justify-content: flex-start;
   flex: 0 0 135px;
   margin-right: auto;
+  margin-left:$largePadding;
 }
 
 .navBarCenter {
@@ -68,6 +69,7 @@
   justify-content: flex-end;
   flex: 0 0 135px;
   margin-left: auto;
+  margin-right:$largePadding;
 }
 
 .listItem {

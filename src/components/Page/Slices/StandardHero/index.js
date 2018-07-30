@@ -15,7 +15,7 @@ class StandardHero extends Component {
     const data = slice.primary;
 
     return (
-      <HeroWrapper src={data.hero_asset && data.hero_asset.url}>
+      <HeroWrapper alignment={data.headline_alignment} src={data.hero_asset && data.hero_asset.url}>
 
         <HeroTypography h1>{data.headline.text}</HeroTypography>
         <HeroTypography h2>{data.subheadline.text}</HeroTypography>
@@ -45,6 +45,7 @@ export const query = graphql`
       subheadline {
         text
       }
+      headline_alignment
       hero_asset {
         url
       }
