@@ -8,7 +8,7 @@ class HeroTypography extends Component {
     const { children, color, h1, h2, h3 } = this.props;
 
     return (
-      <div className="hero-typography">
+      <div className={style.heroTypography}>
         {React.createElement((h1 && "h1") || (h2 && "h2") || (h3 && "h3"), {
           style: { color: color }
         }, children)}
