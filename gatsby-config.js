@@ -15,6 +15,7 @@ var config = _.cloneDeep({
   metaDescription: "",
   image: "",
   openGraph: {
+    fbAppId: process.env.FB_APP_ID,
     image: "",
     imageDescription: "",
     imageHeight: "",

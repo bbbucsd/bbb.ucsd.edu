@@ -57,6 +57,7 @@ export const query = graphql`
         locale
         metaDescription
         openGraph {
+          fbAppId
           image
           imageDescription
           imageHeight
