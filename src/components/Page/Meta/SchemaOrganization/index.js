@@ -68,6 +68,21 @@ class SchemaOrganization extends Component {
     return jsonField;
   }
 
+  getContactPoints() {
+    const contacts = [];
+    (Config.get("schemaOrganization").contacts || []).forEach(contact => {
+      contacts.push({
+        "@type": "ContactPoint",
+        "telephone": contact.phone,
+        "contactType": contact.type,
+        "contactOption": "TollFree",
+        "areaServed": contact.areaServed
+      });
+    });
+
+    return contacts;
+  }
+
   getSameAs(slice) {
     let sameAs = [];
     if (slice && slice.items && slice.items.length) {
@@ -113,6 +128,7 @@ class SchemaOrganization extends Component {
           "postalCode": this.getField(slice, "zip")
         },
         "sameAs": this.getSameAs(slice),
+        "contactPoint": this.getContactPoints()
       };
       return (
         <Helmet>

@@ -9,7 +9,7 @@ class FrontMatter extends Component {
       title = Config.get('title');
     }
     return (
-      <meta property="og:title" content={title} />
+      <title key="title">{title}</title>
     );
   }
 
@@ -19,7 +19,7 @@ class FrontMatter extends Component {
     }
 
     return (
-      <meta property="og:description" content={metaDescription} />
+      <meta key="meta_description" property="meta_description" content={metaDescription} />
     );
   }
 
@@ -81,7 +81,6 @@ class FrontMatter extends Component {
     metaTags = _.compact(_.flatten(metaTags));
     return (
       <Helmet>
-        <title>{site_title}</title>
         {metaTags}
       </Helmet>
     )

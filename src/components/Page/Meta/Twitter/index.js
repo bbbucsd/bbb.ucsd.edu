@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import Config from 'config';
 import _ from 'lodash';
 
-class OpenGraph extends Component {
+class Twitter extends Component {
 
   getTypeFromTags(tags) {
     let type = "website";
@@ -21,7 +21,7 @@ class OpenGraph extends Component {
 
   setType(type) {
     return (
-      <meta property="twitter:type" content={type} />
+      <meta key="twitter_type" property="twitter:type" content={type} />
     );
   }
 
@@ -34,7 +34,7 @@ class OpenGraph extends Component {
       site = Config.get('twitter').site;
     }
     return (
-      <meta property="twitter:site" content={site} />
+      <meta key="twitter_site" property="twitter:site" content={site} />
     );
   }
 
@@ -46,7 +46,7 @@ class OpenGraph extends Component {
       creator = Config.get('twitter').creator;
     }
     return (
-      <meta property="twitter:creator" content={creator} />
+      <meta key="twitter_creator" property="twitter:creator" content={creator} />
     );
   }
 
@@ -56,7 +56,7 @@ class OpenGraph extends Component {
       title = slice.twitter_title
     }
     return (
-      <meta property="twitter:title" content={title} />
+      <meta key="twitter_title" property="twitter:title" content={title} />
     );
   }
 
@@ -68,7 +68,7 @@ class OpenGraph extends Component {
       metaDescription = Config.get('metaDescription');
     }
     return (
-      <meta property="twitter:description" content={metaDescription} />
+      <meta key="twitter_description" property="twitter:description" content={metaDescription} />
     );
   }
 
@@ -81,7 +81,7 @@ class OpenGraph extends Component {
     }
 
     return (
-      <meta property="twitter:url" content={url} />
+      <meta key="twitter_url" property="twitter:url" content={url} />
     );
   }
 
@@ -93,7 +93,7 @@ class OpenGraph extends Component {
       image = (Config.get("openGraph") && Config.get("openGraph").image) || Config.get('image');
     }
     return (
-      <meta property="twitter:image" content={image} />
+      <meta key="twitter_image" property="twitter:image" content={image} />
     );
   }
 
@@ -115,7 +115,7 @@ class OpenGraph extends Component {
     metaTags = _.compact(_.flatten(metaTags));
     return (
       <Helmet>
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta key="twitter_card" name="twitter:card" content="summary_large_image" />
         {metaTags}
       </Helmet>
     )
@@ -123,7 +123,7 @@ class OpenGraph extends Component {
 }
 
 
-export default OpenGraph;
+export default Twitter;
 
 export const query = graphql`
   fragment Twitter on PrismicPageBody2Twitter {
