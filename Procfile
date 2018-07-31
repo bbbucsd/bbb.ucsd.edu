@@ -1,1 +1,1 @@
-web: npm run develop
+web: gastby develop -p 80
