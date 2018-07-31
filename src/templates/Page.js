@@ -34,10 +34,6 @@ class Page extends Component {
           // response is the response object, response.results holds the documents
           var document = response.results[0].data
           if (document) {
-            console.log('--orig--')
-            console.log(this.props.data.prismicPage.data)
-            console.log('--new--')
-            console.log(document)
             this.setState({ doc: document });
           }
         });
