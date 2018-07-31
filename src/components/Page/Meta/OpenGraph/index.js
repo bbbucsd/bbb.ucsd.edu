@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import Config from '../../../../../config';
+import Config from 'config';
 import _ from 'lodash';
 
 class OpenGraph extends Component {
@@ -25,10 +25,21 @@ class OpenGraph extends Component {
     );
   }
 
+  setSiteName(slice) {
+    let siteName = Config.get('siteName');
+    if (slice && slice.open_graph_site_name) {
+      siteName = slice.open_graph_site_name
+    }
+    return (
+      <meta property="og:site_name" content={siteName} />
+    );
+  }
   setTitle(slice) {
-    let title = Config.get('title');
-    if (slice) {
+    let title;
+    if (slice && slice.open_graph_title) {
       title = slice.open_graph_title
+    } else {
+      title = Config.get('title');
     }
     return (
       <meta property="og:title" content={title} />
@@ -37,7 +48,7 @@ class OpenGraph extends Component {
 
   setDescription(slice) {
     let metaDescription = Config.get('metaDescription');
-    if (slice) {
+    if (slice && slice.open_graph_description) {
       metaDescription = slice.open_graph_description
     }
     return (
@@ -53,7 +64,7 @@ class OpenGraph extends Component {
   }
 
   setLocaleAlt(slice) {
-    if (slice) {
+    if (slice && slice.items && slice.items.length) {
       const localeTags = [];
       slice.items.forEach((item) => {
         if (item.open_graph_locale_alternate) {
@@ -137,6 +148,7 @@ class OpenGraph extends Component {
     if (slice) { slice = Object.assign({}, slice.primary, { items: (slice.items || []) }); }
 
     metaTags.push(this.setType(type));
+    metaTags.push(this.setSiteName(slice));
     metaTags.push(this.setTitle(slice));
     metaTags.push(this.setDescription(slice));
     metaTags.push(this.setLocale());

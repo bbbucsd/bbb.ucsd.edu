@@ -1,15 +1,88 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
+import Config from 'config';
 
 class FrontMatter extends Component {
 
-  render() {
-    const {site_title, meta_description} = this.props.data
+  setTitle(title) {
+    if (!title) {
+      title = Config.get('title');
+    }
+    return (
+      <meta property="og:title" content={title} />
+    );
+  }
 
+  setDescription(metaDescription) {
+    if (!metaDescription) {
+      metaDescription = Config.get('metaDescription');
+    }
+
+    return (
+      <meta property="og:description" content={metaDescription} />
+    );
+  }
+
+  setCanonical(canonicalUrl) {
+    if (!canonicalUrl) {
+      canonicalUrl = Config.get('currentUrl');
+    }
+
+    return (
+      <link key="canonical" rel="canonical" href={canonicalUrl} />
+    );
+  }
+
+  setRobots(data) {
+    const {
+      display_in_search_results,
+      follow_links,
+      meta_robots_advanced
+    } = data;
+    let content = [];
+    if (display_in_search_results === "Yes" || meta_robots_advanced === "No Index") {
+      content.push("noindex");
+    }
+    if (follow_links === "Yes") {
+      content.push("nofollow");
+    }
+
+    if (meta_robots_advanced === "No Archive") {
+      content.push("noarchive");
+    }
+
+    if (meta_robots_advanced === "No Image Index") {
+      content.push("noimageindex");
+    }
+
+    if (meta_robots_advanced === "No Snippet") {
+      content.push("nosnippet");
+    }
+
+    return (
+      <meta key="meta-robots" name="robots" content={content.join(",")} />
+    );
+  }
+
+  render() {
+    let metaTags = [];
+
+    const {
+      site_title,
+      meta_description,
+      canonical_url
+    } = this.props.data;
+
+    metaTags.push(this.setTitle(site_title));
+    metaTags.push(this.setDescription(meta_description));
+    metaTags.push(this.setCanonical(canonical_url && canonical_url.url));
+    metaTags.push(this.setRobots(this.props.data));
+
+    metaTags = _.compact(_.flatten(metaTags));
     return (
       <Helmet>
         <title>{site_title}</title>
-        <meta name="description" content={meta_description} />
+        {metaTags}
       </Helmet>
     )
   }
