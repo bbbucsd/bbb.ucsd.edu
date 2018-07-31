@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-
-// Elements
-import HeroWrapper from 'components/Elements/HeroWrapper'
-import HeroTypography from 'components/Elements/HeroTypography';
-import Highlight from 'components/Elements/Highlight';
-import Button from 'components/Elements/Button';
-
-// Style
+import Hero, { Headline, Cta } from 'components/Elements/Hero'
 import style from './style.module.scss'
 
 class HighlightHero extends Component {
@@ -15,14 +8,14 @@ class HighlightHero extends Component {
     const data = slice.primary;
 
     return (
-      <HeroWrapper src={data.hero_asset.url}>
+      <Hero src={data.hero_asset.url}>
         <div className={style.scopeVerbiage}>
-          <HeroTypography h3>{data.superheadline.text}</HeroTypography>
-          <HeroTypography h1>{data.headline.text}</HeroTypography>
+          <Headline h3>{data.superheadline.text}</Headline>
+          <Headline h1>{data.headline.text}</Headline>
 
           {data.cta_link && data.cta_label ? (
             <div className={style.cta}>
-              <Button to={data.cta_link.url} text={data.cta_label}></Button>
+              <Cta to={data.cta_link.url} text={data.cta_label}></Cta>
             </div>
           ) : null }
 
@@ -34,7 +27,7 @@ class HighlightHero extends Component {
             <Highlight largeText='18"' smallText="Pressed Product" color="white" />
           </div>
         </div>
-      </HeroWrapper>
+      </Hero>
     );
   }
 }

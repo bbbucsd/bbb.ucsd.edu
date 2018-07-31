@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald');
 @import 'components/Theme/Globals';
-@import 'typography';
 
 * {
   box-sizing: border-box;
@@ -17,12 +15,12 @@ body {
   margin:0;
 }
 
-body img {
-  max-width:100%;
+a {
+  text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: inherit;
+body img {
+  max-width:100%;
 }
 
 .wrapper {
@@ -58,18 +56,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .full-width > * {
   width:100%;
-}
-
-#header a:hover {
-  color: $black !important;
-}
-
-#logo {
-  display:inline-block;
-}
-
-#logo img {
-  max-height:48px;
 }
 
 

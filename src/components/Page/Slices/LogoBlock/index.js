@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-
-// Elements
+import Block, { Section, Headline, Subheadline, Cta } from 'components/Elements/Block';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Button from 'components/Elements/Button/index';
-
-// Style
 import style from './style.module.scss'
+
 
 class LogoBlock extends Component {
 
@@ -46,18 +43,21 @@ class LogoBlock extends Component {
     const logos = slice.items;
 
     return (
-      <div className={style.root}>
-        <h1 className={style.headline}>{data.headline.text}</h1>
-        <List className={ style.container }>
-          <ListItem className={ style.containerItem }>
-            <div className={ style.customers }>
-              {this.renderLogos(logos)}
-            </div>
-          </ListItem>
-        </List>
+      <Block className={style.root}>
+        <Section>
+          <Headline className={style.headline}>{data.headline.text}</Headline>
 
-        <Button to={data.cta_link && data.cta_link.url} text={data.cta_label} size="small" />
-      </div>
+          <List className={ style.container }>
+            <ListItem className={ style.containerItem }>
+              <div className={ style.customers }>
+                {this.renderLogos(logos)}
+              </div>
+            </ListItem>
+          </List>
+
+          <Cta to={data.cta_link} className={style.cta}>{data.cta_label}</Cta>
+        </Section>
+      </Block>
     )
   }
 }

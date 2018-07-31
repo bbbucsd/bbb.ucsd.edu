@@ -1,0 +1,10 @@
+@import 'components/Theme/Globals';
+
+.root {
+  h2 {
+    color:$white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: $h2FontSize / 1.2;
+  }
+}
