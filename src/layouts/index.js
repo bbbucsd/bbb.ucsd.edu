@@ -6,7 +6,7 @@ import './index.scss'
 
 // Styles
 import '../components/Theme/Globals';
-import Config from '../../config.js';
+import Config from '../config.js';
 
 const theme = createMuiTheme({})
 
@@ -53,6 +53,28 @@ export const query = graphql`
         }
         twitter {
           image
+          site
+          creator
+        }
+        schemaOrganization {
+          name
+          url
+          logo
+          street
+          city
+          state
+          zip
+          country
+          email
+          description
+          foundingDate
+          sameAs
+        }
+        schemaPerson {
+          name
+          url
+          image
+          sameAs
         }
       }
     }

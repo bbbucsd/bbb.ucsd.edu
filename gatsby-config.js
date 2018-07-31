@@ -5,6 +5,7 @@ if (process.env.NODE_ENV != 'production') {
   })
 };
 
+// Leave objects as defaults to disable meta data
 var config = _.cloneDeep({
   title: " – " + process.env.SITE_NAME,
   siteUrl: process.env.SITE_URL,
@@ -14,15 +15,35 @@ var config = _.cloneDeep({
   metaDescription: "",
   image: "",
   openGraph: {
-    image: "http://google.com1",
+    image: "",
     imageDescription: "",
     imageHeight: "",
-    imageWidth: "123",
+    imageWidth: "",
   },
   twitter: {
+    site: "", // organization twitter
+    creator: "", // content creator
     image: ""
   },
+  schemaOrganization: {
+    name: "",
+    url: "",
+    logo: "",
+    street: "",
+    city: "",
+    state: "",
+    zip: "",
+    country: "",
+    email: "",
+    description: "",
+    foundingDate: "",
+    sameAs: [ "" ]
+  },
   schemaPerson: {
+    name: "",
+    url: "",
+    image: "",
+    sameAs: [ "" ]
   }
 });
 
