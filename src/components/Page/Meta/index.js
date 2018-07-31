@@ -11,7 +11,6 @@ import OpenGraph from './OpenGraph';
 class Meta extends Component {
 
   renderSlice(slice, index) {
-    console.log(slice)
     switch (slice.__typename) {
       case 'PrismicPageBody2OpenGraph':
         return <OpenGraph key={`slice_${index}`} data={slice} />
@@ -23,8 +22,6 @@ class Meta extends Component {
   render() {
     const page = this.props.data;
     const { body2 } = page
-    console.log(page)
-    console.log(body2)
 
     return (
       <div>

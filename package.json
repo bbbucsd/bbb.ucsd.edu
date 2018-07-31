@@ -28,6 +28,7 @@
     "mixpanel-browser": "^2.22.4",
     "prismic-javascript": "^1.5.0",
     "prismic-reactjs": "^0.3.1",
+    "qs": "^6.5.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",

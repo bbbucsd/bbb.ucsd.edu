@@ -10,8 +10,8 @@ class StandardHero extends Component {
 
     return (
       <Hero alignment={data.headline_alignment} src={data.hero_asset && data.hero_asset.url}>
-        <Headline>{data.headline.text}</Headline>
-        <Subheadline>{data.subheadline.text}</Subheadline>
+        <Headline text={data.headline} />
+        <Subheadline text={data.subheadline} />
         <Cta to={data.cta_link}>{data.cta_label}</Cta>
       </Hero>
     );
@@ -24,6 +24,7 @@ export default StandardHero;
 // api name was set to "lower case hero"
 export const query = graphql`
   fragment StandardHero on PrismicPageBodyStandardhero {
+    slice_type
     primary {
       headline {
         text

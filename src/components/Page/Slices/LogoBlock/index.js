@@ -66,6 +66,7 @@ export default LogoBlock;
 
 export const query = graphql`
   fragment LogoBlock on PrismicPageBodyLogoBlock {
+    slice_type
     primary {
       headline {
         text

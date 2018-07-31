@@ -20,6 +20,7 @@ export default LogoBlockInline;
 
 //export const query = graphql`
   //fragment Index on ContentfulLayoutLogoBlockInline {
+    //slice_type
     //logos {
       //title
       //file {
