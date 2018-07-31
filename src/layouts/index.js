@@ -10,9 +10,20 @@ import Config from '../config.js';
 
 const theme = createMuiTheme({})
 
+function getCurrentUrl(siteUrl, location) {
+  let { pathname } = location;
+  let url = siteUrl
+
+  if (pathname !== "/") {
+    url = url + pathname;
+  }
+
+  return url;
+}
+
 const Layout = ({ location, children, data }) => {
   Config.set(Object.assign({}, {
-    currentUrl: location
+    currentUrl: getCurrentUrl(data.site.siteMetadata.siteUrl, location)
   }, data.site.siteMetadata));
   return (
     <MuiThemeProvider theme={theme}>
@@ -69,6 +80,11 @@ export const query = graphql`
           description
           foundingDate
           sameAs
+          contacts {
+            phone
+            type
+            areaServed
+          }
         }
         schemaPerson {
           name

@@ -60,8 +60,10 @@ export default Page;
 export const pageQuery = graphql`
   query PageQuery($path: String!) {
     prismicPage(data: { path: { eq: $path }}) {
-      ...Meta
       tags
+      first_publication_date
+      last_publication_date
+      ...Meta
       data {
         path
         body {

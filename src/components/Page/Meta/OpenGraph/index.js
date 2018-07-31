@@ -21,7 +21,7 @@ class OpenGraph extends Component {
 
   setType(type) {
     return (
-      <meta property="og:type" content={type} />
+      <meta key="og_type" property="og:type" content={type} />
     );
   }
 
@@ -31,9 +31,10 @@ class OpenGraph extends Component {
       siteName = slice.open_graph_site_name
     }
     return (
-      <meta property="og:site_name" content={siteName} />
+      <meta key="og_site_name" property="og:site_name" content={siteName} />
     );
   }
+
   setTitle(slice) {
     let title;
     if (slice && slice.open_graph_title) {
@@ -42,7 +43,7 @@ class OpenGraph extends Component {
       title = Config.get('title');
     }
     return (
-      <meta property="og:title" content={title} />
+      <meta key="og_title" property="og:title" content={title} />
     );
   }
 
@@ -52,28 +53,26 @@ class OpenGraph extends Component {
       metaDescription = slice.open_graph_description
     }
     return (
-      <meta property="og:description" content={metaDescription} />
+      <meta key="og_description" property="og:description" content={metaDescription} />
     );
   }
 
   setLocale() {
     let locale = Config.get('locale');
     return (
-      <meta property="og:locale" content={locale} />
+      <meta key="og_locale" property="og:locale" content={locale} />
     );
   }
 
   setLocaleAlt(slice) {
     if (slice && slice.items && slice.items.length) {
       const localeTags = [];
-      slice.items.forEach((item) => {
-        if (item.open_graph_locale_alternate) {
-          localeTags.push((
-            <meta property="og:locale:alternate" content={item.open_graph_locale_alternate} />
-          ));
-        }
+      slice.items.forEach((item, index) => {
+        localeTags.push((
+          <meta key={`og_locale_${index}`} property="og:locale:alternate" content={item.open_graph_locale_alternate} />
+        ));
       })
-      return (localeTags.length ? localeTags : null);
+      return (localeTags.length ? _.flatten(localeTags) : null);
     } else {
       return null;
     }
@@ -81,15 +80,9 @@ class OpenGraph extends Component {
   }
 
   setUrl() {
-    let { pathname } = Config.get("currentUrl");
-    let url = Config.get("siteUrl");
-
-    if (pathname !== "/") {
-      url = url + pathname;
-    }
-
+    const url = Config.get("currentUrl");
     return (
-      <meta property="og:url" content={url} />
+      <meta key="og_url" property="og:url" content={url} />
     );
   }
 
@@ -101,7 +94,7 @@ class OpenGraph extends Component {
       image = (Config.get("openGraph") && Config.get("openGraph").image) || Config.get('image');
     }
     return (
-      <meta property="og:image" content={image} />
+      <meta key="og_image" property="og:image" content={image} />
     );
   }
 
@@ -115,7 +108,7 @@ class OpenGraph extends Component {
 
     if (!!parseInt(height)) {
       return (
-        <meta property="og:image:height" content={height} />
+        <meta key="og_image_height" property="og:image:height" content={height} />
       );
     } else {
       return null;
@@ -132,7 +125,7 @@ class OpenGraph extends Component {
 
     if (!!parseInt(width)) {
       return (
-        <meta property="og:image:width" content={width} />
+        <meta key="og_image_width" property="og:image:width" content={width} />
       );
     } else {
       return null;

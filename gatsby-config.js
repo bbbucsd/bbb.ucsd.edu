@@ -37,7 +37,14 @@ var config = _.cloneDeep({
     email: "",
     description: "",
     foundingDate: "",
-    sameAs: [ "" ]
+    sameAs: [ "" ],
+    contacts: [
+      {
+        phone: "",
+        type: "", // Example: "customer service" - Supported types https://developers.google.com/search/docs/data-types/corporate-contact
+        areaServed: [ "" ], // Array or String - US, CA
+      }
+    ]
   },
   schemaPerson: {
     name: "",
