@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Link from 'gatsby-link';
-import Flag from './american-flag.png'
+import Link from 'components/Elements/Link';
+import Flag from './american-flag.png';
 
 // Style
 import style from './style.module.scss';

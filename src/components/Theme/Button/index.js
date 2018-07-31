@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Link from 'gatsby-link';
+import Link from 'components/Elements/Link';
 import MuiButton from '@material-ui/core/Button';
 import { KeyboardArrowRight as ArrowRight } from '@material-ui/icons';
 

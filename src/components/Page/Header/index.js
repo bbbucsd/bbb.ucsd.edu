@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Link from 'gatsby-link';
+import Link from 'components/Elements/Link';
 import Waypoint from 'react-waypoint';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';

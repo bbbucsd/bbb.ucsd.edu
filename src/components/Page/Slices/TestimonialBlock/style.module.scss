@@ -1,0 +1,15 @@
+@import 'components/Theme/Globals';
+
+.blockWrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 20px;
+  background-color: $white;
+  height: 400px;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
