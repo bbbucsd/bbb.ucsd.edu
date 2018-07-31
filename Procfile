@@ -1,1 +1,1 @@
-web: npm run develop -- -p 80
+web: npm run develop -- -p $PORT
