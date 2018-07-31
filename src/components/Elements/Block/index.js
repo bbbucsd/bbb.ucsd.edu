@@ -1,49 +1,38 @@
 import React, { Component } from 'react';
-import Validator from 'utils/validator';
-
-// Elements
-import ListItem from '@material-ui/core/ListItem';
-import Video from 'components/Elements/Video'
-
-// Style
-import style from './style.module.scss'
+import List from '@material-ui/core/List';
+import style from './style.module.scss';
 import classNames from 'classnames/bind';
 let cx = classNames.bind(style);
 
 class Block extends Component {
-
   constructor(props) {
-    super(props)
+    super(props);
+    this.blocks = React.Children.toArray(props.children);
 
-    // set defaults
-    this.inlineStyle = {
-      backgroundColor: 'none',
-      backgroundImage: 'none',
+    if (props.direction && !!props.direction.match(/left/i)) {
+      this.blocks.reverse();
     }
+  }
 
-    // set params
-    this.hasBackgroundColor = (this.props.backgroundColor != null);
-    this.hasAsset = (this.props.src && this.props.src);
-    this.isVideo = (this.props.src && Validator.isVideo(this.props.src));
-    this.isImage = (this.props.src && Validator.isImage(this.props.src));
-
-
-    // change inline style
-    this.isImage ? this.inlineStyle.backgroundImage = `url('${this.props.src}')` : false
-    this.hasBackgroundColor ? this.inlineStyle.backgroundColor = this.props.backgroundColor : false
+  backgroundColor() {
+    if (this.props.color !== '') {
+      return { backgroundColor: this.props.color };
+    }
   }
 
   render() {
-    const { children, src } = this.props
+    const { reducedHeight, className  } = this.props;
 
     return (
-      <ListItem className={cx({ containerItem: true, image: this.isImage })}
-                style={ this.inlineStyle }>
-        { this.isVideo ? <Video src={src} /> : children }
-      </ListItem>
+      <div className={`${className} ${cx({ reducedHeight: reducedHeight, container: true })}`} style={ this.backgroundColor() }>
+        { this.blocks }
+      </div>
     )
   }
 }
 
-export BlockContainer from './BlockContainer'
+export Headline from './Headline'
+export Subheadline from './Subheadline'
+export Section from './Section'
+export Cta from './Cta'
 export default Block;

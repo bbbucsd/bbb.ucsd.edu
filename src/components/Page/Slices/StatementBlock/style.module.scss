@@ -1,35 +1,11 @@
 @import 'components/Theme/Globals';
 
-.statementCTA {
-  background-color: $white;
-  height: 400px;
-  width: 100%;
-  display: flex;
+.root {
   align-items: center;
   justify-content: center;
-  text-align: center;
-}
-
-.headline {
-  font-style: normal;
-  font-family: $fontFamily;
-  font-size: 2em;
-  font-weight: 300;
-  margin:0;
-  color: $black;
-
-}
-
-.subheadline {
-  font-size: 26px;
-  line-height: 32px;
-  letter-spacing: 0px;
-  font-weight: 300;
-  margin:0;
-  color:$darkGray;
+  text-align: center !important;
 }
 
 .statementButton {
-
   margin-top:20px;
 }

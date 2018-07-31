@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-
-// Elements
-import Block, { BlockContainer } from 'components/Elements/Block';
-
-// Style
+import Block, { Section, Headline, Subheadline } from 'components/Elements/Block';
 import style from './style.module.scss'
 import classNames from 'classnames/bind';
 let cx = classNames.bind(style);
@@ -15,17 +11,14 @@ class DoubleBlock extends Component {
     const data = slice.primary;
 
     return (
-      <BlockContainer direction={data.direction}>
-        <Block backgroundColor={data.background_color}>
-          <h2 className={style.headline}
-              style={{ color: (data.headline_color || 'inherited')} }>{data.headline.text}</h2>
+      <Block direction={data.direction} className={style.block}>
+        <Section backgroundColor={data.background_color}>
+          <Headline color={data.headline_color}>{data.headline.text}</Headline>
+          <Subheadline color={data.subheadline_color}>{data.subheadline.text}</Subheadline>
+        </Section>
 
-          <h3 className={cx({subheadline: true, secondaryHeadline: true})}
-              style={{ color: (data.subheadline_color || 'inherited') }}>{data.subheadline.text}</h3>
-        </Block>
-
-        <Block src={data.asset.url}></Block>
-      </BlockContainer>
+        <Section src={data.asset.url}></Section>
+      </Block>
     )
   }
 }

@@ -1,7 +1,6 @@
 @import 'components/Theme/Globals';
 
 .root {
-  margin-bottom: 150px;
   text-align: center;
 }
 
@@ -9,8 +8,9 @@
   font-family: $fontFamilyTitle;
   font-weight: 200;
   font-style: normal;
-  margin: 100px 0 0 0;
+  margin: 50px 0;
   padding: 0;
+  text-align: center !important;
 }
 
 .container {
@@ -66,11 +66,6 @@
   background-color: #fafafa;
 }
 
-.learnMore {
-  text-transform: uppercase;
-  display: block;
-  margin: 0 auto;
-  font-family: $fontFamily;
-  font-weight: 200;
-  font-style: normal;
+.cta {
+  text-align: center;
 }
