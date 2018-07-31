@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ThemeHeadline from 'components/Theme/Typography/Headline'
+import ThemeHeadline from 'components/Theme/Typography/Headline';
 
 
 // Style

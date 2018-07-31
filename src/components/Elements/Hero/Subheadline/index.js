@@ -11,7 +11,7 @@ class Headline extends Component {
 
     return (
       <div>
-        <ThemeHeadline h2 color={color} className={`${style.root} ${className}`} text={text}>{ children }</ThemeHeadline>
+        <ThemeHeadline h3 color={color} className={`${style.root} ${className}`} text={text}>{ children }</ThemeHeadline>
       </div>
     )
   }

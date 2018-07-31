@@ -7,9 +7,10 @@ import HighlightHero from 'components/Page/Slices/HighlightHero';
 import DoubleBlock from 'components/Page/Slices/DoubleBlock';
 import LogoBlock from 'components/Page/Slices/LogoBlock';
 import ContentBlock from 'components/Page/Slices/ContentBlock';
-import LogoBlock from 'components/Page/Slices/LogoBlock';
 import StatementBlock from 'components/Page/Slices/StatementBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
+import TestimonialBlock from 'components/Page/Slices/TestimonialBlock';
+import DoubleTestimonialBlock from 'components/Page/Slices/DoubleTestimonialBlock';
 
 class Page extends Component {
 
@@ -31,6 +32,10 @@ class Page extends Component {
         return <StatementBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyFeatureBlock':
         return <FeatureBlock key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyTestimonialBlock':
+        return <TestimonialBlock key={`slice_${index}`} slice={slice} />
+      case 'PrismicPageBodyDoubleTestimonialBlock':
+        return <DoubleTestimonialBlock key={`slice_${index}`} slice={slice} />
     };
   }
 
@@ -67,6 +72,8 @@ export const pageQuery = graphql`
           ...ContentBlock
           ...StatementBlock
           ...FeatureBlock
+          ...TestimonialBlock
+          ...DoubleTestimonialBlock
         }
       }
     }

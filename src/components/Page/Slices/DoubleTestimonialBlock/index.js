@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 // Elements
-import Block, { BlockContainer } from 'components/Elements/Block';
+import Block, { Section } from 'components/Elements/Block';
 import Testimonial from 'components/Elements/Testimonial';
 
 // Style
-import style from './style.module.scss'
+import style from './style.module.scss';
 import classNames from 'classnames/bind';
 let cx = classNames.bind(style);
 
@@ -18,15 +18,15 @@ class DoubleTestimonialBlock extends Component {
     const testimonialTwo = data.testimonial_two.document[0].data;
 
     return (
-      <BlockContainer reducedHeight>
-        <Block backgroundColor={data.background_color}>
+      <Block reducedHeight>
+        <Section backgroundColor={data.background_color}>
           <Testimonial data={testimonialOne} />
-        </Block>
+        </Section>
 
-        <Block backgroundColor={data.background_color}>
+        <Section backgroundColor={data.background_color}>
           <Testimonial data={testimonialTwo} />
-        </Block>
-      </BlockContainer>
+        </Section>
+      </Block>
     )
   }
 }

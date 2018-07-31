@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from 'components/Elements/Button/index';
+import Button from 'components/Theme/Button/index';
 import Testimonial from 'components/Elements/Testimonial';
 
 // Style

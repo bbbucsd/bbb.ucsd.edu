@@ -7,28 +7,29 @@ class HighlightHero extends Component {
     const { slice } = this.props;
     const data = slice.primary;
 
-    return (
-      <Hero src={data.hero_asset.url}>
-        <div className={style.scopeVerbiage}>
-          <Headline h3>{data.superheadline.text}</Headline>
-          <Headline h1>{data.headline.text}</Headline>
+    return null;
+    //return (
+      //<Hero src={data.hero_asset.url}>
+        //<div className={style.scopeVerbiage}>
+          //<Headline h3>{data.superheadline.text}</Headline>
+          //<Headline h1>{data.headline.text}</Headline>
 
-          {data.cta_link && data.cta_label ? (
-            <div className={style.cta}>
-              <Cta to={data.cta_link.url} text={data.cta_label}></Cta>
-            </div>
-          ) : null }
+          //{data.cta_link && data.cta_label ? (
+            //<div className={style.cta}>
+              //<Cta to={data.cta_link.url} text={data.cta_label}></Cta>
+            //</div>
+          //) : null }
 
-          <div className={style.highlightGroup}>
-            <Highlight largeText="#1" smallText="Best Selling Press" color="white" />
-            <div className={style.diagonalLine}></div>
-            <Highlight largeText="250" smallText="Pizzas/hour" color="white" />
-            <div className={style.diagonalLine}></div>
-            <Highlight largeText='18"' smallText="Pressed Product" color="white" />
-          </div>
-        </div>
-      </Hero>
-    );
+          //<div className={style.highlightGroup}>
+            //<Highlight largeText="#1" smallText="Best Selling Press" color="white" />
+            //<div className={style.diagonalLine}></div>
+            //<Highlight largeText="250" smallText="Pizzas/hour" color="white" />
+            //<div className={style.diagonalLine}></div>
+            //<Highlight largeText='18"' smallText="Pressed Product" color="white" />
+          //</div>
+        //</div>
+      //</Hero>
+    //);
   }
 }
 
