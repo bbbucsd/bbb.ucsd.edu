@@ -27,6 +27,7 @@ export default DoubleBlock;
 
 export const query = graphql`
   fragment DoubleBlock on PrismicPageBodyDoubleBlock {
+    slice_type
     primary {
       direction
       background_color
