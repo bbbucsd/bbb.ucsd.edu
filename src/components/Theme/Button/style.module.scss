@@ -6,7 +6,7 @@
 }
 
 .button {
-  border-radius: 30px !important;
+  border-radius: 2px !important;
   text-align: center !important;
   color: white !important;
   background-color: $brandInfo !important;
@@ -36,8 +36,8 @@
 }
 
 .buttonSmall {
-  padding: 6px 10px;
-  font-size: 12px;
+  padding: 6px 10px !important;
+  font-size: 12px !important;
 }
 
 .arrowSmall {

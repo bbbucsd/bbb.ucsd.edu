@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-
-// Elements
 import SubNav, { SubNavGroup, SubNavItem } from 'components/Elements/SubNav';
-import Button from 'components/Elements/Button';
+import Button from 'components/Theme/Button';
 import EmailIcon from '@material-ui/icons/MailOutline';
 import PhoneIcon from '@material-ui/icons/Phone';
-
-// Style
 import style from './style.module.scss'
 import classNames from 'classnames/bind';
 let cx = classNames.bind(style);
@@ -23,7 +19,8 @@ class SupportMenu extends Component {
             <SubNavGroup innerClassName={style.fastestRoute}>
               <SubNavItem>
                 <div className={style.fastestRouteItem}>
-                  <Button to="/" text="Get Help" small={true} className={style.fastestRouteItemButton} /> For the fastest and easiest way to get help.
+                  <Button to="/" small={true} className={style.fastestRouteItemButton}>Get Help</Button>
+                  For the fastest and easiest way to get help.
                 </div>
               </SubNavItem>
             </SubNavGroup>

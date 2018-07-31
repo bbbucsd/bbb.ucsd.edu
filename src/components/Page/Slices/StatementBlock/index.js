@@ -1,41 +1,22 @@
 import React, { Component } from 'react';
-import Button from 'components/Elements/Button/index';
-
-// Style
+import Block, { Section, Headline, Subheadline, Cta } from 'components/Elements/Block';
 import style from './style.module.scss'
 
+
 class StatementBlock extends Component {
-
-  headlineColor() {
-    if (this.props.slice.primary.headline_color !== '') {
-      return { color: this.props.slice.primary.headline_color };
-    }
-  }
-
-  backgroundColor() {
-    if (this.props.slice.primary.background_color !== '') {
-      return { backgroundColor: this.props.slice.primary.background_color };
-    }
-  }
 
   render() {
     const { slice } = this.props;
     const data = slice.primary;
 
     return (
-      <div className={`${style.statementCTA} wrapper`} style={ this.backgroundColor() }>
-        <div>
-          <h2 className={style.headline} style={ this.headlineColor() }>{data.headline.text}</h2>
-
-          {data.subheadline &&
-            <h3 className={style.subheadline} style={ this.headlineColor() }>{data.subheadline.text}</h3>
-          }
-
-          <div className={style.statementButton}>
-            <Button to={data.cta_link && data.cta_link.url} text={data.cta_label}></Button>
-          </div>
-        </div>
-      </div>
+      <Block color={data.background_color} reducedHeight={data.height && !!data.height.match(/Reduced/i)}>
+        <Section className={style.root}>
+          <Headline color={data.headline_color} text={data.headline} />
+          <Subheadline color={data.subheadline_color} text={data.subheadline} />
+          <Cta to={data.cta_link} className={style.statementButton}>{data.cta_label}</Cta>
+        </Section>
+      </Block>
     );
   }
 }
@@ -45,6 +26,7 @@ export default StatementBlock;
 export const query = graphql`
   fragment StatementBlock on PrismicPageBodyStatementBlock {
     primary {
+      height
       background_color
       headline_color
       headline {

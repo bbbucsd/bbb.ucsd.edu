@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Button from 'components/Elements/Button';
+import Block, { Section, Headline, Subheadline, Cta } from 'components/Elements/Block';
+import Button from 'components/Theme/Button';
 
 // Style
 import style from './style.module.scss'
@@ -13,23 +14,20 @@ class FeatureBlock extends Component {
     const { items } = slice;
 
     return (
-      <div className={style.root}>
+      <Block className={style.root}>
         {( items || [] ).map((item) =>
-          <div className={style.feature}>
+          <Section className={style.feature}>
             <div className={style.asset} style={{backgroundImage: `url('${item.asset.url}')`}}></div>
 
-            <h2 className={style.headline}>{item.headline.text}</h2>
-            <h3 className={style.subheadline}>{item.subheadline.text}</h3>
+            <Headline text={item.headline} />
+            <Subheadline text={item.subheadline} />
 
-            {
-
-            }
             <div className={style.ctaButton}>
-              <Button small={true} to={item.cta_link && item.cta_link.url} text={item.cta_label}></Button>
+              <Button small={true} to={item.cta_link && item.cta_link.url}>{item.cta_label}</Button>
             </div>
-          </div>
+          </Section>
         )}
-      </div>
+      </Block>
     )
   }
 }

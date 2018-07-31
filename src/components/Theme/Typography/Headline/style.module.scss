@@ -1,29 +1,28 @@
-@import '../../Theme/Globals';
+@import '../../Globals';
 
-.heroTypography {
+.typography {
   h1 {
-    color: #fff;
+    color: $darkGray;
     font-family: $fontFamilyTitle;
-    font-size: 60px;
+    font-size: $h1FontSize;
     margin:0;
-    font-weight: 200;
+    font-weight: 300;
     font-style: normal;
-    letter-spacing: -3px;
   }
 
   h2 {
-    color: #ccc;
+    color: $darkGray;
     font-family: $fontFamilyTitle;
-    font-size: 25px;
+    font-size: $h2FontSize;
     margin:10px 0 0 0;
     font-weight: 200;
     font-style: normal;
   }
 
   h3 {
-    color: #ccc;
+    color: $darkGray;
     font-family: $fontFamilyTitle;
-    font-size: 18px;
+    font-size: $h3FontSize;
     margin:10px 0 0 0;
     font-weight: 200;
     font-style: normal;
