@@ -11,7 +11,7 @@ var config = _.cloneDeep({
   hostname: process.env.HOSTNAME,
   title: process.env.SITE_NAME,
   siteUrl: process.env.SITE_URL,
-  prismicEndpoint: `${PrismicConfig.apiEndpoint}`,
+  prismicEndpoint: PrismicConfig.apiEndpoint,
 });
 
 module.exports = {

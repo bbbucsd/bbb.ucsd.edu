@@ -11,10 +11,6 @@ import './index.scss'
 const theme = createMuiTheme({})
 
 const Layout = ({ children, data }) => {
-  if (window !== 'undefined') {
-    window.prismic = { endpoint: PrismicConfig.apiEndpoint };
-  }
-
   Config.set(data.site.siteMetadata);
 
   return (
