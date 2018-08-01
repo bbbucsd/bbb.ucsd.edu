@@ -35,11 +35,15 @@ class LogoBlock extends Component {
     const matrix = this.createMatrix(logos);
     return matrix.map((row, index) => {
       let columns = row.map((column, index) => {
-        return (
-          <div key={`column_${index}`} className={`${style.customer}`}>
-            <img alt={column.logo.url.split("_")[1].split(".")[0]} src={column.logo.url} className={ style.logo } />
-          </div>
-        );
+        if (column.logo && column.logo.url) {
+          return (
+            <div key={`column_${index}`} className={`${style.customer}`}>
+              <img alt={column.logo.url.split("_")[1].split(".")[0]} src={column.logo.url} className={ style.logo } />
+            </div>
+          );
+        } else {
+          return null;
+        }
       });
       return (
         <div key={`row_${index}`} className={` ${style.row} ${index === 0 ? style.topRow : ''}`}>
