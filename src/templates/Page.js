@@ -19,7 +19,10 @@ class Page extends Component {
 
   constructor(props){
     super(props);
-    this.state = { doc: this.props.data.prismicPage.data };
+    this.state = {
+      tags: this.props.data.prismicPage.tags,
+      doc: this.props.data.prismicPage.data
+    };
   }
 
   componentWillMount() {
@@ -74,10 +77,11 @@ class Page extends Component {
 
   render() {
     const page = this.state.doc;
+    const tags = this.state.tags;
 
     return (
       <div>
-        <Meta page={page} />
+        <Meta tags={tags} page={page} />
         <Header />
         {( page.body || [] ).map((slice, i) => this.renderSlice(slice, i) )}
         <Footer />

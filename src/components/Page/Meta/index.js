@@ -31,8 +31,8 @@ class Meta extends Component {
 
   render() {
     const page = this.props.page;
-    const tags = page.tags;
-    const slices = page.data.body2;
+    const tags = this.props.tags;
+    const slices = page.body2;
 
     return (
       <div>
