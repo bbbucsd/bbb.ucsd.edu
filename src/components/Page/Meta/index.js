@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Config from 'config';
+import Config from '../../../config';
 import FrontMatter from './FrontMatter'
 import OpenGraph from './OpenGraph';
 import Twitter from './Twitter';
@@ -20,8 +20,6 @@ class Meta extends Component {
         return <SchemaProduct key={`slice_${index}`} slice={slice} />
       case 'schema___article':
         return <SchemaArticle key={`slice_${index}`} page={page} slice={slice} />
-      case 'schema___webpage':
-        return <SchemaWebpage key={`slice_${index}`} page={page} slice={slice} />
       case 'schema___website':
         return <SchemaWebsite key={`slice_${index}`} page={page} slice={slice} />
       case 'schema___item_list':
@@ -32,7 +30,7 @@ class Meta extends Component {
   render() {
     const page = this.props.page;
     const tags = page.tags;
-    const slices = page.data.body2;
+    const slices = page.body2;
 
     return (
       <div>
