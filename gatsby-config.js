@@ -1,4 +1,6 @@
+const PrismicConfig = require('./prismic-config');
 var _ = require('lodash');
+
 if (process.env.NODE_ENV != 'production') {
   require('dotenv').config({
     path: `.env`,
@@ -51,7 +53,8 @@ var config = _.cloneDeep({
     url: "",
     image: "",
     sameAs: [ "" ]
-  }
+  },
+  prismicEndpoint: `${PrismicConfig.apiEndpoint}`
 });
 
 module.exports = {
@@ -72,7 +75,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-prismic',
       options: {
-        repositoryName: process.env.PRISMIC_REPOSITORY_NAME,
+        repositoryName: PrismicConfig.prismicRepoName,
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
       }
     },

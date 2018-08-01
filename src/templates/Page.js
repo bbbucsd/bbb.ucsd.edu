@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Prismic from 'prismic-javascript';
+import Cookies from 'js-cookie';
+import PrismicConfig from '../../prismic-config';
 import Meta from 'components/Page/Meta';
 import Header from 'components/Page/Header';
 import Footer from 'components/Page/Footer';
@@ -14,23 +17,47 @@ import DoubleTestimonialBlock from 'components/Page/Slices/DoubleTestimonialBloc
 
 class Page extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = { doc: this.props.data.prismicPage.data };
+  }
+
+  componentWillMount() {
+    // Check for a preview cookie
+    const previewCookie = Cookies.get(Prismic.previewCookie);
+    // Retrieve preview content if cookie is set
+    if (previewCookie !== undefined) {
+
+      Prismic.api(PrismicConfig.apiEndpoint).then(api => {
+        api.query(
+          Prismic.Predicates.at('my.page.uid', this.props.data.prismicPage.uid),
+          { ref : previewCookie }
+        ).then((response) => {
+          // response is the response object, response.results holds the documents
+          var document = response.results[0].data
+          if (document) {
+            this.setState({ doc: document });
+          }
+        });
+      });
+    }
+  }
+
   renderSlice(slice, index) {
-    switch (slice.__typename) {
-      case 'PrismicPageBodyStandardhero':
+    switch (slice.slice_type) {
+      case 'standardhero':
         return <StandardHero key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyDoubleBlock':
+      case 'double_block':
         return <DoubleBlock key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyHighlightHero':
+      case 'highlight_hero':
         return <HighlightHero key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyDoubleBlock':
-        return <DoubleBlock key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyLogoBlock':
+      case 'logo_block':
         return <LogoBlock key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyContentBlock':
+      case 'content_block':
         return <ContentBlock key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyStatementBlock':
+      case 'statement_block':
         return <StatementBlock key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyFeatureBlock':
+      case 'feature_block':
         return <FeatureBlock key={`slice_${index}`} slice={slice} />
       case 'PrismicPageBodyTestimonialBlock':
         return <TestimonialBlock key={`slice_${index}`} slice={slice} />
@@ -40,15 +67,13 @@ class Page extends Component {
   }
 
   render() {
-    const page = this.props.data.prismicPage;
-    const data = this.props.data.prismicPage.data;
-    const { body } = data;
+    const page = this.state.doc;
 
     return (
       <div>
         <Meta page={page} />
         <Header />
-        {( body || [] ).map((slice, i) => this.renderSlice(slice, i) )}
+        {( page.body || [] ).map((slice, i) => this.renderSlice(slice, i) )}
         <Footer />
       </div>
     );
@@ -64,6 +89,7 @@ export const pageQuery = graphql`
       first_publication_date
       last_publication_date
       ...Meta
+      uid
       data {
         path
         body {
@@ -77,6 +103,12 @@ export const pageQuery = graphql`
           ...TestimonialBlock
           ...DoubleTestimonialBlock
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
+        prismicEndpoint
       }
     }
   }

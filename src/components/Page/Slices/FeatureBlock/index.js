@@ -36,6 +36,7 @@ export default FeatureBlock;
 
 export const query = graphql`
   fragment FeatureBlock on PrismicPageBodyFeatureBlock {
+    slice_type
     items {
       asset {
         url

@@ -37,6 +37,7 @@ export default HighlightHero;
 
 export const query = graphql`
   fragment HighlightHero on PrismicPageBodyHighlightHero  {
+    slice_type
     primary {
       superheadline {
         text
