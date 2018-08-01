@@ -107,7 +107,7 @@ class OpenGraph extends Component {
 
   setImageHeight(slice) {
     let height;
-    if (slice && slice.open_graph_image) {
+    if (slice && slice.open_graph_image && slice.open_graph_image.dimensions) {
       height = slice.open_graph_image.dimensions.height
     } else {
       height = (Config.get("openGraph") && Config.get("openGraph").imageHeight) || null;
@@ -124,7 +124,7 @@ class OpenGraph extends Component {
 
   setImageWidth(slice) {
     let width;
-    if (slice && slice.open_graph_image) {
+    if (slice && slice.open_graph_image && slice.open_graph_image.dimensions) {
       width = slice.open_graph_image.dimensions.width;
     } else {
       width = (Config.get("openGraph") && Config.get("openGraph").imageWidth) || null;
