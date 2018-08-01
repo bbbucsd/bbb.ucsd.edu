@@ -7,6 +7,22 @@
         "label" : "Name"
       }
     },
+    "header" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Default", "No Header", "No Header with Back Button" ],
+        "default_value" : "Default",
+        "label" : "Header"
+      }
+    },
+    "footer" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Default", "No Footer" ],
+        "default_value" : "Default",
+        "label" : "Footer"
+      }
+    },
     "body" : {
       "type" : "Slices",
       "fieldset" : "Slice zone",
