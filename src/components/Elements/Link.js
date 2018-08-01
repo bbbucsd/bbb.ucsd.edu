@@ -16,6 +16,31 @@ export default class extends Component {
     //
   }
 
+  linkTo() {
+    if (typeof this.props.to === 'string') {
+      return this.props.to;
+    } else {
+      return "#";
+    }
+  }
+
+  buildLink() {
+    const _this = this;
+    return (
+      <Link to={this.linkTo()}
+        onMouseOver={this.props.onMouseOver}
+        onMouseOut={this.props.onMouseOut}
+        className={this.props.className || null}
+        onClick={(e) => {
+          _this.startLoader();
+          _this.props.onClick && _this.props.onClick(e);
+        }}
+        style={this.props.style}>
+        {this.props.children}
+      </Link>
+    );
+  }
+
   nonInternalProps() {
     let nonInternalProps = Object.assign({}, this.props);
     nonInternalProps.href = nonInternalProps.to;
@@ -26,28 +51,20 @@ export default class extends Component {
   render() {
     let classes = classNames(this.props.className);
 
-    if (Validator.isExternalSite(this.props.to)) {
-      return (
-        <a target="_blank" rel="noopener" {...this.nonInternalProps()}>{this.props.children}</a>
-      );
-    } else if (Validator.isHashTag(this.props.to)) {
-      return (
-        <a {...this.nonInternalProps()}>{this.props.children}</a>
-      );
+    if (typeof this.props.to === 'string') {
+      if (Validator.isExternalSite(this.props.to)) {
+        return (
+          <a target="_blank" rel="noopener" {...this.nonInternalProps()}>{this.props.children}</a>
+        );
+      } else if (Validator.isHashTag(this.props.to)) {
+        return (
+          <a {...this.nonInternalProps()}>{this.props.children}</a>
+        );
+      } else {
+        return this.buildLink();
+      }
     } else {
-      return (
-        <Link to={this.props.to}
-          onMouseOver={this.props.onMouseOver}
-          onMouseOut={this.props.onMouseOut}
-          className={this.props.className || null}
-          onClick={(e) => {
-            this.startLoader();
-            this.props.onClick(e);
-          }}
-          style={this.props.style}>
-          {this.props.children}
-        </Link>
-      );
+      return this.buildLink();
     }
   }
 }

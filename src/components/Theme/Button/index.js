@@ -21,20 +21,26 @@ class Button extends Component {
   }
 
   linkTo() {
+    const { to } = this.props;
     try {
-      this.link = this.props.to.url
+      if (to.document) {
+        this.link = to.document[0];
+      } else {
+        this.link = to.url;
+      }
     } catch(error) {
-      this.link = this.props.to
+      this.link = to;
     }
 
-    return this.link || '#'
+    return this.link || '#';
   }
 
   render() {
-    const {children, small, customStyle, className} = this.props;
+    const {children, small, customStyle, className, onClick} = this.props;
 
     return (
       <Link to={ this.linkTo() }
+            onClick={onClick}
             onMouseOver={this.toggleArrow}
             onMouseOut={this.toggleArrow}
             className={cx({ buttonLink:true  })}
