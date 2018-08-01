@@ -19,6 +19,13 @@ class OpenGraph extends Component {
     return type;
   }
 
+  setFbAppId() {
+    let appId = Config.get("openGraph").fbAppId;
+    return (
+      <meta key="fb_app_id" property="fb:app_id" content={appId} />
+    );
+  }
+
   setType(type) {
     return (
       <meta key="og_type" property="og:type" content={type} />
@@ -100,7 +107,7 @@ class OpenGraph extends Component {
 
   setImageHeight(slice) {
     let height;
-    if (slice && slice.open_graph_image) {
+    if (slice && slice.open_graph_image && slice.open_graph_image.dimensions) {
       height = slice.open_graph_image.dimensions.height
     } else {
       height = (Config.get("openGraph") && Config.get("openGraph").imageHeight) || null;
@@ -117,7 +124,7 @@ class OpenGraph extends Component {
 
   setImageWidth(slice) {
     let width;
-    if (slice && slice.open_graph_image) {
+    if (slice && slice.open_graph_image && slice.open_graph_image.dimensions) {
       width = slice.open_graph_image.dimensions.width;
     } else {
       width = (Config.get("openGraph") && Config.get("openGraph").imageWidth) || null;
@@ -141,6 +148,7 @@ class OpenGraph extends Component {
     if (slice) { slice = Object.assign({}, slice.primary, { items: (slice.items || []) }); }
 
     metaTags.push(this.setType(type));
+    metaTags.push(this.setFbAppId());
     metaTags.push(this.setSiteName(slice));
     metaTags.push(this.setTitle(slice));
     metaTags.push(this.setDescription(slice));

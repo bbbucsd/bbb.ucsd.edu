@@ -17,6 +17,7 @@ var config = _.cloneDeep({
   metaDescription: "",
   image: "",
   openGraph: {
+    fbAppId: process.env.FB_APP_ID,
     image: "",
     imageDescription: "",
     imageHeight: "",
@@ -54,7 +55,7 @@ var config = _.cloneDeep({
     image: "",
     sameAs: [ "" ]
   },
-  prismicEndpoint: PrismicConfig.apiEndpoint
+  prismicEndpoint: PrismicConfig.apiEndpoint,
 });
 
 module.exports = {
