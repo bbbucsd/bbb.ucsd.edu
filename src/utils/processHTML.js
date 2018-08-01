@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
 import Link from 'gatsby-link';
 
