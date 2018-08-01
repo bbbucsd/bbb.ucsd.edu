@@ -15,9 +15,12 @@ import FeatureBlock from 'components/Page/Slices/FeatureBlock';
 
 class Page extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = { doc: this.props.data.prismicPage.data };
+
+    // TODO: find out why a prismicPage would return null?
+    let data = props.data.prismicPage ? props.data.prismicPage.data : {}
+    this.state = { doc: data };
   }
 
   componentWillMount() {
@@ -25,7 +28,6 @@ class Page extends Component {
     const previewCookie = Cookies.get(Prismic.previewCookie);
     // Retrieve preview content if cookie is set
     if (previewCookie !== undefined) {
-
       Prismic.api(PrismicConfig.apiEndpoint).then(api => {
         api.query(
           Prismic.Predicates.at('my.page.uid', this.props.data.prismicPage.uid),
