@@ -21,13 +21,9 @@ class Button extends Component {
   }
 
   linkTo() {
-    try {
-      this.link = this.props.to.url
-    } catch(error) {
-      this.link = this.props.to
-    }
-
-    return this.link || '#'
+    this.link = _.at(this.props.to, ['url', 'document[0].data.path', 'data.path'])
+    this.link = _.compact(this.link)
+    return _.first(this.link) || this.props.to
   }
 
   render() {
@@ -50,3 +46,7 @@ class Button extends Component {
 
 
 export default Button;
+
+
+
+

@@ -5,13 +5,14 @@ import classNames from 'classnames/bind';
 let cx = classNames.bind(style);
 
 class Block extends Component {
-  constructor(props) {
-    super(props);
-    this.blocks = React.Children.toArray(props.children);
+  orderChildren() {
+    this.blocks = React.Children.toArray(this.props.children);
 
-    if (props.direction && !!props.direction.match(/left/i)) {
+    if (this.props.direction && !!this.props.direction.match(/left/i)) {
       this.blocks.reverse();
     }
+
+    return this.blocks;
   }
 
   backgroundColor() {
@@ -25,7 +26,7 @@ class Block extends Component {
 
     return (
       <div className={`${className} ${cx({ reducedHeight: reducedHeight, container: true })}`} style={ this.backgroundColor() }>
-        { this.blocks }
+        { this.orderChildren() }
       </div>
     )
   }

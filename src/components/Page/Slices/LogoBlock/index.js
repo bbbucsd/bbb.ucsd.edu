@@ -43,21 +43,23 @@ class LogoBlock extends Component {
     const logos = slice.items;
 
     return (
-      <Block className={style.root}>
-        <Section>
-          <Headline className={style.headline}>{data.headline.text}</Headline>
+      <div>
+        <Block className={style.root}>
+          <Section>
+            <Headline className={style.headline} text={data.headline} />
 
-          <List className={ style.container }>
-            <ListItem className={ style.containerItem }>
-              <div className={ style.customers }>
-                {this.renderLogos(logos)}
-              </div>
-            </ListItem>
-          </List>
+            <List className={ style.container }>
+              <ListItem className={ style.containerItem }>
+                <div className={ style.customers }>
+                  {this.renderLogos(logos)}
+                </div>
+              </ListItem>
+            </List>
 
-          <Cta to={data.cta_link} className={style.cta}>{data.cta_label}</Cta>
-        </Section>
-      </Block>
+            <Cta to={data.cta_link} className={style.cta}>{data.cta_label}</Cta>
+          </Section>
+        </Block>
+      </div>
     )
   }
 }
@@ -73,6 +75,11 @@ export const query = graphql`
       }
       cta_link {
         url
+        document {
+          data {
+            path
+          }
+        }
       }
       cta_label
     }

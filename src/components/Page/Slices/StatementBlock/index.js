@@ -38,6 +38,11 @@ export const query = graphql`
       cta_label
       cta_link {
         url
+        document {
+          data {
+            path
+          }
+        }
       }
     }
   }
