@@ -10,7 +10,6 @@ import HighlightHero from 'components/Page/Slices/HighlightHero';
 import DoubleBlock from 'components/Page/Slices/DoubleBlock';
 import LogoBlock from 'components/Page/Slices/LogoBlock';
 import ContentBlock from 'components/Page/Slices/ContentBlock';
-import LogoBlock from 'components/Page/Slices/LogoBlock';
 import StatementBlock from 'components/Page/Slices/StatementBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
 
