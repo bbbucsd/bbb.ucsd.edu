@@ -13,8 +13,8 @@ class DoubleBlock extends Component {
     return (
       <Block direction={data.direction} className={style.block}>
         <Section backgroundColor={data.background_color}>
-          <Headline color={data.headline_color}>{data.headline.text}</Headline>
-          <Subheadline color={data.subheadline_color}>{data.subheadline.text}</Subheadline>
+          <Headline color={data.headline_color} text={data.headline} />
+          <Subheadline color={data.subheadline_color} text={data.subheadline} />
         </Section>
 
         <Section src={data.asset.url}></Section>
