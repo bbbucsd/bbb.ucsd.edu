@@ -31,7 +31,7 @@ class StatementBlock extends Component {
           />
           <Headline color={data.headline_color} text={data.headline} />
           <Subheadline color={data.subheadline_color} text={data.subheadline} />
-          <Cta to={data.cta_link} onClick={handleClickOpen} className={style.statementButton}>{data.cta_label}</Cta>
+          <Cta to={data.cta_link} onClick={this.handleClickOpen} className={style.statementButton}>{data.cta_label}</Cta>
         </Section>
       </Block>
     );

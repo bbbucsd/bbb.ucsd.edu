@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import Block, { Section, Headline, Subheadline, Cta } from 'components/Elements/Block';
+import Modal from 'components/Page/Modal';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import style from './style.module.scss'
 
 
 class LogoBlock extends Component {
+  state = {
+    open: false,
+  };
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   createMatrix(logos) {
     let group = [];
@@ -45,6 +57,11 @@ class LogoBlock extends Component {
     return (
       <Block className={style.root}>
         <Section>
+          <Modal
+            data={data.cta_link}
+            open={this.state.open}
+            onClose={this.handleClose}
+          />
           <Headline className={style.headline}>{data.headline.text}</Headline>
 
           <List className={ style.container }>
@@ -55,7 +72,7 @@ class LogoBlock extends Component {
             </ListItem>
           </List>
 
-          <Cta to={data.cta_link} className={style.cta}>{data.cta_label}</Cta>
+          <Cta to={data.cta_link} className={style.cta} onClick={this.handleClickOpen}>{data.cta_label}</Cta>
         </Section>
       </Block>
     )
@@ -73,6 +90,9 @@ export const query = graphql`
       }
       cta_link {
         url
+        document {
+          ...Modal
+        }
       }
       cta_label
     }
