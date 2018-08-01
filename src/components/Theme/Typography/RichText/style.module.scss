@@ -157,3 +157,44 @@
   width: 50%;
   margin: 0 auto;
 }
+.content h1 {
+  font-family: $fontFamilyTitle;
+  color: $brandPrimary;
+  --x-height-multiplier: 0.363;
+  --baseline-multiplier: 0.157;
+}
+.content h2 {
+  --x-height-multiplier: 0.363;
+  --baseline-multiplier: 0.157;
+}
+.content h3 {
+  --x-height-multiplier: 0.363;
+  --baseline-multiplier: 0.157;
+}
+.content h4 {
+  --x-height-multiplier: 0.363;
+  --baseline-multiplier: 0.157;
+}
+.content div,
+.content p,
+.content a,
+.content ul,
+.content ol {
+  --x-height-multiplier: 0.35;
+  --baseline-multiplier: 0.179;
+  font-family: $fontFamily;
+  color: $darkGray;
+}
+a, a:hover {
+  font-family: $fontFamily;
+  color: $darkGray;
+  border-color: $brandInfo;
+}
+.content *:not(li) > ul,
+.content *:not(li) > ol, .content:not(li) > ul, .content:not(li) > ol {
+  border: 3px dashed $brandSecondary;
+}
+.content *:not(li) > ul li:before,
+.content *:not(li) > ol li:before, .content:not(li) > ul li:before, .content:not(li) > ol li:before {
+  color: $brandInfo;
+}
