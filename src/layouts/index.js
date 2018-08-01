@@ -7,14 +7,26 @@ import PrismicConfig from '../../prismic-config'
 import '../components/Theme/Globals';
 import './index.scss'
 
-
 const theme = createMuiTheme({})
 
 class Layout extends Component {
 
   constructor(props) {
     super(props);
-    Config.set(this.props.data.site.siteMetadata);
+    Config.set(Object.assign({}, {
+      currentUrl: getCurrentUrl(data.site.siteMetadata.siteUrl, location)
+    }, data.site.siteMetadata));
+  }
+  
+  getCurrentUrl(siteUrl, location) {
+    let { pathname } = location;
+    let url = siteUrl
+
+    if (pathname !== "/") {
+      url = url + pathname;
+    }
+
+    return url;
   }
 
   render() {
@@ -47,7 +59,48 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
+        siteName
         hostname
+        locale
+        metaDescription
+        openGraph {
+          fbAppId
+          image
+          imageDescription
+          imageHeight
+          imageWidth
+        }
+        twitter {
+          image
+          site
+          creator
+        }
+        schemaOrganization {
+          name
+          url
+          logo
+          street
+          city
+          state
+          zip
+          country
+          email
+          description
+          foundingDate
+          sameAs
+          contacts {
+            phone
+            type
+            areaServed
+          }
+        }
+        schemaPerson {
+          name
+          url
+          image
+          sameAs
+        }
       }
     }
   }

@@ -1,32 +1,47 @@
 import React, { Component } from 'react';
+import Config from 'config';
 import FrontMatter from './FrontMatter'
 import OpenGraph from './OpenGraph';
-
-// TODO: Implement dummy data on prismic
-// import Twitter from './Twitter';
-
-// TODO: Implement dummy data on prismic
-// import SchemaPerson from './SchemaPerson';
+import Twitter from './Twitter';
+import SchemaOrganization from './SchemaOrganization';
+import SchemaPerson from './SchemaPerson';
+import SchemaArticle from './SchemaArticle';
+import SchemaWebpage from './SchemaWebpage';
+import SchemaProduct from './SchemaProduct';
+import SchemaWebsite from './SchemaWebsite';
+import SchemaItemList from './SchemaItemList';
 
 class Meta extends Component {
-
-  renderSlice(slice, index) {
-    switch (slice.__typename) {
-      case 'PrismicPageBody2OpenGraph':
-        return <OpenGraph key={`slice_${index}`} data={slice} />
-      //case 'PrismicPageBody2SchemaPerson':
-        //return <SchemaPerson key={`slice_${index}`} data={slice} />
-    }
+  renderSlice(slice, page, index) {
+    switch (slice.slice_type) {
+      case 'schema___webpage':
+        return <SchemaWebpage key={`slice_${index}`} page={page} slice={slice} />
+      case 'schema___product':
+        return <SchemaProduct key={`slice_${index}`} slice={slice} />
+      case 'schema___article':
+        return <SchemaArticle key={`slice_${index}`} page={page} slice={slice} />
+      case 'schema___webpage':
+        return <SchemaWebpage key={`slice_${index}`} page={page} slice={slice} />
+      case 'schema___website':
+        return <SchemaWebsite key={`slice_${index}`} page={page} slice={slice} />
+      case 'schema___item_list':
+        return <SchemaItemList key={`slice_${index}`} slice={slice} />
+    };
   }
 
   render() {
-    const page = this.props.data;
-    const { body2 } = page
+    const page = this.props.page;
+    const tags = page.tags;
+    const slices = page.data.body2;
 
     return (
       <div>
         <FrontMatter data={page} />
-        {( body2 || [] ).map((slice, i) => this.renderSlice(slice, i) )}
+        <OpenGraph tags={tags} slices={slices} />
+        <Twitter slices={slices} />
+        <SchemaOrganization slices={slices} />
+        <SchemaPerson slices={slices} />
+        {( slices || [] ).map((slice, i) => this.renderSlice(slice, page, i) )}
       </div>
     )
   }
@@ -35,19 +50,31 @@ class Meta extends Component {
 
 export default Meta;
 
-
-// TODO: Add the following (below) to body2 once dummy data is implemented
-// ...Twitter
-// ...SchemaPerson
 export const query = graphql`
   fragment Meta on PrismicPage {
     data {
+      name {
+        text
+      }
       site_title
       meta_description
+      follow_links
       display_in_search_results
+      meta_robots_advanced
+      canonical_url {
+        url
+      }
 
       body2 {
         ...OpenGraph
+        ...Twitter
+        ...SchemaOrganization
+        ...SchemaPerson
+        ...SchemaProduct
+        ...SchemaArticle
+        ...SchemaWebpage
+        ...SchemaWebsite
+        ...SchemaItemList
       }
     }
   }

@@ -10,6 +10,7 @@ import HighlightHero from 'components/Page/Slices/HighlightHero';
 import DoubleBlock from 'components/Page/Slices/DoubleBlock';
 import LogoBlock from 'components/Page/Slices/LogoBlock';
 import ContentBlock from 'components/Page/Slices/ContentBlock';
+import LogoBlock from 'components/Page/Slices/LogoBlock';
 import StatementBlock from 'components/Page/Slices/StatementBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
 
@@ -64,10 +65,9 @@ class Page extends Component {
 
   render() {
     const page = this.state.doc;
-
     return (
       <div>
-        <Meta data={page} />
+        <Meta page={page} />
         <Header />
         {( page.body || [] ).map((slice, i) => this.renderSlice(slice, i) )}
         <Footer />
@@ -81,6 +81,9 @@ export default Page;
 export const pageQuery = graphql`
   query PageQuery($path: String!) {
     prismicPage(data: { path: { eq: $path }}) {
+      tags
+      first_publication_date
+      last_publication_date
       ...Meta
       uid
       data {
