@@ -14,8 +14,8 @@ class Layout extends Component {
   constructor(props) {
     super(props);
     Config.set(Object.assign({}, {
-      currentUrl: getCurrentUrl(data.site.siteMetadata.siteUrl, location)
-    }, data.site.siteMetadata));
+      currentUrl: this.getCurrentUrl(props.data.site.siteMetadata.siteUrl, location)
+    }, props.data.site.siteMetadata));
   }
   
   getCurrentUrl(siteUrl, location) {
