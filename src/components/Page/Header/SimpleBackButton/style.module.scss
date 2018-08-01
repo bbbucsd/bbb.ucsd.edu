@@ -1,0 +1,17 @@
+@import 'components/Theme/Globals';
+
+.back {
+  position: fixed;
+  left: 25px;
+  top: 25px;
+  line-height: 25px;
+  cursor: pointer;
+}
+
+.arrow {
+  position: relative;
+  top: 11px;
+  left: 5px;
+  width: 32px !important;
+  height: 32px !important;
+}

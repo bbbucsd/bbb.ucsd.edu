@@ -76,9 +76,9 @@ class Page extends Component {
     return (
       <div>
         <Meta tags={tags} page={page} />
-        <Header />
+        <Header display={page.header} />
         {( page.body || [] ).map((slice, i) => this.renderSlice(slice, i) )}
-        <Footer />
+        <Footer display={page.footer} />
       </div>
     );
   }
@@ -89,13 +89,15 @@ export default Page;
 export const pageQuery = graphql`
   query PageQuery($path: String!) {
     prismicPage(data: { path: { eq: $path }}) {
+      uid
       tags
       first_publication_date
       last_publication_date
       ...Meta
-      uid
       data {
         path
+        header
+        footer
         body {
           ...StandardHero
           ...DoubleBlock

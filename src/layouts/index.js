@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Config from '../config.js';
+import Config from '../config';
 import PrismicConfig from '../../prismic-config'
 import '../components/Theme/Globals';
 import './index.scss'
