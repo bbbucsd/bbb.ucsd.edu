@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import Config from 'config';
+import Config from '../../../../config';
 import _ from 'lodash';
 
 class Twitter extends Component {

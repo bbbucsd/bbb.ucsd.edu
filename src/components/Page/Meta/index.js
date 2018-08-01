@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Config from '../../../config';
-import FrontMatter from './FrontMatter'
+import FrontMatter from './FrontMatter';
 import OpenGraph from './OpenGraph';
 import Twitter from './Twitter';
 import SchemaOrganization from './SchemaOrganization';
