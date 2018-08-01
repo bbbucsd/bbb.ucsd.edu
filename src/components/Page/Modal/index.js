@@ -5,6 +5,7 @@ class Modal extends Component {
 
   render(slice) {
     if(
+      this.props.data &&
       this.props.data.document &&
       this.props.data.document[0] &&
       this.props.data.document[0].__typename === "PrismicModal" &&
