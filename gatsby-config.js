@@ -54,7 +54,7 @@ var config = _.cloneDeep({
     image: "",
     sameAs: [ "" ]
   },
-  prismicEndpoint: `${PrismicConfig.apiEndpoint}`
+  prismicEndpoint: PrismicConfig.apiEndpoint
 });
 
 module.exports = {

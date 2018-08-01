@@ -22,9 +22,6 @@ function getCurrentUrl(siteUrl, location) {
 
 
 const Layout = ({ location, children, data }) => {
-  if (window !== 'undefined') {
-    window.prismic = { endpoint: PrismicConfig.apiEndpoint };
-  }
 
   Config.set(Object.assign({}, {
     currentUrl: getCurrentUrl(data.site.siteMetadata.siteUrl, location)

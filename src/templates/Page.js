@@ -43,6 +43,12 @@ class Page extends Component {
     }
   }
 
+  componentDidMount() {
+    if (window) {
+      window.prismic = { endpoint: PrismicConfig.apiEndpoint };
+    }
+  }
+
   renderSlice(slice, index) {
     switch (slice.slice_type) {
       case 'standardhero':
