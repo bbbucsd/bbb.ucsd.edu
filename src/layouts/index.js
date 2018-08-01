@@ -17,10 +17,8 @@ class Layout extends Component {
     Config.set(this.props.data.site.siteMetadata);
   }
 
-  componentDidMount() {
-    if (window) {
-      window.prismic = { endpoint: PrismicConfig.apiEndpoint };
-    }
+  componentWillMount() {
+    typeof window !== 'undefined' && (window.prismic = { endpoint: PrismicConfig.apiEndpoint })
   }
 
   render() {
