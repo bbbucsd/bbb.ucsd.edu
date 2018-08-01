@@ -47,7 +47,9 @@ class Button extends Component {
             style={customStyle}>
         <MuiButton aria-label={children} className={`${cx({ button: true, buttonSmall: small })} ${className}`}>
           {children}
-          <ArrowRight className={cx({arrow: true, arrowSmall: small, extendedIcon: true, animateArrow: this.state.animateArrow})} />
+          {this.props.arrow === false ? null : (
+            <ArrowRight className={cx({arrow: true, arrowSmall: small, extendedIcon: true, animateArrow: this.state.animateArrow})} />
+          )}
         </MuiButton>
       </Link>
     )

@@ -7,8 +7,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import style from './style.module.scss'
+import style from './style.module.scss';
 import classNames from 'classnames/bind';
+import ThemeButton from 'components/Theme/Button';
 let cx = classNames.bind(style);
 
 class StandardForm extends Component {
@@ -51,7 +52,26 @@ class StandardForm extends Component {
     }
   }
 
+  renderFirstName() {
+    if(this.props.slice.primary.first_name_enabled === "Yes") {
+      return (
+        <TextField
+          autoFocus
+          margin="dense"
+          id="first_name"
+          label="First Name"
+          type="text"
+          fullWidth
+        />
+      );
+    } else {
+      return null;
+    }
+  }
+
   render() {
+    const { headline } = this.props.slice.primary;
+
     return (
       <Dialog
         open={this.props.open}
@@ -59,14 +79,12 @@ class StandardForm extends Component {
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
-        <DialogContent>
+        <DialogContent className={style.content}>
           {this.renderProgressBar()}
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send
-            updates occasionally.
-          </DialogContentText>
+          <DialogContentText>{headline}</DialogContentText>
+          {this.renderFirstName()}
           <TextField
-            autoFocus
+            autoFocus={!this.props.slice.primary.first_name_enabled || this.props.slice.primary.first_name_enabled === "No"}
             margin="dense"
             id="name"
             label="Email Address"
@@ -74,13 +92,8 @@ class StandardForm extends Component {
             fullWidth
           />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={this.props.onClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={this.props.onClose} color="primary">
-            Subscribe
-          </Button>
+        <DialogActions className={style.actions}>
+          <ThemeButton arrow={false} onClick={this.props.onClick}>Join Now</ThemeButton>
         </DialogActions>
       </Dialog>
     );
