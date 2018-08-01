@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Hero, { Headline, Cta } from 'components/Elements/Hero'
 import style from './style.module.scss'
+import Highlight from 'components/Elements/Highlight'
 
 class HighlightHero extends Component {
   render() {
@@ -36,6 +37,7 @@ export default HighlightHero;
 
 export const query = graphql`
   fragment HighlightHero on PrismicPageBodyHighlightHero  {
+    slice_type
     primary {
       superheadline {
         text

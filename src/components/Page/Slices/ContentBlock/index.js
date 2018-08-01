@@ -73,7 +73,8 @@ export default ContentBlock;
 
 export const query = graphql`
   fragment ContentBlock on PrismicPageBodyContentBlock {
-    primary {
+    slice_type
+    primary {  
       content {
         html
       }
