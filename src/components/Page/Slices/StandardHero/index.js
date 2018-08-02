@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import Hero, { Headline, Subheadline, Cta } from 'components/Elements/Hero';
-import style from './style.module.scss'
+import style from './style.module.scss';
+import Modal from 'components/Page/Modal';
 
 class StandardHero extends Component {
+  state = {
+    open: false,
+  };
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   render() {
     const { slice } = this.props;
@@ -10,9 +22,14 @@ class StandardHero extends Component {
 
     return (
       <Hero alignment={data.headline_alignment} src={data.hero_asset && data.hero_asset.url}>
+        <Modal
+          data={data.cta_link}
+          open={this.state.open}
+          onClose={this.handleClose}
+        />
         <Headline text={data.headline} />
         <Subheadline text={data.subheadline} />
-        <Cta to={data.cta_link}>{data.cta_label}</Cta>
+        <Cta to={data.cta_link} onClick={this.handleClickOpen}>{data.cta_label}</Cta>
       </Hero>
     );
   }

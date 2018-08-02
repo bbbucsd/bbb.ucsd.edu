@@ -21,7 +21,7 @@ class Button extends Component {
   }
 
   render() {
-    const {children, small, customStyle, className} = this.props;
+    const {children, small, customStyle, className, onClick} = this.props;
 
     return (
       <Link to={ this.props.to }
@@ -31,7 +31,9 @@ class Button extends Component {
             style={customStyle}>
         <MuiButton aria-label={children} className={`${cx({ button: true, buttonSmall: small })} ${className}`}>
           {children}
-          <ArrowRight className={cx({arrow: true, arrowSmall: small, extendedIcon: true, animateArrow: this.state.animateArrow})} />
+          {this.props.arrow === false ? null : (
+            <ArrowRight className={cx({arrow: true, arrowSmall: small, extendedIcon: true, animateArrow: this.state.animateArrow})} />
+          )}
         </MuiButton>
       </Link>
     )
