@@ -4,7 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { withStyles } from '@material-ui/core/styles';
 import withWidth from '@material-ui/core/withWidth';
-import Link from 'gatsby-link';
+import Link from 'components/Theme/Link';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import Waypoint from 'react-waypoint';

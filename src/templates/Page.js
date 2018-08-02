@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Prismic from 'prismic-javascript';
 import Cookies from 'js-cookie';
-import PrismicConfig from '../../prismic-config';
+import PrismicConfig from 'utils/prismicHelper';
 import Meta from 'components/Page/Meta';
 import Header from 'components/Page/Header';
 import Footer from 'components/Page/Footer';
@@ -31,7 +31,7 @@ class Page extends Component {
       Prismic.api(PrismicConfig.apiEndpoint).then(api => {
         api.query(
           Prismic.Predicates.at('my.page.uid', this.props.data.prismicPage.uid),
-          { ref : previewCookie, fetchLinks: 'page.path' }
+          { ref : previewCookie }
         ).then((response) => {
           // response is the response object, response.results holds the documents
           var document = response.results[0].data

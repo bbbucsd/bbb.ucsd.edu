@@ -6,7 +6,6 @@ import style from './style.module.scss'
 
 
 class LogoBlock extends Component {
-
   createMatrix(logos) {
     let group = [];
     let count = 0;
@@ -66,6 +65,7 @@ class LogoBlock extends Component {
 
 export default LogoBlock;
 
+// language=GraphQL
 export const query = graphql`
   fragment LogoBlock on PrismicPageBodyLogoBlock {
     slice_type
@@ -75,11 +75,6 @@ export const query = graphql`
       }
       cta_link {
         url
-        document {
-          data {
-            path
-          }
-        }
       }
       cta_label
     }

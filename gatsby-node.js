@@ -32,7 +32,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
         path: `${edge.node.data.path}`,
         component: slash(pageComponent),
         context: {
-          id: edge.node.id,
+          id: edge.node.id
         },
       })
     })
