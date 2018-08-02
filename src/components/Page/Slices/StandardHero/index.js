@@ -58,6 +58,11 @@ export const query = graphql`
         url
         document {
           ...Modal
+          ... on PrismicPage {
+            data {
+              path
+            }
+          }
         }
       }
     }
