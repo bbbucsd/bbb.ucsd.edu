@@ -13,6 +13,7 @@
   line-height: 1.2;
   letter-spacing: -0.028em;
 }
+
 .content h2 {
   margin-top: 63px;
   margin-left: -2.5px;
@@ -31,6 +32,17 @@
   line-height: 1.22;
   letter-spacing: -0.018em;
 }
+
+.content div:first-of-type,
+.content p:first-of-type,
+.content ol:first-of-type,
+.content ul:first-of-type,
+.content h2:first-of-type,
+.content h3:first-of-type,
+.content h4:first-of-type {
+  margin-top: 0;
+}
+
 .content div, .content p, .content ul, .content ol, .content a {
   font-weight: 400;
   font-style: normal;
@@ -101,7 +113,9 @@
 .content div:focus,
 .content p,
 .content p:focus {
-  margin-top: 29px;
+  &:not(:first-child) {
+    margin-top: 29px;
+  }
   word-break: break-word;
   word-wrap: break-word;
 }
