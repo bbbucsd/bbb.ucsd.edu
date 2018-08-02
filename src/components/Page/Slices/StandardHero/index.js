@@ -58,6 +58,9 @@ export const query = graphql`
         url
         document {
           ...Modal
+          data {
+            path
+          }
         }
       }
     }

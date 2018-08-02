@@ -68,13 +68,13 @@ class LogoBlock extends Component {
           />
           <Headline className={style.headline}>{data.headline.text}</Headline>
 
-          <List className={ style.container }>
-            <ListItem className={ style.containerItem }>
-              <div className={ style.customers }>
-                {this.renderLogos(logos)}
-              </div>
-            </ListItem>
-          </List>
+            <List className={ style.container }>
+              <ListItem className={ style.containerItem }>
+                <div className={ style.customers }>
+                  {this.renderLogos(logos)}
+                </div>
+              </ListItem>
+            </List>
 
           <Cta to={data.cta_link} className={style.cta} onClick={this.handleClickOpen}>{data.cta_label}</Cta>
         </Section>
@@ -96,6 +96,9 @@ export const query = graphql`
         url
         document {
           ...Modal
+          data {
+            path
+          }
         }
       }
       cta_label
