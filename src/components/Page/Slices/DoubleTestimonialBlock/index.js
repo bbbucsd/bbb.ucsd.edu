@@ -40,54 +40,12 @@ export const query = graphql`
       background_color
       testimonial_one {
         document {
-          data {
-            title
-            full_name {
-              text
-            }
-            website {
-              url
-            }
-            picture {
-              url
-            }
-            company {
-              text
-            }
-            company_logo {
-              url
-            }
-            role_occupation
-            body {
-              text
-            }
-          }
+          ...Testimonial
         }
       }
       testimonial_two {
         document {
-          data {
-            title
-            full_name {
-              text
-            }
-            website {
-              url
-            }
-            picture {
-              url
-            }
-            company {
-              text
-            }
-            company_logo {
-              url
-            }
-            role_occupation
-            body {
-              text
-            }
-          }
+          ...Testimonial
         }
       }
     }

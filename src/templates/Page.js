@@ -65,9 +65,9 @@ class Page extends Component {
         return <StatementBlock key={`slice_${index}`} slice={slice} />
       case 'feature_block':
         return <FeatureBlock key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyTestimonialBlock':
+      case 'testimonial_block':
         return <TestimonialBlock key={`slice_${index}`} slice={slice} />
-      case 'PrismicPageBodyDoubleTestimonialBlock':
+      case 'double_testimonial_block':
         return <DoubleTestimonialBlock key={`slice_${index}`} slice={slice} />
     };
   }

@@ -44,3 +44,30 @@ class Testimonial extends Component {
 
 
 export default Testimonial;
+
+export const query = graphql`
+  fragment Testimonial on PrismicTestimonial {
+    data {
+      title
+      full_name {
+        text
+      }
+      website {
+        url
+      }
+      picture {
+        url
+      }
+      company {
+        text
+      }
+      company_logo {
+        url
+      }
+      role_occupation
+      body {
+        text
+      }
+    }
+  }
+`

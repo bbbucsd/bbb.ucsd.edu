@@ -36,28 +36,7 @@ export const query = graphql`
     primary {
       testimonial {
         document {
-          data {
-            title
-            full_name {
-              text
-            }
-            website {
-              url
-            }
-            picture {
-              url
-            }
-            company {
-              text
-            }
-            company_logo {
-              url
-            }
-            role_occupation
-            body {
-              text
-            }
-          }
+          ...Testimonial
         }
       }
     }
