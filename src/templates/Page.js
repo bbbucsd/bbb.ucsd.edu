@@ -10,6 +10,7 @@ import HighlightHero from 'components/Page/Slices/HighlightHero';
 import DoubleBlock from 'components/Page/Slices/DoubleBlock';
 import LogoBlock from 'components/Page/Slices/LogoBlock';
 import ContentBlock from 'components/Page/Slices/ContentBlock';
+import HighlightContentBlock from 'components/Page/Slices/HighlightContentBlock';
 import StatementBlock from 'components/Page/Slices/StatementBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
 import TestimonialBlock from 'components/Page/Slices/TestimonialBlock';
@@ -58,6 +59,8 @@ class Page extends Component {
         return <LogoBlock key={`slice_${index}`} slice={slice} />
       case 'content_block':
         return <ContentBlock key={`slice_${index}`} slice={slice} />
+      case 'highlight_content_block':
+        return <HighlightContentBlock key={`slice_${index}`} slice={slice} />
       case 'statement_block':
         return <StatementBlock key={`slice_${index}`} slice={slice} />
       case 'feature_block':
@@ -104,6 +107,7 @@ export const pageQuery = graphql`
           ...HighlightHero
           ...LogoBlock
           ...ContentBlock
+          ...HighlightContentBlock
           ...StatementBlock
           ...FeatureBlock
           ...TestimonialBlock
