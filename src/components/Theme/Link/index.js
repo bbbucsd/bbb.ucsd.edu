@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PrismicHelper from 'utils/prismicHelper'
 import GatsbyLink from 'gatsby-link'
-import { Link as ReactLink } from 'react-router-dom'
 import Validator from 'utils/validator';
 
 class Link extends Component {
@@ -11,12 +10,12 @@ class Link extends Component {
   }
 
   buildAttrs() {
-    var href = this.sanitizeDataSource(this.props.to)
+    var href = this.sanitizeDataSource(this.props.to || '#')
     return this.linkTo(href)
   }
 
   sanitizeDataSource(to) {
-    return typeof to === 'object' ? PrismicHelper.linkResolver(this.props.to) : to
+    return typeof to === 'object' ? PrismicHelper.linkResolver(to) : to
   }
 
   linkTo(href) {
@@ -40,11 +39,17 @@ class Link extends Component {
   }
 
   linkToModal(href) {
-    return {...this.attrs, to: href.replace('modal://', '/') }
+    return {...this.attrs, to: {pathname: href.replace('modal://', '/_'), state: { isInModal: true, page: this.currentPath()  } } }
   }
 
   linkToExplicit(href) {
     return {...this.attrs, to: href }
+  }
+
+  currentPath() {
+    if (typeof window === 'object') {
+      return window.location.pathname
+    }
   }
 
   render() {

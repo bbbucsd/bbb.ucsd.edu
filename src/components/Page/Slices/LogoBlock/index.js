@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Block, { Section, Headline, Subheadline, Cta } from 'components/Elements/Block';
-import Modal from 'components/Page/Modal';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import style from './style.module.scss'
-
 
 class LogoBlock extends Component {
   createMatrix(logos) {
@@ -49,11 +47,6 @@ class LogoBlock extends Component {
     return (
       <Block className={style.root}>
         <Section>
-          <Modal
-            data={data.cta_link}
-            open={this.state.open}
-            onClose={this.handleClose}
-          />
           <Headline className={style.headline}>{data.headline.text}</Headline>
 
             <List className={ style.container }>

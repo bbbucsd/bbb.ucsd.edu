@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import Helmet from 'react-helmet'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Prismic from 'prismic-javascript';
 import Cookies from 'js-cookie';
 import PrismicConfig from 'utils/prismicHelper';
+import Config from '../config';
 import Meta from 'components/Page/Meta';
 import Header from 'components/Page/Header';
 import Footer from 'components/Page/Footer';
@@ -12,12 +15,20 @@ import LogoBlock from 'components/Page/Slices/LogoBlock';
 import ContentBlock from 'components/Page/Slices/ContentBlock';
 import StatementBlock from 'components/Page/Slices/StatementBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
+import '../components/Theme/Globals';
+import '../components/Theme/Default.scss'
 
 class Page extends Component {
 
   constructor(props) {
     super(props);
 
+    // Set defaults for meta data (OpenGraph, Twitter, etc)
+    Config.set(Object.assign({}, {
+      currentUrl: this.getCurrentUrl(props.data.site.siteMetadata.siteUrl, props.location)
+    }, props.data.site.siteMetadata));
+
+    // # Set Data as state
     // TODO: find out why a prismicPage would return null?
     let data = props.data.prismicPage ? props.data.prismicPage.data : {}
     this.state = { doc: data };
@@ -43,6 +54,17 @@ class Page extends Component {
     }
   }
 
+  getCurrentUrl(siteUrl, location) {
+    let { pathname } = location;
+    let url = siteUrl
+
+    if (pathname !== "/") {
+      url = url + pathname;
+    }
+
+    return url;
+  }
+
   renderSlice(slice, index) {
     switch (slice.slice_type) {
       case 'standardhero':
@@ -64,13 +86,24 @@ class Page extends Component {
 
   render() {
     const page = this.state.doc;
+    const theme = createMuiTheme({})
+
     return (
-      <div>
+      <MuiThemeProvider theme={theme}>
+        <Helmet>
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/brands.css" integrity="sha384-KtmfosZaF4BaDBojD9RXBSrq5pNEO79xGiggBxf8tsX+w2dBRpVW5o0BPto2Rb2F" crossOrigin="anonymous" />
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/fontawesome.css" integrity="sha384-8WwquHbb2jqa7gKWSoAwbJBV2Q+/rQRss9UXL5wlvXOZfSodONmVnifo/+5xJIWX" crossOrigin="anonymous" />
+          <link rel="stylesheet" href="https://use.typekit.net/pqq2exl.css" />
+          <script>{`window.prismic = { endpoint: '${PrismicConfig.apiEndpoint}' }`}</script>
+          <script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js"></script>
+        </Helmet>
+
         <Meta page={page} />
+
         <Header display={page.header} />
         {( page.body || [] ).map((slice, i) => this.renderSlice(slice, i) )}
         <Footer display={page.footer} />
-      </div>
+      </MuiThemeProvider>
     );
   }
 }
@@ -103,7 +136,48 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        prismicEndpoint
+        siteUrl
+        siteName
+        hostname
+        locale
+        metaDescription
+        openGraph {
+          fbAppId
+          image
+          imageDescription
+          imageHeight
+          imageWidth
+        }
+        twitter {
+          image
+          site
+          creator
+        }
+        schemaOrganization {
+          name
+          url
+          logo
+          street
+          city
+          state
+          zip
+          country
+          email
+          description
+          foundingDate
+          sameAs
+          contacts {
+            phone
+            type
+            areaServed
+          }
+        }
+        schemaPerson {
+          name
+          url
+          image
+          sameAs
+        }
       }
     }
   }
