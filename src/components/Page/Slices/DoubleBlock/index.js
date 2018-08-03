@@ -9,7 +9,7 @@ class DoubleBlock extends Component {
   render() {
     const { slice } = this.props;
     const data = slice.primary;
-
+    console.log(data)
     return (
       <Block direction={data.direction} className={style.block}>
         <Section backgroundColor={data.background_color}>

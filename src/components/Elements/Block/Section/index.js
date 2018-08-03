@@ -7,9 +7,7 @@ let cx = classNames.bind(style);
 
 class Section extends Component {
 
-  constructor(props) {
-    super(props)
-
+  setAttrs() {
     // set defaults
     this.inlineStyle = {
       backgroundColor: 'none',
@@ -29,6 +27,8 @@ class Section extends Component {
   }
 
   render() {
+    this.setAttrs()
+
     const { children, className, src } = this.props
 
     return (
