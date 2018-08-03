@@ -100,7 +100,7 @@ class Page extends Component {
       case 'double_testimonial_block':
         return <DoubleTestimonialBlock key={`slice_${index}`} slice={slice} />
 =======
-      case 'singleimageblock':
+      case 'single_image_block':
         return <SingleImageBlock key={`slice_${index}`} slice={slice} />
 >>>>>>> proluxe
     };
