@@ -10,7 +10,7 @@ class RichText extends Component {
 
     return (
       <div>
-        <ThemeRichText style={{ color: color }} className={style.root} body={ body } />
+        <ThemeRichText customStyle={{ color: color }} className={style.root} body={ body } />
       </div>
     )
   }
