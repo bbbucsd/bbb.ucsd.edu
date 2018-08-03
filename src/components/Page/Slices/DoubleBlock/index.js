@@ -11,8 +11,8 @@ class DoubleBlock extends Component {
     const data = slice.primary;
 
     return (
-      <Block direction={data.direction} className={style.block}>
-        <Section backgroundColor={data.background_color}>
+      <Block direction={data.direction} className={style.block} height={data.height}>
+        <Section backgroundColor={data.background_color} paddingTop={data.inner_padding_top} paddingBottom={data.inner_padding_bottom}>
           <Headline color={data.headline_color} text={data.headline} />
           <Subheadline color={data.subheadline_color} text={data.subheadline} />
         </Section>
@@ -29,6 +29,9 @@ export const query = graphql`
   fragment DoubleBlock on PrismicPageBodyDoubleBlock {
     slice_type
     primary {
+      height
+      inner_padding_top
+      inner_padding_bottom
       direction
       background_color
       asset {

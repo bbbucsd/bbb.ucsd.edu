@@ -45,8 +45,8 @@ class LogoBlock extends Component {
     const logos = slice.items;
 
     return (
-      <Block className={style.root}>
-        <Section>
+      <Block className={style.root} height={data.height}>
+        <Section paddingTop={data.inner_padding_top} paddingBottom={data.inner_padding_bottom}>
           <Headline className={style.headline}>{data.headline.text}</Headline>
 
           <List className={ style.container }>
@@ -71,6 +71,9 @@ export const query = graphql`
   fragment LogoBlock on PrismicPageBodyLogoBlock {
     slice_type
     primary {
+      height
+      inner_padding_top
+      inner_padding_bottom
       headline {
         text
       }
