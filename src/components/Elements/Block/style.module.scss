@@ -3,7 +3,7 @@
 .container {
   display: flex;
   width: 100%;
-  min-height: 600px;
+  height: auto !important;
   padding: 0 !important;
   justify-content: space-around;
 
@@ -12,3 +12,16 @@
 .reducedHeight {
   min-height: 300px !important;
 }
+
+.heightLarge {
+  height: 600px !important;
+}
+
+.heightMedium {
+  height: 400px !important;
+}
+
+.heightSmall {
+  height: 200px !important;
+}
+

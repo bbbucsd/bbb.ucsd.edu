@@ -49,3 +49,35 @@
 .secondaryHeadline {
   color: #777;
 }
+
+.paddingTopLarge {
+  padding-top: $largePadding !important;
+}
+
+.paddingTopMedium {
+  padding-top: $padding !important;
+}
+
+.paddingTopSmall {
+  padding-top: $padding / 2 !important;
+}
+
+.paddingTopNone {
+  padding-top: 0 !important;
+}
+
+.paddingBottomLarge {
+  padding-bottom: $largePadding !important;
+}
+
+.paddingBottomMedium {
+  padding-bottom: $padding !important;
+}
+
+.paddingBottomSmall {
+  padding-bottom: $padding / 2 !important;
+}
+
+.paddingBottomNone {
+  padding-bottom: 0 !important;
+}

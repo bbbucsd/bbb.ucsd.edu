@@ -21,11 +21,25 @@ class Block extends Component {
     }
   }
 
+  heightClass() {
+    switch(this.props.height) {
+      case 'Large':
+        return style.heightLarge
+      case 'Medium':
+        return style.heightMedium
+      case 'Small':
+        return style.heightSmall
+      case 'Auto':
+        return style.heightAuto
+    }
+  }
+
   render() {
     const { reducedHeight, className  } = this.props;
 
     return (
-      <div className={`${className} ${cx({ reducedHeight: reducedHeight, container: true })}`} style={ this.backgroundColor() }>
+      <div className={`${className} ${cx({ reducedHeight: reducedHeight,
+                                            container: true })} ${this.heightClass()}`} style={ this.backgroundColor() }>
         { this.orderChildren() }
       </div>
     )
