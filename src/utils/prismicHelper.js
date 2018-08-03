@@ -1,5 +1,4 @@
-
-const prismicRepoName = 'proluxe';
+const prismicRepoName = 'automate-your-brand';
 
 module.exports = {
 
@@ -13,12 +12,12 @@ module.exports = {
     var path;
 
     if (doc.type && doc.type === 'page') {
-      path = doc.uid.replace('home', '').replace('--', '/').replace('.', '/')
+      path = doc.uid.replace('home', '').replace('--', '/').replace('.', '/');
       return 'path://' + path;
     }
 
     if (doc.type && doc.type === 'modal') {
-      path = doc.uid.replace('--', '/').replace('.', '/')
+      path = doc.uid.replace('--', '/').replace('.', '/');
       return 'modal://' + path;
     }
 
