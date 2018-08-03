@@ -20,7 +20,7 @@ module.exports = {
   linkResolver(doc) {
     switch(doc.type) {
       case 'page':
-        return 'path://' + module.exports.pathResolver(doc);
+        return 'page://' + module.exports.pathResolver(doc);
       case 'modal':
         return 'modal://' + module.exports.pathResolver(doc);
       default:
