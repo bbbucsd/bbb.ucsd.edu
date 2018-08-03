@@ -4,17 +4,13 @@ import style from './style.module.scss';
 
 class Cta extends Component {
   render() {
-    const { to, children, className, small, onClick  } = this.props;
+    const { to, children, className, arrow, small, onClick  } = this.props;
 
-    return(
-      <div>
-        {children &&
-        <div className={`${style.root} ${className}`}>
-          <ThemeButton to={ to || '#' } onClick={onClick} small={small}>{ children }</ThemeButton>
-        </div>
-        }
+    return (children ? (
+      <div className={`${style.root} ${className}`}>
+        <ThemeButton to={ to || '#' } arrow={arrow === undefined ? true : arrow} onClick={onClick} small={small}>{ children }</ThemeButton>
       </div>
-    )
+    ) : null);
   }
 }
 

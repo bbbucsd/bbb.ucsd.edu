@@ -36,4 +36,5 @@ export Headline from './Headline'
 export Subheadline from './Subheadline'
 export Section from './Section'
 export Cta from './Cta'
+export HorizontalForm from './HorizontalForm'
 export default Block;
