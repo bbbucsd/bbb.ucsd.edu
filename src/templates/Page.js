@@ -15,6 +15,7 @@ import LogoBlock from 'components/Page/Slices/LogoBlock';
 import ContentBlock from 'components/Page/Slices/ContentBlock';
 import StatementBlock from 'components/Page/Slices/StatementBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
+import SingleImageBlock from 'components/Page/Slices/SingleImageBlock';
 import '../components/Theme/Globals';
 import '../components/Theme/Default.scss'
 
@@ -81,6 +82,8 @@ class Page extends Component {
         return <StatementBlock key={`slice_${index}`} slice={slice} />
       case 'feature_block':
         return <FeatureBlock key={`slice_${index}`} slice={slice} />
+      case 'singleimageblock':
+        return <SingleImageBlock key={`slice_${index}`} slice={slice} />
     };
   }
 
@@ -130,6 +133,7 @@ export const pageQuery = graphql`
           ...ContentBlock
           ...StatementBlock
           ...FeatureBlock
+          ...SingleImageBlock
         }
       }
     }
