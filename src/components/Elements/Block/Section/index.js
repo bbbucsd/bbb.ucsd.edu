@@ -26,14 +26,39 @@ class Section extends Component {
     this.hasBackgroundColor ? this.inlineStyle.backgroundColor = this.props.backgroundColor : false
   }
 
+  paddingTopClass() {
+    switch (this.props.paddingTop) {
+      case 'Large':
+        return style.paddingTopLarge
+      case 'Medium':
+        return style.paddingTopMedium
+      case 'Small':
+        return style.paddingTopSmall
+      case 'None':
+        return style.paddingTopNone
+    }
+  }
+
+  paddingBottomClass() {
+    switch (this.props.paddingBottom) {
+      case 'Large':
+        return style.paddingBottomLarge
+      case 'Medium':
+        return style.paddingBottomMedium
+      case 'Small':
+        return style.paddingBottomSmall
+      case 'None':
+        return style.paddingBottomNone
+    }
+  }
+
   render() {
     this.setAttrs()
 
-    const { children, className, src } = this.props
+    const { children, className, paddingTop, paddingBottom, src } = this.props
 
     return (
-      <div className={`${cx({ root: true, image: this.isImage })} ${className}`}
-                style={ this.inlineStyle }>
+      <div className={`${cx({ root: true, image: this.isImage })} ${className} ${this.paddingTopClass()} ${this.paddingBottomClass()}`} style={ this.inlineStyle }>
         { this.isVideo ? <Video src={src} /> : children }
       </div>
     )

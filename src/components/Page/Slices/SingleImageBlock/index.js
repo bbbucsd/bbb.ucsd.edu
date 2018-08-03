@@ -10,8 +10,8 @@ class SingleImageBlock extends Component {
     const data = slice.primary;
 
     return (
-      <Block className={style.block} reducedHeight={data.height && !!data.height.match(/Reduced/i)}>
-        <Section src={data.asset.url} className={style.section}>
+      <Block className={style.block} height={data.height}>
+        <Section src={data.asset.url} className={style.section} paddingTop={data.inner_padding_top} paddingBottom={data.inner_padding_bottom}>
           <RichText color={data.content_color} body={data.content} />
           <Cta to={data.cta_link}>{data.cta_label}</Cta>
         </Section>
@@ -27,6 +27,8 @@ export const query = graphql`
     slice_type
     primary {
       height
+      inner_padding_top
+      inner_padding_bottom
       asset {
         url
       }
