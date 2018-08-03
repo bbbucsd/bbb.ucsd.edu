@@ -24,7 +24,7 @@ module.exports = {
       case 'modal':
         return 'modal://' + module.exports.pathResolver(doc);
       default:
-        return doc.url || '#'
+        return doc.url || '/'
     }
   },
 
