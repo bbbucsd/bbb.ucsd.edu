@@ -85,7 +85,7 @@ class Page extends Component {
         return <StatementBlock key={`slice_${index}`} slice={slice} />
       case 'feature_block':
         return <FeatureBlock key={`slice_${index}`} slice={slice} />
-      case 'singleimageblock':
+      case 'single_image_block':
         return <SingleImageBlock key={`slice_${index}`} slice={slice} />
     };
   }

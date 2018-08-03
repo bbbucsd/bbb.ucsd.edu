@@ -23,7 +23,7 @@ class SingleImageBlock extends Component {
 export default SingleImageBlock;
 
 export const query = graphql`
-  fragment SingleImageBlock on PrismicPageBodySingleimageblock {
+  fragment SingleImageBlock on PrismicPageBodySingleImageBlock {
     slice_type
     primary {
       height
