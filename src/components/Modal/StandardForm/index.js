@@ -1,3 +1,5 @@
+// TODO: THIS NEEDS TO IMPLEMENTED NEXT
+
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -104,12 +106,12 @@ class StandardForm extends Component {
 
 export default StandardForm;
 
-export const query = graphql`
-  fragment StandardForm on PrismicModalBodyStandardForm {
-    slice_type
-    primary {
-      progress_bar_enabled
-      headline
-    }
-  }
-`;
+// export const query = graphql`
+//   fragment StandardForm on PrismicModalBodyStandardForm {
+//     slice_type
+//     primary {
+//       progress_bar_enabled
+//       headline
+//     }
+//   }
+// `;

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'components/Theme/Link';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-
-// Style
 import style from './style.module.scss'
 import classNames from 'classnames/bind';
 let cx = classNames.bind(style);

@@ -1,5 +1,7 @@
-const PrismicConfig = require('./prismic-config');
+const PrismicConfig = require('./src/utils/prismicHelper');
+
 var _ = require('lodash');
+
 
 if (process.env.NODE_ENV != 'production') {
   require('dotenv').config({
@@ -78,7 +80,17 @@ module.exports = {
       options: {
         repositoryName: PrismicConfig.prismicRepoName,
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-      }
+        // Set a link resolver function used to process links in your content.
+        // Fields with rich text formatting or links to internal content use this
+        // function to generate the correct link URL.
+        // The document node, field key (i.e. API ID), and field value are
+        // provided to the function, as seen below. This allows you to use
+        // different link resolver logic for each field if necessary.
+        // See: https://prismic.io/docs/javascript/query-the-api/link-resolving
+        linkResolver: ({ node, key, value }) => doc => {
+          return PrismicConfig.linkResolver(doc);
+        },
+      },
     },
   ],
 
