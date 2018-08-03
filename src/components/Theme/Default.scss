@@ -23,69 +23,11 @@ body img {
   max-width:100%;
 }
 
-.wrapper {
-  max-width:1400px;
-  margin: 0 auto;
-  position: relative;
-  padding: 0 20px;
+ul {
+  list-style-type: none;
 }
 
-.wrapper.padded {
-  padding:60px 20px;
+button {
+  border:0;
+  padding:0;
 }
-
-
-/* material-ui 1.0 beta overrides (some properties arent available yet)*/
-
-.white .MuiInput-underline-14:before {
-  background-color:#a9a9a9 !important;
-  color: $white !important;
-}
-
-.white .MuiInput-inkbar-8:after {
-  background-color: $white !important;
-}
-
-.white [class^="MuiInput-input-"] {
-  color: $white;
-}
-
-.full-width {
-  width:100%;
-}
-
-.full-width > * {
-  width:100%;
-}
-
-
-.mui-ripple-circle {display: none}
-
-/*parallax component overrides*/
-
-.react-parallax-background-children {
-  width:100%;
-}
-
-
-@media only screen and (max-device-width: 768px) {
-
-  #header {
-
-  }
-
-  #logo {
-    height:60px;
-  }
-
-  #header ul a {
-    position:relative;
-    top:15px;
-  }
-
-  .headline {
-    font-size:32px;
-    line-height:32px;
-  }
-}
-
