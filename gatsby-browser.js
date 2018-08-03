@@ -14,3 +14,24 @@ export const replaceRouterComponent = ({ history }) => {
 
   return ConnectedRouterWrapper
 }
+
+export const shouldUpdateScroll = (args) => {
+  var hadModal, isModal
+
+  if (args.prevRouterProps &&
+      args.prevRouterProps.location &&
+      args.prevRouterProps.location.pathname &&
+      args.prevRouterProps.location.pathname.match(/\/_/)) {
+    hadModal = true
+  }
+
+  if (args.pathname.match(/\/_/)) {
+    isModal = true
+  }
+
+  if (hadModal || isModal) {
+    return false
+  } else {
+    return true
+  }
+}

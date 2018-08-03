@@ -10,7 +10,7 @@ class Cta extends Component {
       <div>
         {children &&
         <div className={`${style.root} ${className}`}>
-          <ThemeButton to={ to || '#' } onClick={onClick} small={small}>{ children }</ThemeButton>
+          <ThemeButton to={ to } small={small}>{ children }</ThemeButton>
         </div>
         }
       </div>

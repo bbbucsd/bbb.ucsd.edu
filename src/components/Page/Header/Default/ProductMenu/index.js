@@ -23,7 +23,7 @@ class ProductMenu extends Component {
         <SubNavGroup title="Food Prep">
           <SubNavItem to="/products/pizza-presses">Pizza Presses</SubNavItem>
           <SubNavItem to="/products/tortilla-presses">Tortilla Presses</SubNavItem>
-          <SubNavItem to="/products/bun-carmalizers">Bun Carmalizers</SubNavItem>
+          <SubNavItem to="/products/bun-carmelizers">Bun Carmelizers</SubNavItem>
         </SubNavGroup>
 
         <SubNavGroup title="Accessories">
