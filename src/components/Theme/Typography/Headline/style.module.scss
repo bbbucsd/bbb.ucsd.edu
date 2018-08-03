@@ -2,12 +2,17 @@
 
 .typography {
   h1 {
-    color: $darkGray;
-    font-family: $fontFamilyTitle;
-    font-size: $h1FontSize;
-    margin:0;
-    font-weight: 300;
+    --x-height-multiplier: 0.363;
+    --baseline-multiplier: 0.157;
+    color: $brandPrimary;
+    font-weight: bold;
     font-style: normal;
+    font-size: $h1FontSize;
+    //font-size: 52px;
+    font-family: $fontFamilyTitle;
+    margin-left: -2.5px;
+    line-height: 1.2;
+    letter-spacing: -.028em;
   }
 
   h2 {
