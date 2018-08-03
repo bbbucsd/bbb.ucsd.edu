@@ -1,0 +1,13 @@
+@import 'components/Theme/Globals';
+
+.content {
+  min-width: 400px;
+}
+
+.progressBarRoot {
+  flexGrow: 1,
+}
+
+div.actions {
+  justify-content: center;
+}

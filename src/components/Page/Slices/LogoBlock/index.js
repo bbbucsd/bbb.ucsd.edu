@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import Block, { Section, Headline, Subheadline, Cta } from 'components/Elements/Block';
+import Modal from 'components/Page/Modal';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import style from './style.module.scss'
 
 
 class LogoBlock extends Component {
+  state = {
+    open: false,
+  };
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   createMatrix(logos) {
     let group = [];
@@ -23,11 +35,15 @@ class LogoBlock extends Component {
     const matrix = this.createMatrix(logos);
     return matrix.map((row, index) => {
       let columns = row.map((column, index) => {
-        return (
-          <div key={`column_${index}`} className={`${style.customer}`}>
-            <img alt={column.logo.url.split("_")[1].split(".")[0]} src={column.logo.url} className={ style.logo } />
-          </div>
-        );
+        if (column.logo && column.logo.url) {
+          return (
+            <div key={`column_${index}`} className={`${style.customer}`}>
+              <img alt={column.logo.url.split("_")[1].split(".")[0]} src={column.logo.url} className={ style.logo } />
+            </div>
+          );
+        } else {
+          return null;
+        }
       });
       return (
         <div key={`row_${index}`} className={` ${style.row} ${index === 0 ? style.topRow : ''}`}>
@@ -43,10 +59,14 @@ class LogoBlock extends Component {
     const logos = slice.items;
 
     return (
-      <div>
-        <Block className={style.root}>
-          <Section>
-            <Headline className={style.headline} text={data.headline} />
+      <Block className={style.root}>
+        <Section>
+          <Modal
+            data={data.cta_link}
+            open={this.state.open}
+            onClose={this.handleClose}
+          />
+          <Headline className={style.headline}>{data.headline.text}</Headline>
 
             <List className={ style.container }>
               <ListItem className={ style.containerItem }>
@@ -56,10 +76,9 @@ class LogoBlock extends Component {
               </ListItem>
             </List>
 
-            <Cta to={data.cta_link} className={style.cta}>{data.cta_label}</Cta>
-          </Section>
-        </Block>
-      </div>
+          <Cta to={data.cta_link} className={style.cta} onClick={this.handleClickOpen}>{data.cta_label}</Cta>
+        </Section>
+      </Block>
     )
   }
 }
@@ -76,8 +95,11 @@ export const query = graphql`
       cta_link {
         url
         document {
-          data {
-            path
+          ...Modal
+          ... on PrismicPage {
+            data {
+              path
+            }
           }
         }
       }

@@ -27,17 +27,20 @@ class Button extends Component {
   }
 
   render() {
-    const {children, small, customStyle, className} = this.props;
+    const {children, small, customStyle, className, onClick} = this.props;
 
     return (
       <Link to={ this.linkTo() }
+            onClick={onClick}
             onMouseOver={this.toggleArrow}
             onMouseOut={this.toggleArrow}
             className={cx({ buttonLink:true  })}
             style={customStyle}>
         <MuiButton aria-label={children} className={`${cx({ button: true, buttonSmall: small })} ${className}`}>
           {children}
-          <ArrowRight className={cx({arrow: true, arrowSmall: small, extendedIcon: true, animateArrow: this.state.animateArrow})} />
+          {this.props.arrow === false ? null : (
+            <ArrowRight className={cx({arrow: true, arrowSmall: small, extendedIcon: true, animateArrow: this.state.animateArrow})} />
+          )}
         </MuiButton>
       </Link>
     )
