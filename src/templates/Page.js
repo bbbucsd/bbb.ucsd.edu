@@ -12,9 +12,11 @@ import StandardHero from 'components/Page/Slices/StandardHero';
 import HighlightHero from 'components/Page/Slices/HighlightHero';
 import DoubleBlock from 'components/Page/Slices/DoubleBlock';
 import LogoBlock from 'components/Page/Slices/LogoBlock';
+import LogoBlockInline from 'components/Page/Slices/LogoBlockInline';
 import ContentBlock from 'components/Page/Slices/ContentBlock';
 import StatementBlock from 'components/Page/Slices/StatementBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
+import SingleImageBlock from 'components/Page/Slices/SingleImageBlock';
 import '../components/Theme/Globals';
 import '../components/Theme/Default.scss'
 
@@ -75,12 +77,16 @@ class Page extends Component {
         return <HighlightHero key={`slice_${index}`} slice={slice} />
       case 'logo_block':
         return <LogoBlock key={`slice_${index}`} slice={slice} />
+      case 'logo_block__inline_':
+        return <LogoBlockInline key={`slice_${index}`} slice={slice} />
       case 'content_block':
         return <ContentBlock key={`slice_${index}`} slice={slice} />
       case 'statement_block':
         return <StatementBlock key={`slice_${index}`} slice={slice} />
       case 'feature_block':
         return <FeatureBlock key={`slice_${index}`} slice={slice} />
+      case 'singleimageblock':
+        return <SingleImageBlock key={`slice_${index}`} slice={slice} />
     };
   }
 
@@ -127,9 +133,11 @@ export const pageQuery = graphql`
           ...DoubleBlock
           ...HighlightHero
           ...LogoBlock
+          ...LogoBlockInline
           ...ContentBlock
           ...StatementBlock
           ...FeatureBlock
+          ...SingleImageBlock
         }
       }
     }
