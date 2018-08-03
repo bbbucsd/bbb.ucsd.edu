@@ -94,15 +94,12 @@ class Page extends Component {
         return <HorizontalFormBlock key={`slice_${index}`} slice={slice} />
       case 'feature_block':
         return <FeatureBlock key={`slice_${index}`} slice={slice} />
-<<<<<<< HEAD
       case 'testimonial_block':
         return <TestimonialBlock key={`slice_${index}`} slice={slice} />
       case 'double_testimonial_block':
         return <DoubleTestimonialBlock key={`slice_${index}`} slice={slice} />
-=======
       case 'single_image_block':
         return <SingleImageBlock key={`slice_${index}`} slice={slice} />
->>>>>>> proluxe
     };
   }
 
