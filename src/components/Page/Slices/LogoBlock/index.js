@@ -1,24 +1,10 @@
 import React, { Component } from 'react';
 import Block, { Section, Headline, Subheadline, Cta } from 'components/Elements/Block';
-import Modal from 'components/Page/Modal';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import style from './style.module.scss'
 
-
 class LogoBlock extends Component {
-  state = {
-    open: false,
-  };
-
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
   createMatrix(logos) {
     let group = [];
     let count = 0;
@@ -61,11 +47,6 @@ class LogoBlock extends Component {
     return (
       <Block className={style.root}>
         <Section>
-          <Modal
-            data={data.cta_link}
-            open={this.state.open}
-            onClose={this.handleClose}
-          />
           <Headline className={style.headline}>{data.headline.text}</Headline>
 
           <List className={ style.container }>
@@ -85,6 +66,7 @@ class LogoBlock extends Component {
 
 export default LogoBlock;
 
+// language=GraphQL
 export const query = graphql`
   fragment LogoBlock on PrismicPageBodyLogoBlock {
     slice_type
@@ -94,14 +76,6 @@ export const query = graphql`
       }
       cta_link {
         url
-        document {
-          ...Modal
-          ... on PrismicPage {
-            data {
-              path
-            }
-          }
-        }
       }
       cta_label
     }

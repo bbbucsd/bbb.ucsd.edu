@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Link from 'components/Elements/Link';
+import Link from 'components/Theme/Link';
 import MuiButton from '@material-ui/core/Button';
 import { KeyboardArrowRight as ArrowRight } from '@material-ui/icons';
 
@@ -20,18 +20,11 @@ class Button extends Component {
     this.setState({animateArrow: !this.state.animateArrow});
   }
 
-  linkTo() {
-    this.link = _.at(this.props.to, ['url', 'document[0].data.path', 'data.path'])
-    this.link = _.compact(this.link)
-    return _.first(this.link) || this.props.to
-  }
-
   render() {
     const {children, small, customStyle, className, onClick} = this.props;
 
     return (
-      <Link to={ this.linkTo() }
-            onClick={onClick}
+      <Link to={ this.props.to }
             onMouseOver={this.toggleArrow}
             onMouseOut={this.toggleArrow}
             className={cx({ buttonLink:true  })}

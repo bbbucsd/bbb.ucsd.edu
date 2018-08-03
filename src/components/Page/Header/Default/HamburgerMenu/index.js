@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Link from 'components/Elements/Link';
+import Link from 'components/Theme/Link';
 
 // Style
 import style from './style.module.scss'
