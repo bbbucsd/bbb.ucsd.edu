@@ -153,12 +153,9 @@ export const pageQuery = graphql`
           ...StatementBlock
           ...HorizontalFormBlock
           ...FeatureBlock
-<<<<<<< HEAD
           ...TestimonialBlock
           ...DoubleTestimonialBlock
-=======
           ...SingleImageBlock
->>>>>>> proluxe
         }
       }
     }
