@@ -7,7 +7,7 @@ module.exports = {
   apiEndpoint: `https://${prismicRepoName}.prismic.io/api/v2`,
 
   convertUIDTOPath(uid) {
-    return uid.replace('home', '').replace('--', '/').replace('.', '/')
+    return uid.replace(/\./g, '/')
   },
 
   pathResolver(doc) {

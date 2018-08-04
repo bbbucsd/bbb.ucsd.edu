@@ -129,8 +129,8 @@ class Page extends Component {
 export default Page;
 
 export const pageQuery = graphql`
-  query PageQuery($path: String!) {
-    prismicPage(data: { path: { eq: $path }}) {
+  query PageQuery($uid: String!) {
+    prismicPage(uid: { eq: $uid }) {
       uid
       tags
       first_publication_date

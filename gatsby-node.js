@@ -1,5 +1,5 @@
 const path = require(`path`)
-const slash = require(`slash`)
+const PrismicHelper = require('./src/utils/prismicHelper')
 
 exports.createPages = async ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
@@ -15,9 +15,6 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
           node {
             id
             uid
-            data {
-              path
-            }
           }
         }
       }
@@ -27,10 +24,10 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   const pageComponent = path.resolve(`./src/templates/Page.js`)
   pages.data.allPrismicPage.edges.forEach(edge => {
     createPage({
-      path: `${edge.node.data.path}`,
-      component: slash(pageComponent),
+      path: PrismicHelper.pathResolver(edge.node),
+      component: pageComponent,
       context: {
-        id: edge.node.id
+        uid: edge.node.uid
       },
     })
   })
@@ -56,9 +53,9 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   modals.data.allPrismicModal.edges.forEach(edge => {
     createPage({
       path: `_${edge.node.uid}`,
-      component: slash(modalComponent),
+      component: modalComponent,
       context: {
-        id: edge.node.id
+        uid: edge.node.uid
       },
     })
   })
