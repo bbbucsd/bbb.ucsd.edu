@@ -76,6 +76,19 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-module-local-ident-name`,
+      options: {
+        production: {
+          localIdentName: "[ext]-[hash:base64:5]",
+          includeSASS: true //default false
+        },
+        development: {
+          localIdentName: "[local]-[hash:base64:5]",
+          includeSASS: true //default false
+        }
+      }
+    },
+    {
       resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: PrismicConfig.prismicRepoName,

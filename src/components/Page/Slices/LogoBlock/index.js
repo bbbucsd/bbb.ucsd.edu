@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Block, { Section, Headline, Subheadline, Cta } from 'components/Elements/Block';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import style from './style.module.scss'
 
 class LogoBlock extends Component {
@@ -49,13 +47,13 @@ class LogoBlock extends Component {
         <Section paddingTop={data.inner_padding_top} paddingBottom={data.inner_padding_bottom}>
           <Headline className={style.headline}>{data.headline.text}</Headline>
 
-            <List className={ style.container }>
-              <ListItem className={ style.containerItem }>
+            <ul className={ style.container }>
+              <li className={ style.containerItem }>
                 <div className={ style.customers }>
                   {this.renderLogos(logos)}
                 </div>
-              </ListItem>
-            </List>
+              </li>
+            </ul>
 
           <Cta to={data.cta_link} className={style.cta} onClick={this.handleClickOpen}>{data.cta_label}</Cta>
         </Section>

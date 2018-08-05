@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
 import { navigateTo } from "gatsby-link"
 
 class Modal extends Component {
@@ -10,13 +8,13 @@ class Modal extends Component {
 
   render() {
     return (
-      <Dialog onClose={() => window.___history.push(this.props.location.state.page, { cameFromModal: true } )} {...this.props}>
-        <DialogContent>
+      <div onClose={() => window.___history.push(this.props.location.state.page, { cameFromModal: true } )} {...this.props}>
+        <div>
           {this.props.children({
             location: { pathname: this.props.location.pathname },
           })}
-        </DialogContent>
-      </Dialog>
+        </div>
+      </div>
     )
   };
 

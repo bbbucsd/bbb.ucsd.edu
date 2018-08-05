@@ -1,12 +1,12 @@
 @import 'components/Theme/Globals';
 
 .icon {
-  color: #999;
   height: 16px;
   width: 16px;
   margin-right: 5px;
   position: relative;
   top: 2px;
+  fill: $darkGray;
 }
 
 .fastestRoute {
