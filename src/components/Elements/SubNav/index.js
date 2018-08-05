@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Link from 'components/Theme/Link';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import style from './style.module.scss'
 import classNames from 'classnames/bind';
 let cx = classNames.bind(style);
@@ -9,7 +7,7 @@ let cx = classNames.bind(style);
 var menuWidth = 900;
 var offsetY = 200;
 var offsetX = 96; //isn't this offsetY (vertical)?
-var arrowSize = 13;
+var arrowSize = 14;
 var padding = 15;
 
 class SubNav extends Component {
@@ -39,7 +37,7 @@ class SubNav extends Component {
 
     return {
       top: '-' + arrowSize + 'px',
-      left: (this.props.offsetY || offsetY) + arrowSize + padding + (arrowSize / 2) + 'px',
+      left: (this.props.offsetY || offsetY) + arrowSize + padding + (arrowSize / 2) + 10 + 'px',
       borderLeft: arrowSize + 'px solid transparent',
       borderRight: arrowSize + 'px solid transparent',
       borderBottom: arrowSize + 'px solid #f6f6f6'
@@ -61,11 +59,11 @@ class SubNav extends Component {
 
         <div style={this.wrapperStyle()} className={cx({subNavWrapper: true, animateOpen: this.state.open})}>
           <div style={this.arrowStyle()} className={style.arrow}></div>
-          <List style={this.subNavStyle()} className={style.subNav}>
-            <ListItem className={style.subNavInner}>
+          <ul style={this.subNavStyle()} className={style.subNav}>
+            <li className={style.subNavInner}>
               { children }
-            </ListItem>
-          </List>
+            </li>
+          </ul>
         </div>
       </div>
     );

@@ -1,4 +1,7 @@
+//noinspection CssUnknownTarget
 @import 'components/Theme/Globals';
+//noinspection CssUnknownTarget
+@import 'components/Theme/Fonts';
 
 * {
   box-sizing: border-box;
@@ -17,6 +20,9 @@ body {
 
 a {
   text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
 }
 
 body img {
@@ -25,6 +31,11 @@ body img {
 
 ul {
   list-style-type: none;
+  -webkit-padding-start: 0;
+  -moz-padding-start: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 button {

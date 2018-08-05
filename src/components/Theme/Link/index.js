@@ -5,10 +5,6 @@ import Validator from 'utils/validator';
 
 class Link extends Component {
 
-  componentWillReceiveProps(props) {
-    this.attrs = {...props}
-  }
-
   buildAttrs() {
     var href = this.sanitizeDataSource(this.props.to || '#')
     return this.linkTo(href)
@@ -31,19 +27,19 @@ class Link extends Component {
   }
 
   linkToPage(href) {
-    return {...this.attrs, to: href.replace('page://', '/') }
+    return {...this.props, to: href.replace('page://', '/') }
   }
 
   linkToExternal(href) {
-    return {...this.attrs, href: href, target: '_blank', rel: 'noopener' }
+    return {...this.props, href: href, target: '_blank', rel: 'noopener' }
   }
 
   linkToModal(href) {
-    return {...this.attrs, to: {pathname: href.replace('modal://', '/_'), state: { isInModal: true, page: this.currentPath()  } } }
+    return {...this.props, to: {pathname: href.replace('modal://', '/_'), state: { isInModal: true, page: this.currentPath()  } } }
   }
 
   linkToExplicit(href) {
-    return {...this.attrs, to: href }
+    return {...this.props, to: href}
   }
 
   currentPath() {

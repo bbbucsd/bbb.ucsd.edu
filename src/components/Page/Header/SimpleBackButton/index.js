@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import style from './style.module.scss'
-import ArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
+import Ionicon from 'react-ionicons'
 
 class SimpleBackButton extends Component {
 
@@ -11,7 +11,7 @@ class SimpleBackButton extends Component {
   render() {
     return (
       <div>
-        <a onClick={ this.back } className={style.back}><ArrowLeft className={style.arrow} /> Back</a>
+        <a onClick={ this.back } className={style.back}><Ionicon icon="arrow-left" className={style.arrow} /> Back</a>
       </div>
     );
   }

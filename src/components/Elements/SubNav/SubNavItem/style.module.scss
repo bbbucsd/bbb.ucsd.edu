@@ -3,6 +3,16 @@
 .navGroupItem {
   padding: 1px 0 !important;
   font-size: 14px;
+  width: 100%;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  text-align: left;
+  align-items: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  justify-content: flex-start;
+  text-decoration: none;
 }
 
 .navGroupItem a {
