@@ -38,7 +38,7 @@ ul {
   box-sizing: border-box;
 }
 
-button {
+#{$all-buttons} {
   border:0;
   padding:0;
 }

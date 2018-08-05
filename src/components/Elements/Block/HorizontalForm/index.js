@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ThemeButton from 'components/Theme/Button';
 import style from './style.module.scss';
-import Input from '@material-ui/core/Input';
 import Cta from '../Cta';
 import { connect } from 'airlytics';
 import Validator from 'utils/validator';
@@ -42,7 +41,7 @@ class HorizontalForm extends Component {
 
     return(
       <div className={style.root}>
-        <Input
+        <input
           onChange={this.firstNameInput}
           placeholder="First Name"
           name="first_name"
@@ -51,7 +50,7 @@ class HorizontalForm extends Component {
             'aria-label': 'First Name',
           }}
         />
-        <Input
+        <input
           onChange={this.emailInput}
           placeholder="Email"
           required

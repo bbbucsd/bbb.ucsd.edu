@@ -25,6 +25,7 @@ const replaceLoaderIdentName = (current, newIdent) => {
  * Modify the cssModules loader with a new localIdentName
  */
 module.exports.modifyWebpackConfig = ({ config, stage }, pluginOptions) => {
+
   var env = /^build/.test(stage) ? 'production' : 'development'
 
   const includeSASS = pluginOptions[env].includeSASS || false;

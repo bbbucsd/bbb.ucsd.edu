@@ -2,12 +2,19 @@ const PrismicConfig = require('./src/utils/prismicHelper');
 
 var _ = require('lodash');
 
+// Sass include paths
+var sassIncludePaths = [__dirname + '/src']
+sassIncludePaths = sassIncludePaths.concat(require('bourbon').includePaths)
+sassIncludePaths = sassIncludePaths.concat(require('bourbon-neat').includePaths)
 
+// dot env
 if (process.env.NODE_ENV != 'production') {
   require('dotenv').config({
     path: `.env`,
   })
 };
+
+
 
 // Leave objects as defaults to disable meta data
 var config = _.cloneDeep({
@@ -65,14 +72,14 @@ module.exports = {
 
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
     'gatsby-transformer-remark',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-next',
+    'gatsby-plugin-resolve-src',
     {
-      resolve: 'gatsby-plugin-resolve-src',
+      resolve: 'gatsby-plugin-sass',
       options: {
-        addSassLoader: true,
+        includePaths: sassIncludePaths
       },
     },
     {

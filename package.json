@@ -9,6 +9,8 @@
   "dependencies": {
     "airlytics": "^1.0.19",
     "bluebird": "^3.5.1",
+    "bourbon": "^5.1.0",
+    "bourbon-neat": "^3.0.0",
     "classnames": "^2.2.6",
     "dotenv": "^6.0.0",
     "gatsby": "^1.9.277",
