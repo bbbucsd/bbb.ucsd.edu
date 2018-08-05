@@ -4,9 +4,9 @@ import _ from 'lodash';
 
 class ThemeHeadline extends Component {
   textCopy() {
-    this.text = _.at(this.props.text, ['text', '[0]text'])
-    this.text = _.compact(this.text)
-    return _.first(this.text) || this.props.children
+    this.text = _.at(this.props.text, ['text', '[0]text']);
+    this.text = _.compact(this.text);
+    return _.first(this.text) || this.props.children;
   }
 
   render() {

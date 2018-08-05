@@ -14,6 +14,7 @@ import LogoBlock from 'components/Page/Slices/LogoBlock';
 import LogoBlockInline from 'components/Page/Slices/LogoBlockInline';
 import ContentBlock from 'components/Page/Slices/ContentBlock';
 import StatementBlock from 'components/Page/Slices/StatementBlock';
+import HorizontalFormBlock from 'components/Page/Slices/HorizontalFormBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
 import SingleImageBlock from 'components/Page/Slices/SingleImageBlock';
 import '../components/Theme/Globals';
@@ -82,6 +83,8 @@ class Page extends Component {
         return <ContentBlock key={`slice_${index}`} slice={slice} />
       case 'statement_block':
         return <StatementBlock key={`slice_${index}`} slice={slice} />
+      case 'horizontal_form_block':
+        return <HorizontalFormBlock key={`slice_${index}`} slice={slice} />
       case 'feature_block':
         return <FeatureBlock key={`slice_${index}`} slice={slice} />
       case 'single_image_block':
@@ -131,6 +134,7 @@ export const pageQuery = graphql`
           ...LogoBlockInline
           ...ContentBlock
           ...StatementBlock
+          ...HorizontalFormBlock
           ...FeatureBlock
           ...SingleImageBlock
         }
