@@ -134,7 +134,6 @@ export const pageQuery = graphql`
       last_publication_date
       ...Meta
       data {
-        path
         header
         footer
         body {
