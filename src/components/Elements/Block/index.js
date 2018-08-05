@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import List from '@material-ui/core/List';
 import style from './style.module.scss';
 import classNames from 'classnames/bind';
 let cx = classNames.bind(style);
@@ -21,11 +20,25 @@ class Block extends Component {
     }
   }
 
+  heightClass() {
+    switch(this.props.height) {
+      case 'Large':
+        return style.heightLarge
+      case 'Medium':
+        return style.heightMedium
+      case 'Small':
+        return style.heightSmall
+      case 'Auto':
+        return style.heightAuto
+    }
+  }
+
   render() {
     const { reducedHeight, className  } = this.props;
 
     return (
-      <div className={`${className} ${cx({ reducedHeight: reducedHeight, container: true })}`} style={ this.backgroundColor() }>
+      <div className={`${className} ${cx({ reducedHeight: reducedHeight,
+                                            container: true })} ${this.heightClass()}`} style={ this.backgroundColor() }>
         { this.orderChildren() }
       </div>
     )
@@ -37,4 +50,6 @@ export Subheadline from './Subheadline'
 export Section from './Section'
 export Cta from './Cta'
 export HorizontalForm from './HorizontalForm'
+export RichText from './RichText'
+
 export default Block;

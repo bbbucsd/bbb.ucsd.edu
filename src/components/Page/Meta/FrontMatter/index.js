@@ -25,7 +25,7 @@ class FrontMatter extends Component {
 
   setCanonical(canonicalUrl) {
     if (!canonicalUrl) {
-      canonicalUrl = Config.get('currentUrl');
+      canonicalUrl = Config.get('currentUrl').replace(/\/$/, "");;
     }
 
     return (

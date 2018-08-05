@@ -4,16 +4,19 @@
   flex-direction: column;
   justify-content: space-between;
   width:100%;
-  padding: 0 !important;
+  position: relative;
 }
 
 .navGroup {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: 0 !important;
+  padding: 0;
   justify-content: space-between;
   width:100%;
+  position: relative;
+  text-align: left;
+  align-items: center;
 }
 
 .navGroupTitle {

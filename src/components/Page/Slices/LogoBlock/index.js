@@ -1,24 +1,8 @@
 import React, { Component } from 'react';
 import Block, { Section, Headline, Subheadline, Cta } from 'components/Elements/Block';
-import Modal from 'components/Page/Modal';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import style from './style.module.scss'
 
-
 class LogoBlock extends Component {
-  state = {
-    open: false,
-  };
-
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
   createMatrix(logos) {
     let group = [];
     let count = 0;
@@ -59,22 +43,17 @@ class LogoBlock extends Component {
     const logos = slice.items;
 
     return (
-      <Block className={style.root}>
-        <Section>
-          <Modal
-            data={data.cta_link}
-            open={this.state.open}
-            onClose={this.handleClose}
-          />
+      <Block className={style.root} height={data.height}>
+        <Section paddingTop={data.inner_padding_top} paddingBottom={data.inner_padding_bottom}>
           <Headline className={style.headline}>{data.headline.text}</Headline>
 
-            <List className={ style.container }>
-              <ListItem className={ style.containerItem }>
+            <ul className={ style.container }>
+              <li className={ style.containerItem }>
                 <div className={ style.customers }>
                   {this.renderLogos(logos)}
                 </div>
-              </ListItem>
-            </List>
+              </li>
+            </ul>
 
           <Cta to={data.cta_link} className={style.cta} onClick={this.handleClickOpen}>{data.cta_label}</Cta>
         </Section>
@@ -85,23 +64,19 @@ class LogoBlock extends Component {
 
 export default LogoBlock;
 
+// language=GraphQL
 export const query = graphql`
   fragment LogoBlock on PrismicPageBodyLogoBlock {
     slice_type
     primary {
+      height
+      inner_padding_top
+      inner_padding_bottom
       headline {
         text
       }
       cta_link {
         url
-        document {
-          ...Modal
-          ... on PrismicPage {
-            data {
-              path
-            }
-          }
-        }
       }
       cta_label
     }

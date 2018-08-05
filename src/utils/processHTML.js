@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
-import Link from 'gatsby-link';
+import Link from 'components/Theme/Link';
 
 
 const convertLink = (node, index) => {

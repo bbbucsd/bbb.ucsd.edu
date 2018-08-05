@@ -19,8 +19,9 @@ class RichText extends Component {
   }
 
   render() {
+    const { className, customStyle } = this.props
     return (
-      <div className={style.content}>
+      <div className={`${style.content} ${className}`} style={customStyle}>
         { ReactHtmlParser((this.state.body || this.props.children), { transform: processHtml }) }
       </div>
     );

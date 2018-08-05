@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Link from 'gatsby-link';
+import Link from 'components/Theme/Link';
+import Ionicon from 'react-ionicons'
 import Flag from './american-flag.png'
 
 // Style
@@ -14,16 +15,16 @@ class Footer extends Component {
           <div className={style.social}>
             <div className={style.socialSpacer}></div>
             <div className={style.socialLink}>
-              <i className="fab fa-youtube "></i>
+              <Ionicon icon="logo-youtube" />
             </div>
             <div className={style.socialLink}>
-              <i className="fab fa-facebook"></i>
+              <Ionicon icon="logo-facebook" />
             </div>
             <div className={style.socialLink}>
-              <i className="fab fa-twitter"></i>
+              <Ionicon icon="logo-twitter" />
             </div>
             <div className={style.socialLink}>
-              <i className="fab fa-linkedin"></i>
+              <Ionicon icon="logo-linkedin" />
             </div>
           </div>
 

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 
 // Style
 import style from './style.module.scss';
@@ -11,14 +9,14 @@ class SubNavGroup extends Component {
     const { children, title } = this.props;
 
     return (
-      <List className={style.navGroupWrapper}>
-        <ListItem className={style.navGroup}>
-          <List className={style.navItemGroup}>
-            { title != null ? <ListItem className={style.navGroupTitle}>{ title }</ListItem> : '' }
+      <ul className={style.navGroupWrapper}>
+        <li className={style.navGroup}>
+          <ul className={style.navItemGroup}>
+            { title != null ? <li className={style.navGroupTitle}>{ title }</li> : '' }
             { children }
-          </List>
-        </ListItem>
-      </List>
+          </ul>
+        </li>
+      </ul>
     );
   }
 }

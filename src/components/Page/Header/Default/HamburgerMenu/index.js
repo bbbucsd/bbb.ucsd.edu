@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Link from 'gatsby-link';
+import Link from 'components/Theme/Link';
 
 // Style
 import style from './style.module.scss'
@@ -13,13 +11,13 @@ class HamburgerMenu extends Component {
 
   render() {
     return (
-      <List className={style.root}>
-        <ListItem>Find a Sales Rep</ListItem>
-        <ListItem>Find a Dealer</ListItem>
-        <ListItem>Events</ListItem>
-        <ListItem>Training</ListItem>
-        <ListItem><Link to="/contact-us">Contact Us</Link></ListItem>
-      </List>
+      <ul className={style.root}>
+        <li>Find a Sales Rep</li>
+        <li>Find a Dealer</li>
+        <li>Events</li>
+        <li>Training</li>
+        <li><Link to="/contact-us">Contact Us</Link></li>
+      </ul>
     );
   }
 }
