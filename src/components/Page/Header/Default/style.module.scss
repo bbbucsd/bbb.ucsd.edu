@@ -1,8 +1,10 @@
 @import 'components/Theme/Globals';
 
+$navItems: 4;
+
 .header {
   position: fixed;
-  top: 0;
+  top:0;
   left: 0;
   padding: $padding;
   z-index: 99;
@@ -30,13 +32,13 @@
 }
 
 .logo {
-  font-family: $fontFamilyLogo !important;
-  font-size: 20px !important;
+  font-family: $fontFamilyLogo;
+  font-size: 20px;
+  display:inline-block;
   position: relative;
   font-weight: 600;
   font-style: normal;
   transform: scaleX(.8);
-  left: -12px;
 }
 
 .navBar {
@@ -45,6 +47,8 @@
   justify-content: space-around;
   align-items: center;
   height: 75px;
+  width:90%;
+  margin: 0 auto;
 }
 
 .navBarLeft {
@@ -53,14 +57,15 @@
   justify-content: flex-start;
   flex: 0 0 135px;
   margin-right: auto;
-  margin-left:$largePadding;
+  margin-left:0;
 }
 
+$navBarCenterWidth: 500px;
 .navBarCenter {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 500px;
+  width: $navBarCenterWidth;
 }
 
 .navBarRight {
@@ -69,7 +74,6 @@
   justify-content: flex-end;
   flex: 0 0 135px;
   margin-left: auto;
-  margin-right:$largePadding;
 }
 
 .listItem {
@@ -86,7 +90,8 @@
 }
 
 .centerItem {
-  width: 100px;
+  width: $navBarCenterWidth / $navItems;
+  text-align: center;
 }
 
 .sideMenu {
@@ -95,6 +100,9 @@
 }
 
 .menuIcon {
-  position: absolute;
-  right: 0;
+  position: relative;
+  top: 5px;
+  font-size: 26px;
+  cursor: pointer;
+  fill:$white;
 }

@@ -109,9 +109,6 @@ class Page extends Component {
     return (
       <div>
         <Helmet>
-          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/brands.css" integrity="sha384-KtmfosZaF4BaDBojD9RXBSrq5pNEO79xGiggBxf8tsX+w2dBRpVW5o0BPto2Rb2F" crossOrigin="anonymous" />
-          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/fontawesome.css" integrity="sha384-8WwquHbb2jqa7gKWSoAwbJBV2Q+/rQRss9UXL5wlvXOZfSodONmVnifo/+5xJIWX" crossOrigin="anonymous" />
-          <link rel="stylesheet" href="https://use.typekit.net/pqq2exl.css" />
           <script>{`window.prismic = { endpoint: '${PrismicConfig.apiEndpoint}' }`}</script>
           <script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js"></script>
         </Helmet>

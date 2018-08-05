@@ -5,17 +5,25 @@
   display: inline-block;
 }
 
-.button {
+button.button {
   border-radius: 30px !important;
-  text-align: center !important;
-  color: white !important;
-  background-color: $brandInfo !important;
-  text-transform: none !important;
-  min-height: auto !important;
-  min-width: auto !important;
+  text-align: center;
+  color: white;
+  background-color: $brandInfo;
+  text-transform: none;
+  min-height: auto;
+  min-width: auto;
   font-family: $fontFamily;
+  font-size: 14px;
+  padding: ($padding / 2) $padding;
+  display: inline-flex;
+  align-items: center;
+  cursor:pointer;
   &:hover {
-    background-color: $brandInfo !important;
+    background-color: $brandInfo;
+  }
+  &:focus {
+    outline:0;
   }
 }
 
@@ -25,10 +33,12 @@
 
 .arrow {
   position: relative;
-  top: 0.5px;
+  top: 1px;
   right: -4px;
   height: 28px;
-  margin:0 !important;
+  margin:0;
+  font-size: 24px;
+  fill: $white;
 }
 
 .animateArrow {

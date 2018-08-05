@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import List from '@material-ui/core/List';
 import style from './style.module.scss';
 import classNames from 'classnames/bind';
 let cx = classNames.bind(style);
