@@ -48,21 +48,21 @@ class HorizontalFormBlock extends Component {
 
 export default connect()(HorizontalFormBlock);
 
-export const query = graphql`
-  fragment HorizontalFormBlock on PrismicPageBodyHorizontalFormBlock {
-    slice_type
-    primary {
-      height
-      background_color
-      headline_color
-      success_message
-      headline {
-        text
-      }
-      subheadline {
-        text
-      }
-      cta_label
-    }
-  }
-`;
+// export const query = graphql`
+//   fragment HorizontalFormBlock on PrismicPageBodyHorizontalFormBlock {
+//     slice_type
+//     primary {
+//       height
+//       background_color
+//       headline_color
+//       success_message
+//       headline {
+//         text
+//       }
+//       subheadline {
+//         text
+//       }
+//       cta_label
+//     }
+//   }
+// `;

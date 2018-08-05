@@ -134,7 +134,6 @@ export const pageQuery = graphql`
           ...LogoBlockInline
           ...ContentBlock
           ...StatementBlock
-          ...HorizontalFormBlock
           ...FeatureBlock
           ...SingleImageBlock
         }
