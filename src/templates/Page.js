@@ -118,6 +118,8 @@ class Page extends Component {
 
         <Features page={page} />
 
+        <Features page={page} />
+
         <Header display={page.header} />
         {( page.body || [] ).map((slice, i) => this.renderSlice(slice, i) )}
         <Footer display={page.footer} />
