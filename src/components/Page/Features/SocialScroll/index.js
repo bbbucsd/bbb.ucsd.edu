@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'airlytics';
 import Ionicon from 'react-ionicons'
-import { Hidden } from 'hedron';
+//import { Hidden } from 'hedron';
 import _ from 'lodash';
 import style from './style.module.scss';
 import classNames from 'classnames/bind';

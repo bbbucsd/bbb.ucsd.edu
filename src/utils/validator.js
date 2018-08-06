@@ -6,6 +6,7 @@ export default class Validator {
   static AUDIO_REGEX = /^.*\.(?:wav|mp3)$/i;
   static VIDEO_REGEX = /^.*\.(?:avi|wmv|flv|mpg|mp4)$/i;
   static EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  static COLOR_REGEX = /^#[0-9a-f]{3,6}$/i
 
   static isImage(path) {
     return !!path.match(this.IMAGE_REGEX);
@@ -41,6 +42,10 @@ export default class Validator {
 
   static isHashTag(url) {
     return url && !url.match('http') && url.match(/#/);
+  }
+
+  static isColor(str) {
+    return !!str.match(this.COLOR_REGEX);
   }
 
 }

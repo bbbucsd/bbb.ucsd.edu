@@ -22,7 +22,7 @@ import TestimonialBlock from 'components/Page/Slices/TestimonialBlock';
 import DoubleTestimonialBlock from 'components/Page/Slices/DoubleTestimonialBlock';
 import SingleImageBlock from 'components/Page/Slices/SingleImageBlock';
 import '../components/Theme/Globals';
-import '../components/Theme/Default.scss'
+import '../components/Theme/Normalize'
 
 class Page extends Component {
 
