@@ -1,7 +1,67 @@
 import React, { Component } from 'react';
-import style from './style.module.scss';
-import classNames from 'classnames/bind';
-let cx = classNames.bind(style);
+import styled, { css } from 'styled-components';
+
+
+const minHeightMixin = css`
+  min-height: ${ props => {
+  switch (props.height) {
+    case 'Large':
+      return '600px;'
+    case 'Medium':
+      return '400px;'
+    case 'Small':
+      return '200px;'
+    default:
+      return '600px'
+  }}}
+`;
+
+const paddingTopMixin = css`
+  padding-top: ${ props => { switch (props.paddingTop) {
+    case 'Large':
+      return '60px;'
+    case 'Medium':
+      return '20px;'
+    case 'Small':
+      return '10px;'
+    case 'None':
+      return '0'
+  }}}
+`;
+
+const paddingBottomMixin = css`
+  padding-bottom: ${ props => { switch (props.paddingBottom) {
+  case 'Large':
+    return '60px;'
+  case 'Medium':
+    return '20px;'
+  case 'Small':
+    return '10px;'
+  case 'None':
+    return '0'
+}}}
+`;
+
+const BlockWrapper = styled.div`
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  align-items: stretch;
+  background-color: ${ props => props.color };
+  ${props => props.height && minHeightMixin}
+`;
+
+
+const BlockInnerWrapper = styled.div`
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  justify-content: space-around;
+  ${props => props.paddingTop && paddingTopMixin}
+  ${props => props.paddingBottom && paddingBottomMixin}
+`;
 
 class Block extends Component {
   orderChildren() {
@@ -14,33 +74,13 @@ class Block extends Component {
     return this.blocks;
   }
 
-  backgroundColor() {
-    if (this.props.color !== '') {
-      return { backgroundColor: this.props.color };
-    }
-  }
-
-  heightClass() {
-    switch(this.props.height) {
-      case 'Large':
-        return style.heightLarge
-      case 'Medium':
-        return style.heightMedium
-      case 'Small':
-        return style.heightSmall
-      case 'Auto':
-        return style.heightAuto
-    }
-  }
-
   render() {
-    const { reducedHeight, className  } = this.props;
-
     return (
-      <div className={`${className} ${cx({ reducedHeight: reducedHeight,
-                                            container: true })} ${this.heightClass()}`} style={ this.backgroundColor() }>
-        { this.orderChildren() }
-      </div>
+      <BlockWrapper {...this.props}>
+        <BlockInnerWrapper {...this.props}>
+          { this.orderChildren() }
+        </BlockInnerWrapper>
+      </BlockWrapper>
     )
   }
 }

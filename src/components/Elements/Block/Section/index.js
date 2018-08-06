@@ -1,66 +1,97 @@
 import React, { Component } from 'react';
 import Validator from 'utils/validator';
 import Video from 'components/Elements/Video'
-import style from './style.module.scss'
-import classNames from 'classnames/bind';
-let cx = classNames.bind(style);
+import styled, { css } from 'styled-components';
+import media from 'components/Theme/Media';
+
+const backgroundColorMixin = (backgroundColor) => {
+  return Validator.isColor(backgroundColor) ? `
+    background-color: ${backgroundColor};
+  ` : null
+};
+
+const backgroundImageMixin = (backgroundImage) => {
+  if (Validator.isImage(backgroundImage)) {
+    return `
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      background-image: url('${backgroundImage}');
+    `;
+  }
+};
+
+const hiddenMixin = (hidden) => {
+  if (hidden === true) {
+    return css`display:none;`
+  }
+};
+
+const featuresMixin = (version) => {
+  return css`
+    ${props => props.hidden && props.hidden[version] && hiddenMixin(props.hidden[version])}
+    ${props => props.background && props.background[version] && backgroundColorMixin(props.background[version])}
+    ${props => props.background && props.background[version] && backgroundImageMixin(props.background[version])}
+  `
+}
+
+const desktopMixin = css`
+  ${featuresMixin('desktop')}
+`;
+
+const mobileMixin = css`
+  ${featuresMixin('mobile')}    
+  text-align: center;
+  background-color: #333; 
+  
+  h2 { 
+    color:#ffffff !important; 
+  }
+  
+  h3 { 
+    color:#ffffff !important; 
+  }   
+`;
+
+
+const SectionWrapper = styled.div`
+  width:auto;
+  margin-right:0;
+  display:flex;
+  flex: 1;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  text-align: left;
+  font-weight: 300;
+  font-style: normal;
+  overflow: hidden;
+  position:relative;
+  ${ media.mobile(...mobileMixin) }
+  ${ media.desktop(...desktopMixin) }
+  ${ media.tablet(...mobileMixin) }
+  
+  > * {
+    width:100%;
+  }
+`;
 
 class Section extends Component {
 
-  setAttrs() {
-    // set defaults
-    this.inlineStyle = {
-      backgroundColor: 'none',
-      backgroundImage: 'none',
-    }
-
-    // set params
-    this.hasBackgroundColor = (this.props.backgroundColor != null);
-    this.hasAsset = (this.props.src && this.props.src);
-    this.isVideo = (this.props.src && Validator.isVideo(this.props.src));
-    this.isImage = (this.props.src && Validator.isImage(this.props.src));
-
-
-    // change inline style
-    this.isImage ? this.inlineStyle.backgroundImage = `url('${this.props.src}')` : false
-    this.hasBackgroundColor ? this.inlineStyle.backgroundColor = this.props.backgroundColor : false
-  }
-
-  paddingTopClass() {
-    switch (this.props.paddingTop) {
-      case 'Large':
-        return style.paddingTopLarge
-      case 'Medium':
-        return style.paddingTopMedium
-      case 'Small':
-        return style.paddingTopSmall
-      case 'None':
-        return style.paddingTopNone
-    }
-  }
-
-  paddingBottomClass() {
-    switch (this.props.paddingBottom) {
-      case 'Large':
-        return style.paddingBottomLarge
-      case 'Medium':
-        return style.paddingBottomMedium
-      case 'Small':
-        return style.paddingBottomSmall
-      case 'None':
-        return style.paddingBottomNone
-    }
+  isVideoCapable() {
+    return this.props.background && this.props.background.desktop && Validator.isVideo(this.props.background.desktop)
   }
 
   render() {
-    this.setAttrs()
-
-    const { children, className, paddingTop, paddingBottom, src } = this.props
+    const { children } = this.props
 
     return (
-      <div className={`${cx({ root: true, image: this.isImage })} ${className} ${this.paddingTopClass()} ${this.paddingBottomClass()}`} style={ this.inlineStyle }>
-        { this.isVideo ? <Video src={src} /> : children }
-      </div>
+      <SectionWrapper {...this.props}>
+        { this.isVideoCapable() ? <Video src={this.props.background.desktop} /> : null }
+        { children }
+      </SectionWrapper>
     )
   }
 }

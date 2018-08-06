@@ -21,6 +21,7 @@
     "gatsby-plugin-resolve-src": "^1.1.4",
     "gatsby-plugin-sass": "^1.0.26",
     "gatsby-plugin-sitemap": "^1.2.25",
+    "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-source-prismic": "^1.0.2",
     "gatsby-transformer-remark": "^1.7.44",
     "history": "^4.7.2",
@@ -40,7 +41,8 @@
     "react-html-parser": "^2.0.2",
     "react-ionicons": "^2.1.6",
     "react-waypoint": "^8.0.3",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "styled-components": "^3.4.1"
   },
   "keywords": [
     "gatsby"

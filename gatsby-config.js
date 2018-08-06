@@ -76,6 +76,7 @@ module.exports = {
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-next',
     'gatsby-plugin-resolve-src',
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-plugin-sass',
       options: {
