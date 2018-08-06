@@ -2,11 +2,6 @@ const PrismicConfig = require('./src/utils/prismicHelper');
 
 var _ = require('lodash');
 
-// Sass include paths
-var sassIncludePaths = [__dirname + '/src']
-sassIncludePaths = sassIncludePaths.concat(require('bourbon').includePaths)
-sassIncludePaths = sassIncludePaths.concat(require('bourbon-neat').includePaths)
-
 // dot env
 if (process.env.NODE_ENV != 'production') {
   require('dotenv').config({
@@ -77,25 +72,6 @@ module.exports = {
     'gatsby-plugin-react-next',
     'gatsby-plugin-resolve-src',
     'gatsby-plugin-styled-components',
-    {
-      resolve: 'gatsby-plugin-sass',
-      options: {
-        includePaths: sassIncludePaths
-      },
-    },
-    {
-      resolve: `gatsby-plugin-module-local-ident-name`,
-      options: {
-        production: {
-          localIdentName: "[ext]-[hash:base64:5]",
-          includeSASS: true //default false
-        },
-        development: {
-          localIdentName: "[local]-[hash:base64:5]",
-          includeSASS: true //default false
-        }
-      }
-    },
     {
       resolve: 'gatsby-source-prismic',
       options: {
