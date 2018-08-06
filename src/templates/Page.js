@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import PrismicConfig from 'utils/prismicHelper';
 import Config from '../config';
 import Meta from 'components/Page/Meta';
+import Features from 'components/Page/Features';
 import Header from 'components/Page/Header';
 import Footer from 'components/Page/Footer';
 import StandardHero from 'components/Page/Slices/StandardHero';
@@ -14,7 +15,7 @@ import LogoBlock from 'components/Page/Slices/LogoBlock';
 import LogoBlockInline from 'components/Page/Slices/LogoBlockInline';
 import ContentBlock from 'components/Page/Slices/ContentBlock';
 import StatementBlock from 'components/Page/Slices/StatementBlock';
-import HorizontalFormBlock from 'components/Page/Slices/HorizontalFormBlock';
+//import HorizontalFormBlock from 'components/Page/Slices/HorizontalFormBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
 import SingleImageBlock from 'components/Page/Slices/SingleImageBlock';
 import '../components/Theme/Globals';
@@ -83,8 +84,8 @@ class Page extends Component {
         return <ContentBlock key={`slice_${index}`} slice={slice} />
       case 'statement_block':
         return <StatementBlock key={`slice_${index}`} slice={slice} />
-      case 'horizontal_form_block':
-        return <HorizontalFormBlock key={`slice_${index}`} slice={slice} />
+      //case 'horizontal_form_block':
+        //return <HorizontalFormBlock key={`slice_${index}`} slice={slice} />
       case 'feature_block':
         return <FeatureBlock key={`slice_${index}`} slice={slice} />
       case 'single_image_block':
@@ -104,6 +105,8 @@ class Page extends Component {
 
         <Meta page={page} />
 
+        <Features page={page} />
+
         <Header display={page.header} />
         {( page.body || [] ).map((slice, i) => this.renderSlice(slice, i) )}
         <Footer display={page.footer} />
@@ -122,6 +125,7 @@ export const pageQuery = graphql`
       first_publication_date
       last_publication_date
       ...Meta
+      ...Features
       data {
         path
         header
