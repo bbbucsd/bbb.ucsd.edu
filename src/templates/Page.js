@@ -14,11 +14,11 @@ import LogoBlock from 'components/Page/Slices/LogoBlock';
 import LogoBlockInline from 'components/Page/Slices/LogoBlockInline';
 import ContentBlock from 'components/Page/Slices/ContentBlock';
 import StatementBlock from 'components/Page/Slices/StatementBlock';
-import HorizontalFormBlock from 'components/Page/Slices/HorizontalFormBlock';
+//import HorizontalFormBlock from 'components/Page/Slices/HorizontalFormBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
 import SingleImageBlock from 'components/Page/Slices/SingleImageBlock';
 import '../components/Theme/Globals';
-import '../components/Theme/Default.scss'
+import '../components/Theme/Normalize'
 
 class Page extends Component {
 

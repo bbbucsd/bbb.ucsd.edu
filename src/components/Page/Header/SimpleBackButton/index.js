@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
-import style from './style.module.scss'
-import Ionicon from 'react-ionicons'
+import Styles, { styled, css} from 'components/Theme/Styles';
+import { KeyboardArrowLeft } from 'styled-icons/material/KeyboardArrowLeft.cjs'
+
+const BackButton = styled.a`
+  position: absolute;
+  left: 55px;
+  top: 0px;
+  line-height: 25px;
+  cursor: pointer;
+`;
+
+const BackArrow = styled(KeyboardArrowLeft)`
+  display: block;
+  position: relative;
+  top: 32px;
+  left: -35px;
+  font-size:32px;
+`;
 
 class SimpleBackButton extends Component {
 
@@ -11,7 +27,7 @@ class SimpleBackButton extends Component {
   render() {
     return (
       <div>
-        <a onClick={ this.back } className={style.back}><Ionicon icon="arrow-left" className={style.arrow} /> Back</a>
+        <BackButton onClick={ this.back }><BackArrow /> Back</BackButton>
       </div>
     );
   }
