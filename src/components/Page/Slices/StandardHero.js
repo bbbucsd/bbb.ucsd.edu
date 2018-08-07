@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import Hero from 'components/Theme/Hero';
 import ThemeHeadline from 'components/Theme/Headline';
 import ThemeButton from 'components/Theme/Button';
+import Validator from 'utils/validator';
 import { styled, css, media } from 'components/Theme/Styles';
 
 const Headline = styled(ThemeHeadline)`
+  color:${p => p.color || p.theme.white};
   ${media.lessThan("medium")`
     font-size: ${p => p.theme.h1FontSize / 2}px;
   `}
-  color: ${props => props.theme.white}
 `;
 
 const Subheadline = styled(ThemeHeadline)`
-  color: ${props => props.theme.white};
   font-weight:300;
+  color:${p => p.color || p.theme.white};
   ${media.lessThan("medium")`
     font-size: ${p => p.theme.h2FontSize / 1.2}px;
   `}
@@ -26,15 +27,29 @@ const Button = styled(ThemeButton)`
 class StandardHero extends Component {
   render() {
     const { slice } = this.props;
-    const data = slice.primary;
+    const {
+      align,
+      height,
+      background_color,
+      headline,
+      headline_color,
+      subheadline,
+      subheadline_color,
+      hero_asset,
+      cta_label,
+      cta_link} = slice.primary
+
+    let bg = hero_asset && hero_asset.url
+
+    console.log(slice)
 
     return (
-      <Hero alignment={data.headline_alignment} src={data.hero_asset && data.hero_asset.url}>
-        <Headline h1 text={data.headline} />
-        <Subheadline h2 text={data.subheadline} />
+      <Hero align={align} src={bg} height={height} color={background_color}>
+        <Headline h1 color={headline_color} text={headline} />
+        <Subheadline h2 color={subheadline_color} text={subheadline} />
 
-        {data.cta_label &&
-          <Button to={data.cta_link} onClick={this.handleClickOpen}>{data.cta_label}</Button>
+        {cta_label &&
+          <Button to={cta_link} onClick={this.handleClickOpen}>{cta_label}</Button>
         }
       </Hero>
     );
@@ -49,13 +64,17 @@ export const query = graphql`
   fragment StandardHero on PrismicPageBodyStandardhero {
     slice_type
     primary {
+      height
+      align
+      background_color
+      headline_color
       headline {
         text
       }
+      subheadline_color
       subheadline {
         text
       }
-      headline_alignment
       hero_asset {
         url
       }

@@ -128,7 +128,6 @@ export const pageQuery = graphql`
       ...Meta
       ...Features
       data {
-        path
         header
         footer
         body {

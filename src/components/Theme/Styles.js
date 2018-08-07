@@ -34,7 +34,7 @@ class Styles extends Component {
 
   static backgroundColor = (backgroundColor) => {
     return Validator.isColor(backgroundColor) ? `
-    background-color: ${backgroundColor};
+      background-color: ${backgroundColor};
   ` : null
   };
 
@@ -48,4 +48,5 @@ class Styles extends Component {
 export default Styles
 export styled from 'styled-components';
 export { css } from 'styled-components';
+export { keyframes } from 'styled-components';
 export media from "styled-media-query";

@@ -1,34 +1,51 @@
 import React, { Component } from 'react';
 import Validator from 'utils/validator';
 import Video from './Video'
-import Styles, { styled, css} from './Styles';
+import Styles, { styled, css, media } from 'components/Theme/Styles';
+
+const minHeightMixin = css`
+  ${ props => {
+  switch (props.height) {
+    case 'XL':
+      return '100vh'
+    case 'Large':
+      return '70vh'
+    case 'Medium':
+      return '50vh'
+    case 'Small':
+      return '30vh'
+    default:
+      return '80vh'
+  }}}
+`;
 
 const Wrapper = styled.div`
-  background-color: ${props => props.theme.black};
-  text-align: center;
-  color: ${props => props.theme.white};
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
-  min-height: ${props => props.reducedHeight ? 50 : 80 }vh;
   width: 100%;
   position: relative;
   overflow: hidden;
-  display: flex;
-  width: 100%;
   display: flex;
   z-index: 1;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   
-  align-items: ${props => props.alignment && !!props.alignment.match(/Center/i) ? 'center' : null };
-  align-items: ${props => props.alignment && !!props.alignment.match(/Left/i) ? 'flex-start' : null };
-  align-items: ${props => props.alignment && !!props.alignment.match(/Right/i) ? 'flex-end' : null };
-  text-indent: ${props => props.alignment && !!props.alignment.match(/Left/i) ? '150px' : null };
+  background-size: cover;
+  background: ${p => p.color || p.theme.black} no-repeat top center;
+  background-image: url('${p => Validator.isImage(p.src) && p.src}');
   
-  ${props => props.backgroundColor && Styles.backgroundColor(props.backgroundColor)}
-  ${props => props.src && Styles.backgroundImage(props.src)}
+  ${media.greaterThan('medium')`
+    min-height: ${minHeightMixin};
+    text-align: ${p => p.align ? p.align.toLowerCase() : 'center'};
+    text-indent: ${p => p.align && !!p.align.match(/Left/i) ? '150px' : null };
+   `}
+  
+  
+  ${media.lessThan('medium')`
+    min-height: ${minHeightMixin};
+    padding-top:30px;
+    text-indent: none;
+    text-align: center;
+  `}
 `
 
 class Hero extends Component {
