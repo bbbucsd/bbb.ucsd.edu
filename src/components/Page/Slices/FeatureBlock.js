@@ -16,6 +16,7 @@ const Container = styled.div`
 
 const Feature = styled.div`
    text-align: center;
+   max-width:300px;
 `;
 
 const Asset = styled.div`
@@ -56,7 +57,7 @@ class FeatureBlock extends Component {
                 <Asset background={item.asset.url} />
                 <Headline h2 text={item.headline} />
                 <Subheadline h3 text={item.subheadline} />
-                <Button small={true} to={item.cta_link && item.cta_link.url}>{item.cta_label}</Button>
+                <Button small={true} arrow={false} to={item.cta_link && item.cta_link.url}>{item.cta_label}</Button>
               </Feature>
             )}
           </Container>
@@ -89,11 +90,6 @@ export const query = graphql`
       cta_label
       cta_link {
         url
-        document {
-          data {
-            path
-          }
-        }
       }
     }
   }

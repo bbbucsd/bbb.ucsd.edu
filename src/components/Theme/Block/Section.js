@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Validator from 'utils/validator';
 import Video from '../Video'
-import Styles, { styled, css } from '../Styles';
+import Styles, { styled, css, media } from '../Styles';
 
 const justify = (keyword) => {
   switch (keyword) {
@@ -30,6 +30,14 @@ const SectionWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  
+  ${media.between("medium", "large")`
+    padding:50px !important;
+  `}
+  
+  ${media.lessThan("medium")`
+    padding:50px !important;
+  `}
    
   > * {
     width:100%;

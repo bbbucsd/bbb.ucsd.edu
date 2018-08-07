@@ -7,6 +7,13 @@
         "label" : "Name"
       }
     },
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "Slug",
+        "placeholder" : "Use periods as slashes"
+      }
+    },
     "header" : {
       "type" : "Select",
       "config" : {
@@ -48,11 +55,20 @@
                   "label" : "Background Color"
                 }
               },
-              "headline_alignment" : {
+              "height" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Auto", "Large", "Medium", "Small" ],
+                  "default_value" : "Auto",
+                  "label" : "Height"
+                }
+              },
+              "align" : {
                 "type" : "Select",
                 "config" : {
                   "options" : [ "Center", "Left", "Right" ],
-                  "label" : "Headline Alignment"
+                  "default_value" : "Center",
+                  "label" : "Align"
                 }
               },
               "headline" : {
@@ -62,11 +78,23 @@
                   "label" : "Headline"
                 }
               },
+              "headline_color" : {
+                "type" : "Color",
+                "config" : {
+                  "label" : "Headline Color"
+                }
+              },
               "subheadline" : {
                 "type" : "StructuredText",
                 "config" : {
                   "single" : "heading2",
                   "label" : "Subheadline"
+                }
+              },
+              "subheadline_color" : {
+                "type" : "Color",
+                "config" : {
+                  "label" : "Subheadline Color"
                 }
               },
               "cta_label" : {
@@ -136,6 +164,14 @@
             "icon" : "photo_library",
             "display" : "list",
             "non-repeat" : {
+              "height" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Auto", "XL", "Large", "Medium", "Small" ],
+                  "default_value" : "Auto",
+                  "label" : "Height"
+                }
+              },
               "headline" : {
                 "type" : "StructuredText",
                 "config" : {
@@ -174,7 +210,32 @@
             "description" : "Inline grid of logos",
             "icon" : "photo_library",
             "display" : "list",
-            "non-repeat" : { },
+            "non-repeat" : {
+              "height" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Normal", "Large", "Medium", "Small", "Auto" ],
+                  "default_value" : "Normal",
+                  "label" : "Height"
+                }
+              },
+              "justify" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Middle", "Top", "Bottom" ],
+                  "default_value" : "Middle",
+                  "label" : "Justify"
+                }
+              },
+              "align" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Center", "Left", "Right" ],
+                  "default_value" : "Center",
+                  "label" : "Align"
+                }
+              }
+            },
             "repeat" : {
               "logo" : {
                 "type" : "Image",
@@ -193,6 +254,14 @@
             "icon" : "filter_2",
             "display" : "grid",
             "non-repeat" : {
+              "height" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Auto", "Large", "Medium", "Small" ],
+                  "default_value" : "Auto",
+                  "label" : "Height"
+                }
+              },
               "direction" : {
                 "type" : "Select",
                 "config" : {
@@ -270,8 +339,25 @@
               "height" : {
                 "type" : "Select",
                 "config" : {
-                  "options" : [ "Normal", "Reduced" ],
+                  "options" : [ "Auto", "Large", "Medium", "Small" ],
+                  "default_value" : "Auto",
                   "label" : "Height"
+                }
+              },
+              "justify" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Middle", "Top", "Bottom" ],
+                  "default_value" : "Middle",
+                  "label" : "Justify"
+                }
+              },
+              "align" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Center", "Left", "Right" ],
+                  "default_value" : "Center",
+                  "label" : "Align"
                 }
               },
               "headline" : {
@@ -321,7 +407,32 @@
             "description" : "Multi-column -- Image, Headline, Subheadline, CTA",
             "icon" : "view_column",
             "display" : "list",
-            "non-repeat" : { },
+            "non-repeat" : {
+              "height" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Auto", "XL", "Large", "Medium", "Small" ],
+                  "default_value" : "Auto",
+                  "label" : "Height"
+                }
+              },
+              "justify" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Middle", "Top", "Bottom" ],
+                  "default_value" : "Middle",
+                  "label" : "Justify"
+                }
+              },
+              "align" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Center", "Left", "Right" ],
+                  "default_value" : "Center",
+                  "label" : "Align"
+                }
+              }
+            },
             "repeat" : {
               "asset" : {
                 "type" : "Link",
@@ -407,22 +518,74 @@
               }
             },
             "repeat" : { }
+          },
+          "single_image_block" : {
+            "type" : "Slice",
+            "fieldset" : "Single Image Block",
+            "description" : "Background Image, Rich Text, CTA",
+            "icon" : "insert_photo",
+            "display" : "list",
+            "non-repeat" : {
+              "height" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Auto", "Large", "Medium", "Small" ],
+                  "default_value" : "Auto",
+                  "label" : "Height"
+                }
+              },
+              "justify" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Middle", "Top", "Bottom" ],
+                  "default_value" : "Middle",
+                  "label" : "Justify"
+                }
+              },
+              "align" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Center", "Left", "Right" ],
+                  "default_value" : "Center",
+                  "label" : "Align"
+                }
+              },
+              "asset" : {
+                "type" : "Link",
+                "config" : {
+                  "select" : "media",
+                  "label" : "Asset"
+                }
+              },
+              "content" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "strong, em",
+                  "label" : "Content"
+                }
+              },
+              "content_color" : {
+                "type" : "Color",
+                "config" : {
+                  "label" : "Content Color"
+                }
+              },
+              "cta_label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "CTA Label"
+                }
+              },
+              "cta_link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "CTA Link"
+                }
+              }
+            },
+            "repeat" : { }
           }
         }
-      }
-    }
-  },
-  "Routing" : {
-    "path" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "Path"
-      }
-    },
-    "uid" : {
-      "type" : "UID",
-      "config" : {
-        "label" : "Slug"
       }
     }
   },
@@ -877,6 +1040,24 @@
             }
           }
         }
+      }
+    }
+  },
+  "Features" : {
+    "social_scroll_enabled" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Yes", "No" ],
+        "default_value" : "No",
+        "label" : "Social Scroll Enabled"
+      }
+    },
+    "cookie_policy_enabled" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Yes", "No" ],
+        "default_value" : "Yes",
+        "label" : "Cookie Policy Enabled"
       }
     }
   }

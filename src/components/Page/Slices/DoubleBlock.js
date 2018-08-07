@@ -19,7 +19,7 @@ const Headline = styled(ThemeHeadline)`
 const Subheadline = styled(ThemeHeadline)`
   font-size: 26px;
   line-height: 32px;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   ${media.lessThan("medium")`
     font-size: 22px;
     color:${p => p.theme.white};
@@ -30,13 +30,9 @@ const Primary = styled(Section)`
   background-color: ${p => p.color};
   padding: 0 ${props => props.theme.largePadding * 2}px;
   width:50%;
-
-  ${media.between("medium", "large")`
-    padding: 50px;
-  `}
   
   ${media.lessThan("medium")`
-    padding: 50px;
+    width:100%;
     background-image: url('${p => p.src}');
   `}
 `;
@@ -44,9 +40,6 @@ const Primary = styled(Section)`
 const Secondary = styled(Section)`
   background-image: url('${p => p.src}');
   width:50%;
-  ${media.between("medium", "large")`
-    padding: 50px;
-  `}
  
   ${media.lessThan("medium")`
     display:none;
@@ -70,7 +63,7 @@ class DoubleBlock extends Component {
             subheadline_color,
             asset } = slice.primary
 
-    let bg = this.backgroundImage(asset.url)
+    let bg = asset.url && this.backgroundImage(asset.url)
 
     return (
       <Block direction={direction} height={height}>
