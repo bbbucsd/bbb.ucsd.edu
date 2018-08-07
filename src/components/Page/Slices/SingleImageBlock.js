@@ -7,7 +7,6 @@ import Validator from 'utils/validator';
 
 const Primary = styled(Section)`
   background-image: url('${p => p.src}');
-  flex-direction: row;
 `;
 
 

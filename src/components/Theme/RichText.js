@@ -6,8 +6,8 @@ import styled from 'styled-components';
 import _ from 'lodash';
 
 const Content = styled.div`
-  width: 900px;
-  margin: 100px auto;
+  //width: 900px;
+  //margin: 100px auto;
   
   h2 {
     color: $black;
