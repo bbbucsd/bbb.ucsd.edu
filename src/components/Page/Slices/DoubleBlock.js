@@ -28,6 +28,8 @@ const Subheadline = styled(ThemeHeadline)`
 
 const Primary = styled(Section)`
   background-color: ${p => p.color};
+  padding: 0 ${props => props.theme.largePadding * 2}px;
+  width:50%;
 
   ${media.between("medium", "large")`
     padding: 50px;
@@ -41,7 +43,7 @@ const Primary = styled(Section)`
 
 const Secondary = styled(Section)`
   background-image: url('${p => p.src}');
- 
+  width:50%;
   ${media.between("medium", "large")`
     padding: 50px;
   `}
@@ -54,7 +56,6 @@ const Secondary = styled(Section)`
 class DoubleBlock extends Component {
 
   backgroundImage(url) {
-    console.log(url)
     return Validator.isImage(url) ? url : false
   }
 

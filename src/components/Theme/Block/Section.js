@@ -24,7 +24,7 @@ const SectionWrapper = styled.div`
   text-align: ${p => p.align ? p.align.toLowerCase() : 'center'};;
   overflow: hidden;
   position:relative;
-  padding: 0 120px;
+  padding: 0 ${props => props.theme.largePadding * 3.5}px;
   
   // boilerplate stuff to make it easy to set background images on sections
   background-repeat: no-repeat;

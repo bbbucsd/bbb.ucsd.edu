@@ -10,7 +10,7 @@ const Headline = styled(ThemeHeadline)`
 `;
 
 const Subheadline = styled(ThemeHeadline)`
-  font-size:${props => props.theme.h2FontSize}px;
+  font-size:${props => props.theme.h2FontSize / 1.1}px;
   color: ${props => props.color || props.theme.black};
 `;
 
