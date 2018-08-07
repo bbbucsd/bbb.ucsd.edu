@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Block, { Section } from 'components/Theme/Block';
 import Styles, { styled, css} from 'components/Theme/Styles';
 
-const Row = styled(Block)`
+const Logos = styled.div`
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   text-align: center;
   display: flex;
@@ -19,15 +19,22 @@ const Logo = styled.img`
 class LogoBlockInline extends Component {
 
   render() {
-    const { slice } = this.props;
-    const data = slice.primary;
+    const slice = this.props.slice
     const items = slice.items;
 
+    const {
+      height,
+      align,
+      justify
+    } = slice.primary
+
     return (
-      <Block height={data.height}>
-        <Row paddingTop={data.inner_padding_top} paddingBottom={data.inner_padding_bottom}>
-          {items.map((item, i) => <Logo alt={item.logo.alt} src={item.logo.url} />)}
-        </Row>
+      <Block height={height}>
+        <Section align={align} justify={justify}>
+          <Logos>
+            {items.map((item, i) => <Logo alt={item.logo.alt} src={item.logo.url} />)}
+          </Logos>
+        </Section>
       </Block>
     )
   }
@@ -40,8 +47,8 @@ export const query = graphql`
     slice_type
     primary {
       height
-      inner_padding_top
-      inner_padding_bottom
+      align
+      justify
     }
     items {
       logo {

@@ -48,3 +48,4 @@ class Styles extends Component {
 export default Styles
 export styled from 'styled-components';
 export { css } from 'styled-components';
+export media from "styled-media-query";

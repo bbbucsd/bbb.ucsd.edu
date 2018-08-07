@@ -3,7 +3,7 @@ import Styles, { styled, css} from './Styles';
 import _ from 'lodash';
 
 const H1 = styled.h1`
-  color: ${props => props.color || props.theme.darkGray};
+  color: ${props => props.color || props.theme.black};
   font-family: ${props => props.theme.fontFamilyTitle};
   font-size: ${props => props.theme.h1FontSize}px;
   margin:0;
@@ -12,7 +12,7 @@ const H1 = styled.h1`
 `
 
 const H2 = styled.h2`
-  color: ${props => props.color || props.theme.darkGray};
+  color: ${props => props.color || props.theme.black};
   font-family: ${props => props.theme.fontFamilyTitle};
   font-size: ${props => props.theme.h2FontSize}px;
   margin:10px 0 0 0;
@@ -21,7 +21,7 @@ const H2 = styled.h2`
 `
 
 const H3 = styled.h3`
-  color: ${props => props.color || props.theme.darkGray};
+  color: ${props => props.color || props.theme.black};
   font-family: ${props => props.theme.fontFamilyTitle};
   font-size: ${props => props.theme.h3FontSize}px;
   margin:10px 0 0 0;

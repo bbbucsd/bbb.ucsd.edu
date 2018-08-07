@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Styles, { styled, css} from './Styles';
+import Validator from 'utils/validator';
 
 const BackgroundVideo = styled.video`
   left: 0;
@@ -14,13 +15,20 @@ const BackgroundVideo = styled.video`
 `;
 
 class Video extends Component {
+  isVideo(src) {
+    return src && Validator.isVideo(src)
+  }
+
   render() {
     const { src } = this.props;
 
     return (
-      <BackgroundVideo loop autoPlay playsInline muted>
-        <source src={src} type="video/mp4"/>
-      </BackgroundVideo>
+      <React.Fragment>
+      { this.isVideo(src) &&
+        <BackgroundVideo loop autoPlay playsInline muted>
+          <source src={src} type="video/mp4"/>
+        </BackgroundVideo> }
+      </React.Fragment>
     );
   }
 }

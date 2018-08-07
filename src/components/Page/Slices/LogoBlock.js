@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import Block, { Section } from 'components/Theme/Block';
 import ThemeHeadline from 'components/Theme/Headline';
 import ThemeButton from 'components/Theme/Button';
-import Styles, { styled, css} from 'components/Theme/Styles';
+import { styled, css, media } from 'components/Theme/Styles';
 
 const BlockWrapper = styled(Block)`
   text-align: center;
+`;
+
+const SectionWrapper = styled(Section)`
+  ${media.lessThan("medium")`
+    padding:20px
+  `}
 `;
 
 const Headline = styled(ThemeHeadline)`
@@ -15,50 +21,50 @@ const Headline = styled(ThemeHeadline)`
   padding: 0;
   text-align: center;
   font-size: ${props => props.theme.h1FontSize / 1.2}px;
-`;
-
-const Container = styled.ul`
-  display: table;
-  width: 100%;
-  padding: 0;
-`;
-
-const Item = styled.li`
-  display: table-cell;
-  width: 100%;
-  padding: ${props => props.theme.largePadding};
-  text-align: left;
-  vertical-align: middle;
+  
+  ${media.lessThan("medium")`
+    font-size: ${props => props.theme.h1FontSize / 1.7}px;
+    margin: 20px 0 40px 0;
+    font-weight: 300;
+  `}
 `;
 
 const Customers = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   width:100%;
 `;
 
 const Customer = styled.div`
-  flex: 4;
-  display: flex;
-  flex-flow: column wrap;
   height: 150px;
+  display: flex;
   justify-content: center;
+  margin-bottom:20px;
+  width:33%;
+  
   & + & {
     border-left: 1px solid #ccc;
   }
+  
+  &:nth-child(4n) {
+    border-left: none;
+  }
+  
+  ${media.lessThan("medium")`
+    width:50%;
+    margin-bottom:0;
+    & + & {
+      border-left: none;
+    }
+  `}
 `;
 
 const Logo = styled.img`
-  width: 100px;
+  width: 120px;
   display: inline-block;
   margin: auto;
-`;
-
-const Row = styled.div`
-  display: flex;
-  flex: 5;
-  flex-direction: row;
-  margin-top: ${props => props.topRow ? 0 : 75}px;
 `;
 
 const Button = styled(ThemeButton)`
@@ -69,60 +75,26 @@ const Button = styled(ThemeButton)`
 `;
 
 class LogoBlock extends Component {
-  createMatrix(logos) {
-    let group = [];
-    let count = 0;
-    logos.forEach((logo, index) => {
-      if (index >= 3 && index % 3 === 0) { count++; }
-      group[count] = group[count] || [];
-      group[count].push(logo)
-    });
-    return group;
-  }
-
-  renderLogos(logos) {
-    if (!logos.length) { return null; }
-    const matrix = this.createMatrix(logos);
-    return matrix.map((row, index) => {
-      let columns = row.map((column, index) => {
-        if (column.logo && column.logo.url) {
-          return (
-            <Customer key={`column_${index}`}>
-              <Logo alt={column.logo.url.split("_")[1].split(".")[0]} src={column.logo.url} />
-            </Customer>
-          );
-        } else {
-          return null;
-        }
-      });
-      return (
-        <Row key={`row_${index}`} topRow={index === 0}>
-          {columns}
-        </Row>
-      );
-    });
-  }
-
   render() {
     const { slice } = this.props;
     const data = slice.primary;
-    const logos = slice.items;
+    const items = slice.items;
 
     return (
       <BlockWrapper height={data.height}>
-        <Section paddingTop={data.inner_padding_top} paddingBottom={data.inner_padding_bottom}>
-          <Headline h2>{data.headline.text}</Headline>
+        <SectionWrapper>
+          <Headline h2 text={data.headline} />
 
-            <Container>
-              <Item>
-                <Customers>
-                  {this.renderLogos(logos)}
-                </Customers>
-              </Item>
-            </Container>
+          <Customers>
+            {items.map((item) =>
+              <Customer>
+                <Logo alt={item.logo.alt} src={item.logo.url} />
+              </Customer>
+            )}
+          </Customers>
 
           <Button to={data.cta_link} onClick={this.handleClickOpen}>{data.cta_label}</Button>
-        </Section>
+        </SectionWrapper>
       </BlockWrapper>
     )
   }
@@ -136,8 +108,6 @@ export const query = graphql`
     slice_type
     primary {
       height
-      inner_padding_top
-      inner_padding_bottom
       headline {
         text
       }

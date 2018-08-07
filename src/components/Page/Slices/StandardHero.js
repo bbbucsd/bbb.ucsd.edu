@@ -2,14 +2,21 @@ import React, { Component } from 'react';
 import Hero from 'components/Theme/Hero';
 import ThemeHeadline from 'components/Theme/Headline';
 import ThemeButton from 'components/Theme/Button';
-import Styles, { styled, css} from 'components/Theme/Styles';
+import { styled, css, media } from 'components/Theme/Styles';
 
 const Headline = styled(ThemeHeadline)`
+  ${media.lessThan("medium")`
+    font-size: ${p => p.theme.h1FontSize / 2}px;
+  `}
   color: ${props => props.theme.white}
 `;
 
 const Subheadline = styled(ThemeHeadline)`
-  color: ${props => props.theme.white}
+  color: ${props => props.theme.white};
+  font-weight:300;
+  ${media.lessThan("medium")`
+    font-size: ${p => p.theme.h2FontSize / 1.2}px;
+  `}
 `;
 
 const Button = styled(ThemeButton)`
