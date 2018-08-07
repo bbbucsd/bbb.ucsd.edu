@@ -14,12 +14,12 @@ import DoubleBlock from 'components/Page/Slices/DoubleBlock';
 import LogoBlock from 'components/Page/Slices/LogoBlock';
 import LogoBlockInline from 'components/Page/Slices/LogoBlockInline';
 import ContentBlock from 'components/Page/Slices/ContentBlock';
-import HighlightContentBlock from 'components/Page/Slices/HighlightContentBlock';
+//import HighlightContentBlock from 'components/Page/Slices/HighlightContentBlock';
 import StatementBlock from 'components/Page/Slices/StatementBlock';
 //import HorizontalFormBlock from 'components/Page/Slices/HorizontalFormBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
-import TestimonialBlock from 'components/Page/Slices/TestimonialBlock';
-import DoubleTestimonialBlock from 'components/Page/Slices/DoubleTestimonialBlock';
+//import TestimonialBlock from 'components/Page/Slices/TestimonialBlock';
+//import DoubleTestimonialBlock from 'components/Page/Slices/DoubleTestimonialBlock';
 import SingleImageBlock from 'components/Page/Slices/SingleImageBlock';
 import '../components/Theme/Globals';
 import '../components/Theme/Normalize'
@@ -87,18 +87,18 @@ class Page extends Component {
         return <LogoBlockInline key={`slice_${index}`} slice={slice} />
       case 'content_block':
         return <ContentBlock key={`slice_${index}`} slice={slice} />
-      case 'highlight_content_block':
-        return <HighlightContentBlock key={`slice_${index}`} slice={slice} />
+      //case 'highlight_content_block':
+        //return <HighlightContentBlock key={`slice_${index}`} slice={slice} />
       case 'statement_block':
         return <StatementBlock key={`slice_${index}`} slice={slice} />
       //case 'horizontal_form_block':
         //return <HorizontalFormBlock key={`slice_${index}`} slice={slice} />
       case 'feature_block':
         return <FeatureBlock key={`slice_${index}`} slice={slice} />
-      case 'testimonial_block':
-        return <TestimonialBlock key={`slice_${index}`} slice={slice} />
-      case 'double_testimonial_block':
-        return <DoubleTestimonialBlock key={`slice_${index}`} slice={slice} />
+      //case 'testimonial_block':
+        //return <TestimonialBlock key={`slice_${index}`} slice={slice} />
+      //case 'double_testimonial_block':
+        //return <DoubleTestimonialBlock key={`slice_${index}`} slice={slice} />
       case 'single_image_block':
         return <SingleImageBlock key={`slice_${index}`} slice={slice} />
     };
@@ -116,8 +116,6 @@ class Page extends Component {
         </Helmet>
 
         <Meta tags={tags} page={page} />
-
-        <Features page={page} />
 
         <Features page={page} />
 
@@ -150,11 +148,8 @@ export const pageQuery = graphql`
           ...LogoBlock
           ...LogoBlockInline
           ...ContentBlock
-          ...HighlightContentBlock
           ...StatementBlock
           ...FeatureBlock
-          ...TestimonialBlock
-          ...DoubleTestimonialBlock
           ...SingleImageBlock
         }
       }
