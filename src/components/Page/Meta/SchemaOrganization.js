@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Config from '../../../../config';
+import Config from '../../../config';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 import moment from "moment";
