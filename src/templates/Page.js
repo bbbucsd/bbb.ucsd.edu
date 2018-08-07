@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import PrismicConfig from 'utils/prismicHelper';
 import Config from '../config';
 import Meta from 'components/Page/Meta';
+import Features from 'components/Page/Features';
 import Header from 'components/Page/Header';
 import Footer from 'components/Page/Footer';
 import StandardHero from 'components/Page/Slices/StandardHero';
@@ -84,8 +85,8 @@ class Page extends Component {
         return <ContentBlock key={`slice_${index}`} slice={slice} />
       case 'statement_block':
         return <StatementBlock key={`slice_${index}`} slice={slice} />
-      case 'horizontal_form_block':
-        return <HorizontalFormBlock key={`slice_${index}`} slice={slice} />
+      //case 'horizontal_form_block':
+        //return <HorizontalFormBlock key={`slice_${index}`} slice={slice} />
       case 'feature_block':
         return <FeatureBlock key={`slice_${index}`} slice={slice} />
       case 'single_image_block':
@@ -105,6 +106,8 @@ class Page extends Component {
 
         <Meta page={page} />
 
+        <Features page={page} />
+
         <Header display={page.header} />
         {( page.body || [] ).map((slice, i) => this.renderSlice(slice, i) )}
         <Footer display={page.footer} />
@@ -123,6 +126,7 @@ export const pageQuery = graphql`
       first_publication_date
       last_publication_date
       ...Meta
+      ...Features
       data {
         path
         header
