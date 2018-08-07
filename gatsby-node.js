@@ -1,5 +1,5 @@
-const path = require(`path`)
-const PrismicHelper = require('./src/utils/prismicHelper')
+const path = require(`path`);
+const PrismicHelper = require('./src/utils/prismicHelper');
 
 exports.createPages = async ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
@@ -60,3 +60,18 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     })
   })
 }
+
+exports.modifyBabelrc = ({ babelrc }) => ({
+  ...babelrc,
+  plugins: babelrc.plugins.concat([['babel-plugin-styled-components', { ssr: true }]]),
+})
+
+//exports.onCreateBabelConfig = ({ stage, actions }) => {
+  //actions.setBabelPlugin({
+    //name: `babel-plugin-styled-components`,
+    //stage,
+    //options: {
+      //ssr: true,
+    //},
+  //})
+//}
