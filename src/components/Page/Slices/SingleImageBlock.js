@@ -1,37 +1,51 @@
 import React, { Component } from 'react';
 import Block, { Section } from 'components/Theme/Block';
-import Styles, { styled, css} from 'components/Theme/Styles';
+import { styled, css} from 'components/Theme/Styles';
 import ThemeRichText from 'components/Theme/RichText'
 import ThemeButton from 'components/Theme/Button';
+import Validator from 'utils/validator';
 
-const Row = styled(Block)`
-  padding-left: ${props => props.theme.largePadding * 2}px;
-  padding-right: ${props => props.theme.largePadding * 2}px;
+const Primary = styled(Section)`
+  background-image: url('${p => p.src}');
+  flex-direction: row;
 `;
+
 
 const RichText = styled(ThemeRichText)`
   color: ${props => props.color};
+  font-size: ${p => p.theme.h2FontSize * 1.5}px;
+  font-weight:300;
 `;
 
 const Button = styled(ThemeButton)`
-
+  
 `;
 
 class SingleImageBlock extends Component {
   render() {
-    const { slice } = this.props;
-    const data = slice.primary;
+    const {
+      height,
+      align,
+      justify,
+      asset,
+      content,
+      content_color,
+      cta_label,
+      cta_link
+    } = this.props.slice.primary
+
+    console.log(content)
+
+    let bg = asset && Validator.isImage(asset.url) ? asset.url : false
 
     return (
-      <Block height={data.height}>
-        <Section background={{desktop: data.asset.url, mobile: data.asset.url}} paddingTop={data.inner_padding_top} paddingBottom={data.inner_padding_bottom}>
-          <Row>
-            <RichText color={data.content_color} body={data.content} />
-            {data.cta_label &&
-              <Button to={data.cta_link}>{data.cta_label}</Button>
-            }
-          </Row>
-        </Section>
+      <Block height={height}>
+        <Primary align={align} justify={justify} src={bg}>
+          <RichText color={content_color} body={content} />
+          {cta_label &&
+            <Button to={cta_link}>{cta_label}</Button>
+          }
+        </Primary>
       </Block>
     )
   }
@@ -44,8 +58,8 @@ export const query = graphql`
     slice_type
     primary {
       height
-      inner_padding_top
-      inner_padding_bottom
+      align
+      justify
       asset {
         url
       }
