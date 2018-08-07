@@ -19,7 +19,7 @@ import StatementBlock from 'components/Page/Slices/StatementBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
 import SingleImageBlock from 'components/Page/Slices/SingleImageBlock';
 import '../components/Theme/Globals';
-import '../components/Theme/Default.scss'
+import '../components/Theme/Normalize'
 
 class Page extends Component {
 
