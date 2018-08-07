@@ -79,6 +79,7 @@ class SocialScroll extends Component {
   }
 
   componentWillMount() {
+    if (typeof window === "undefined") { return; }
     this.props.actions.getSocialCounts();
     this.setState({
       count: this.getCounts(this.props.page.socialCounts[window.location.pathname])
