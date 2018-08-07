@@ -41,6 +41,13 @@ const Widget = styled.div`
   
 `;
 
+const SocialLink = styled.div`
+  svg {
+    width:30px;
+    height:30px;
+  }
+`;
+
 const Share = styled.div`
   cursor: pointer;
 `;
@@ -140,13 +147,13 @@ class SocialScroll extends Component {
         <Widget show={this.state.showWidget}>
           {this.renderCount()}
           <Share onClick={this.shareTwitter}>
-            <Twitter color="#55ACEE" />
+            <SocialLink><Twitter color="#55ACEE" /></SocialLink>
           </Share>
           <div onClick={this.shareFacebook}>
-            <Facebook color="#3B5998" />
+            <SocialLink><Facebook color="#3B5998" /></SocialLink>
           </div>
           <div onClick={this.shareLinkedIn}>
-            <Linkedin color="#0077B5" />
+            <SocialLink><Linkedin color="#0077B5" /></SocialLink>
           </div>
         </Widget>
       </Fragment>
