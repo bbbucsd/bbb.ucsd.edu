@@ -65,13 +65,3 @@ exports.modifyBabelrc = ({ babelrc }) => ({
   ...babelrc,
   plugins: babelrc.plugins.concat([['babel-plugin-styled-components', { ssr: true }]]),
 })
-
-//exports.onCreateBabelConfig = ({ stage, actions }) => {
-  //actions.setBabelPlugin({
-    //name: `babel-plugin-styled-components`,
-    //stage,
-    //options: {
-      //ssr: true,
-    //},
-  //})
-//}
