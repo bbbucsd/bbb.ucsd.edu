@@ -6,8 +6,8 @@ import styled from 'styled-components';
 import _ from 'lodash';
 
 const Content = styled.div`
-  width: 900px;
-  margin: 100px auto;
+  //width: 900px;
+  //margin: 100px auto;
   
   h2 {
     color: $black;
@@ -173,23 +173,14 @@ const Content = styled.div`
 `
 
 class RichText extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = { body: props.body.html }
-  }
-
-  componentDidMount() {
-    if (_.isArray(this.props.body)) {
-      this.setState({body: PrismicDOM.RichText.asHtml(this.props.body)})
-    }
-  }
-
   render() {
     const { className } = this.props
+
+    let body = _.isArray(this.props.body) ? PrismicDOM.RichText.asHtml(this.props.body) : this.props.body.html
+
     return (
       <Content className={className}>
-        { ReactHtmlParser((this.state.body || this.props.children), { transform: processHtml }) }
+        { ReactHtmlParser((body || this.props.children), { transform: processHtml }) }
       </Content>
     );
   }

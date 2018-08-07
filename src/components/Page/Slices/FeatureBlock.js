@@ -24,7 +24,7 @@ const Asset = styled.div`
   background-position: center center;
   overflow: hidden;
   width:100%;
-  height:500px;
+  height:250px;
   background-image: url('${props => props.background && props.background}');
 `;
 
@@ -49,7 +49,7 @@ class FeatureBlock extends Component {
 
     return (
       <Block height={data.height}>
-        <Section paddingTop={data.inner_padding_top} paddingBottom={data.inner_padding_bottom}>
+        <Section align={data.align} justify={data.justify}>
           <Container>
             {( items || [] ).map((item) =>
               <Feature>
@@ -73,8 +73,8 @@ export const query = graphql`
     slice_type
     primary {
       height
-      inner_padding_top
-      inner_padding_bottom
+      justify
+      align
     }
     items {
       asset {
