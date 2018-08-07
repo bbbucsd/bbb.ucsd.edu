@@ -2,38 +2,46 @@ import React, { Component } from 'react';
 import Block, { Section } from 'components/Theme/Block';
 import ThemeHeadline from 'components/Theme/Headline';
 import ThemeButton from 'components/Theme/Button';
-import Styles, { styled, css} from 'components/Theme/Styles';
+import { styled, css } from 'components/Theme/Styles';
 
 const Headline = styled(ThemeHeadline)`
-  // enter styles here
+  font-size:${props => props.theme.h2FontSize * 1.5}px;
+  color: ${props => props.color || props.theme.black};
 `;
 
 const Subheadline = styled(ThemeHeadline)`
-  // enter styles here
+  font-size:${props => props.theme.h2FontSize}px;
+  color: ${props => props.color || props.theme.black};
 `;
 
 const Button = styled(ThemeButton)`
   margin-top:20px;
 `;
 
-const Row = styled(Section)`
-  align-items: center;
-  justify-content: center;
-  text-align: center !important;
-`;
 
 class StatementBlock extends Component {
   render() {
-    const { slice } = this.props;
-    const data = slice.primary;
+    const { background_color,
+            height,
+            align,
+            justify,
+            headline,
+            headline_color,
+            subheadline,
+            subheadline_color,
+            cta_label,
+            cta_link
+    } = this.props.slice.primary
 
     return (
-      <Block color={data.background_color} height={data.height}>
-        <Row paddingTop={data.inner_padding_top} paddingBottom={data.inner_padding_bottom}>
-          <Headline color={data.headline_color} text={data.headline} />
-          <Subheadline color={data.subheadline_color} text={data.subheadline} />
-          <Button to={data.cta_link} onClick={this.handleClickOpen}>{data.cta_label}</Button>
-        </Row>
+      <Block color={background_color} height={height}>
+        <Section align={align} justify={justify}>
+          <Headline h2 color={headline_color} text={headline} />
+          <Subheadline h3 color={subheadline_color} text={subheadline} />
+          {cta_label &&
+            <Button to={cta_link} onClick={this.handleClickOpen}>{cta_label}</Button>
+          }
+        </Section>
       </Block>
     );
   }
@@ -43,11 +51,11 @@ export default StatementBlock;
 
 export const query = graphql`
   fragment StatementBlock on PrismicPageBodyStatementBlock {
+    slice_type
     primary {
       height
-      inner_padding_top
-      inner_padding_bottom
-      background_color
+      align
+      justify
       headline_color
       headline {
         text

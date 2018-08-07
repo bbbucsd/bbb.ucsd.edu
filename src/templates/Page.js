@@ -73,6 +73,7 @@ class Page extends Component {
   }
 
   renderSlice(slice, index) {
+    console.log(slice.slice_type)
     switch (slice.slice_type) {
       case 'standardhero':
         return <StandardHero key={`slice_${index}`} slice={slice} />

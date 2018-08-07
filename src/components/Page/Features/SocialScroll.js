@@ -1,12 +1,56 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'airlytics';
-import Ionicon from 'react-ionicons'
-//import { Hidden } from 'hedron';
 import _ from 'lodash';
-import style from './style.module.scss';
-import classNames from 'classnames/bind';
-import Config from '../../../../config';
-let cx = classNames.bind(style);
+import Config from '../../../config';
+import { styled, css, media } from 'components/Theme/Styles';
+import { Facebook } from 'styled-icons/fa-brands/Facebook.cjs'
+import { Twitter } from 'styled-icons/fa-brands/Twitter.cjs'
+import { Linkedin } from 'styled-icons/fa-brands/Linkedin.cjs'
+
+const Count = styled.div`
+  font-size: 40px;
+`;
+
+const Widget = styled.div`
+  position: fixed;
+  z-index: 9999;
+  right: auto;
+  left: 75px;
+  top: 45vh;
+  visibility: hidden;
+  -webkit-transition: opacity 1s ease-in;
+  -moz-transition: opacity 1s ease-in;
+  -o-transition: opacity 1s ease-in;
+  -ms-transition: opacity 1s ease-in;
+  transition: opacity 1s ease-in;
+
+  ${p => p.show ? `
+    visibility: visible;
+    opacity: 1;
+  ` : null }
+
+  ${media.lessThan('medium')`
+    width: 100%;
+    right: auto;
+    top: auto;
+    left: auto;
+    padding: 25px 0;
+    bottom: 0;
+    text-align: center;
+  `}
+
+`;
+
+const SocialLink = styled.div`
+  svg {
+    width:30px;
+    height:30px;
+  }
+`;
+
+const Share = styled.div`
+  cursor: pointer;
+`;
 
 const SCROLL_PERCENTAGE_THRESHOLD = 10;
 
@@ -93,43 +137,25 @@ class SocialScroll extends Component {
 
   renderCount() {
     return (
-      <div className={style.count}>
-        {this.state.count}
-      </div>
+      <Count>{this.state.count}</Count>
     );
   }
 
   render() {
     return (
       <Fragment>
-        <Hidden xs sm>
-          <div className={`${cx({ showWidget: this.state.showWidget, hideWidget: !this.state.showWidget })} ${style.widget}`}>
-            {this.renderCount()}
-            <div onClick={this.shareTwitter} className={style.widgetShare}>
-              <Ionicon icon="logo-twitter" color="#55ACEE" />
-            </div>
-            <div onClick={this.shareFacebook} className={style.widgetShare}>
-              <Ionicon icon="logo-facebook" color="#3B5998" />
-            </div>
-            <div onClick={this.shareLinkedIn} className={style.widgetShare}>
-              <Ionicon icon="logo-linkedin" color="#0077B5" />
-            </div>
+        <Widget show={this.state.showWidget}>
+          {this.renderCount()}
+          <Share onClick={this.shareTwitter}>
+            <SocialLink><Twitter color="#55ACEE" /></SocialLink>
+          </Share>
+          <div onClick={this.shareFacebook}>
+            <SocialLink><Facebook color="#3B5998" /></SocialLink>
           </div>
-        </Hidden>
-        <Hidden md lg>
-          <div className={`${cx({ showRibbon: this.state.showRibbon, hideRibbon: !this.state.showRibbon })} ${style.ribbon}`}>
-            {this.renderCount()}
-            <div onClick={this.shareTwitter} className={style.widgetShare}>
-              <Ionicon icon="logo-twitter" color="#55ACEE" />
-            </div>
-            <div onClick={this.shareFacebook} className={style.widgetShare}>
-              <Ionicon icon="logo-facebook" color="#3B5998" />
-            </div>
-            <div onClick={this.shareLinkedIn} className={style.widgetShare}>
-              <Ionicon icon="logo-linkedin" color="#0077B5" />
-            </div>
+          <div onClick={this.shareLinkedIn}>
+            <SocialLink><Linkedin color="#0077B5" /></SocialLink>
           </div>
-        </Hidden>
+        </Widget>
       </Fragment>
     );
   }
