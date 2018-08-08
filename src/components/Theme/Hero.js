@@ -29,9 +29,11 @@ const Wrapper = styled.div`
   justify-content: center;
   text-align: center;
   
+  background-repeat: no-repeat;
   background-size: cover;
-  background: ${p => p.color || p.theme.black} no-repeat top center;
-  background-image: url('${p => Validator.isImage(p.src) && p.src}');
+  background-position: top center;
+  background-color: ${p => p.color || p.theme.black};
+  background-image: url('${p => p.src && Validator.isImage(p.src) ? p.src : null}');
   
   ${media.greaterThan('medium')`
     min-height: ${minHeightMixin};
