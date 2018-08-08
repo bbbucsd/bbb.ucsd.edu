@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import Styles, { styled, css} from 'components/Theme/Styles';
+import Styles, { styled, css, media } from 'components/Theme/Styles';
 import Link from 'components/Theme/Link'
-import { Menu } from 'styled-icons/material/Menu.cjs'
+import ThemeButton from 'components/Theme/Button';
+import { Menu } from 'styled-icons/feather/Menu.cjs'
+import { Close } from 'styled-icons/material/Close.cjs'
 import Waypoint from 'react-waypoint'
 import ProductMenu from './ProductMenu'
 import IndustriesMenu from './IndustriesMenu'
@@ -19,6 +21,10 @@ const Header = styled.div`
   width: 100%;
   color: white;
   ${props => props.floating ? 'background-color: #f0f0f0;' : null }
+  
+  ${media.lessThan("medium")`
+    padding:10px;
+  `}
 `;
 
 const NavBar = styled.div`
@@ -29,6 +35,10 @@ const NavBar = styled.div`
   height: 75px;
   width:90%;
   margin: 0 auto;
+  ${media.lessThan("medium")`
+    height: 35px;
+    width:98%;
+  `}
 `;
 
 const NavBarLeft = styled.ul `
@@ -53,7 +63,7 @@ const ListItem = styled.li`
 `;
 
 const Logo = styled.span`
-  font-family: 'Termina';
+  font-family: 'Termina',serif;
   font-size: 20px;
   display:inline-block;
   position: relative;
@@ -61,6 +71,21 @@ const Logo = styled.span`
   font-style: normal;
   transform: scaleX(.8);
   color: ${props => props.floating ? '#000' : '#fff' };
+  ${media.lessThan("medium")`
+    left:-13px;
+  `}
+`;
+
+const Tm = styled.span`
+  font-size:12px;
+  vertical-align: super;
+  position:relative;
+  left:4px;
+  top:-2px;
+  
+  ${media.lessThan("medium")`
+    
+  `}
 `;
 
 const navItems = 4;
@@ -70,9 +95,14 @@ const NavBarCenter = styled.ul`
   flex-direction: row;
   justify-content: space-around;
   width: ${navBarCenterWidth}px;
-  ${ Styles.media.mobile`display:none` }
-  ${ Styles.media.desktop`display:flex` }
-  ${ Styles.media.tablet`display:flex` }
+  
+  ${media.lessThan("medium")`
+    display:none;
+  `}
+  
+  ${media.greaterThan("medium")`
+    display:flex;
+  `}
 `;
 
 const NavBarCenterItem = styled(ListItem)`
@@ -90,10 +120,24 @@ const NavBarRight = styled.ul`
 
 const MenuIcon = styled(Menu)`
   position: relative;
-  top: 5px;
+  top: -1px;
   height:30px;
   cursor: pointer;
-  fill: ${props => props.floating ? '#000000' : '#FFFFFF' };
+  color: ${props => props.floating ? '#000000' : '#FFFFFF' };
+  
+  ${media.greaterThan("medium")`
+    display:none;
+  `}
+`;
+
+const CloseIcon = styled(Close)`
+  position: absolute;
+  height:30px;
+  cursor: pointer;
+  margin-left:-30px;
+  z-index: ${p => p.visible ? 105 : null};
+  display: ${p => p.visible ? null : 'none'};
+  color: ${p => p.theme.black };
 `;
 
 const Drawer = styled.div`
@@ -101,24 +145,22 @@ const Drawer = styled.div`
   background-color: #FFFFFF;
   right:0;
   top:0;
+  left:0;
   height: 100vh;
   padding:40px;
   display: ${props => props.open ? 'flex' : 'none' };
   z-index:101;
 `;
 
-const DrawerBackDrop = styled.div`
-  position:absolute;
-  display: ${props => props.open ? 'flex' : 'none' };
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  width:100%;
-  height:100vh;
-  background-color: rgba(0,0,0,0.5);
-  z-index:100;
+const ContactUs = styled(ThemeButton)`
+  font-weight: ${p => p.floating ? null : 'bold' };
+  background-color: ${p => p.floating ? p.theme.primaryColor : p.theme.white };
+  color: ${p => p.floating ? null : p.theme.black };
+  ${media.lessThan("medium")`
+    display:none;
+  `}
 `;
+
 
 class Default extends Component {
     state = {
@@ -145,7 +187,7 @@ class Default extends Component {
             <NavBar>
               <NavBarLeft>
                 <ListItem>
-                  <Logo floating={this.state.floating}><Link to="/">PROLUXE</Link></Logo>
+                  <Logo floating={this.state.floating}><Link to="/">PROLUXE<Tm>™</Tm></Link></Logo>
                 </ListItem>
               </NavBarLeft>
 
@@ -158,15 +200,17 @@ class Default extends Component {
 
               <NavBarRight>
                 <ListItem>
-                  <MenuIcon icon="md-menu" onClick={this.toggleDrawer} floating={this.state.floating} />
+                  <MenuIcon onClick={this.toggleDrawer} floating={this.state.floating} />
+                  <CloseIcon visible={this.state.drawer} onClick={this.toggleDrawer} floating={this.state.floating} />
                 </ListItem>
 
                 <Drawer open={this.state.drawer} >
                   <HamburgerMenu />
                 </Drawer>
 
-                <DrawerBackDrop open={this.state.drawer} onClick={this.toggleDrawer} />
-
+                <ContactUs arrow={false} floating={this.state.floating}>
+                  Talk to Us
+                </ContactUs>
               </NavBarRight>
             </NavBar>
           </Header>

@@ -32,11 +32,11 @@ const SectionWrapper = styled.div`
   background-position: center center;
 
   ${media.between("medium", "large")`
-    padding:50px !important;
+    padding:0 50px !important;
   `}
 
   ${media.lessThan("medium")`
-    padding:50px !important;
+    padding:0 50px !important ;
   `}
 
   > * {
