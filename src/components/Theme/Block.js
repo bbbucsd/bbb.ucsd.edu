@@ -5,15 +5,15 @@ const minHeightMixin = css`
   ${ props => {
   switch (props.height) {
     case 'XL':
-      return '900px'
+      return '900px';
     case 'Large':
-      return '600px'
+      return '600px';
     case 'Medium':
-      return '400px'
+      return '400px';
     case 'Small':
-      return '200px'
+      return '200px';
     default:
-      return 'auto'
+      return 'auto';
   }}}
 `;
 
@@ -22,16 +22,16 @@ const BlockWrapper = styled.div`
   flex-flow: row;
   height: 100%;
   align-items: stretch;
-  
+
   background-color: ${ props => props.color };
-  
+
   ${media.lessThan("medium")`
     min-height: ${props => props.height && (minHeightMixin / 1.5)};
   `}
-  
+
   ${media.greaterThan("medium")`
     min-height: ${props => props.height && (minHeightMixin)};
-  `}  
+  `}
 `;
 
 

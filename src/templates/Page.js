@@ -17,9 +17,11 @@ import ContentBlock from 'components/Page/Slices/ContentBlock';
 import StatementBlock from 'components/Page/Slices/StatementBlock';
 //import HorizontalFormBlock from 'components/Page/Slices/HorizontalFormBlock';
 import FeatureBlock from 'components/Page/Slices/FeatureBlock';
+import TestimonialBlock from 'components/Page/Slices/TestimonialBlock';
+import DoubleTestimonialBlock from 'components/Page/Slices/DoubleTestimonialBlock';
 import SingleImageBlock from 'components/Page/Slices/SingleImageBlock';
 import '../components/Theme/Globals';
-import '../components/Theme/Normalize'
+import '../components/Theme/Normalize';
 
 class Page extends Component {
 
@@ -89,6 +91,10 @@ class Page extends Component {
         //return <HorizontalFormBlock key={`slice_${index}`} slice={slice} />
       case 'feature_block':
         return <FeatureBlock key={`slice_${index}`} slice={slice} />
+      case 'testimonial_block':
+        return <TestimonialBlock key={`slice_${index}`} slice={slice} />
+      case 'double_testimonial_block':
+        return <DoubleTestimonialBlock key={`slice_${index}`} slice={slice} />
       case 'single_image_block':
         return <SingleImageBlock key={`slice_${index}`} slice={slice} />
     };
@@ -140,6 +146,8 @@ export const pageQuery = graphql`
           ...StatementBlock
           ...FeatureBlock
           ...SingleImageBlock
+          ...TestimonialBlock
+          ...DoubleTestimonialBlock
         }
       }
     }
