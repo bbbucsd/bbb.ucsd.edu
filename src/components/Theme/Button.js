@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Link from './Link';
-import styled from 'styled-components';
+import Styles, { styled, css, media, keyframes } from './Styles';
 import { KeyboardArrowRight } from 'styled-icons/material/KeyboardArrowRight.cjs'
 
 const ButtonLink = styled(Link)`
@@ -12,21 +12,33 @@ const ThemeButton = styled.button`
   border-radius: 2px;
   text-align: center;
   color: white;
-  background-color: ${props => props.theme.brandInfo};
+  background-color: ${p => p.theme.brandInfo};
   text-transform: none;
   min-height: auto;
   min-width: auto;
-  font-family: ${props => props.theme.fontFamily};
-  font-size: ${props => props.small ? 12 : 14}px;
-  padding: ${props => props.small ? '6px 10px' : `${props.theme.padding / 2}px ${props.theme.padding}px`}; 
+  font-family: ${p => p.theme.fontFamily};
+  font-size: ${p => p.small ? 12 : 14}px;
+  padding: ${p => p.small ? '6px 10px' : `${p.theme.padding / 2}px ${p.theme.padding}px`}; 
   display: inline-flex;
   align-items: center;
   cursor:pointer;
   &:hover {
-    background-color: ${props => props.theme.brandInfo};
+    background-color: ${p => p.theme.brandInfo};
   }
   &:focus {
     outline:0;
+  }
+`;
+
+const Bounce = keyframes`
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(7px);
+  }
+  60% {
+    transform: translateX(9px);
   }
 `;
 
@@ -35,10 +47,10 @@ const Arrow = styled(KeyboardArrowRight)`
   right: -4px;
   margin:0;
   font-size: 24px;
-  fill: ${props => props.theme.white};
-  top: ${props => props.small ? 0 : 1 }px;
-  height: ${props => props.small ? 20 : 28 }px;
-  ${props => props.animate ? 'animation: bounce 2s infinite;' : null }
+  fill: ${p => p.theme.white};
+  top: ${p => p.small ? 0 : 1 }px;
+  height: ${p => p.small ? 20 : 28 }px;
+  animation: ${p => p.animate ? Bounce : null } 2s infinite;
 `;
 
 // ThemeButton
