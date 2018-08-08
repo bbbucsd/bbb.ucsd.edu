@@ -35,10 +35,11 @@ const BlockWrapper = styled.div`
   flex-flow: row;
   height: 100%;
   align-items: stretch;
-
+  box-sizing:border-box;
   background-color: ${ props => props.color };
   min-height: ${minHeightMixin};
   margin: ${autoMarginMixin};
+  ${p => (p.finishing && p.finishing === 'Frame') ? 'border:25px solid #FFFFFF' : null};
 `;
 
 
@@ -59,6 +60,7 @@ class Block extends Component {
   }
 
   render() {
+    console.log(this.props.finishing)
     return (
       <BlockWrapper justify={this.getJustifyFromChild()} {...this.props}>
         { this.orderChildren() }

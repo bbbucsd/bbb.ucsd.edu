@@ -7,10 +7,23 @@ const justify = (keyword) => {
   switch (keyword) {
     case 'middle':
       return 'center'
+    case 'topish':
+      return 'flex-start;'
     case 'top':
       return 'flex-start'
     case 'bottom':
       return 'flex-end;'
+    case 'bottomish':
+      return 'flex-end;'
+  }
+}
+
+const justifyIsh = (keyword) => {
+  switch (keyword) {
+    case 'topish':
+      return 'padding-top:15vh;'
+    case 'bottomish':
+      return 'padding-bottom: 15vh;'
   }
 }
 
@@ -29,7 +42,7 @@ const SectionWrapper = styled.div`
   // boilerplate stuff to make it easy to set background images on sections
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: top center;
 
   ${media.between("medium", "large")`
     padding:0 50px !important;
@@ -42,6 +55,9 @@ const SectionWrapper = styled.div`
   > * {
     width:100%;
   }
+
+  // justify-ish
+  ${p => p.justify ? justifyIsh(p.justify.toLowerCase()) : null };
 `;
 
 class Section extends Component {
