@@ -45,7 +45,7 @@ const Arrow = styled.div`
   width: 0;
   height: 0;
   top: -${props => props.arrowSize || arrowSize}px;
-  left: ${props => (props.offsetY || offsetY) + (props.arrowSize || arrowSize) + padding + ((props.arrowSize || arrowSize) / 2) + 10}px;
+  left: ${props => (props.offsetY || offsetY) + (props.arrowSize || arrowSize) + padding + ((props.arrowSize || arrowSize) / 2)}px;
   border-left: ${props => props.arrowSize || arrowSize}px solid transparent;
   border-right: ${props => props.arrowSize || arrowSize}px solid transparent;
   border-bottom: ${props => props.arrowSize || arrowSize}px solid #f6f6f6;
