@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'components/Theme/Link';
 import flag from './american-flag.png'
-import Styles, { styled, css} from 'components/Theme/Styles';
+import Styles, { styled, css, media } from 'components/Theme/Styles';
 import { Youtube } from 'styled-icons/fa-brands/Youtube.cjs'
 import { Facebook } from 'styled-icons/fa-brands/Facebook.cjs'
 import { Twitter } from 'styled-icons/fa-brands/Twitter.cjs'
@@ -9,9 +9,11 @@ import { Linkedin } from 'styled-icons/fa-brands/Linkedin.cjs'
 
 const FooterWrapper = styled.div`
   background-color: ${props => props.theme.brandSecondary};
-  height: 500px;
   width: 100%;
   color: ${props => props.theme.brandSecondaryLinks};
+  ${media.greaterThan("medium")`
+    height: 500px;
+  `}
 `;
 
 const SocialSection = styled.div`
@@ -20,11 +22,17 @@ const SocialSection = styled.div`
   height: 75px;
   width: 100%;
   border-bottom: 1px solid ${props => props.theme.brandSecondaryBorder};
+  
+  ${media.lessThan("medium")`
+    justify-content:center;
+  `};
 `;
 
 const SocialSpacer = styled.div`
-  flex: 1 1 auto;
-  width: auto;
+  ${media.greaterThan("medium")`
+    flex: 1 1 auto;
+    width: auto;
+  `}
 `
 const SocialLink = styled.div`
   border-left: 1px solid ${props => props.theme.brandSecondaryBorder};
@@ -34,6 +42,13 @@ const SocialLink = styled.div`
   color: ${props => props.theme.brandSecondaryLinks};
   text-align: center;
   line-height: 75px;
+  
+  ${media.lessThan("medium")`
+    &:nth-child(2) {
+      border-left: none;
+    }
+  `};
+  
   svg {
     fill: ${props => props.theme.white};
     width:30px;
@@ -49,6 +64,9 @@ const Nav = styled.div`
   margin-top: 30px;
   flex-direction: row;
   justify-content: space-around;
+  ${media.lessThan("medium")`
+    flex-direction: column;
+  `};
 `;
 
 const Section = styled.div`
@@ -69,6 +87,11 @@ const Header = styled.h3`
   padding-left: 0;
   padding-right: 0;
   text-transform: uppercase;
+  
+  ${media.lessThan("medium")`
+    padding-bottom:10px;
+    margin-bottom: 0px;
+  `};
 `;
 
 const Links = styled.ul`
@@ -78,6 +101,10 @@ const Links = styled.ul`
   text-align: left;
   font-size: 14px;
   line-height: 24px;
+  
+  ${media.lessThan("medium")`
+    margin: 10px 0;
+  `};
 `;
 
 const Legal = styled.div`
@@ -89,6 +116,11 @@ const Legal = styled.div`
   flex-direction: row;
   justify-content: space-between;
   font-size: 14px;
+  
+  ${media.lessThan("medium")`
+    flex-direction:column-reverse;
+    justify-content: space-around;
+  `};
 `;
 
 const LegalLeft = styled.div`
@@ -97,10 +129,18 @@ const LegalLeft = styled.div`
   justify-content: flex-start;
   text-align: left;
   margin-left:50px;
+  
+  ${media.lessThan("medium")`
+    flex-direction:row-reverse;
+    margin:25px;
+    justify-content: space-between;
+  `};
 `;
 
 const LegalLink = styled.div`
-  margin-right: 50px;
+  ${media.greaterThan("medium")`
+    margin-right: 50px;
+  `};
 `;
 
 const LegalRight = styled.div`
@@ -108,6 +148,12 @@ const LegalRight = styled.div`
   justify-content: flex-end;
   text-align: left;
   margin-right:50px;
+  
+  ${media.lessThan("medium")`
+    flex-direction:column;
+    margin:25px;
+    text-align:center;
+  `};
 `;
 
 const Flag = styled.img`

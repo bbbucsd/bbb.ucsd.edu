@@ -2,14 +2,10 @@ import React, { Component } from 'react'
 import Styles, { styled, css, media } from 'components/Theme/Styles';
 import Link from 'components/Theme/Link'
 import ThemeButton from 'components/Theme/Button';
-import { Menu } from 'styled-icons/feather/Menu.cjs'
-import { Close } from 'styled-icons/material/Close.cjs'
 import Waypoint from 'react-waypoint'
-import ProductMenu from './ProductMenu'
-import IndustriesMenu from './IndustriesMenu'
-import SupportMenu from './SupportMenu'
-import HowToBuyMenu from './HowToBuyMenu'
 import HamburgerMenu from './HamburgerMenu'
+import DropDownMenu from './DropDownMenu'
+
 
 const Header = styled.div`
   position: fixed;
@@ -57,6 +53,8 @@ const ListItem = styled.li`
   font-weight: 300;
   font-style: normal;
   line-height: 32px;
+  display:flex;
+  flex-direction:row;
   &:hover {
     color: white;
   }
@@ -105,11 +103,6 @@ const NavBarCenter = styled.ul`
   `}
 `;
 
-const NavBarCenterItem = styled(ListItem)`
-  width: ${navBarCenterWidth / navItems}px;
-  text-align: center;
-`;
-
 const NavBarRight = styled.ul`
   display: flex;
   flex-direction: row;
@@ -118,26 +111,57 @@ const NavBarRight = styled.ul`
   margin-left: auto;
 `;
 
-const MenuIcon = styled(Menu)`
-  position: relative;
-  top: -1px;
-  height:30px;
+let IconSize = 30;
+let LineLeft = IconSize / 3.2;
+let LineOffset = IconSize / 2;
+let LineWidth = 18;
+
+
+const HamburgerMenuIcon = styled.div`
   cursor: pointer;
-  color: ${props => props.floating ? '#000000' : '#FFFFFF' };
+  position: relative;
+  width: ${IconSize}px;
+  height: ${IconSize}px;
+  transition: all 0.25s;
+  transform: ${p => p.open ? 'rotate(90deg)' : null };
+  z-index:105;
+  span {
+    background-color: ${p => (p.floating || p.open) ? '#000' : '#fff' };
+  }
+  
+  &:hover {
+    span {
+      background-color: #999;
+    }
+  }
   
   ${media.greaterThan("medium")`
     display:none;
   `}
 `;
 
-const CloseIcon = styled(Close)`
+const HamburgerLine = css`
+  content: '';
+  display: block;
   position: absolute;
-  height:30px;
-  cursor: pointer;
-  margin-left:-30px;
-  z-index: ${p => p.visible ? 105 : null};
-  display: ${p => p.visible ? null : 'none'};
-  color: ${p => p.theme.black };
+  left: ${LineLeft}px;
+  width: ${LineWidth}px;
+  height: 2px;
+  transform: rotate(0);
+  transition: all 0.25s;
+`;
+
+const TopLine = styled.span`
+  ${HamburgerLine};
+  top: ${LineOffset - 2}px;
+  transform: ${p => p.open ? 'rotate(45deg) translateY(0px)' : 'translateY(-2px)' };
+`;
+
+const BottomLine = styled.span`
+  ${HamburgerLine};
+  bottom: ${LineOffset}px;
+  transform: ${p => p.open ? 'rotate(-45deg) translateY(0px)' : 'translateY(7px)' };
+
 `;
 
 const Drawer = styled.div`
@@ -147,7 +171,7 @@ const Drawer = styled.div`
   top:0;
   left:0;
   height: 100vh;
-  padding:40px;
+  padding:20px;
   display: ${props => props.open ? 'flex' : 'none' };
   z-index:101;
 `;
@@ -192,25 +216,26 @@ class Default extends Component {
               </NavBarLeft>
 
               <NavBarCenter>
-                <NavBarCenterItem><ProductMenu floating={this.state.floating} /></NavBarCenterItem>
-                <NavBarCenterItem><IndustriesMenu floating={this.state.floating} /></NavBarCenterItem>
-                <NavBarCenterItem><SupportMenu floating={this.state.floating} /></NavBarCenterItem>
-                <NavBarCenterItem><HowToBuyMenu floating={this.state.floating} /></NavBarCenterItem>
+                <ListItem>
+                  <DropDownMenu floating={this.state.floating} />
+                </ListItem>
               </NavBarCenter>
 
               <NavBarRight>
                 <ListItem>
-                  <MenuIcon onClick={this.toggleDrawer} floating={this.state.floating} />
-                  <CloseIcon visible={this.state.drawer} onClick={this.toggleDrawer} floating={this.state.floating} />
+                  <HamburgerMenuIcon open={this.state.drawer} onClick={this.toggleDrawer} floating={this.state.floating}>
+                    <TopLine open={this.state.drawer} />
+                    <BottomLine open={this.state.drawer} />
+                  </HamburgerMenuIcon>
+
+                  <Drawer open={this.state.drawer} >
+                    <HamburgerMenu />
+                  </Drawer>
+
+                  <ContactUs arrow={false} floating={this.state.floating}>
+                    Talk to Us
+                  </ContactUs>
                 </ListItem>
-
-                <Drawer open={this.state.drawer} >
-                  <HamburgerMenu />
-                </Drawer>
-
-                <ContactUs arrow={false} floating={this.state.floating}>
-                  Talk to Us
-                </ContactUs>
               </NavBarRight>
             </NavBar>
           </Header>

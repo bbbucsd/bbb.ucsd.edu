@@ -39,7 +39,7 @@ class SupportMenu extends Component {
     const { floating } = this.props;
 
     return (
-      <SubNav text="Support" floating={floating} menuWidth={480} offsetY={85} padding={40}>
+      <SubNav text="Support" floating={floating} menuWidth={480} offsetY={120} padding={40}>
         <SubNavGroup>
           <SubNavItem>
             <SubNavGroup>

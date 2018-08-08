@@ -35,7 +35,7 @@ class SingleImageBlock extends Component {
 
     console.log(content)
 
-    let bg = asset && Validator.isImage(asset.url) ? asset.url : false
+    let bg = (asset && Validator.isImage(asset.url)) ? asset.url : false
 
     return (
       <Block height={height}>
