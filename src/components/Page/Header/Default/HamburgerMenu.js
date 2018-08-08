@@ -8,23 +8,32 @@ const Menu = styled.ul`
   width: 100%;
   font-size: 14px;
   text-transform: uppercase;
-  font-family: $fontFamilyTitle;
   font-weight: 300;
   font-style: normal;
 `
+
+const Header = styled.li`
+  font-size:${p => p.theme.h2FontSize*2}px;
+`;
+
+const Item = styled.li`
+  
+`;
 
 
 class HamburgerMenu extends Component {
 
   render() {
     return (
-      <Menu>
-        <li>Find a Sales Rep</li>
-        <li>Find a Dealer</li>
-        <li>Events</li>
-        <li>Training</li>
-        <li><Link to="/contact-us">Contact Us</Link></li>
-      </Menu>
+      <React.Fragment>
+
+        <Menu>
+          <Header>Products</Header>
+          <Header>Industries</Header>
+          <Header>Support</Header>
+          <Item><Link to="/contact-us">Contact Us</Link></Item>
+        </Menu>
+      </React.Fragment>
     );
   }
 }

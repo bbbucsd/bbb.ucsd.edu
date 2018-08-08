@@ -5,17 +5,30 @@ const minHeightMixin = css`
   ${ props => {
   switch (props.height) {
     case 'XL':
-      return '900px'
+      return '100vh'
     case 'Large':
-      return '600px'
+      return '70vh'
     case 'Medium':
-      return '400px'
+      return '50vh'
     case 'Small':
-      return '200px'
+      return '30vh'
     default:
       return 'auto'
   }}}
 `;
+
+const autoMarginMixin = css`
+  ${p => {
+    if (p.height === 'Auto') {
+      switch (p.justify) {
+        case 'Top':
+          return '10vh 0 25vh 0'
+        case 'Bottom':
+          return '25vh 0 10vh 0'
+      } 
+    }
+  }}
+`
 
 const BlockWrapper = styled.div`
   display: flex;
@@ -24,18 +37,17 @@ const BlockWrapper = styled.div`
   align-items: stretch;
   
   background-color: ${ props => props.color };
-  
-  ${media.lessThan("medium")`
-    min-height: ${props => props.height && (minHeightMixin / 1.5)};
-  `}
-  
-  ${media.greaterThan("medium")`
-    min-height: ${props => props.height && (minHeightMixin)};
-  `}  
+  min-height: ${minHeightMixin};
+  margin: ${autoMarginMixin};
 `;
 
 
 class Block extends Component {
+  getJustifyFromChild() {
+    return this.props.children && this.props.children.props && this.props.children.props.justify ?
+      this.props.children.props.justify : null
+  }
+
   orderChildren() {
     this.blocks = React.Children.toArray(this.props.children);
 
@@ -48,7 +60,7 @@ class Block extends Component {
 
   render() {
     return (
-      <BlockWrapper {...this.props}>
+      <BlockWrapper justify={this.getJustifyFromChild()} {...this.props}>
         { this.orderChildren() }
       </BlockWrapper>
     )

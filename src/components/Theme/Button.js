@@ -68,8 +68,8 @@ class Button extends Component {
     const {children, small, className, onClick} = this.props;
 
     return (
-      <ButtonLink to={ this.props.to } onClick={onClick} onMouseOver={this.toggleArrow} onMouseOut={this.toggleArrow} className={className}>
-        <ThemeButton small={small} aria-label={children}>
+      <ButtonLink to={ this.props.to } onClick={onClick} onMouseOver={this.toggleArrow} onMouseOut={this.toggleArrow}>
+        <ThemeButton small={small} aria-label={children} className={className}>
           {children}
           {this.props.arrow === false ? null : (
             <Arrow animate={this.state.animateArrow} />
