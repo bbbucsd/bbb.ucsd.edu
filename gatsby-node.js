@@ -2,7 +2,7 @@ const path = require(`path`);
 const PrismicHelper = require('./src/utils/prismicHelper');
 
 exports.createPages = async ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+  const { createRedirect, createPage } = boundActionCreators
 
   //
   // Pages ---------------------------------------------------------------------
@@ -59,7 +59,69 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
       },
     })
   })
+
+  //
+  // Redirect ---------------------------------------------------------------------
+  //
+
+  const redirects = await graphql(`
+    {
+      allPrismicRedirect(filter: {uid: {eq: "redirect"}}) {
+        edges {
+          node {
+            data {
+              redirects {
+                type
+                from
+                to
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const interstitialComponent = path.resolve(`./src/templates/Interstitial.js`);
+  (redirects.data.allPrismicRedirect.edges[0].node.data.redirects || []).forEach(redirect => {
+    switch (redirect.type) {
+      case 'Permanent':
+        createRedirect({
+          fromPath: redirect.from,
+          isPermanent: true,
+          redirectInBrowser: false,
+          toPath: redirect.to,
+        })
+        break;
+      case 'Temporary':
+        createRedirect({
+          fromPath: redirect.from,
+          isPermanent: false,
+          redirectInBrowser: false,
+          toPath: redirect.to,
+        })
+        break;
+      case 'Browser':
+        createRedirect({
+          fromPath: redirect.from,
+          isPermanent: false,
+          redirectInBrowser: true,
+          toPath: redirect.to,
+        })
+        break;
+      case 'Interstitial':
+        createPage({
+          path: redirect.from,
+          component: interstitialComponent ,
+          context: {
+            to: redirect.to
+          },
+        })
+        break;
+    }
+  })
 }
+
 
 exports.modifyBabelrc = ({ babelrc }) => ({
   ...babelrc,

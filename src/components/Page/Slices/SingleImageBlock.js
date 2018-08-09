@@ -12,7 +12,7 @@ const Primary = styled(Section)`
 
 const RichText = styled(ThemeRichText)`
   color: ${props => props.color};
-  font-size: ${p => p.theme.h2FontSize * 1.5}px;
+  font-size: ${p => p.theme.h2FontSize}px;
   font-weight:300;
 `;
 
@@ -26,6 +26,7 @@ class SingleImageBlock extends Component {
       height,
       align,
       justify,
+      finishing,
       asset,
       content,
       content_color,
@@ -33,12 +34,10 @@ class SingleImageBlock extends Component {
       cta_link
     } = this.props.slice.primary
 
-    console.log(content)
-
-    let bg = asset && Validator.isImage(asset.url) ? asset.url : false
+    let bg = (asset && Validator.isImage(asset.url)) ? asset.url : false
 
     return (
-      <Block height={height}>
+      <Block height={height} finishing={finishing}>
         <Primary align={align} justify={justify} src={bg}>
           <RichText color={content_color} body={content} />
           {cta_label &&
@@ -50,6 +49,8 @@ class SingleImageBlock extends Component {
   }
 }
 
+
+
 export default SingleImageBlock;
 
 export const query = graphql`
@@ -59,6 +60,7 @@ export const query = graphql`
       height
       align
       justify
+      finishing
       asset {
         url
       }

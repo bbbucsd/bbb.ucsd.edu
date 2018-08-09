@@ -7,15 +7,15 @@ const minHeightMixin = css`
   ${ props => {
   switch (props.height) {
     case 'XL':
-      return '100vh'
+      return '100vh';
     case 'Large':
-      return '70vh'
+      return '70vh';
     case 'Medium':
-      return '50vh'
+      return '50vh';
     case 'Small':
-      return '30vh'
+      return '30vh';
     default:
-      return '80vh'
+      return '80vh';
   }}}
 `;
 
@@ -28,18 +28,18 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  
+  background-repeat: no-repeat;
   background-size: cover;
-  background: ${p => p.color || p.theme.black} no-repeat top center;
-  background-image: url('${p => Validator.isImage(p.src) && p.src}');
-  
+  background-position: top center;
+  background-color: ${p => p.color || p.theme.black};
+  background-image: url('${p => p.src && Validator.isImage(p.src) ? p.src : null}');
+ 
   ${media.greaterThan('medium')`
     min-height: ${minHeightMixin};
     text-align: ${p => p.align ? p.align.toLowerCase() : 'center'};
     text-indent: ${p => p.align && !!p.align.match(/Left/i) ? '150px' : null };
    `}
-  
-  
+
   ${media.lessThan('medium')`
     min-height: ${minHeightMixin};
     padding-top:30px;
