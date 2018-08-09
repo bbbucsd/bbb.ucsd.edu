@@ -10,7 +10,7 @@ import Header from 'components/Page/Header';
 import Footer from 'components/Page/Footer';
 import Slices from 'components/Page/Slices';
 import '../components/Theme/Globals';
-import '../components/Theme/Normalize'
+import '../components/Theme/Normalize';
 
 class Page extends Component {
 

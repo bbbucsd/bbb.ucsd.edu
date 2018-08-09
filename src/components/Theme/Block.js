@@ -13,7 +13,7 @@ const minHeightMixin = css`
     case 'Small':
       return '30vh'
     default:
-      return 'auto'
+      return 'auto';
   }}}
 `;
 
@@ -62,7 +62,7 @@ const BlockWrapper = styled.div`
   ${media.greaterThan("large")`
     ${padding(3)}
   `}
-  
+
   ${media.greaterThan("medium")`
     ${padding(1.3)}
   `}
@@ -77,8 +77,6 @@ const BlockWrapper = styled.div`
       padding-right: ${props => props.theme.largePadding / 1.2}px;
     }
   `}
-  
-   
 `;
 
 
