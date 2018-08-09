@@ -4,7 +4,7 @@ import Link from 'components/Theme/Link'
 import Waypoint from 'react-waypoint'
 import HamburgerMenu from './HamburgerMenu'
 import DropDownMenu from './DropDownMenu'
-import { Search } from 'styled-icons/material/Search.cjs'
+import SearchBar from './SearchBar'
 
 
 const Header = styled.div`
@@ -44,7 +44,7 @@ const NavBarLeft = styled.ul `
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  flex: 0 0 135px;
+  flex: 0 0 150px;
   margin-right: auto;
   margin-left:0;
 `;
@@ -57,7 +57,7 @@ const ListItem = styled.li`
   font-style: normal;
   line-height: 32px;
   display:flex;
-  flex-direction:row;
+  flex-direction:row;  
   &:hover {
     color: white;
   }
@@ -98,6 +98,8 @@ const NavBarCenter = styled.ul`
   flex-direction: row;
   justify-content: space-around;
   width: ${navBarCenterWidth}px;
+  position:relative;
+  top:2px;
   
   ${media.lessThan("medium")`
     display:none;
@@ -112,7 +114,7 @@ const NavBarRight = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  flex: 0 0 135px;
+  flex: 0 0 150px;
   margin-left: auto;
 `;
 
@@ -192,23 +194,11 @@ const Drawer = styled.div`
   ` : null}
 `;
 
-const SearchIcon = styled(Search)`
-  height:25px;
-  width:25px;
-  cursor:pointer;
-  
-  color: ${props => props.floating ? '#000' : '#fff' };
-  
-  ${media.lessThan("medium")`
-    display:none;
-  `}
-`;
-
 
 class Default extends Component {
     state = {
       floating: false,
-      drawer: false
+      drawer: false,
     };
 
     floatHeader = () => {
@@ -256,6 +246,7 @@ class Default extends Component {
 
               <NavBarRight>
                 <ListItem>
+                  <SearchBar floating={this.state.floating} />
                   <HamburgerMenuIcon open={this.state.drawer} onClick={this.toggleDrawer} floating={this.state.floating}>
                     <TopLine open={this.state.drawer} />
                     <BottomLine open={this.state.drawer} />
@@ -264,8 +255,6 @@ class Default extends Component {
                   <Drawer open={this.state.drawer} >
                     <HamburgerMenu />
                   </Drawer>
-
-                  <SearchIcon hide={this.state.drawer} floating={this.state.floating} />
                 </ListItem>
               </NavBarRight>
             </NavBar>
