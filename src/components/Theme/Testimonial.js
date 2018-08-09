@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { styled, css, media } from 'components/Theme/Styles';
+import GradientBorder from './GradientBorder';
 import BlockQuote from './BlockQuote';
 
 const CompanyLogoPlacement = styled.div`
@@ -75,7 +76,7 @@ export default class Testimonial extends Component {
     } = this.props.data;
 
     return (
-      <React.Fragment>
+      <GradientBorder innerColor={this.props.backgroundColor}>
         <CompanyLogoPlacement>
           <LeftBracket />
           <CompanyLogo src={company_logo.url} />
@@ -95,7 +96,7 @@ export default class Testimonial extends Component {
             {role_occupation + ", " + company.text}
           </Credentials>
         </Person>
-      </React.Fragment>
+      </GradientBorder>
     )
   }
 }
