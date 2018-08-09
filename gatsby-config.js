@@ -88,6 +88,7 @@ module.exports = {
         },
       },
     },
+    'gatsby-plugin-netlify', // make sure to keep this last in the array
   ],
 
 };
