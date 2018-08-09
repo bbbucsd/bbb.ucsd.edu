@@ -13,7 +13,7 @@ class TestimonialBlock extends Component {
     const testimonial = this.props.slice.primary.testimonial.document[0].data;
 
     return (
-      <Block color={background_color} height={'Medium'}>
+      <Block color={background_color} height="Medium">
         <Section align={align} justify={justify}>
           <Testimonial backgroundColor={background_color} data={testimonial} />
         </Section>

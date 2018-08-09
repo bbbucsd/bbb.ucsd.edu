@@ -45,7 +45,7 @@ class SupportMenu extends Component {
             <SubNavGroup>
               <SubNavItem>
                 <FastestRouteItem>
-                  <GetHelpButton to="/" small={true}>Get Help</GetHelpButton>
+                  <GetHelpButton to="/help" small>Get Help</GetHelpButton>
                   For the fastest and easiest way to get help.
                 </FastestRouteItem>
               </SubNavItem>

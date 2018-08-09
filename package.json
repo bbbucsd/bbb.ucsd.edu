@@ -43,8 +43,8 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "clean" : "rm -rf .cache/",
-    "develop": "gatsby develop -- --host=0.0.0.0",
+    "clean": "rm -rf .cache/",
+    "develop": "gatsby develop --host=0.0.0.0",
     "format": "prettier --write 'src/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -33,6 +33,9 @@ const theme = {
   maxWidth: 1200,
   padding: 20,
   largePadding: 60,
+  blockPaddingLarge: 180,
+  blockPaddingMedium: 100,
+  blockPaddingSmall: 25,
   
   // typography (in pixels)
   h1FontSize: 60,

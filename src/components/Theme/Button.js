@@ -48,7 +48,7 @@ const Arrow = styled(KeyboardArrowRight)`
   margin:0;
   font-size: 24px;
   fill: ${p => p.theme.white};
-  top: ${p => p.small ? 0 : 1 }px;
+  top: 1px;
   height: ${p => p.small ? 20 : 28 }px;
   animation: ${p => p.animate ? Bounce : null } 2s infinite;
 `;
@@ -72,7 +72,7 @@ class Button extends Component {
         <ThemeButton small={small} aria-label={children} className={className}>
           {children}
           {this.props.arrow === false ? null : (
-            <Arrow animate={this.state.animateArrow} />
+            <Arrow animate={this.state.animateArrow} small={small} />
           )}
         </ThemeButton>
       </ButtonLink>

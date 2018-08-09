@@ -28,14 +28,28 @@ const Subheadline = styled(ThemeHeadline)`
 
 const Primary = styled(Section)`
   background-color: ${p => p.color};
-  padding-left:0 !important;
-  padding-right:0 !important;
-  & > div {
-    width:80%;
-  }
+  
+  // change the inner section div's width to center the text a bit
   
   ${media.lessThan("medium")`
+    & > div {
+      text-align:center;
+    }
     background-image: url('${p => p.src}');
+  `}
+  
+  ${media.greaterThan("medium")`
+    & > div {
+      width:90%;
+      padding-left: ${p => p.theme.blockPaddingMedium}px;
+    }
+  `}
+  
+  ${media.greaterThan("large")`
+    & > div {
+      width:90%;
+      padding-left: ${p => p.theme.blockPaddingMedium}px;
+    }
   `}
 `;
 
@@ -72,7 +86,7 @@ class DoubleBlock extends Component {
       <Block direction={direction} height={height}>
 
         {/* Primary Section */}
-        <Primary align="center" color={background_color} src={bg}>
+        <Primary align="left" color={background_color} src={bg} direction={direction}>
           <Headline h2 color={headline_color} text={headline} />
           <Subheadline h3 color={subheadline_color} text={subheadline} />
         </Primary>

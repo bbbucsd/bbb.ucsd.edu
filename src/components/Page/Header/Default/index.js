@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Styles, { styled, css, media } from 'components/Theme/Styles';
+import { styled, css, media } from 'components/Theme/Styles';
 import Link from 'components/Theme/Link'
-import ThemeButton from 'components/Theme/Button';
 import Waypoint from 'react-waypoint'
 import HamburgerMenu from './HamburgerMenu'
 import DropDownMenu from './DropDownMenu'
+import { Search } from 'styled-icons/material/Search.cjs'
 
 
 const Header = styled.div`
@@ -16,10 +16,13 @@ const Header = styled.div`
   background-color: transparent;
   width: 100%;
   color: white;
+  transition: all 0.5s;
+  
   ${props => props.floating ? 'background-color: #f0f0f0;' : null }
   
   ${media.lessThan("medium")`
     padding:10px;
+    background-color:#ffffff;
   `}
 `;
 
@@ -71,6 +74,8 @@ const Logo = styled.span`
   color: ${props => props.floating ? '#000' : '#fff' };
   ${media.lessThan("medium")`
     left:-13px;
+    color:#000;
+    z-index:110;
   `}
 `;
 
@@ -125,8 +130,9 @@ const HamburgerMenuIcon = styled.div`
   transition: all 0.25s;
   transform: ${p => p.open ? 'rotate(90deg)' : null };
   z-index:105;
+  
   span {
-    background-color: ${p => (p.floating || p.open) ? '#000' : '#fff' };
+    background-color: #000;
   }
   
   &:hover {
@@ -170,16 +176,29 @@ const Drawer = styled.div`
   right:0;
   top:0;
   left:0;
-  height: 100vh;
-  padding:20px;
-  display: ${props => props.open ? 'flex' : 'none' };
+  display: flex;
   z-index:101;
+  opacity: 0;
+  height:0;
+  visibility: hidden;
+  transform: translateY(0);
+  transition: all 0.5s;
+  will-change: transform;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  ${p => p.open ? `
+    opacity: 1;
+    height:100vh;
+    visibility: visible;
+  ` : null}
 `;
 
-const ContactUs = styled(ThemeButton)`
-  font-weight: ${p => p.floating ? null : 'bold' };
-  background-color: ${p => p.floating ? p.theme.primaryColor : p.theme.white };
-  color: ${p => p.floating ? null : p.theme.black };
+const SearchIcon = styled(Search)`
+  height:25px;
+  width:25px;
+  cursor:pointer;
+  
+  color: ${props => props.floating ? '#000' : '#fff' };
+  
   ${media.lessThan("medium")`
     display:none;
   `}
@@ -188,7 +207,7 @@ const ContactUs = styled(ThemeButton)`
 
 class Default extends Component {
     state = {
-      floating: true,
+      floating: false,
       drawer: false
     };
 
@@ -204,7 +223,21 @@ class Default extends Component {
       this.setState({ drawer: !this.state.drawer });
     };
 
+    checkIfScrolled() {
+      if (typeof window === 'undefined') {
+        return false
+      } else {
+        return window.scrollY > 100
+      }
+    }
+
+    componentWillReceiveProps() {
+      this.checkIfScrolled() ? this.floatHeader() : this.unFloatHeader()
+    }
+
     render() {
+
+
       return (
         <div>
           <Header floating={this.state.floating}>
@@ -232,9 +265,7 @@ class Default extends Component {
                     <HamburgerMenu />
                   </Drawer>
 
-                  <ContactUs arrow={false} floating={this.state.floating}>
-                    Talk to Us
-                  </ContactUs>
+                  <SearchIcon hide={this.state.drawer} floating={this.state.floating} />
                 </ListItem>
               </NavBarRight>
             </NavBar>

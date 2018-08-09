@@ -43,6 +43,10 @@ const SocialLink = styled.div`
   text-align: center;
   line-height: 75px;
   
+  a {
+    color: ${props => props.theme.brandSecondaryLinks};
+  }
+  
   ${media.lessThan("medium")`
     &:nth-child(2) {
       border-left: none;
@@ -101,6 +105,10 @@ const Links = styled.ul`
   text-align: left;
   font-size: 14px;
   line-height: 24px;
+  
+  a {
+    color: #fafafa;
+  }
   
   ${media.lessThan("medium")`
     margin: 10px 0;
@@ -173,10 +181,10 @@ class Footer extends Component {
         <FooterWrapper>
           <SocialSection>
             <SocialSpacer />
-            <SocialLink><Youtube /></SocialLink>
-            <SocialLink><Facebook /></SocialLink>
-            <SocialLink><Twitter /></SocialLink>
-            <SocialLink><Linkedin /></SocialLink>
+            <SocialLink><Link to="https://www.youtube.com/user/proluxe"><Youtube /></Link></SocialLink>
+            <SocialLink><Link to="https://www.facebook.com/Proluxe"><Facebook /></Link></SocialLink>
+            <SocialLink><Link to="https://twitter.com/proluxe"><Twitter /></Link></SocialLink>
+            <SocialLink><Link to="https://www.linkedin.com/company/doughpro"><Linkedin /></Link></SocialLink>
           </SocialSection>
 
 
@@ -185,39 +193,37 @@ class Footer extends Component {
               <Section>
                 <Header>Company</Header>
                 <Links>
-                  <li>About Us</li>
-                  <li>Press</li>
-                  <li>Blog</li>
-                  <li>Investors</li>
-                  <li>Careers</li>
+                  <li><Link to="/about">About Us</Link></li>
+                  <li><Link to="/press">Press</Link></li>
+                  <li><Link to="/blog">Blog</Link></li>
+                  <li><Link to="/careers">Careers</Link></li>
                 </Links>
               </Section>
               <Section>
                 <Header>Products</Header>
                 <Links>
-                  <li>Ovens</li>
-                  <li>Pizza Presses</li>
-                  <li>Tortilla Presses</li>
-                  <li>Grills</li>
-                  <li>Bun Carmalizers</li>
+                  <li><Link to="/products/smart-ovens">Smart Ovens</Link></li>
+                  <li><Link to="/products/pizza-presses">Pizza Presses</Link></li>
+                  <li><Link to="/products/tortilla-presses">Tortilla Presses</Link></li>
+                  <li><Link to="/products/grills">Grills</Link></li>
+                  <li><Link to="/products/bun-carmalizers">Bun Carmalizers</Link></li>
                 </Links>
               </Section>
               <Section>
                 <Header>Service &amp; Support</Header>
                 <Links>
-                  <li>Training</li>
-                  <li>Technical Support</li>
-                  <li>Find a Service Provider</li>
-                  <li>Find a Sales Representative</li>
+                  <li><Link to="/help/training">Training</Link></li>
+                  <li><Link to="/help/technical-support">Technical Support</Link></li>
+                  <li><Link to="/help/find-service-provider">Find a Service Provider</Link></li>
                   <li><Link to="/contact-us">Contact Us</Link></li>
                 </Links>
               </Section>
               <Section>
                 <Header>Resources</Header>
                 <Links>
-                  <li>Demos</li>
-                  <li>Events</li>
-                  <li>Downloads</li>
+                  <li><Link to="/resources/demos">Demos</Link></li>
+                  <li><Link to="/resources/events">Events</Link></li>
+                  <li><Link to="/resources/downloads">Downloads</Link></li>
                 </Links>
               </Section>
             </Nav>

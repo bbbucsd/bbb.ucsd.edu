@@ -42,8 +42,6 @@ class StandardHero extends Component {
 
     let bg = hero_asset && hero_asset.url
 
-    console.log(slice)
-
     return (
       <Hero align={align} src={bg} height={height} color={background_color}>
         <Headline h1 color={headline_color} text={headline} />

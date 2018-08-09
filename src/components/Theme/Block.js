@@ -30,16 +30,16 @@ const autoMarginMixin = css`
   }}
 `;
 
-const padding = (multiplier) => {
+const padding = (selectorLeft, selectorRight, blockPadding) => {
   return css`
-    & > :first-child {
-      padding-left: ${props => props.theme.largePadding * multiplier}px;
+    & > ${selectorLeft} {
+      padding-left: ${blockPadding}px;
     }
     
-    & > :last-child {
-      padding-right: ${props => props.theme.largePadding * multiplier}px;
+    & > ${selectorRight} {
+      padding-right: ${blockPadding}px;
     }
-  `
+  `;
 }
 
 const BlockWrapper = styled.div`
@@ -60,22 +60,16 @@ const BlockWrapper = styled.div`
  
   // paddings
   ${media.greaterThan("large")`
-    ${padding(3)}
+    ${p => padding(':first-child', ':last-child', p.theme.boxPaddingLarge)}
   `}
 
   ${media.greaterThan("medium")`
-    ${padding(1.3)}
+    ${p => padding(':first-child', ':last-child', p.theme.boxPaddingMedium)}
   `}
   
   ${media.lessThan("medium")`
     flex-flow:column;
-    & > div {
-      padding-left: ${props => props.theme.largePadding / 1.2}px;
-    }
-    
-    & > div {
-      padding-right: ${props => props.theme.largePadding / 1.2}px;
-    }
+    ${p => padding('div', 'div', p.theme.boxPaddingSmall)}
   `}
 `;
 

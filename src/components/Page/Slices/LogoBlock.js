@@ -86,9 +86,9 @@ class LogoBlock extends Component {
           <Headline h2 text={data.headline} />
 
           <Customers>
-            {items.map((item) =>
-              <Customer>
-                <Logo alt={item.logo.alt} src={item.logo.url} />
+            {items.map((item, i) =>
+              <Customer key={`customer_${i}`}>
+                <Logo key={`logo_${i}`} alt={item.logo.alt} src={item.logo.url} />
               </Customer>
             )}
           </Customers>
