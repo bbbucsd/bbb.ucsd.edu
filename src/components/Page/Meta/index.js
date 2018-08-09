@@ -77,3 +77,55 @@ export const query = graphql`
     }
   }
 `;
+
+export const siteQuery = graphql`
+  fragment Site on RootQueryType {
+    site {
+      siteMetadata {
+        title
+        siteUrl
+        siteName
+        hostname
+        locale
+        metaDescription
+        openGraph {
+          fbAppId
+          image
+          imageDescription
+          imageHeight
+          imageWidth
+        }
+        twitter {
+          image
+          site
+          creator
+        }
+        schemaOrganization {
+          name
+          url
+          logo
+          street
+          city
+          state
+          zip
+          country
+          email
+          description
+          foundingDate
+          sameAs
+          contacts {
+            phone
+            type
+            areaServed
+          }
+        }
+        schemaPerson {
+          name
+          url
+          image
+          sameAs
+        }
+      }
+    }
+  }
+`
