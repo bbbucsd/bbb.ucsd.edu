@@ -18,6 +18,10 @@ const Button = styled(ThemeButton)`
   margin-top:20px;
 `;
 
+const Primary = styled(Section)`
+  & > div { width:70%; }
+`;
+
 
 class StatementBlock extends Component {
   render() {
@@ -35,13 +39,13 @@ class StatementBlock extends Component {
 
     return (
       <Block color={background_color} height={height}>
-        <Section align={align} justify={justify}>
+        <Primary align={align} justify={justify}>
           <Headline h2 color={headline_color} text={headline} />
           <Subheadline h3 color={subheadline_color} text={subheadline} />
           {cta_label &&
             <Button to={cta_link} onClick={this.handleClickOpen}>{cta_label}</Button>
           }
-        </Section>
+        </Primary>
       </Block>
     );
   }

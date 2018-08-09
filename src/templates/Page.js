@@ -60,7 +60,6 @@ class Page extends Component {
     return url;
   }
 
-
   render() {
     const page = this.state.doc;
     const tags = this.state.tags;
