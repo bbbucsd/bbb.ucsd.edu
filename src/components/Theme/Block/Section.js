@@ -43,6 +43,7 @@ const SectionWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
+  -webkit-fi
   
   ${media.between("medium", "large")`
     padding:0 50px !important;
