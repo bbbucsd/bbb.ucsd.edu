@@ -52,6 +52,7 @@ const BlockWrapper = styled.div`
   background-color: ${ props => props.color };
   min-height: ${minHeightMixin};
   margin: ${autoMarginMixin};
+  flex-flow:${p => (p.direction && p.direction.match(/left/i)) ? 'row-reverse' : null};
   
   
   // finishing
@@ -60,16 +61,16 @@ const BlockWrapper = styled.div`
  
   // paddings
   ${media.greaterThan("large")`
-    ${p => padding(':first-child', ':last-child', p.theme.boxPaddingLarge)}
+    ${p => padding(':first-child', ':last-child', p.theme.blockPaddingLarge)}
   `}
 
   ${media.greaterThan("medium")`
-    ${p => padding(':first-child', ':last-child', p.theme.boxPaddingMedium)}
+    ${p => padding(':first-child', ':last-child', p.theme.blockPaddingMedium)}
   `}
   
   ${media.lessThan("medium")`
     flex-flow:column;
-    ${p => padding('div', 'div', p.theme.boxPaddingSmall)}
+    ${p => padding('div', 'div', p.theme.blockPaddingSmall)}
   `}
 `;
 
@@ -80,20 +81,10 @@ class Block extends Component {
       this.props.children.props.justify : null
   }
 
-  orderChildren() {
-    this.blocks = React.Children.toArray(this.props.children);
-
-    if (this.props.direction && !!this.props.direction.match(/left/i)) {
-      this.blocks.reverse();
-    }
-
-    return this.blocks;
-  }
-
   render() {
     return (
       <BlockWrapper justify={this.getJustifyFromChild()} {...this.props}>
-        { this.orderChildren() }
+        { this.props.children }
       </BlockWrapper>
     )
   }
