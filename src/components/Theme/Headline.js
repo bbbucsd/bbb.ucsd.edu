@@ -9,6 +9,7 @@ const H1 = styled.h1`
   margin:0;
   font-weight: 300;
   font-style: normal;
+  width:100%;
 `;
 
 const H2 = styled.h2`
@@ -18,6 +19,7 @@ const H2 = styled.h2`
   margin:10px 0 0 0;
   font-weight: 300;
   font-style: normal;
+  width:100%;
 `;
 
 const H3 = styled.h3`
@@ -27,6 +29,7 @@ const H3 = styled.h3`
   margin:10px 0 0 0;
   font-weight: 300;
   font-style: normal;
+  width:100%;
 `;
 
 class ThemeHeadline extends Component {

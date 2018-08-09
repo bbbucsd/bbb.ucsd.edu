@@ -23,13 +23,16 @@ const Box = styled.div`
   background-color:#333;
 `;
 
-const BlockWrapper = styled.div`
+const StyledBlockWrapper = styled.div`
   width:100%;
   border:1px solid #000;
-  > div:first-child {
-    //border:1px solid blue;  
-  }
 `
+const StyledBlock = styled(Block)`
+  &:first-child, &:last-child {
+    background-image:linear-gradient(to bottom, rgba(159, 196, 231, 1) 0%, rgba(159, 196, 231, 1) 100%), linear-gradient(to bottom, rgba(194, 221, 182, 1) 0%, rgba(194, 221, 182, 1) 100%);
+    background-clip: content-box, padding-box;
+  }
+`;
 
 const StyledSection = styled(Section)`
   background-image:linear-gradient(to bottom, rgba(159, 196, 231, 1) 0%, rgba(159, 196, 231, 1) 100%), linear-gradient(to bottom, rgba(194, 221, 182, 1) 0%, rgba(194, 221, 182, 1) 100%);
@@ -46,13 +49,13 @@ export default class Blocks extends React.Component {
             <code>
               Block height="XL" - 100vh
             </code>
-            <BlockWrapper>
-              <Block height="XL">
+            <StyledBlockWrapper>
+              <StyledBlock height="XL">
                 <StyledSection>
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
@@ -61,13 +64,13 @@ export default class Blocks extends React.Component {
             <code>
               Block height="Large" - 70vh
             </code>
-            <BlockWrapper>
-              <Block height="Large">
+            <StyledBlockWrapper>
+              <StyledBlock height="Large">
                 <StyledSection>
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
@@ -76,13 +79,13 @@ export default class Blocks extends React.Component {
             <code>
               Block height="Medium" - 50vh
             </code>
-            <BlockWrapper>
-              <Block height="Medium">
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
                 <StyledSection>
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
@@ -91,13 +94,13 @@ export default class Blocks extends React.Component {
             <code>
               Block height="Small" - 30vh
             </code>
-            <BlockWrapper>
-              <Block height="Small">
+            <StyledBlockWrapper>
+              <StyledBlock height="Small">
                 <StyledSection>
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
@@ -106,13 +109,13 @@ export default class Blocks extends React.Component {
             <code>
               Block height="auto" - auto height
             </code>
-            <BlockWrapper>
-              <Block height="Auto">
+            <StyledBlockWrapper>
+              <StyledBlock height="Auto">
                 <StyledSection>
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
@@ -121,177 +124,234 @@ export default class Blocks extends React.Component {
             <code>
               Block height="Medium" color="#cccccc" - 50vh, background-color: #cccccc;
             </code>
-            <BlockWrapper>
-              <Block height="Medium" color="#cccccc">
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium" color="#cccccc">
                 <StyledSection>
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
         <Row>
           <Col>
             <code>
-              Block height="Medium", StyledSection align="left" - 50vh, text-align:left
+              Block height="Medium", Section align="left" - 50vh, align left
             </code>
-            <BlockWrapper>
-              <Block height="Medium">
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
                 <StyledSection align="Left">
+                  <h1>Heading 1</h1>
                   Hello World
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
         <Row>
           <Col>
             <code>
-              Block height="Medium", StyledSection justify="Top" - 50vh, Top align
+              Block height="Medium", Section align="right" - 50vh, align right
             </code>
-            <BlockWrapper>
-              <Block height="Medium">
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
+                <StyledSection align="Right">
+                  <h1>Heading 1</h1>
+                  Hello World
+                  <Box />
+                </StyledSection>
+              </StyledBlock>
+            </StyledBlockWrapper>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <code>
+              Block height="Medium", Section align="center" - 50vh, align center
+            </code>
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
+                <StyledSection align="Center">
+                  <h1>Heading 1</h1>
+                  Hello World
+                  <Box />
+                </StyledSection>
+              </StyledBlock>
+            </StyledBlockWrapper>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <code>
+              Block height="Medium", Section justify="Top" - 50vh, Top align
+            </code>
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
                 <StyledSection justify="Top">
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
         <Row>
           <Col>
             <code>
-              Block height="Medium", StyledSection justify="Middle" - 50vh, Middle align (default)
+              Block height="Medium", Section justify="Middle" - 50vh, Middle align (default)
             </code>
-            <BlockWrapper>
-              <Block height="Medium">
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
                 <StyledSection justify="Middle">
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
         <Row>
           <Col>
             <code>
-              Block height="Medium", StyledSection justify="Bottom" - 50vh, Bottom
+              Block height="Medium", Section justify="Bottom" - 50vh, Bottom
             </code>
-            <BlockWrapper>
-              <Block height="Medium">
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
                 <StyledSection justify="Bottom">
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
         <Row>
           <Col>
             <code>
-              Block height="Medium", StyledSection justify="Topish" - 50vh, Top + 15vh padding
+              Block height="Medium", Section justify="Topish" - 50vh, Top + 15vh padding
             </code>
-            <BlockWrapper>
-              <Block height="Medium">
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
                 <StyledSection justify="Topish">
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
         <Row>
           <Col>
             <code>
-              Block height="Medium", StyledSection justify="Bottomish" - 50vh, Bottom + 15vh padding
+              Block height="Medium", Section justify="Bottomish" - 50vh, Bottom + 15vh padding
             </code>
-            <BlockWrapper>
-              <Block height="Medium">
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
                 <StyledSection justify="Bottomish">
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
         <Row>
           <Col>
             <code>
-              Block height="Auto", StyledSection justify="Top" - Auto height with auto margin
+              Block height="Auto", Section justify="Top" - Auto height with auto margin
             </code>
-            <BlockWrapper style={{backgroundColor:'#F7C492'}}>
-              <Block height="Auto" color="#94BCE3">
+            <StyledBlockWrapper style={{backgroundColor:'#F7C492'}}>
+              <StyledBlock height="Auto" color="#94BCE3">
                 <StyledSection justify="Top">
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
         <Row>
           <Col>
             <code>
-              Block height="Auto", StyledSection justify="Bottom" - Auto height with auto margin
+              Block height="Auto", Section justify="Bottom" - Auto height with auto margin
             </code>
-            <BlockWrapper style={{backgroundColor:'#F7C492'}}>
-              <Block height="Auto" color="#94BCE3">
+            <StyledBlockWrapper style={{backgroundColor:'#F7C492'}}>
+              <StyledBlock height="Auto" color="#94BCE3">
                 <StyledSection justify="Bottom">
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
         <Row>
           <Col>
             <code>
-              Block height="Medium", StyledSection color="#cccccc" - 50vh, StyledSection background-color:#cccccc
+              Block height="Medium", Section color="#cccccc" - 50vh, Section background-color:#cccccc
             </code>
-            <BlockWrapper>
-              <Block height="Medium">
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
                 <StyledSection color="#cccccc">
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
         <Row>
           <Col>
             <code>
-              Block height="Medium", Two StyledSections
+              Block height="Medium", Two Sections, First align="left"
             </code>
-            <BlockWrapper>
-              <Block height="Medium">
-                <StyledSection>
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
+                <StyledSection align="left">
+                  <h1>Heading 1</h1>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                   <Box />
                 </StyledSection>
                 <StyledSection>
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
         <Row>
           <Col>
             <code>
-              Block height="Medium", Three StyledSections
+              Block height="Medium", Two Sections, First align="center"
             </code>
-            <BlockWrapper>
-              <Block height="Medium">
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
+                <StyledSection align="center">
+                  <h1>Heading 1</h1>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  <Box />
+                </StyledSection>
+                <StyledSection>
+                  <Box />
+                </StyledSection>
+              </StyledBlock>
+            </StyledBlockWrapper>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <code>
+              Block height="Medium", Three Sections
+            </code>
+            <StyledBlockWrapper>
+              <StyledBlock height="Medium">
                 <StyledSection>
                   <Box />
                 </StyledSection>
@@ -301,8 +361,8 @@ export default class Blocks extends React.Component {
                 <StyledSection>
                   <Box />
                 </StyledSection>
-              </Block>
-            </BlockWrapper>
+              </StyledBlock>
+            </StyledBlockWrapper>
           </Col>
         </Row>
 
