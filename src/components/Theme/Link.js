@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PrismicHelper from 'utils/prismicHelper'
 import GatsbyLink from 'gatsby-link'
 import Validator from 'utils/validator';
+import _ from 'lodash';
 
 class Link extends Component {
 
@@ -49,7 +50,7 @@ class Link extends Component {
   }
 
   render() {
-    const attrs = this.buildAttrs()
+    const attrs = _.omit(this.buildAttrs(), 'floating') // used as prop in header, gatsby link whines about it
 
     if (attrs.href) {
       return ( <a {...attrs}>{this.props.children}</a> )

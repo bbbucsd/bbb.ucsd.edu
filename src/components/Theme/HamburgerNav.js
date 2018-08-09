@@ -42,7 +42,7 @@ const Menu = styled.div`
   max-height:0;
   visibility: hidden;
   transform: translateY(0);
-  transition: all 0.25s;
+  transition: all 0.5s;
   will-change: transform;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
   color:#000;

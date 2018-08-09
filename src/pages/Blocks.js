@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Block, { Section } from 'components/Theme/Block';
 import { styled, css} from 'components/Theme/Styles';
+import Headline from 'components/Theme/Headline';
 
 const Container = styled.div`
   margin:50px;
@@ -142,7 +143,7 @@ export default class Blocks extends React.Component {
             <StyledBlockWrapper>
               <StyledBlock height="Medium">
                 <StyledSection align="Left">
-                  <h1>Heading 1</h1>
+                  <Headline h1>Heading 1</Headline>]
                   Hello World
                   <Box />
                 </StyledSection>
@@ -159,7 +160,7 @@ export default class Blocks extends React.Component {
             <StyledBlockWrapper>
               <StyledBlock height="Medium">
                 <StyledSection align="Right">
-                  <h1>Heading 1</h1>
+                  <Headline h1>Heading 1</Headline>
                   Hello World
                   <Box />
                 </StyledSection>
@@ -176,8 +177,8 @@ export default class Blocks extends React.Component {
             <StyledBlockWrapper>
               <StyledBlock height="Medium">
                 <StyledSection align="Center">
-                  <h1>Heading 1</h1>
-                  Hello World
+                  <Headline h1>Heading 1</Headline>
+                  <div>Hello World</div>
                   <Box />
                 </StyledSection>
               </StyledBlock>
@@ -313,7 +314,7 @@ export default class Blocks extends React.Component {
             <StyledBlockWrapper>
               <StyledBlock height="Medium">
                 <StyledSection align="left">
-                  <h1>Heading 1</h1>
+                  <Headline h1>Heading 1</Headline>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                   <Box />
                 </StyledSection>
@@ -333,7 +334,7 @@ export default class Blocks extends React.Component {
             <StyledBlockWrapper>
               <StyledBlock height="Medium">
                 <StyledSection align="center">
-                  <h1>Heading 1</h1>
+                  <Headline h1>Heading 1</Headline>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                   <Box />
                 </StyledSection>

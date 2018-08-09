@@ -11,7 +11,6 @@ const Logos = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 200px;
   justify-content: space-evenly;
   align-items: center;
 `;

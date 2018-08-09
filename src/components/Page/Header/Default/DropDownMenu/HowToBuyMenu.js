@@ -9,6 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const MainLink = styled(Link)`
+  font-weight: 400;
   color:${props => props.floating ? props.theme.black : props.theme.white};
   &:visited {
     color:${props => props.floating ? props.theme.black : props.theme.white};
@@ -22,7 +23,7 @@ class HowToBuyMenu extends Component {
 
     return (
       <Wrapper>
-        <MainLink floating={floating} to="/">How to buy</MainLink>
+        <MainLink floating={floating} to="/how-to-buy">How to buy</MainLink>
       </Wrapper>
     );
   }

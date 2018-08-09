@@ -6,7 +6,7 @@ import IndustriesMenu from './HamburgerMenu/IndustriesMenu';
 import SupportMenu from './HamburgerMenu/SupportMenu';
 
 const Menu = styled.ul`
-  margin-top: 30px;
+  margin-top: 130px;
   color: #999;
   width: 100%;
   font-size: 14px;
