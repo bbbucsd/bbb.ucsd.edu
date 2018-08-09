@@ -49,7 +49,6 @@ const SectionWrapper = styled.div`
   overflow: hidden;
   position:relative;
 
-
   // boilerplate stuff to make it easy to set background images on sections
   background-repeat: no-repeat;
   background-size: cover;
