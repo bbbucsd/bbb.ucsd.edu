@@ -14,11 +14,11 @@ class DoubleTestimonialBlock extends Component {
     return (
       <Block height="Medium">
         <Section full>
-          {/*<Testimonial align="left" data={testimonialOne} />*/}
+          <Testimonial align="left" data={testimonialOne} />
         </Section>
 
         <Section full>
-          {/*<Testimonial align="left" data={testimonialTwo} />*/}
+          <Testimonial align="left" data={testimonialTwo} />
         </Section>
       </Block>
     )
