@@ -74,11 +74,8 @@ class Page extends Component {
         <Meta tags={tags} page={page} />
 
         <Features page={page} />
-
         <Header display={page.header} />
-
         <Slices page={page} />
-
         <Footer display={page.footer} />
       </div>
     );

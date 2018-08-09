@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Validator from 'utils/validator';
-import Video from '../Video'
 import Styles, { styled, css, media } from '../Styles';
+import _ from 'lodash';
 
 const justify = (keyword) => {
   switch (keyword) {
@@ -69,15 +68,16 @@ const SectionInner = styled.div`
   flex-direction: column;
   align-content: center;
   align-items: ${p => p.align ? align(p.align.toLowerCase())  : 'center'};
-  text-align: ${p => (p.align && p.align === 'Center') ? 'center' : 'left'};
+  text-align: ${p => (p.align && p.align.toLowerCase() === 'center') ? 'center' : 'left'};
 `;
 
 class Section extends Component {
   render() {
     const { children } = this.props
+    const attrs = _.omit(this.props, 'src')
 
     return (
-      <SectionWrapper {...this.props}>
+      <SectionWrapper {...attrs}>
         <SectionInner align={this.props.align}>
           { children }
         </SectionInner>

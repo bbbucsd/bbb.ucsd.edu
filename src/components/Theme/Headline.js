@@ -43,7 +43,7 @@ class ThemeHeadline extends Component {
 
   render() {
     const { h1, h2, h3 } = this.props;
-    console.log(this.props.color)
+
     return (
       <React.Fragment>
         { h1 && <H1 {...this.props}>{this.textCopy()}</H1> }

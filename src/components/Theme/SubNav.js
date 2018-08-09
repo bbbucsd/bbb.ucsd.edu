@@ -15,6 +15,7 @@ const Wrapper = styled.div`
 `;
 
 const MainLink = styled(Link)`
+  font-weight: 400;
   color:${props => props.floating ? props.theme.black : props.theme.white};
   &:visited {
     color:${props => props.floating ? props.theme.black : props.theme.white};

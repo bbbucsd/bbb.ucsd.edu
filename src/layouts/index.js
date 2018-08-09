@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Modal from '../components/Modal'
-
 import { ThemeProvider } from 'styled-components'
 import theme, { fonts } from 'components/Theme/Globals'
+import 'components/Theme/Fonts.css' // https://github.com/styled-components/styled-components/issues/1593
 import 'components/Theme/Normalize'
-import 'components/Theme/Fonts'
 
 class Layout extends React.Component {
   static propTypes = {

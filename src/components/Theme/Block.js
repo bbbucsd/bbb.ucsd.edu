@@ -30,16 +30,16 @@ const autoMarginMixin = css`
   }}
 `;
 
-const padding = (multiplier) => {
+const padding = (selectorLeft, selectorRight, blockPadding) => {
   return css`
-    & > :first-child {
-      padding-left: ${props => props.theme.largePadding * multiplier}px;
+    & > ${selectorLeft} {
+      padding-left: ${blockPadding}px;
     }
     
-    & > :last-child {
-      padding-right: ${props => props.theme.largePadding * multiplier}px;
+    & > ${selectorRight} {
+      padding-right: ${blockPadding}px;
     }
-  `
+  `;
 }
 
 const BlockWrapper = styled.div`
@@ -52,6 +52,7 @@ const BlockWrapper = styled.div`
   background-color: ${ props => props.color };
   min-height: ${minHeightMixin};
   margin: ${autoMarginMixin};
+  flex-flow:${p => (p.direction && p.direction.match(/left/i)) ? 'row-reverse' : null};
   
   
   // finishing
@@ -60,22 +61,16 @@ const BlockWrapper = styled.div`
  
   // paddings
   ${media.greaterThan("large")`
-    ${padding(3)}
+    ${p => padding(':first-child', ':last-child', p.theme.blockPaddingLarge)}
   `}
 
   ${media.greaterThan("medium")`
-    ${padding(1.3)}
+    ${p => padding(':first-child', ':last-child', p.theme.blockPaddingMedium)}
   `}
   
   ${media.lessThan("medium")`
     flex-flow:column;
-    & > div {
-      padding-left: ${props => props.theme.largePadding / 1.2}px;
-    }
-    
-    & > div {
-      padding-right: ${props => props.theme.largePadding / 1.2}px;
-    }
+    ${p => padding('div', 'div', p.theme.blockPaddingSmall)}
   `}
 `;
 
@@ -86,20 +81,10 @@ class Block extends Component {
       this.props.children.props.justify : null
   }
 
-  orderChildren() {
-    this.blocks = React.Children.toArray(this.props.children);
-
-    if (this.props.direction && !!this.props.direction.match(/left/i)) {
-      this.blocks.reverse();
-    }
-
-    return this.blocks;
-  }
-
   render() {
     return (
       <BlockWrapper justify={this.getJustifyFromChild()} {...this.props}>
-        { this.orderChildren() }
+        { this.props.children }
       </BlockWrapper>
     )
   }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Styles, { styled, css, media } from 'components/Theme/Styles';
+import { styled, css, media } from 'components/Theme/Styles';
 import Link from 'components/Theme/Link'
-import ThemeButton from 'components/Theme/Button';
 import Waypoint from 'react-waypoint'
 import HamburgerMenu from './HamburgerMenu'
 import DropDownMenu from './DropDownMenu'
+import SearchBar from './SearchBar'
 
 
 const Header = styled.div`
@@ -16,10 +16,13 @@ const Header = styled.div`
   background-color: transparent;
   width: 100%;
   color: white;
+  transition: all 0.5s;
+  
   ${props => props.floating ? 'background-color: #f0f0f0;' : null }
   
   ${media.lessThan("medium")`
     padding:10px;
+    background-color:#ffffff;
   `}
 `;
 
@@ -41,7 +44,7 @@ const NavBarLeft = styled.ul `
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  flex: 0 0 135px;
+  flex: 0 0 150px;
   margin-right: auto;
   margin-left:0;
 `;
@@ -54,7 +57,7 @@ const ListItem = styled.li`
   font-style: normal;
   line-height: 32px;
   display:flex;
-  flex-direction:row;
+  flex-direction:row;  
   &:hover {
     color: white;
   }
@@ -71,6 +74,8 @@ const Logo = styled.span`
   color: ${props => props.floating ? '#000' : '#fff' };
   ${media.lessThan("medium")`
     left:-13px;
+    color:#000;
+    z-index:110;
   `}
 `;
 
@@ -93,6 +98,8 @@ const NavBarCenter = styled.ul`
   flex-direction: row;
   justify-content: space-around;
   width: ${navBarCenterWidth}px;
+  position:relative;
+  top:2px;
   
   ${media.lessThan("medium")`
     display:none;
@@ -107,7 +114,7 @@ const NavBarRight = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  flex: 0 0 135px;
+  flex: 0 0 150px;
   margin-left: auto;
 `;
 
@@ -125,8 +132,9 @@ const HamburgerMenuIcon = styled.div`
   transition: all 0.25s;
   transform: ${p => p.open ? 'rotate(90deg)' : null };
   z-index:105;
+  
   span {
-    background-color: ${p => (p.floating || p.open) ? '#000' : '#fff' };
+    background-color: #000;
   }
   
   &:hover {
@@ -170,26 +178,27 @@ const Drawer = styled.div`
   right:0;
   top:0;
   left:0;
-  height: 100vh;
-  padding:20px;
-  display: ${props => props.open ? 'flex' : 'none' };
+  display: flex;
   z-index:101;
-`;
-
-const ContactUs = styled(ThemeButton)`
-  font-weight: ${p => p.floating ? null : 'bold' };
-  background-color: ${p => p.floating ? p.theme.primaryColor : p.theme.white };
-  color: ${p => p.floating ? null : p.theme.black };
-  ${media.lessThan("medium")`
-    display:none;
-  `}
+  opacity: 0;
+  height:0;
+  visibility: hidden;
+  transform: translateY(0);
+  transition: all 0.5s;
+  will-change: transform;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  ${p => p.open ? `
+    opacity: 1;
+    height:100vh;
+    visibility: visible;
+  ` : null}
 `;
 
 
 class Default extends Component {
     state = {
-      floating: true,
-      drawer: false
+      floating: false,
+      drawer: false,
     };
 
     floatHeader = () => {
@@ -204,7 +213,21 @@ class Default extends Component {
       this.setState({ drawer: !this.state.drawer });
     };
 
+    checkIfScrolled() {
+      if (typeof window === 'undefined') {
+        return false
+      } else {
+        return window.scrollY > 100
+      }
+    }
+
+    componentWillReceiveProps() {
+      this.checkIfScrolled() ? this.floatHeader() : this.unFloatHeader()
+    }
+
     render() {
+
+
       return (
         <div>
           <Header floating={this.state.floating}>
@@ -223,6 +246,7 @@ class Default extends Component {
 
               <NavBarRight>
                 <ListItem>
+                  <SearchBar floating={this.state.floating} />
                   <HamburgerMenuIcon open={this.state.drawer} onClick={this.toggleDrawer} floating={this.state.floating}>
                     <TopLine open={this.state.drawer} />
                     <BottomLine open={this.state.drawer} />
@@ -231,10 +255,6 @@ class Default extends Component {
                   <Drawer open={this.state.drawer} >
                     <HamburgerMenu />
                   </Drawer>
-
-                  <ContactUs arrow={false} floating={this.state.floating}>
-                    Talk to Us
-                  </ContactUs>
                 </ListItem>
               </NavBarRight>
             </NavBar>
