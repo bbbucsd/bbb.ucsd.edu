@@ -18,6 +18,7 @@ const NavGroup = styled.li`
   position: relative;
   text-align: left;
   align-items: center;
+  margin-top: 20px;
 `;
 
 const Items = styled.ul`
@@ -26,15 +27,16 @@ const Items = styled.ul`
 `;
 
 const Title = styled.li`
-  font-size: ${p => p.theme.h3FontSize * 1.2};
-  border-bottom: 1px solid #cacaca;
-  margin-bottom: 5px;
-  padding: 12px 0;
-  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: bold;
   width:90%;
+  text-transform: uppercase;
+  color:#555;
+  padding-bottom:10px;
+  line-height: 12px;
 `;
 
-class SubNavGroup extends Component {
+class HamburgerNavGroup extends Component {
   render() {
     const { children, title } = this.props;
 
@@ -51,4 +53,4 @@ class SubNavGroup extends Component {
   }
 }
 
-export default SubNavGroup;
+export default HamburgerNavGroup;

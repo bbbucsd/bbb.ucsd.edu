@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import Styles, { styled, css} from 'components/Theme/Styles';
+import Styles, { styled, css, media } from 'components/Theme/Styles';
 import Link from 'components/Theme/Link'
-import { Menu } from 'styled-icons/material/Menu.cjs'
+import ThemeButton from 'components/Theme/Button';
 import Waypoint from 'react-waypoint'
-import ProductMenu from './ProductMenu'
-import IndustriesMenu from './IndustriesMenu'
-import SupportMenu from './SupportMenu'
-import HowToBuyMenu from './HowToBuyMenu'
 import HamburgerMenu from './HamburgerMenu'
+import DropDownMenu from './DropDownMenu'
+
 
 const Header = styled.div`
   position: fixed;
@@ -19,6 +17,10 @@ const Header = styled.div`
   width: 100%;
   color: white;
   ${props => props.floating ? 'background-color: #f0f0f0;' : null }
+  
+  ${media.lessThan("medium")`
+    padding:10px;
+  `}
 `;
 
 const NavBar = styled.div`
@@ -29,6 +31,10 @@ const NavBar = styled.div`
   height: 75px;
   width:90%;
   margin: 0 auto;
+  ${media.lessThan("medium")`
+    height: 35px;
+    width:98%;
+  `}
 `;
 
 const NavBarLeft = styled.ul `
@@ -47,13 +53,15 @@ const ListItem = styled.li`
   font-weight: 300;
   font-style: normal;
   line-height: 32px;
+  display:flex;
+  flex-direction:row;
   &:hover {
     color: white;
   }
 `;
 
 const Logo = styled.span`
-  font-family: 'Termina';
+  font-family: 'Termina',serif;
   font-size: 20px;
   display:inline-block;
   position: relative;
@@ -61,6 +69,21 @@ const Logo = styled.span`
   font-style: normal;
   transform: scaleX(.8);
   color: ${props => props.floating ? '#000' : '#fff' };
+  ${media.lessThan("medium")`
+    left:-13px;
+  `}
+`;
+
+const Tm = styled.span`
+  font-size:12px;
+  vertical-align: super;
+  position:relative;
+  left:4px;
+  top:-2px;
+  
+  ${media.lessThan("medium")`
+    
+  `}
 `;
 
 const navItems = 4;
@@ -70,14 +93,14 @@ const NavBarCenter = styled.ul`
   flex-direction: row;
   justify-content: space-around;
   width: ${navBarCenterWidth}px;
-  ${ Styles.media.mobile`display:none` }
-  ${ Styles.media.desktop`display:flex` }
-  ${ Styles.media.tablet`display:flex` }
-`;
-
-const NavBarCenterItem = styled(ListItem)`
-  width: ${navBarCenterWidth / navItems}px;
-  text-align: center;
+  
+  ${media.lessThan("medium")`
+    display:none;
+  `}
+  
+  ${media.greaterThan("medium")`
+    display:flex;
+  `}
 `;
 
 const NavBarRight = styled.ul`
@@ -88,12 +111,57 @@ const NavBarRight = styled.ul`
   margin-left: auto;
 `;
 
-const MenuIcon = styled(Menu)`
-  position: relative;
-  top: 5px;
-  height:30px;
+let IconSize = 30;
+let LineLeft = IconSize / 3.2;
+let LineOffset = IconSize / 2;
+let LineWidth = 18;
+
+
+const HamburgerMenuIcon = styled.div`
   cursor: pointer;
-  fill: ${props => props.floating ? '#000000' : '#FFFFFF' };
+  position: relative;
+  width: ${IconSize}px;
+  height: ${IconSize}px;
+  transition: all 0.25s;
+  transform: ${p => p.open ? 'rotate(90deg)' : null };
+  z-index:105;
+  span {
+    background-color: ${p => (p.floating || p.open) ? '#000' : '#fff' };
+  }
+  
+  &:hover {
+    span {
+      background-color: #999;
+    }
+  }
+  
+  ${media.greaterThan("medium")`
+    display:none;
+  `}
+`;
+
+const HamburgerLine = css`
+  content: '';
+  display: block;
+  position: absolute;
+  left: ${LineLeft}px;
+  width: ${LineWidth}px;
+  height: 2px;
+  transform: rotate(0);
+  transition: all 0.25s;
+`;
+
+const TopLine = styled.span`
+  ${HamburgerLine};
+  top: ${LineOffset - 2}px;
+  transform: ${p => p.open ? 'rotate(45deg) translateY(0px)' : 'translateY(-2px)' };
+`;
+
+const BottomLine = styled.span`
+  ${HamburgerLine};
+  bottom: ${LineOffset}px;
+  transform: ${p => p.open ? 'rotate(-45deg) translateY(0px)' : 'translateY(7px)' };
+
 `;
 
 const Drawer = styled.div`
@@ -101,24 +169,22 @@ const Drawer = styled.div`
   background-color: #FFFFFF;
   right:0;
   top:0;
+  left:0;
   height: 100vh;
-  padding:40px;
+  padding:20px;
   display: ${props => props.open ? 'flex' : 'none' };
   z-index:101;
 `;
 
-const DrawerBackDrop = styled.div`
-  position:absolute;
-  display: ${props => props.open ? 'flex' : 'none' };
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  width:100%;
-  height:100vh;
-  background-color: rgba(0,0,0,0.5);
-  z-index:100;
+const ContactUs = styled(ThemeButton)`
+  font-weight: ${p => p.floating ? null : 'bold' };
+  background-color: ${p => p.floating ? p.theme.primaryColor : p.theme.white };
+  color: ${p => p.floating ? null : p.theme.black };
+  ${media.lessThan("medium")`
+    display:none;
+  `}
 `;
+
 
 class Default extends Component {
     state = {
@@ -145,28 +211,31 @@ class Default extends Component {
             <NavBar>
               <NavBarLeft>
                 <ListItem>
-                  <Logo floating={this.state.floating}><Link to="/">PROLUXE</Link></Logo>
+                  <Logo floating={this.state.floating}><Link to="/">PROLUXE<Tm>™</Tm></Link></Logo>
                 </ListItem>
               </NavBarLeft>
 
               <NavBarCenter>
-                <NavBarCenterItem><ProductMenu floating={this.state.floating} /></NavBarCenterItem>
-                <NavBarCenterItem><IndustriesMenu floating={this.state.floating} /></NavBarCenterItem>
-                <NavBarCenterItem><SupportMenu floating={this.state.floating} /></NavBarCenterItem>
-                <NavBarCenterItem><HowToBuyMenu floating={this.state.floating} /></NavBarCenterItem>
+                <ListItem>
+                  <DropDownMenu floating={this.state.floating} />
+                </ListItem>
               </NavBarCenter>
 
               <NavBarRight>
                 <ListItem>
-                  <MenuIcon icon="md-menu" onClick={this.toggleDrawer} floating={this.state.floating} />
+                  <HamburgerMenuIcon open={this.state.drawer} onClick={this.toggleDrawer} floating={this.state.floating}>
+                    <TopLine open={this.state.drawer} />
+                    <BottomLine open={this.state.drawer} />
+                  </HamburgerMenuIcon>
+
+                  <Drawer open={this.state.drawer} >
+                    <HamburgerMenu />
+                  </Drawer>
+
+                  <ContactUs arrow={false} floating={this.state.floating}>
+                    Talk to Us
+                  </ContactUs>
                 </ListItem>
-
-                <Drawer open={this.state.drawer} >
-                  <HamburgerMenu />
-                </Drawer>
-
-                <DrawerBackDrop open={this.state.drawer} onClick={this.toggleDrawer} />
-
               </NavBarRight>
             </NavBar>
           </Header>

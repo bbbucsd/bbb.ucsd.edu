@@ -7,10 +7,23 @@ const justify = (keyword) => {
   switch (keyword) {
     case 'middle':
       return 'center'
+    case 'topish':
+      return 'flex-start;'
     case 'top':
       return 'flex-start'
     case 'bottom':
       return 'flex-end;'
+    case 'bottomish':
+      return 'flex-end;'
+  }
+}
+
+const justifyIsh = (keyword) => {
+  switch (keyword) {
+    case 'topish':
+      return 'padding-top:15vh;'
+    case 'bottomish':
+      return 'padding-bottom: 15vh;'
   }
 }
 
@@ -24,24 +37,28 @@ const SectionWrapper = styled.div`
   text-align: ${p => p.align ? p.align.toLowerCase() : 'center'};;
   overflow: hidden;
   position:relative;
-  padding: 0 ${props => props.theme.largePadding * 3.5}px;
+  padding: 0 ${props => props.theme.largePadding * 2.5}px;
   
   // boilerplate stuff to make it easy to set background images on sections
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: top center;
+  -webkit-fi
   
   ${media.between("medium", "large")`
-    padding:50px !important;
+    padding:0 50px !important;
   `}
   
   ${media.lessThan("medium")`
-    padding:50px !important;
+    padding:0 50px !important ;
   `}
    
   > * {
     width:100%;
   }
+  
+  // justify-ish
+  ${p => p.justify ? justifyIsh(p.justify.toLowerCase()) : null };
 `;
 
 class Section extends Component {
