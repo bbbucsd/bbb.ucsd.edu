@@ -10,7 +10,7 @@ class Category extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      doc: this.props.data.category
+      doc: props.data.category
     };
   }
 

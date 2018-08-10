@@ -10,7 +10,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      doc: this.props.data.homePage
+      doc: props.data.homePage
     };
   }
 

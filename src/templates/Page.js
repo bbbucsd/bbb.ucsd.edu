@@ -9,8 +9,9 @@ class Page extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
-      doc: this.props.data.page
+      doc: props.data.page
     };
   }
 
@@ -52,8 +53,8 @@ export const pageQuery = graphql`
           ...StatementBlock
           ...FeatureBlock
           ...SingleImageBlock
-          ...TestimonialBlock
-          ...DoubleTestimonialBlock
+#          ...TestimonialBlock
+#          ...DoubleTestimonialBlock
         }
         body2 {
           ...OpenGraph
