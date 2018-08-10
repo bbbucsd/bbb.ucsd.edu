@@ -5,61 +5,57 @@ import Slices from 'components/Slices'
 import Footer from 'components/Theme/Footer';
 
 
-class Page extends Component {
+class Category extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
-      doc: props.data.page
+      doc: props.data.category
     };
   }
 
   componentWillMount() {
-    PrismicHelper.previewData('my.page.uid', this.props.data.page.uid, (data) => {
+    PrismicHelper.previewData('my.category.uid', this.props.data.category.uid, (data) => {
       this.setState({ doc: data });
     })
   }
 
   render() {
-    const page = this.state.doc;
+    const category = this.state.doc;
 
     return (
       <div>
         <Header />
-        <Slices document={page} />
+        <Slices document={category} />
         <Footer />
       </div>
     );
   }
 }
 
-export default Page;
+export default Category;
 
-export const pageQuery = graphql`
-  query PageQuery($uid: String!) {
-    page(uid: { eq: $uid }) {
+export const categoryQuery = graphql`
+  query CategoryQuery($uid: String!) {
+    category(uid: { eq: $uid }) {
       uid
       first_publication_date
       last_publication_date
       data {
         body {
-          ...StandardHero
-          ...DoubleBlock
-          ...HighlightHero
+          ...ContentBlock
+          ...FeatureBlock
           ...LogoBlock
           ...LogoBlockInline
-          ...ContentBlock
-          ...StatementBlock
-          ...FeatureBlock
           ...SingleImageBlock
-#          ...TestimonialBlock
-#          ...DoubleTestimonialBlock
+          ...StandardHero
+          ...DoubleBlock
+          ...StatementBlock
         }
-        body2 {
+        body1 {
           ...OpenGraph
           ...Twitter
-          ...SchemaWebpage
+          ...SchemaItemList
         }
       }
     }

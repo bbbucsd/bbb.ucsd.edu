@@ -1,10 +1,12 @@
 
 const prismicRepoName = 'proluxe';
 
+var Prismic = require('prismic-javascript');
+var Cookies = require('js-cookie');
+
 module.exports = {
 
   prismicRepoName: prismicRepoName,
-
   apiEndpoint: `https://${prismicRepoName}.prismic.io/api/v2`,
 
   convertUIDTOPath(uid) {
@@ -12,7 +14,19 @@ module.exports = {
   },
 
   pathResolver(doc) {
-    return module.exports.convertUIDTOPath(doc.uid)
+    switch (doc.type) {
+      case 'home_page':
+        return '/'
+      case 'industry':
+        return `/industries/${doc.uid}`
+      case 'category':
+        return `/${doc.uid}`
+      case 'product':
+        doc.data.category === null ? console.log(`Product '${doc.uid}' is missing a category `) : null
+        return `/${(doc.data.category && doc.data.category.document.uid) || 'products'}/${doc.uid}`
+      default:
+        return module.exports.convertUIDTOPath(doc.uid)
+    }
   },
 
   // -- Links Resolver
@@ -27,5 +41,27 @@ module.exports = {
         return doc.url || '/'
     }
   },
+
+  previewData(selector, value, callback) {
+    // Check for a preview cookie
+    const previewCookie = Cookies.get(Prismic.previewCookie);
+    // Retrieve preview content if cookie is set
+    if (previewCookie !== undefined) {
+      Prismic.api(module.exports.apiEndpoint).then(api => {
+        api.query(
+          Prismic.Predicates.at(selector, value),
+          { ref : previewCookie }
+        ).then((response) => {
+          // response is the response object, response.results holds the documents
+          var document = response.results[0]
+          if (document) {
+            return callback(document)
+          }
+        });
+      });
+    }
+  },
+
+
 
 };
