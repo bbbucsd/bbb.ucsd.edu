@@ -5,15 +5,15 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   const { createRedirect, createPage } = boundActionCreators
 
   //
-  // Pages ---------------------------------------------------------------------
+  // Home Page ---------------------------------------------------------------------
   //
 
-  const pages = await graphql(`
+  const home = await graphql(`
     {
-      allPrismicPage {
+      allHomePage {
         edges {
           node {
-            id
+            type
             uid
           }
         }
@@ -21,8 +21,125 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     }
   `)
 
+  const homeComponent = path.resolve(`./src/templates/Home.js`)
+  home.data.allHomePage.edges.forEach(edge => {
+    createPage({
+      path: PrismicHelper.pathResolver(edge.node),
+      component: homeComponent,
+    })
+  })
+
+  //
+  // Category ---------------------------------------------------------------------
+  //
+
+  const category = await graphql(`
+    {
+      allCategory {
+        edges {
+          node {
+            type
+            uid
+          }
+        }
+      }
+    }
+  `)
+
+  const categoryComponent = path.resolve(`./src/templates/Category.js`)
+  category.data.allCategory.edges.forEach(edge => {
+    createPage({
+      path: PrismicHelper.pathResolver(edge.node),
+      component: categoryComponent,
+      context: {
+        uid: edge.node.uid
+      },
+    })
+  })
+
+  //
+  // Product ---------------------------------------------------------------------
+  //
+
+  const products = await graphql(`
+    {
+      allProduct {
+        edges {
+          node {
+            type
+            uid
+            data {
+              category {
+                document {
+                  uid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const productComponent = path.resolve(`./src/templates/Product.js`)
+  products.data.allProduct.edges.forEach(edge => {
+    createPage({
+      path: PrismicHelper.pathResolver(edge.node),
+      component: productComponent,
+      context: {
+        uid: edge.node.uid
+      },
+    })
+  })
+
+  //
+  // Industry ---------------------------------------------------------------------
+  //
+
+  const industry = await graphql(`
+    {
+      allIndustry {
+        edges {
+          node {
+            type
+            uid
+          }
+        }
+      }
+    }
+  `)
+
+  const industryComponent = path.resolve(`./src/templates/Industry.js`)
+  industry.data.allIndustry.edges.forEach(edge => {
+    createPage({
+      path: PrismicHelper.pathResolver(edge.node),
+      component: industryComponent,
+      context: {
+        uid: edge.node.uid
+      },
+    })
+  })
+
+  //
+  // Pages ---------------------------------------------------------------------
+  //
+
+  const pages = await graphql(`
+    {
+      allPage {
+        edges {
+          node {
+            id
+            uid
+            type
+          }
+        }
+      }
+    }
+  `)
+
   const pageComponent = path.resolve(`./src/templates/Page.js`)
-  pages.data.allPrismicPage.edges.forEach(edge => {
+  pages.data.allPage.edges.forEach(edge => {
     createPage({
       path: PrismicHelper.pathResolver(edge.node),
       component: pageComponent,
@@ -38,11 +155,12 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
 
   const modals = await graphql(`
     {
-      allPrismicModal {
+      allModal {
         edges {
           node {
             id
             uid
+            type
           }
         }
       }
@@ -50,7 +168,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   `)
 
   const modalComponent = path.resolve(`./src/templates/Modal.js`)
-  modals.data.allPrismicModal.edges.forEach(edge => {
+  modals.data.allModal.edges.forEach(edge => {
     createPage({
       path: `_${edge.node.uid}`,
       component: modalComponent,
@@ -66,7 +184,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
 
   const redirects = await graphql(`
     {
-      allPrismicRedirect(filter: {uid: {eq: "redirect"}}) {
+      allRedirect(filter: {uid: {eq: "redirect"}}) {
         edges {
           node {
             data {
@@ -83,7 +201,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   `)
 
   const interstitialComponent = path.resolve(`./src/templates/Interstitial.js`);
-  (redirects.data.allPrismicRedirect.edges[0].node.data.redirects || []).forEach(redirect => {
+  (redirects.data.allRedirect.edges[0].node.data.redirects || []).forEach(redirect => {
     switch (redirect.type) {
       case 'Permanent':
         createRedirect({

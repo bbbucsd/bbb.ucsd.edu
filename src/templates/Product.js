@@ -5,63 +5,54 @@ import Slices from 'components/Slices'
 import Footer from 'components/Theme/Footer';
 
 
-class Page extends Component {
+class Product extends Component {
 
   constructor(props) {
     super(props);
-    let data = props.data.prismicPage ? props.data.prismicPage.data : {};
-    let tags = props.data.prismicPage ? props.data.prismicPage.tags : {};
-
     this.state = {
-      doc: props.data.page
+      doc: props.data.product
     };
   }
 
   componentWillMount() {
-    PrismicHelper.previewData('my.page.uid', this.props.data.page.uid, (data) => {
+    PrismicHelper.previewData('my.product.uid', this.props.data.product.uid, (data) => {
       this.setState({ doc: data });
     })
   }
 
   render() {
-    const page = this.state.doc;
-    const tags = this.state.tags;
+    const product = this.state.doc;
 
     return (
       <div>
         <Header />
-        <Slices document={page} />
+        <Slices document={product} />
         <Footer />
       </div>
     );
   }
 }
 
-export default Page;
+export default Product;
 
-export const pageQuery = graphql`
-  query PageQuery($uid: String!) {
-    page(uid: { eq: $uid }) {
+export const productQuery = graphql`
+  query ProductQuery($uid: String!) {
+    product(uid: { eq: $uid }) {
       uid
       first_publication_date
       last_publication_date
       data {
         body {
-          ...StandardHero
-          ...DoubleBlock
-          ...HighlightHero
-          ...LogoBlock
-          ...LogoBlockInline
-          ...ContentBlock
-          ...StatementBlock
           ...FeatureBlock
           ...SingleImageBlock
-#          ...TestimonialBlock
-#          ...DoubleTestimonialBlock
+          ...StandardHero
+          ...DoubleBlock
+          ...StatementBlock
         }
-        body2 {
+        body1 {
           ...OpenGraph
           ...Twitter
+          ...SchemaProduct
           ...SchemaWebpage
         }
       }

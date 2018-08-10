@@ -9,19 +9,19 @@ export default class Validator {
   static COLOR_REGEX = /^#[0-9a-f]{3,6}$/i
 
   static isImage(path) {
-    return !!path.match(this.IMAGE_REGEX);
+    return path && !!path.match(this.IMAGE_REGEX);
   }
 
   static isAudio(path) {
-    return !!path.match(this.AUDIO_REGEX);
+    return path && !!path.match(this.AUDIO_REGEX);
   }
 
   static isVideo(path) {
-    return !!path.match(this.VIDEO_REGEX);
+    return path && !!path.match(this.VIDEO_REGEX);
   }
 
   static isEmail(str) {
-    return !!str.match(this.EMAIL_REGEX);
+    return path && !!str.match(this.EMAIL_REGEX);
   }
 
   static isCurrentSite(url) {
