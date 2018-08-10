@@ -10,7 +10,7 @@ class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      doc: this.props.data.product
+      doc: props.data.product
     };
   }
 

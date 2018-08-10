@@ -10,7 +10,7 @@ class Industry extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      doc: this.props.data.industry
+      doc: props.data.industry
     };
   }
 

@@ -9,8 +9,8 @@ import LogoBlockInline from './LogoBlockInline';
 import ContentBlock from './ContentBlock';
 import StatementBlock from './StatementBlock';
 import FeatureBlock from './FeatureBlock';
-import TestimonialBlock from './TestimonialBlock';
-import DoubleTestimonialBlock from './DoubleTestimonialBlock';
+// import TestimonialBlock from './TestimonialBlock';
+// import DoubleTestimonialBlock from './DoubleTestimonialBlock';
 import SingleImageBlock from './SingleImageBlock';
 import FrontMatter from './FrontMatter';
 import OpenGraph from './OpenGraph';
@@ -52,10 +52,10 @@ const Slice = (props) => {
       return <StatementBlock slice={data} />
     case 'FeatureBlock':
       return <FeatureBlock slice={data} />
-    case 'TestimonialBlock':
-      return <TestimonialBlock slice={data} />
-    case 'DoubleTestimonialBlock':
-      return <DoubleTestimonialBlock slice={data} />
+    // case 'TestimonialBlock':
+    //   return <TestimonialBlock slice={data} />
+    // case 'DoubleTestimonialBlock':
+    //   return <DoubleTestimonialBlock slice={data} />
     case 'SingleImageBlock':
       return <SingleImageBlock slice={data} />
     case 'SchemaWebpage':
@@ -76,6 +76,8 @@ const Slice = (props) => {
       return <SchemaOrganization slice={data} />
     case 'SchemaPerson':
       return <SchemaPerson slice={data} />
+    default:
+      return <div></div>
   };
 }
 
