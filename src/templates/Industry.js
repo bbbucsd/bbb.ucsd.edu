@@ -5,39 +5,39 @@ import Slices from 'components/Slices'
 import Footer from 'components/Theme/Footer';
 
 
-class Page extends Component {
+class Industry extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      doc: this.props.data.page
+      doc: this.props.data.industry
     };
   }
 
   componentWillMount() {
-    PrismicHelper.previewData('my.page.uid', this.props.data.page.uid, (data) => {
+    PrismicHelper.previewData('my.industry.uid', this.props.data.industry.uid, (data) => {
       this.setState({ doc: data });
     })
   }
 
   render() {
-    const page = this.state.doc;
+    const industry = this.state.doc;
 
     return (
       <div>
         <Header />
-        <Slices document={page} />
+        <Slices document={industry} />
         <Footer />
       </div>
     );
   }
 }
 
-export default Page;
+export default Industry;
 
-export const pageQuery = graphql`
-  query PageQuery($uid: String!) {
-    page(uid: { eq: $uid }) {
+export const industryQuery = graphql`
+  query IndustryQuery($uid: String!) {
+    industry(uid: { eq: $uid }) {
       uid
       first_publication_date
       last_publication_date
@@ -45,17 +45,12 @@ export const pageQuery = graphql`
         body {
           ...StandardHero
           ...DoubleBlock
-          ...HighlightHero
-          ...LogoBlock
           ...LogoBlockInline
           ...ContentBlock
           ...StatementBlock
-          ...FeatureBlock
           ...SingleImageBlock
-          ...TestimonialBlock
-          ...DoubleTestimonialBlock
         }
-        body2 {
+        body1 {
           ...OpenGraph
           ...Twitter
           ...SchemaWebpage

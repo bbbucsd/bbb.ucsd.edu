@@ -5,39 +5,39 @@ import Slices from 'components/Slices'
 import Footer from 'components/Theme/Footer';
 
 
-class Page extends Component {
+class Home extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      doc: this.props.data.page
+      doc: this.props.data.homePage
     };
   }
 
   componentWillMount() {
-    PrismicHelper.previewData('my.page.uid', this.props.data.page.uid, (data) => {
+    PrismicHelper.previewData('my.homePage.uid', this.props.data.homePage.uid, (data) => {
       this.setState({ doc: data });
     })
   }
 
   render() {
-    const page = this.state.doc;
+    const home = this.state.doc;
 
     return (
       <div>
         <Header />
-        <Slices document={page} />
+        <Slices document={home} />
         <Footer />
       </div>
     );
   }
 }
 
-export default Page;
+export default Home;
 
-export const pageQuery = graphql`
-  query PageQuery($uid: String!) {
-    page(uid: { eq: $uid }) {
+export const homeQuery = graphql`
+  query HomeQuery {
+    homePage {
       uid
       first_publication_date
       last_publication_date
@@ -45,21 +45,15 @@ export const pageQuery = graphql`
         body {
           ...StandardHero
           ...DoubleBlock
-          ...HighlightHero
           ...LogoBlock
-          ...LogoBlockInline
-          ...ContentBlock
           ...StatementBlock
-          ...FeatureBlock
-          ...SingleImageBlock
-          ...TestimonialBlock
-          ...DoubleTestimonialBlock
         }
-        body2 {
+        body1 {
           ...OpenGraph
           ...Twitter
-          ...SchemaWebpage
-        }
+          ...SchemaOrganization
+          ...SchemaWebsite
+        }  
       }
     }
   }

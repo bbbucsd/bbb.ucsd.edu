@@ -72,20 +72,10 @@ module.exports = {
     'gatsby-plugin-react-next',
     'gatsby-plugin-resolve-src',
     {
-      resolve: 'gatsby-source-prismic',
+      resolve: '@ericraio/gatsby-source-prismic',
       options: {
         repositoryName: PrismicConfig.prismicRepoName,
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-        // Set a link resolver function used to process links in your content.
-        // Fields with rich text formatting or links to internal content use this
-        // function to generate the correct link URL.
-        // The document node, field key (i.e. API ID), and field value are
-        // provided to the function, as seen below. This allows you to use
-        // different link resolver logic for each field if necessary.
-        // See: https://prismic.io/docs/javascript/query-the-api/link-resolving
-        linkResolver: ({ node, key, value }) => doc => {
-          return PrismicConfig.linkResolver(doc);
-        },
       },
     },
     'gatsby-plugin-netlify', // make sure to keep this last in the array
