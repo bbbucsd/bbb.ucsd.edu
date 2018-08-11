@@ -18,11 +18,11 @@ class Home extends Component {
   }
 }
 
-export default connectPreview('homePage')(Home);
+export default connectPreview('home')(Home);
 
 export const homeQuery = graphql`
   query HomeQuery {
-    homePage {
+    home {
       uid
       first_publication_date
       last_publication_date
@@ -36,7 +36,6 @@ export const homeQuery = graphql`
         body1 {
           ...OpenGraph
           ...Twitter
-          ...SchemaOrganization
           ...SchemaWebsite
         }
       }
