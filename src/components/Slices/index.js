@@ -22,6 +22,7 @@ import SchemaWebpage from './SchemaWebpage';
 import SchemaProduct from './SchemaProduct';
 import SchemaWebsite from './SchemaWebsite';
 import SchemaItemList from './SchemaItemList';
+import Form from './Form';
 //import HighlightContentBlock from './HighlightContentBlock';
 //import HorizontalFormBlock from './HorizontalFormBlock';
 
@@ -76,6 +77,8 @@ const Slice = (props) => {
       return <SchemaOrganization slice={data} />
     case 'SchemaPerson':
       return <SchemaPerson slice={data} />
+    case 'Form':
+      return <Form slice={data} />
     default:
       return null;
   };

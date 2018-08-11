@@ -5,16 +5,6 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   const { createRedirect, createPage } = boundActionCreators
 
   //
-  // Home ---------------------------------------------------------------------
-  //
-
-  const homeComponent = path.resolve(`./src/templates/Home.js`);
-  createPage({
-    path: '/',
-    component: homeComponent,
-  })
-
-  //
   // Category ---------------------------------------------------------------------
   //
 
