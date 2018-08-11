@@ -58,7 +58,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   })
 
   //
-  // Product ---------------------------------------------------------------------
+  // Products --------------------------------------------------------------------
   //
 
   const products = await graphql(`
@@ -114,6 +114,69 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     createPage({
       path: PrismicHelper.pathResolver(edge.node),
       component: industryComponent,
+      context: {
+        uid: edge.node.uid
+      },
+    })
+  })
+
+  //
+  // Testimonials ----------------------------------------------------------------
+  //
+
+  const testimonial = await graphql(`
+    {
+      allTestimonial {
+        edges {
+          node {
+            type
+            uid
+          }
+        }
+      }
+    }
+  `)
+
+  const testimonialComponent = path.resolve(`./src/templates/Testimonial.js`)
+  testimonial.data.allTestimonial.edges.forEach(edge => {
+    createPage({
+      path: PrismicHelper.pathResolver(edge.node),
+      component: testimonialComponent,
+      context: {
+        uid: edge.node.uid
+      },
+    })
+  })
+
+  //
+  // Posts ----------------------------------------------------------------
+  //
+
+  const posts = await graphql(`
+    {
+      allPost {
+        edges {
+          node {
+            type
+            uid
+            data {
+              category {
+                document {
+                  uid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const postComponent = path.resolve(`./src/templates/Post.js`)
+  posts.data.allPost.edges.forEach(edge => {
+    createPage({
+      path: PrismicHelper.pathResolver(edge.node),
+      component: postComponent,
       context: {
         uid: edge.node.uid
       },

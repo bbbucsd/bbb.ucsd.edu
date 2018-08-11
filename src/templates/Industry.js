@@ -1,39 +1,24 @@
 import React, { Component } from 'react';
-import PrismicHelper from '../utils/prismicHelper';
 import Header from 'components/Theme/Header';
 import Slices from 'components/Slices'
 import Footer from 'components/Theme/Footer';
-
+import connectPreview from 'lib/connectPreview';
 
 class Industry extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      doc: props.data.industry
-    };
-  }
-
-  componentWillMount() {
-    PrismicHelper.previewData('my.industry.uid', this.props.data.industry.uid, (data) => {
-      this.setState({ doc: data });
-    })
-  }
-
   render() {
-    const industry = this.state.doc;
-
     return (
       <div>
         <Header />
-        <Slices document={industry} />
+        <Slices document={this.props.document} />
         <Footer />
       </div>
     );
   }
+
 }
 
-export default Industry;
+export default connectPreview('industry')(Industry);
 
 export const industryQuery = graphql`
   query IndustryQuery($uid: String!) {

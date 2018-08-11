@@ -1,39 +1,23 @@
 import React, { Component } from 'react';
-import PrismicHelper from '../utils/prismicHelper';
 import Header from 'components/Theme/Header';
 import Slices from 'components/Slices'
 import Footer from 'components/Theme/Footer';
-
+import connectPreview from 'lib/connectPreview';
 
 class Product extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      doc: props.data.product
-    };
-  }
-
-  componentWillMount() {
-    PrismicHelper.previewData('my.product.uid', this.props.data.product.uid, (data) => {
-      this.setState({ doc: data });
-    })
-  }
-
   render() {
-    const product = this.state.doc;
-
     return (
       <div>
         <Header />
-        <Slices document={product} />
+        <Slices document={this.props.document} />
         <Footer />
       </div>
     );
   }
 }
 
-export default Product;
+export default connectPreview('product')(Product);
 
 export const productQuery = graphql`
   query ProductQuery($uid: String!) {

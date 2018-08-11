@@ -48,20 +48,20 @@ class HighlightContentBlock extends Component {
 
 export default HighlightContentBlock;
 
-export const query = graphql`
-  fragment HighlightContentBlock on PrismicPageBodyHighlightContentBlock {
-    slice_type
-    primary {
-      highlight_direction
-      highlight_title {
-        text
-      }
-      content {
-        html
-      }
-      highlight_content {
-        html
-      }
-    }
-  }
-`;
+//export const query = graphql`
+  //fragment HighlightContentBlock on PrismicPageBodyHighlightContentBlock {
+    //slice_type
+    //primary {
+      //highlight_direction
+      //highlight_title {
+        //text
+      //}
+      //content {
+        //html
+      //}
+      //highlight_content {
+        //html
+      //}
+    //}
+  //}
+//`;

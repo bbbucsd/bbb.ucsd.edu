@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import Helmet from 'react-helmet';
 import Config from '../../config';
 
@@ -80,12 +80,28 @@ class FrontMatter extends Component {
 
     metaTags = _.compact(_.flatten(metaTags));
     return (
-      <React.Fragment>
+      <Fragment>
         {metaTags}
-      </React.Fragment>
+      </Fragment>
     )
   }
 }
 
 
 export default FrontMatter;
+
+export const query = graphql`
+  fragment FrontMatter on FrontMatter {
+    __typename
+    primary {
+      site_title
+      meta_description
+      follow_links
+      display_in_search_results
+      meta_robots_advanced
+      canonical_url {
+        url
+      }
+    }
+  }
+`;

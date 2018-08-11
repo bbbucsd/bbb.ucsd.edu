@@ -3,38 +3,14 @@
     "name": {
       "type": "StructuredText",
       "config": {
-        "single": "heading2, heading3, heading4, heading5, heading6",
+        "single": "heading1",
         "label": "Name"
       }
     },
     "uid": {
       "type": "UID",
       "config": {
-        "label": "Slug",
-        "placeholder": "Use periods as slashes"
-      }
-    },
-    "header": {
-      "type": "Select",
-      "config": {
-        "options": [
-          "Default",
-          "No Header",
-          "No Header with Back Button"
-        ],
-        "default_value": "Default",
-        "label": "Header"
-      }
-    },
-    "footer": {
-      "type": "Select",
-      "config": {
-        "options": [
-          "Default",
-          "No Footer"
-        ],
-        "default_value": "Default",
-        "label": "Footer"
+        "label": "Slug"
       }
     },
     "body": {
@@ -42,135 +18,37 @@
       "fieldset": "Slice zone",
       "config": {
         "choices": {
-          "highlight_hero": {
+          "standard_hero": {
             "type": "Slice",
-            "fieldset": "Highlight Hero",
-            "description": "Asset, superheadline, headline, features",
-            "icon": "star_border",
+            "fieldset": "Standard Hero",
+            "description": "Asset, headline, subheadline, cta",
+            "icon": "stars",
             "display": "list",
             "non-repeat": {
-              "superheadline": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading1, heading2, heading3, heading5, heading6",
-                  "label": "Superheadline"
-                }
-              },
-              "headline": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading1",
-                  "label": "Headline"
-                }
-              },
               "hero_asset": {
-                "type": "Image",
+                "type": "Link",
                 "config": {
-                  "constraint": {},
-                  "thumbnails": [],
+                  "select": "media",
                   "label": "Hero Asset"
                 }
-              }
-            },
-            "repeat": {
-              "feature_headline": {
-                "type": "Text",
+              },
+              "background_color": {
+                "type": "Color",
                 "config": {
-                  "label": "Feature Headline"
+                  "label": "Background Color"
                 }
               },
-              "feature_subheadline": {
-                "type": "Text",
-                "config": {
-                  "label": "Feature Subheadline"
-                }
-              }
-            }
-          },
-          "logo_block": {
-            "type": "Slice",
-            "fieldset": "Logo Block",
-            "description": "3 column grid of logos, Headline, CTA",
-            "icon": "photo_library",
-            "display": "list",
-            "non-repeat": {
               "height": {
                 "type": "Select",
                 "config": {
                   "options": [
                     "Auto",
-                    "XL",
                     "Large",
                     "Medium",
                     "Small"
                   ],
                   "default_value": "Auto",
                   "label": "Height"
-                }
-              },
-              "headline": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading2, heading3, heading4, heading5, heading6",
-                  "label": "Headline"
-                }
-              },
-              "cta_label": {
-                "type": "Text",
-                "config": {
-                  "label": "CTA Label"
-                }
-              },
-              "cta_link": {
-                "type": "Link",
-                "config": {
-                  "allowTargetBlank": true,
-                  "label": "CTA Link"
-                }
-              }
-            },
-            "repeat": {
-              "logo": {
-                "type": "Image",
-                "config": {
-                  "constraint": {},
-                  "thumbnails": [],
-                  "label": "Logo"
-                }
-              }
-            }
-          },
-          "logo_block__inline_": {
-            "type": "Slice",
-            "fieldset": "Logo Block (Inline)",
-            "description": "Inline grid of logos",
-            "icon": "photo_library",
-            "display": "list",
-            "non-repeat": {
-              "height": {
-                "type": "Select",
-                "config": {
-                  "options": [
-                    "Normal",
-                    "Large",
-                    "Medium",
-                    "Small",
-                    "Auto"
-                  ],
-                  "default_value": "Normal",
-                  "label": "Height"
-                }
-              },
-              "justify": {
-                "type": "Select",
-                "config": {
-                  "options": [
-                    "Middle",
-                    "Top",
-                    "Bottom"
-                  ],
-                  "default_value": "Middle",
-                  "label": "Justify"
                 }
               },
               "align": {
@@ -183,62 +61,6 @@
                   ],
                   "default_value": "Center",
                   "label": "Align"
-                }
-              }
-            },
-            "repeat": {
-              "logo": {
-                "type": "Image",
-                "config": {
-                  "constraint": {},
-                  "thumbnails": [],
-                  "label": "Logo"
-                }
-              }
-            }
-          },
-          "double_block": {
-            "type": "Slice",
-            "fieldset": "Double Block",
-            "description": "Block, Asset, Headline, Subheadline",
-            "icon": "filter_2",
-            "display": "grid",
-            "non-repeat": {
-              "height": {
-                "type": "Select",
-                "config": {
-                  "options": [
-                    "Auto",
-                    "Large",
-                    "Medium",
-                    "Small"
-                  ],
-                  "default_value": "Auto",
-                  "label": "Height"
-                }
-              },
-              "direction": {
-                "type": "Select",
-                "config": {
-                  "options": [
-                    "Asset on the right",
-                    "Asset on the left"
-                  ],
-                  "default_value": "Asset on the right",
-                  "label": "Direction"
-                }
-              },
-              "asset": {
-                "type": "Link",
-                "config": {
-                  "select": "media",
-                  "label": "Asset"
-                }
-              },
-              "background_color": {
-                "type": "Color",
-                "config": {
-                  "label": "Background Color"
                 }
               },
               "headline": {
@@ -266,22 +88,17 @@
                 "config": {
                   "label": "Subheadline Color"
                 }
-              }
-            },
-            "repeat": {}
-          },
-          "content_block": {
-            "type": "Slice",
-            "fieldset": "Content Block",
-            "description": "Just rich text",
-            "icon": "format_align_left",
-            "display": "list",
-            "non-repeat": {
-              "content": {
-                "type": "StructuredText",
+              },
+              "cta_label": {
+                "type": "Text",
                 "config": {
-                  "multi": "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-                  "label": "Content"
+                  "label": "CTA Label"
+                }
+              },
+              "cta_link": {
+                "type": "Link",
+                "config": {
+                  "label": "CTA Link"
                 }
               }
             },
@@ -367,144 +184,6 @@
                 "type": "Link",
                 "config": {
                   "label": "CTA Link"
-                }
-              }
-            },
-            "repeat": {}
-          },
-          "feature_block": {
-            "type": "Slice",
-            "fieldset": "Feature Block",
-            "description": "Multi-column -- Image, Headline, Subheadline, CTA",
-            "icon": "view_column",
-            "display": "list",
-            "non-repeat": {
-              "height": {
-                "type": "Select",
-                "config": {
-                  "options": [
-                    "Auto",
-                    "XL",
-                    "Large",
-                    "Medium",
-                    "Small"
-                  ],
-                  "default_value": "Auto",
-                  "label": "Height"
-                }
-              },
-              "justify": {
-                "type": "Select",
-                "config": {
-                  "options": [
-                    "Middle",
-                    "Top",
-                    "Bottom"
-                  ],
-                  "default_value": "Middle",
-                  "label": "Justify"
-                }
-              },
-              "align": {
-                "type": "Select",
-                "config": {
-                  "options": [
-                    "Center",
-                    "Left",
-                    "Right"
-                  ],
-                  "default_value": "Center",
-                  "label": "Align"
-                }
-              }
-            },
-            "repeat": {
-              "asset": {
-                "type": "Link",
-                "config": {
-                  "select": "media",
-                  "label": "Asset"
-                }
-              },
-              "headline": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading1",
-                  "label": "Headline"
-                }
-              },
-              "subheadline": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading2",
-                  "label": "Subheadline"
-                }
-              },
-              "cta_label": {
-                "type": "Text",
-                "config": {
-                  "label": "CTA Label"
-                }
-              },
-              "cta_link": {
-                "type": "Link",
-                "config": {
-                  "label": "CTA Link"
-                }
-              }
-            }
-          },
-          "double_testimonial_block": {
-            "type": "Slice",
-            "fieldset": "Double Testimonial Block",
-            "description": "2 Testimonial Side by Side",
-            "icon": "face",
-            "display": "list",
-            "non-repeat": {
-              "background_color": {
-                "type": "Color",
-                "config": {
-                  "label": "Background Color"
-                }
-              },
-              "testimonial_one": {
-                "type": "Link",
-                "config": {
-                  "select": "document",
-                  "customtypes": [
-                    "testimonial"
-                  ],
-                  "label": "Testimonial One"
-                }
-              },
-              "testimonial_two": {
-                "type": "Link",
-                "config": {
-                  "select": "document",
-                  "customtypes": [
-                    "testimonial"
-                  ],
-                  "label": "Testimonial Two"
-                }
-              }
-            },
-            "repeat": {}
-          },
-          "testimonial_block": {
-            "type": "Slice",
-            "fieldset": "Testimonial Block",
-            "description": "A single testimonial",
-            "icon": "face",
-            "display": "list",
-            "non-repeat": {
-              "testimonial": {
-                "type": "Link",
-                "config": {
-                  "select": "document",
-                  "customtypes": [
-                    "testimonial"
-                  ],
-                  "label": "testimonial"
                 }
               }
             },
@@ -603,42 +282,13 @@
             },
             "repeat": {}
           },
-          "tabs": {
+          "double_block": {
             "type": "Slice",
-            "fieldset": "Tabs",
-            "description": "Tab System",
-            "icon": "create_new_folder",
-            "display": "list",
-            "non-repeat": {},
-            "repeat": {
-              "label": {
-                "type": "Text",
-                "config": {
-                  "label": "Label"
-                }
-              }
-            }
-          },
-          "standard_hero": {
-            "type": "Slice",
-            "fieldset": "Standard Hero",
-            "description": "Asset, headline, subheadline, cta",
-            "icon": "stars",
-            "display": "list",
+            "fieldset": "Double Block",
+            "description": "Block, Asset, Headline, Subheadline",
+            "icon": "filter_2",
+            "display": "grid",
             "non-repeat": {
-              "hero_asset": {
-                "type": "Link",
-                "config": {
-                  "select": "media",
-                  "label": "Hero Asset"
-                }
-              },
-              "background_color": {
-                "type": "Color",
-                "config": {
-                  "label": "Background Color"
-                }
-              },
               "height": {
                 "type": "Select",
                 "config": {
@@ -652,16 +302,28 @@
                   "label": "Height"
                 }
               },
-              "align": {
+              "direction": {
                 "type": "Select",
                 "config": {
                   "options": [
-                    "Center",
-                    "Left",
-                    "Right"
+                    "Asset on the right",
+                    "Asset on the left"
                   ],
-                  "default_value": "Center",
-                  "label": "Align"
+                  "default_value": "Asset on the right",
+                  "label": "Direction"
+                }
+              },
+              "asset": {
+                "type": "Link",
+                "config": {
+                  "select": "media",
+                  "label": "Asset"
+                }
+              },
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Background Color"
                 }
               },
               "headline": {
@@ -689,28 +351,90 @@
                 "config": {
                   "label": "Subheadline Color"
                 }
-              },
-              "cta_label": {
-                "type": "Text",
+              }
+            },
+            "repeat": {}
+          },
+          "content_block": {
+            "type": "Slice",
+            "fieldset": "Content Block",
+            "description": "Just rich text",
+            "icon": "format_align_left",
+            "display": "list",
+            "non-repeat": {
+              "content": {
+                "type": "StructuredText",
                 "config": {
-                  "label": "CTA Label"
-                }
-              },
-              "cta_link": {
-                "type": "Link",
-                "config": {
-                  "label": "CTA Link"
+                  "multi": "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label": "Content"
                 }
               }
             },
             "repeat": {}
+          },
+          "logo_block__inline_": {
+            "type": "Slice",
+            "fieldset": "Logo Block (Inline)",
+            "description": "Inline grid of logos",
+            "icon": "photo_library",
+            "display": "list",
+            "non-repeat": {
+              "height": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Normal",
+                    "Large",
+                    "Medium",
+                    "Small",
+                    "Auto"
+                  ],
+                  "default_value": "Normal",
+                  "label": "Height"
+                }
+              },
+              "justify": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Middle",
+                    "Top",
+                    "Bottom"
+                  ],
+                  "default_value": "Middle",
+                  "label": "Justify"
+                }
+              },
+              "align": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Center",
+                    "Left",
+                    "Right"
+                  ],
+                  "default_value": "Center",
+                  "label": "Align"
+                }
+              }
+            },
+            "repeat": {
+              "logo": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Logo"
+                }
+              }
+            }
           }
         }
       }
     }
   },
   "Meta": {
-    "body2": {
+    "body1": {
       "type": "Slices",
       "fieldset": "Slice zone",
       "config": {
@@ -721,65 +445,65 @@
             "description": "The web page meta",
             "icon": "code",
             "display": "list",
-						"non-repeat": {
-							"site_title": {
-								"type": "Text",
-								"config": {
-									"label": "Site Title"
-								}
-							},
-							"meta_description": {
-								"type": "Text",
-								"config": {
-									"label": "Meta Description"
-								}
-							},
-							"display_in_search_results": {
-								"type": "Select",
-								"config": {
-									"options": [
-										"Yes",
-										"No"
-									],
-									"default_value": "Yes",
-									"label": "Display in Search Results",
-									"placeholder": "Allow search engines to show this page in search results?"
-								}
-							},
-							"follow_links": {
-								"type": "Select",
-								"config": {
-									"options": [
-										"Yes",
-										"No"
-									],
-									"default_value": "Yes",
-									"label": "Follow Links",
-									"placeholder": "Should search engines follow links?"
-								}
-							},
-							"meta_robots_advanced": {
-								"type": "Select",
-								"config": {
-									"options": [
-										"None",
-										"No Image Index",
-										"No Archive",
-										"No Index"
-									],
-									"default_value": "None",
-									"label": "Meta Robots Advanced",
-									"placeholder": "Advanced meta robots settings for this page."
-								}
-							},
-							"canonical_url": {
-								"type": "Link",
-								"config": {
-									"label": "Canonical URL",
-									"placeholder": "Defaults to the current url, set if page is duplicated"
-								}
-							}
-						},
+            "non-repeat": {
+              "site_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Site Title"
+                }
+              },
+              "meta_description": {
+                "type": "Text",
+                "config": {
+                  "label": "Meta Description"
+                }
+              },
+              "display_in_search_results": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Yes",
+                    "No"
+                  ],
+                  "default_value": "Yes",
+                  "label": "Display in Search Results",
+                  "placeholder": "Allow search engines to show this page in search results?"
+                }
+              },
+              "follow_links": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Yes",
+                    "No"
+                  ],
+                  "default_value": "Yes",
+                  "label": "Follow Links",
+                  "placeholder": "Should search engines follow links?"
+                }
+              },
+              "meta_robots_advanced": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "None",
+                    "No Image Index",
+                    "No Archive",
+                    "No Index"
+                  ],
+                  "default_value": "None",
+                  "label": "Meta Robots Advanced",
+                  "placeholder": "Advanced meta robots settings for this page."
+                }
+              },
+              "canonical_url": {
+                "type": "Link",
+                "config": {
+                  "label": "Canonical URL",
+                  "placeholder": "Defaults to the current url, set if page is duplicated"
+                }
+              }
+            },
             "repeat": {}
           },
           "open_graph": {
@@ -924,30 +648,6 @@
             }
           }
         }
-      }
-    }
-  },
-  "Features": {
-    "social_scroll_enabled": {
-      "type": "Select",
-      "config": {
-        "options": [
-          "No",
-          "Yes"
-        ],
-        "default_value": "No",
-        "label": "Social Scroll Enabled"
-      }
-    },
-    "cookie_policy_enabled": {
-      "type": "Select",
-      "config": {
-        "options": [
-          "Yes",
-          "No"
-        ],
-        "default_value": "Yes",
-        "label": "Cookie Policy Enabled"
       }
     }
   }
