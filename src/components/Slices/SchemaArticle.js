@@ -37,8 +37,9 @@ class SchemaArticle extends Component {
   }
 
   render() {
+    return null;
     const { slice } = this.props;
-    const { first_publication_date, last_publication_date, meta_description } = this.props.page;
+    const { first_publication_date, last_publication_date, meta_description } = slice;
 
     let schema = {
       "@context": "http://schema.org",

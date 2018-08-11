@@ -1,43 +1,28 @@
 import React, { Component } from 'react';
 import PrismicHelper from '../utils/prismicHelper';
 import Header from 'components/Theme/Header';
-import Slices from 'components/Slices'
+import Slices from 'components/Slices';
 import Footer from 'components/Theme/Footer';
-
+import connectPreview from 'lib/connectPreview';
 
 class Home extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      doc: props.data.homePage
-    };
-  }
-
-  componentWillMount() {
-    PrismicHelper.previewData('my.homePage.uid', this.props.data.homePage.uid, (data) => {
-      this.setState({ doc: data });
-    })
-  }
-
   render() {
-    const home = this.state.doc;
-
     return (
       <div>
         <Header />
-        <Slices document={home} />
+        <Slices document={this.props.document} />
         <Footer />
       </div>
     );
   }
 }
 
-export default Home;
+export default connectPreview('home')(Home);
 
 export const homeQuery = graphql`
   query HomeQuery {
-    homePage {
+    home {
       uid
       first_publication_date
       last_publication_date
@@ -51,9 +36,8 @@ export const homeQuery = graphql`
         body1 {
           ...OpenGraph
           ...Twitter
-          ...SchemaOrganization
           ...SchemaWebsite
-        }  
+        }
       }
     }
   }

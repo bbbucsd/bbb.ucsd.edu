@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import PrismicConfig from 'utils/prismicHelper';
 import Helmet from 'react-helmet'
@@ -13,7 +13,7 @@ import '../components/Theme/Globals';
 
 
 
-class Layout extends React.Component {
+class Layout extends Component {
   static propTypes = {
     location: PropTypes.object.isRequired,
     isModal: PropTypes.bool,
@@ -40,22 +40,16 @@ class Layout extends React.Component {
   }
 
   isInModal() {
-    if (this.props.location.state) {
-      if (this.props.location.state.isInModal) {
-        return true;
-      }
-    }
-
-    return false
+    return (this.props.location.state && this.props.location.isInModal);
   }
 
 
   render() {
-    const { location } = this.props
+    const { location } = this.props;
     const isModal = this.isInModal()
     return (
       <ThemeProvider theme={theme}>
-        <React.Fragment>
+        <Fragment>
           <Helmet>
             <script>{`window.prismic = { endpoint: '${PrismicConfig.apiEndpoint}' }`}</script>
             <script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js"></script>
@@ -72,7 +66,7 @@ class Layout extends React.Component {
               </Modal>
             )}
           </div>
-        </React.Fragment>
+        </Fragment>
       </ThemeProvider>
     )
   }

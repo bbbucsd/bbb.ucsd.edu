@@ -5,28 +5,13 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   const { createRedirect, createPage } = boundActionCreators
 
   //
-  // Home Page ---------------------------------------------------------------------
+  // Home ---------------------------------------------------------------------
   //
 
-  const home = await graphql(`
-    {
-      allHomePage {
-        edges {
-          node {
-            type
-            uid
-          }
-        }
-      }
-    }
-  `)
-
-  const homeComponent = path.resolve(`./src/templates/Home.js`)
-  home.data.allHomePage.edges.forEach(edge => {
-    createPage({
-      path: PrismicHelper.pathResolver(edge.node),
-      component: homeComponent,
-    })
+  const homeComponent = path.resolve(`./src/templates/Home.js`);
+  createPage({
+    path: '/',
+    component: homeComponent,
   })
 
   //
@@ -58,7 +43,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   })
 
   //
-  // Product ---------------------------------------------------------------------
+  // Products --------------------------------------------------------------------
   //
 
   const products = await graphql(`
@@ -114,6 +99,69 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     createPage({
       path: PrismicHelper.pathResolver(edge.node),
       component: industryComponent,
+      context: {
+        uid: edge.node.uid
+      },
+    })
+  })
+
+  //
+  // Testimonials ----------------------------------------------------------------
+  //
+
+  const testimonial = await graphql(`
+    {
+      allTestimonial {
+        edges {
+          node {
+            type
+            uid
+          }
+        }
+      }
+    }
+  `)
+
+  const testimonialComponent = path.resolve(`./src/templates/Testimonial.js`)
+  testimonial.data.allTestimonial.edges.forEach(edge => {
+    createPage({
+      path: PrismicHelper.pathResolver(edge.node),
+      component: testimonialComponent,
+      context: {
+        uid: edge.node.uid
+      },
+    })
+  })
+
+  //
+  // Posts ----------------------------------------------------------------
+  //
+
+  const posts = await graphql(`
+    {
+      allPost {
+        edges {
+          node {
+            type
+            uid
+            data {
+              category {
+                document {
+                  uid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const postComponent = path.resolve(`./src/templates/Post.js`)
+  posts.data.allPost.edges.forEach(edge => {
+    createPage({
+      path: PrismicHelper.pathResolver(edge.node),
+      component: postComponent,
       context: {
         uid: edge.node.uid
       },
@@ -182,18 +230,14 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   // Redirect ---------------------------------------------------------------------
   //
 
-  const redirects = await graphql(`
+  const redirect = await graphql(`
     {
-      allRedirect(filter: {uid: {eq: "redirect"}}) {
-        edges {
-          node {
-            data {
-              redirects {
-                type
-                from
-                to
-              }
-            }
+      redirect(uid: { eq: "redirect"}) {
+        data {
+          redirects {
+            to
+            from
+            type
           }
         }
       }
@@ -201,7 +245,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   `)
 
   const interstitialComponent = path.resolve(`./src/templates/Interstitial.js`);
-  (redirects.data.allRedirect.edges[0].node.data.redirects || []).forEach(redirect => {
+  (redirect.data.redirects || []).forEach(redirect => {
     switch (redirect.type) {
       case 'Permanent':
         createRedirect({

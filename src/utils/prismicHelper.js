@@ -9,23 +9,24 @@ module.exports = {
   prismicRepoName: prismicRepoName,
   apiEndpoint: `https://${prismicRepoName}.prismic.io/api/v2`,
 
-  convertUIDTOPath(uid) {
-    return uid.replace(/\./g, '/')
-  },
-
   pathResolver(doc) {
     switch (doc.type) {
-      case 'home_page':
+      case 'home':
         return '/'
       case 'industry':
         return `/industries/${doc.uid}`
       case 'category':
         return `/${doc.uid}`
+      case 'testimonial':
+        return `/testimonials/${doc.uid}`
       case 'product':
         doc.data.category === null ? console.log(`Product '${doc.uid}' is missing a category `) : null
-        return `/${(doc.data.category && doc.data.category.document.uid) || 'products'}/${doc.uid}`
+        return `/${(doc.data.category && doc.data.category.document[0].uid) || 'products'}/${doc.uid}`
+      case 'post':
+        doc.data.category === null ? console.log(`Post '${doc.uid}' is missing a category `) : null
+        return `/${(doc.data.category && doc.data.category.document[0].uid) || 'posts'}/${doc.uid}`
       default:
-        return module.exports.convertUIDTOPath(doc.uid)
+        return '/404';
     }
   },
 

@@ -77,7 +77,7 @@ const Slice = (props) => {
     case 'SchemaPerson':
       return <SchemaPerson slice={data} />
     default:
-      return <div></div>
+      return null;
   };
 }
 
@@ -87,14 +87,14 @@ class Slices extends Component {
     const { document } = this.props;
 
     return (
-      <React.Fragment>
+      <Fragment>
         <Helmet>
           <FrontMatter />
           {( document.data.body1 || document.data.body2 || [] ).map((slice, i) => <Slice data={slice} key={`meta_${i}`} /> )}
         </Helmet>
 
         {( document.data.body || [] ).map((slice, i) => <Slice data={slice} key={`ui_${i}`} /> )}
-      </React.Fragment>
+      </Fragment>
     )
   }
 }
