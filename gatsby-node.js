@@ -5,16 +5,6 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   const { createRedirect, createPage } = boundActionCreators
 
   //
-  // Home ---------------------------------------------------------------------
-  //
-
-  const homeComponent = path.resolve(`./src/templates/Home.js`);
-  createPage({
-    path: '/',
-    component: homeComponent,
-  })
-
-  //
   // Category ---------------------------------------------------------------------
   //
 
@@ -186,7 +176,6 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     }
   `)
 
-  const pageComponent = path.resolve(`./src/templates/Page.js`)
   pages.data.allPage.edges.forEach(edge => {
     createPage({
       path: PrismicHelper.pathResolver(edge.node),

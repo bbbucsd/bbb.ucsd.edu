@@ -10,8 +10,12 @@ module.exports = {
 
   pathResolver(doc) {
     switch (doc.type) {
-      case 'home':
-        return '/'
+      case 'page':
+        if(doc.uid === 'home') {
+          return `/`
+        } else {
+          return `/${doc.uid}`
+        }
       case 'industry':
         return `/industries/${doc.uid}`
       case 'category':
