@@ -176,6 +176,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     }
   `)
 
+  const pageComponent = path.resolve(`./src/templates/Page.js`)
   pages.data.allPage.edges.forEach(edge => {
     createPage({
       path: PrismicHelper.pathResolver(edge.node),
