@@ -41,6 +41,7 @@ export const productCategoryQuery = graphql`
           ...OpenGraph
           ...Twitter
           ...SchemaItemList
+          ...SchemaWebpage
         }
       }
     }

@@ -1,0 +1,108 @@
+{
+  "Main" : {
+    "name" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Name"
+      }
+    },
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "choices" : {
+          "text_field" : {
+            "type" : "Slice",
+            "fieldset" : "Text Field",
+            "description" : "Simple Text Field",
+            "icon" : "text_fields",
+            "display" : "list",
+            "non-repeat" : {
+              "type" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Text", "Email", "Phone Number" ],
+                  "default_value" : "Text",
+                  "label" : "Type"
+                }
+              },
+              "field_name" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Field Name"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "text_area" : {
+            "type" : "Slice",
+            "fieldset" : "Text Area",
+            "description" : "Simple Text Area Field",
+            "icon" : "wrap_text",
+            "display" : "list",
+            "non-repeat" : {
+              "label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Label"
+                }
+              },
+              "field_name" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Field Name"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "checkboxes" : {
+            "type" : "Slice",
+            "fieldset" : "Checkboxes",
+            "description" : "Group of Checkboxes",
+            "icon" : "check_box",
+            "display" : "list",
+            "non-repeat" : { },
+            "repeat" : {
+              "label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Label"
+                }
+              },
+              "field_name" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Field Name"
+                }
+              }
+            }
+          },
+          "radio_buttons" : {
+            "type" : "Slice",
+            "fieldset" : "Radio Buttons",
+            "description" : "Group of Radio Buttons",
+            "icon" : "radio_button_checked",
+            "display" : "list",
+            "non-repeat" : { },
+            "repeat" : {
+              "label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Label"
+                }
+              },
+              "field_name" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Field Name"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

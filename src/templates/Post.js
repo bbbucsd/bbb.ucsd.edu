@@ -36,10 +36,10 @@ export const postQuery = graphql`
       first_publication_date
       last_publication_date
       data {
-        body1 {
+        body {
           ...ContentBlock
         }
-        body {
+        body1 {
           ...FrontMatter
           ...OpenGraph
           ...Twitter

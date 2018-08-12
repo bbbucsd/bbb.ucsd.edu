@@ -23,6 +23,8 @@ module.exports = {
         return `/${(doc.data.product_category && doc.data.product_category.document[0].uid) || 'products'}/${doc.uid}`
       case 'post_category':
         return `/posts/${doc.uid}`
+      case 'testimonial':
+        return `/testimonials/${doc.uid}`
       case 'post':
         doc.data.post_category === null ? console.log(`Post '${doc.uid}' is missing a category `) : null
         return `/posts/${(doc.data.post_category && doc.data.post_category.document[0].uid)}/${doc.uid}`
