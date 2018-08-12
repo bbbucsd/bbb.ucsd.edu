@@ -3,7 +3,7 @@ import Block, { Section } from 'components/Theme/Block';
 import { styled, css, media } from 'components/Theme/Styles';
 
 
-class Form extends Component {
+class FormBlock extends Component {
   render() {
     const { slice } = this.props;
     const data = slice.primary;
@@ -19,11 +19,11 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default FormBlock;
 
 // language=GraphQL
 export const query = graphql`
-  fragment LogoBlock on Form {
+  fragment FormBlock on FormBlock {
     __typename
   }
 `;

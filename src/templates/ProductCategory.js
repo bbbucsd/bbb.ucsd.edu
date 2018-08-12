@@ -4,7 +4,7 @@ import Slices from 'components/Slices'
 import Footer from 'components/Theme/Footer';
 import connectPreview from 'lib/connectPreview';
 
-class Category extends Component {
+class ProductCategory extends Component {
 
   render() {
     return (
@@ -17,7 +17,7 @@ class Category extends Component {
   }
 }
 
-export default connectPreview('category')(Category);
+export default connectPreview('category')(ProductCategory);
 
 export const categoryQuery = graphql`
   query CategoryQuery($uid: String!) {
