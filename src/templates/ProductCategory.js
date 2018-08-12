@@ -17,11 +17,11 @@ class ProductCategory extends Component {
   }
 }
 
-export default connectPreview('category')(ProductCategory);
+export default connectPreview('productCategory')(ProductCategory);
 
-export const categoryQuery = graphql`
-  query CategoryQuery($uid: String!) {
-    category(uid: { eq: $uid }) {
+export const productCategoryQuery = graphql`
+  query ProductCategoryQuery($uid: String!) {
+    productCategory(uid: { eq: $uid }) {
       uid
       first_publication_date
       last_publication_date
@@ -41,7 +41,6 @@ export const categoryQuery = graphql`
           ...OpenGraph
           ...Twitter
           ...SchemaItemList
-          ...SchemaWebpage
         }
       }
     }

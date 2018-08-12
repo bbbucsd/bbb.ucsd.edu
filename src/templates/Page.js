@@ -35,7 +35,7 @@ export const pageQuery = graphql`
           ...StatementBlock
           ...FeatureBlock
           ...SingleImageBlock
-          ...Form
+          ...FormBlock
 #          ...TestimonialBlock
 #          ...DoubleTestimonialBlock
         }

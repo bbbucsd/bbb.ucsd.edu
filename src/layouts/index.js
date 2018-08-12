@@ -21,7 +21,7 @@ class Layout extends Component {
 
   constructor(props) {
     super(props);
-
+    console.log(props)
     // Set defaults for meta data (OpenGraph, Twitter, etc)
     Config.set(Object.assign({}, {
       currentUrl: this.getCurrentUrl(props.data.site.siteMetadata.siteUrl, props.location)
