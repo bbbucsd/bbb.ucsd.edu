@@ -718,7 +718,7 @@
           },
           "horizontal_form_block" : {
             "type" : "Slice",
-            "fieldset" : "Horizontal Form Block",
+            "fieldset" : "Horizontal FormBlock Block",
             "description" : "headline, subheadline, horizontal form",
             "icon" : "email",
             "display" : "list",

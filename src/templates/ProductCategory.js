@@ -4,7 +4,7 @@ import Slices from 'components/Slices'
 import Footer from 'components/Theme/Footer';
 import connectPreview from 'lib/connectPreview';
 
-class Testimonial extends Component {
+class ProductCategory extends Component {
 
   render() {
     return (
@@ -15,38 +15,32 @@ class Testimonial extends Component {
       </div>
     );
   }
-
 }
 
-export default connectPreview('testimonial')(Testimonial);
+export default connectPreview('productCategory')(ProductCategory);
 
-export const testimonialQuery = graphql`
-  query TestimonialQuery($uid: String!) {
-    testimonial(uid: { eq: $uid }) {
+export const productCategoryQuery = graphql`
+  query ProductCategoryQuery($uid: String!) {
+    productCategory(uid: { eq: $uid }) {
       uid
       first_publication_date
       last_publication_date
       data {
-        title
-        full_name {
-          text
+        body {
+          ...ContentBlock
+          ...FeatureBlock
+          ...LogoBlock
+          ...LogoBlockInline
+          ...SingleImageBlock
+          ...StandardHero
+          ...DoubleBlock
+          ...StatementBlock
         }
-        website {
-          url
-        }
-        picture {
-          url
-        }
-        company {
-          text
-        }
-        company_logo {
-          url
-        }
-        role_occupation
         body1 {
           ...FrontMatter
-          ...SchemaPerson
+          ...OpenGraph
+          ...Twitter
+          ...SchemaItemList
         }
       }
     }

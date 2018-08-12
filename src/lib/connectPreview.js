@@ -10,6 +10,7 @@ export default function connectPreview(type) {
     return class extends Component {
       constructor(props) {
         super(props);
+        console.log(props)
         this.state = {
           document: props.data[type]
         };

@@ -22,6 +22,7 @@ import SchemaWebpage from './SchemaWebpage';
 import SchemaProduct from './SchemaProduct';
 import SchemaWebsite from './SchemaWebsite';
 import SchemaItemList from './SchemaItemList';
+import FormBlock from './FormBlock';
 //import HighlightContentBlock from './HighlightContentBlock';
 //import HorizontalFormBlock from './HorizontalFormBlock';
 
@@ -48,6 +49,8 @@ const Slice = (props) => {
     //   return <HighlightContentBlock slice={data} />
     // case 'HorizontalFormBlock':
     //   return <HorizontalFormBlock slice={data} />
+    case 'FrontMatter':
+      return <FrontMatter slice={data} />
     case 'StatementBlock':
       return <StatementBlock slice={data} />
     case 'FeatureBlock':
@@ -76,6 +79,8 @@ const Slice = (props) => {
       return <SchemaOrganization slice={data} />
     case 'SchemaPerson':
       return <SchemaPerson slice={data} />
+    case 'FormBlock':
+      return <FormBlock slice={data} />
     default:
       return null;
   };
@@ -89,7 +94,6 @@ class Slices extends Component {
     return (
       <Fragment>
         <Helmet>
-          <FrontMatter />
           {( document.data.body1 || document.data.body2 || [] ).map((slice, i) => <Slice data={slice} key={`meta_${i}`} /> )}
         </Helmet>
 
