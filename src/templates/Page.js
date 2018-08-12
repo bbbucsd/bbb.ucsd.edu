@@ -5,17 +5,6 @@ import Footer from 'components/Theme/Footer';
 import connectPreview from 'lib/connectPreview';
 
 class Page extends Component {
-
-  constructor(props) {
-    super(props);
-    //let data = props.data.prismicPage ? props.data.prismicPage.data : {};
-    //let tags = props.data.prismicPage ? props.data.prismicPage.tags : {};
-
-    //this.state = {
-      //doc: props.data.page
-    //};
-  }
-
   render() {
     return (
       <div>
@@ -46,6 +35,7 @@ export const pageQuery = graphql`
           ...StatementBlock
           ...FeatureBlock
           ...SingleImageBlock
+          ...FormBlock
 #          ...TestimonialBlock
 #          ...DoubleTestimonialBlock
         }
