@@ -20,8 +20,5 @@ export default TextField;
 export const query = graphql`
   fragment TextField on TextField {
     __typename
-    primary {
-      name
-    }
   }
 `;

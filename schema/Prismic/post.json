@@ -13,12 +13,12 @@
         "label" : "Slug"
       }
     },
-    "category" : {
+    "post_category" : {
       "type" : "Link",
       "config" : {
         "select" : "document",
-        "customtypes" : [ "category" ],
-        "label" : "Category"
+        "customtypes" : [ "post_category" ],
+        "label" : "Post Category"
       }
     },
     "body" : {

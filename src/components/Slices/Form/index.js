@@ -19,7 +19,6 @@ class Form extends Component {
 
   render() {
     const { document } = this.props;
-    console.log(document)
 
     return (
       <Fragment>
@@ -30,5 +29,3 @@ class Form extends Component {
 }
 
 export default Form;
-
-

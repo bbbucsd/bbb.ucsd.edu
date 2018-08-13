@@ -126,6 +126,35 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   // })
 
   //
+  // Post Category ---------------------------------------------------------------------
+  //
+
+  const postCategory = await graphql(`
+    {
+      allPostCategory {
+        edges {
+          node {
+            type
+            uid
+          }
+        }
+      }
+    }
+  `)
+
+  const postCategoryComponent = path.resolve(`./src/templates/PostCategory.js`)
+  postCategory.data.allPostCategory.edges.forEach(edge => {
+    createPage({
+      path: PrismicHelper.pathResolver(edge.node),
+      component: postCategoryComponent,
+      context: {
+        uid: edge.node.uid
+      },
+    })
+  })
+
+
+  //
   // Posts ----------------------------------------------------------------
   //
 
