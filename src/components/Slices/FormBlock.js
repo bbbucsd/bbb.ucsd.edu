@@ -9,7 +9,7 @@ class FormBlock extends Component {
     const { slice } = this.props;
     const data = slice.primary;
     const form = data.form.document
-
+    console.log(form)
     return (
       <Block>
         <Section>
@@ -32,6 +32,8 @@ export const query = graphql`
           data {
             body {
               ...TextField
+              ...TextArea
+              ...Checkboxes
             }
           }
         }

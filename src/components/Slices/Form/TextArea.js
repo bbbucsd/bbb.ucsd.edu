@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class TextField extends Component {
+class TextArea extends Component {
   render() {
     const { slice } = this.props;
     const data = slice.primary;
@@ -9,16 +9,16 @@ class TextField extends Component {
     return (
       <div>
         <label>{data.label}</label>
-        <input type="text" name={data.field_name} />
+        <textarea name={data.field_name} />
       </div>
     )
   }
 }
 
-export default TextField;
+export default TextArea;
 
 export const query = graphql`
-  fragment TextField on TextField {
+  fragment TextArea on TextArea {
     __typename
     primary {
       label
