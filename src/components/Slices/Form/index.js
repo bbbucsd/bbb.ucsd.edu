@@ -1,6 +1,8 @@
 import React, { Fragment, Component } from 'react';
 import _ from 'lodash';
 import TextField from './TextField';
+import TextArea from './TextArea';
+import Checkboxes from './Checkboxes';
 
 const FormSlice = (props) => {
   let { data } = props
@@ -10,6 +12,10 @@ const FormSlice = (props) => {
   switch (type) {
     case 'TextField':
       return <TextField slice={data} />
+    case 'TextArea':
+      return <TextArea slice={data} />
+    case 'Checkboxes':
+      return <Checkboxes slice={data} />
     default:
       return null;
   };
