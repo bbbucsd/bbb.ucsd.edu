@@ -2,6 +2,7 @@ const prismicRepoName = 'automate-your-brand';
 
 var Prismic = require('prismic-javascript');
 var Cookies = require('js-cookie');
+var _ = require('lodash');
 
 module.exports = {
 
@@ -9,27 +10,27 @@ module.exports = {
   apiEndpoint: `https://${prismicRepoName}.prismic.io/api/v2`,
 
   pathResolver(doc) {
+    const slug = doc.uid || doc.slug;
     switch (doc.type) {
       case 'page':
         if(doc.uid === 'home') {
           return `/`
         } else {
-          return `/${doc.uid}`
+          if (doc.data && doc.data.parent) {
+            return `/${(doc.data.parent && doc.data.parent.document[0].uid)}/${doc.uid}`;
+          } else {
+            return `/${slug}`;
+          }
         }
-      case 'product_category':
-        return `/${doc.uid}`
-      case 'product':
-        doc.data.product_category === null ? console.log(`Product '${doc.uid}' is missing a category `) : null
-        return `/${(doc.data.product_category && doc.data.product_category.document[0].uid) || 'products'}/${doc.uid}`
-      case 'post_category':
-        return `/posts/${doc.uid}`
+      case 'category':
+        return `/${slug}`;
       case 'testimonial':
-        return `/testimonials/${doc.uid}`
+        return `/testimonials/${slug}`;
       case 'post':
-        doc.data.post_category === null ? console.log(`Post '${doc.uid}' is missing a category `) : null
-        return `/posts/${(doc.data.post_category && doc.data.post_category.document[0].uid)}/${doc.uid}`
-      case 'industry':
-        return `/industries/${doc.uid}`
+      case 'product':
+        return `/${(doc.data.category && doc.data.category.document[0].uid) || 'uncategorized'}/${slug}`
+      case 'modal':
+        return slug;
       default:
         return '/404';
     }
@@ -37,14 +38,17 @@ module.exports = {
 
   // -- Links Resolver
   // This function will be used to generate links to Prismic documents
-  linkResolver(doc) {
-    switch(doc.type) {
-      case 'page':
-        return 'page://' + module.exports.pathResolver(doc);
-      case 'modal':
-        return 'modal://' + module.exports.pathResolver(doc);
-      default:
-        return doc.url || '/'
+  linkResolver(linkDoc) {
+    if (linkDoc.document && linkDoc.document.length) {
+      const doc = linkDoc.document[0];
+      doc.type = doc.type || _.snakeCase(doc.__typename);
+      if (doc.type === 'modal') {
+        return 'modal://' + this.pathResolver(doc);
+      } else {
+        return this.pathResolver(doc);
+      }
+    } else {
+      return linkDoc.url || '/'
     }
   },
 
@@ -53,7 +57,7 @@ module.exports = {
     const previewCookie = Cookies.get(Prismic.previewCookie);
     // Retrieve preview content if cookie is set
     if (previewCookie !== undefined) {
-      Prismic.api(module.exports.apiEndpoint).then(api => {
+      Prismic.api(this.apiEndpoint).then(api => {
         api.query(
           Prismic.Predicates.at(selector, value),
           { ref : previewCookie }
@@ -67,7 +71,4 @@ module.exports = {
       });
     }
   },
-
-
-
 };

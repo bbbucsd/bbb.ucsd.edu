@@ -19,7 +19,7 @@ const Container = styled.div`
 const Feature = styled.div`
    text-align: center;
    max-width:300px;
-   
+
    ${media.lessThan("medium")`
       &:nth-child(even) {
         margin:80px 0;
@@ -31,7 +31,7 @@ const Button = styled(ThemeButton)`
   ${media.lessThan("medium")`
     margin-top: 10px;
   `}
-  
+
   ${media.greaterThan("medium")`
     margin-top: 30px;
   `}
@@ -94,6 +94,10 @@ export const query = graphql`
       cta_label
       cta_link {
         url
+        raw {
+          type
+          slug
+        }
       }
     }
   }

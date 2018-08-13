@@ -1,51 +1,51 @@
 import React, { Component } from 'react';
 import PrismicHelper from 'utils/prismicHelper'
-import GatsbyLink from 'gatsby-link'
+import Link from 'gatsby-link'
 import Validator from 'utils/validator';
 import _ from 'lodash';
 
-class Link extends Component {
+export default class extends Component {
 
   buildAttrs() {
-    var href = this.sanitizeDataSource(this.props.to || '#')
-    return this.linkTo(href)
+    var href = this.sanitizeDataSource(this.props.to || '#');
+    return this.linkTo(href);
   }
 
   sanitizeDataSource(to) {
-    return typeof to === 'object' ? PrismicHelper.linkResolver(to) : to
+    return typeof to === 'object' ? PrismicHelper.linkResolver(to) : to;
   }
 
   linkTo(href) {
     if (Validator.isPageLink(href)) {
-      return this.linkToPage(href)
+      return this.linkToPage(href);
     } else if (Validator.isExternalSite(href)) {
-      return this.linkToExternal(href)
+      return this.linkToExternal(href);
     } else if (Validator.isModalLink(href)) {
-      return this.linkToModal(href)
+      return this.linkToModal(href);
     } else {
-      return this.linkToExplicit(href)
+      return this.linkToExplicit(href);
     }
   }
 
   linkToPage(href) {
-    return {...this.props, to: href.replace('page://', '/') }
+    return {...this.props, to: href.replace('page://', '/') };
   }
 
   linkToExternal(href) {
-    return {...this.props, href: href, target: '_blank', rel: 'noopener' }
+    return {...this.props, href: href, target: '_blank', rel: 'noopener' };
   }
 
   linkToModal(href) {
-    return {...this.props, to: {pathname: href.replace('modal://', '/_'), state: { isInModal: true, page: this.currentPath()  } } }
+    return {...this.props, to: {pathname: href.replace('modal://', '#'), state: { isInModal: true, page: this.currentPath()  } } };
   }
 
   linkToExplicit(href) {
-    return {...this.props, to: href}
+    return {...this.props, to: href};
   }
 
   currentPath() {
     if (typeof window === 'object') {
-      return window.location.pathname
+      return window.location.pathname;
     }
   }
 
@@ -55,9 +55,48 @@ class Link extends Component {
     if (attrs.href) {
       return ( <a {...attrs}>{this.props.children}</a> )
     } else {
-      return ( <GatsbyLink {...attrs}>{this.props.children}</GatsbyLink> )
+      return ( <Link {...attrs}>{this.props.children}</Link> )
     }
   }
 }
 
-export default Link;
+export const query = graphql`
+  fragment Link on Node {
+    ... on Page {
+      uid
+      data {
+        parent {
+          document {
+            uid
+          }
+        }
+      }
+    }
+    ... on Modal {
+      uid
+    }
+    ... on Category {
+      uid
+    }
+    ... on Post {
+      uid
+      data {
+        category {
+          document {
+            uid
+          }
+        }
+      }
+    }
+    ... on Product {
+      uid
+      data {
+        category {
+          document {
+            uid
+          }
+        }
+      }
+    }
+  }
+`;

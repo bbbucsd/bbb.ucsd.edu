@@ -6,11 +6,12 @@ import connectPreview from 'lib/connectPreview';
 
 class Page extends Component {
   render() {
+    const { document } = this.props;
     return (
       <div>
-        <Header />
-        <Slices document={this.props.document} />
-        <Footer />
+        <Header display={document.data.header} />
+        <Slices document={document} />
+        <Footer display={document.data.footer} />
       </div>
     );
   }
@@ -25,6 +26,8 @@ export const pageQuery = graphql`
       first_publication_date
       last_publication_date
       data {
+        header
+        footer
         body {
           ...StandardHero
           ...DoubleBlock

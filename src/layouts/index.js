@@ -1,14 +1,14 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import PrismicConfig from 'utils/prismicHelper';
-import Helmet from 'react-helmet'
-import Modal from '../components/Theme/Modal'
-import Config from '../config'
-import { ThemeProvider } from 'styled-components'
-import theme, { fonts } from 'components/Theme/Globals'
+import Helmet from 'react-helmet';
+import Modal from '../components/Theme/Modal';
+import Config from '../config';
+import { ThemeProvider } from 'styled-components';
+import theme, { fonts } from 'components/Theme/Globals';
 
-import 'components/Theme/Fonts.css' // https://github.com/styled-components/styled-components/issues/1593
-import 'components/Theme/Normalize'
+import 'components/Theme/Fonts.css'; // https://github.com/styled-components/styled-components/issues/1593
+import 'components/Theme/Normalize';
 import '../components/Theme/Globals';
 
 
@@ -39,7 +39,7 @@ class Layout extends Component {
   }
 
   isInModal() {
-    return (this.props.location.state && this.props.location.isInModal);
+    return (this.props.location.state && this.props.location.state.isInModal);
   }
 
 
@@ -60,7 +60,7 @@ class Layout extends Component {
 
           <div>
             {isModal && (
-              <Modal open={true} location={location}>
+              <Modal hidden={false} location={location}>
                 {this.props.children}
               </Modal>
             )}

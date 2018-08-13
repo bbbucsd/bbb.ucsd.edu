@@ -4,7 +4,7 @@ import Slices from 'components/Slices'
 import Footer from 'components/Theme/Footer';
 import connectPreview from 'lib/connectPreview';
 
-class PostCategory extends Component {
+class Category extends Component {
 
   render() {
     return (
@@ -17,11 +17,11 @@ class PostCategory extends Component {
   }
 }
 
-export default connectPreview('postCategory')(PostCategory);
+export default connectPreview('category')(Category);
 
-export const postCategoryQuery = graphql`
-  query PostCategoryQuery($uid: String!) {
-    postCategory(uid: { eq: $uid }) {
+export const categoryQuery = graphql`
+  query CategoryQuery($uid: String!) {
+    category(uid: { eq: $uid }) {
       uid
       first_publication_date
       last_publication_date

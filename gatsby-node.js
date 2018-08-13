@@ -5,12 +5,12 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   const { createRedirect, createPage } = boundActionCreators
 
   //
-  // Product Category ---------------------------------------------------------------------
+  // Category ---------------------------------------------------------------------
   //
 
-  const productCategory = await graphql(`
+  const category = await graphql(`
     {
-      allProductCategory {
+      allCategory {
         edges {
           node {
             type
@@ -21,11 +21,11 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     }
   `)
 
-  const productCategoryComponent = path.resolve(`./src/templates/ProductCategory.js`)
-  productCategory.data.allProductCategory.edges.forEach(edge => {
+  const categoryComponent = path.resolve(`./src/templates/Category.js`)
+  category.data.allCategory.edges.forEach(edge => {
     createPage({
       path: PrismicHelper.pathResolver(edge.node),
-      component: productCategoryComponent,
+      component: categoryComponent,
       context: {
         uid: edge.node.uid
       },
@@ -44,7 +44,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
             type
             uid
             data {
-              product_category {
+              category {
                 document {
                   uid
                 }
@@ -61,34 +61,6 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     createPage({
       path: PrismicHelper.pathResolver(edge.node),
       component: productComponent,
-      context: {
-        uid: edge.node.uid
-      },
-    })
-  })
-
-  //
-  // Industry ---------------------------------------------------------------------
-  //
-
-  const industry = await graphql(`
-    {
-      allIndustry {
-        edges {
-          node {
-            type
-            uid
-          }
-        }
-      }
-    }
-  `)
-
-  const industryComponent = path.resolve(`./src/templates/Industry.js`)
-  industry.data.allIndustry.edges.forEach(edge => {
-    createPage({
-      path: PrismicHelper.pathResolver(edge.node),
-      component: industryComponent,
       context: {
         uid: edge.node.uid
       },
@@ -126,35 +98,6 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   // })
 
   //
-  // Post Category ---------------------------------------------------------------------
-  //
-
-  const postCategory = await graphql(`
-    {
-      allPostCategory {
-        edges {
-          node {
-            type
-            uid
-          }
-        }
-      }
-    }
-  `)
-
-  const postCategoryComponent = path.resolve(`./src/templates/PostCategory.js`)
-  postCategory.data.allPostCategory.edges.forEach(edge => {
-    createPage({
-      path: PrismicHelper.pathResolver(edge.node),
-      component: postCategoryComponent,
-      context: {
-        uid: edge.node.uid
-      },
-    })
-  })
-
-
-  //
   // Posts ----------------------------------------------------------------
   //
 
@@ -166,7 +109,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
             type
             uid
             data {
-              post_category {
+              category {
                 document {
                   uid
                 }
@@ -202,6 +145,13 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
             id
             uid
             type
+            data {
+              parent {
+                document {
+                  uid
+                }
+              }
+            }
           }
         }
       }
@@ -240,7 +190,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   const modalComponent = path.resolve(`./src/templates/Modal.js`)
   modals.data.allModal.edges.forEach(edge => {
     createPage({
-      path: `_${edge.node.uid}`,
+      path: `_modal-${edge.node.uid}`,
       component: modalComponent,
       context: {
         uid: edge.node.uid

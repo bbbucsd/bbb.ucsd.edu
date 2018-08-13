@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Hero from 'components/Theme/Hero';
 import ThemeHeadline from 'components/Theme/Headline';
 import ThemeButton from 'components/Theme/Button';
-import Validator from 'utils/validator';
 import { styled, css, media } from 'components/Theme/Styles';
 
 const Headline = styled(ThemeHeadline)`
@@ -48,7 +47,7 @@ class StandardHero extends Component {
         <Subheadline h2 color={subheadline_color} text={subheadline} />
 
         {cta_label &&
-          <Button to={cta_link} onClick={this.handleClickOpen}>{cta_label}</Button>
+          <Button to={cta_link}>{cta_label}</Button>
         }
       </Hero>
     );
@@ -57,8 +56,6 @@ class StandardHero extends Component {
 
 export default StandardHero;
 
-// Normally PrismicPageBodyStandardhero would be PrismicPageBodyStandardHero (capital Headline) but the original
-// api name was set to "lower case hero"
 export const query = graphql`
   fragment StandardHero on StandardHero {
     __typename
@@ -80,6 +77,9 @@ export const query = graphql`
       cta_label
       cta_link {
         url
+        document {
+          ...Link
+        }
       }
     }
   }

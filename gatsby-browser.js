@@ -6,20 +6,20 @@ import { Provider, configureStore }  from 'airlytics';
 const store = configureStore()
 
 export const onClientEntry = () => {
-  console.log("We've started!")
+  //console.log("We've started!")
 }
 
 export const onInitialClientRender = () => {
-  console.log("ReactDOM.render has executed")
+  //console.log("ReactDOM.render has executed")
 }
 
 export const onRouteUpdate = ({ location }) => {
-  console.log('new pathname', location.pathname)
+  //console.log('new pathname', location.pathname)
 }
 
 export const replaceHydrateFunction = () => {
   return (element, container, callback) => {
-    console.log("rendering!");
+    //console.log("rendering!");
     ReactDOM.render(element, container, callback);
   };
 };

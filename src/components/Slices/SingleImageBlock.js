@@ -17,7 +17,7 @@ const RichText = styled(ThemeRichText)`
 `;
 
 const Button = styled(ThemeButton)`
-  
+
 `;
 
 class SingleImageBlock extends Component {
@@ -71,6 +71,10 @@ export const query = graphql`
       cta_label
       cta_link {
         url
+        raw {
+          type
+          slug
+        }
       }
     }
   }

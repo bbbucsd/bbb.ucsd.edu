@@ -21,7 +21,7 @@ const Headline = styled(ThemeHeadline)`
   padding: 0;
   text-align: center;
   font-size: ${props => props.theme.h1FontSize / 1.2}px;
-  
+
   ${media.lessThan("medium")`
     font-size: ${props => props.theme.h1FontSize / 1.7}px;
     margin: 20px 0 40px 0;
@@ -43,15 +43,15 @@ const Customer = styled.div`
   justify-content: center;
   margin-bottom:20px;
   width:33%;
-  
+
   & + & {
     border-left: 1px solid #ccc;
   }
-  
+
   &:nth-child(4n) {
     border-left: none;
   }
-  
+
   ${media.lessThan("medium")`
     width:50%;
     margin-bottom:0;
@@ -113,6 +113,10 @@ export const query = graphql`
       }
       cta_link {
         url
+        raw {
+          type
+          slug
+        }
       }
       cta_label
     }
