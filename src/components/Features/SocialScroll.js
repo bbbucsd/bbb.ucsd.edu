@@ -107,7 +107,6 @@ class SocialScroll extends Component {
         this.setState({ showWidget: false });
       }
     }
-
   }
 
   displayRibbon(value) {

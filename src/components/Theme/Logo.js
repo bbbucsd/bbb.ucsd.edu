@@ -21,32 +21,29 @@ export default class extends Component {
     switch (this.props.color) {
       case 'blueWhite':
         img = this.findImage('automate-your-brand-logo-blue-white');
-        return (
-          <Img
-            title={title}
-            alt={title}
-            sizes={img.childImageSharp.sizes}
-          />
-        );
+        break;
+      case 'white':
+        img = this.findImage('automate-your-brand-logo-white');
+        break;
+      case 'grayWhite':
+        img = this.findImage('automate-your-brand-logo-gray-white');
+        break;
       case 'blue':
         img = this.findImage('automate-your-brand-logo');
-        return (
-          <Img
-            title={title}
-            alt={title}
-            sizes={img.childImageSharp.sizes}
-          />
-        );
+        break;
+      case 'blue':
+        img = this.findImage('automate-your-brand-logo');
         break;
       default:
         img = this.findImage('automate-your-brand-logo-blue-white');
-        return (
-          <Img
-            title={title}
-            alt={title}
-            sizes={img.childImageSharp.sizes}
-          />
-        );
+        break;
     }
+    return (
+      <Img
+        title={title}
+        alt={title}
+        sizes={img.childImageSharp.sizes}
+      />
+    );
   }
 }

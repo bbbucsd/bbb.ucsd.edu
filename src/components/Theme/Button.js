@@ -9,21 +9,22 @@ const ButtonLink = styled(Link)`
 `
 
 const ThemeButton = styled.button`
-  border-radius: 2px;
   text-align: center;
   color: white;
-  background-color: ${p => p.theme.brandInfo};
+  drop-shadow: 10px 10px 10px red;
+  border-radius: 30px;
+  background-color: ${p => p.theme.brandSuccess};
   text-transform: none;
   min-height: auto;
   min-width: auto;
   font-family: ${p => p.theme.fontFamily};
   font-size: ${p => p.small ? 12 : 14}px;
-  padding: ${p => p.small ? '6px 10px' : `${p.theme.padding / 2}px ${p.theme.padding}px`}; 
+  padding: ${p => p.small ? '6px 10px' : `${p.theme.padding / 2}px ${p.theme.padding}px`};
   display: inline-flex;
   align-items: center;
   cursor:pointer;
   &:hover {
-    background-color: ${p => p.theme.brandInfo};
+    background-color: ${p => p.theme.darkSuccess};
   }
   &:focus {
     outline:0;

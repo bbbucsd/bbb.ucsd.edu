@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import _ from 'lodash';
 import Helmet from 'react-helmet';
 import StandardHero from './StandardHero';
+import SimpleHero from './SimpleHero';
 import HighlightHero from './HighlightHero';
 import DoubleBlock from './DoubleBlock';
 import LogoBlock from './LogoBlock';
@@ -29,12 +30,13 @@ import FormBlock from './FormBlock';
 const Slice = (props) => {
   let { data } = props
 
-  var type = data.__typename || _.upperFirst(_.camelCase(data.slice_type))
-
+  var type = data.__typename || _.upperFirst(_.camelCase(data.slice_type));
 
   switch (type) {
     case 'StandardHero':
       return <StandardHero slice={data} />
+    case 'SimpleHero':
+      return <SimpleHero slice={data} />
     case 'DoubleBlock':
       return <DoubleBlock slice={data} />
     case 'HighlightHero':

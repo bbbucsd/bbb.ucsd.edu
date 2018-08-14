@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { styled, css, media } from 'components/Theme/Styles';
 import Logo from 'components/Theme/Logo';
 import Link from 'components/Theme/Link';
-import Waypoint from 'react-waypoint';
 import HamburgerMenu from './HamburgerMenu';
-import DropDownMenu from './DropDownMenu';
+import MainMenu from './MainMenu';
 import SearchBar from './SearchBar';
 
 const Header = styled.div`
@@ -188,16 +187,25 @@ class Default extends Component {
       this.setState({ drawer: !this.state.drawer });
     };
 
-    checkIfScrolled() {
-      if (typeof window === 'undefined') {
-        return false
+    displayHeader() {
+      let value = window.scrollY;
+      let winHeight = window.innerHeight;
+      let body = document.body;
+      let html = document.documentElement;
+      let docHeight = Math.max( body.scrollHeight, body.offsetHeight,
+        html.clientHeight, html.scrollHeight, html.offsetHeight );
+      let max = docHeight - winHeight;
+      let percent = (value / max) * 100;
+      if (percent > 5) {
+        this.floatHeader()
       } else {
-        return window.scrollY > 100
+        this.unFloatHeader()
       }
     }
 
-    componentWillReceiveProps() {
-      this.checkIfScrolled() ? this.floatHeader() : this.unFloatHeader()
+    componentWillMount() {
+      this.displayHeader();
+      window.addEventListener('scroll', this.displayHeader.bind(this));
     }
 
     render() {
@@ -207,13 +215,13 @@ class Default extends Component {
             <NavBar>
               <NavBarLeft>
                 <ListItem>
-                  <LogoLink to="/"><Logo /></LogoLink>
+                  <LogoLink to="/"><Logo color={this.state.floating ? 'blueWhite' : 'white'} /></LogoLink>
                 </ListItem>
               </NavBarLeft>
 
               <NavBarCenter>
                 <ListItem>
-                  <DropDownMenu floating={this.state.floating} />
+                  <MainMenu floating={this.state.floating} />
                 </ListItem>
               </NavBarCenter>
 
@@ -232,8 +240,6 @@ class Default extends Component {
               </NavBarRight>
             </NavBar>
           </Header>
-
-          <Waypoint onEnter={this.unFloatHeader} onLeave={this.floatHeader} />
         </div>
       );
     }

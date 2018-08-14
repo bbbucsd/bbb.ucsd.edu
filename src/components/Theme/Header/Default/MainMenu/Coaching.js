@@ -10,23 +10,21 @@ const Wrapper = styled.div`
 
 const MainLink = styled(Link)`
   font-weight: 400;
-  color:${props => props.floating ? props.theme.black : props.theme.white};
+  color:${props => props.floating ? props.theme.white : props.theme.white};
   &:visited {
-    color:${props => props.floating ? props.theme.black : props.theme.white};
+    color:${props => props.floating ? props.theme.white : props.theme.white};
   }
 `;
 
-class HowToBuyMenu extends Component {
+export default class extends Component {
 
   render() {
     const { floating } = this.props;
 
     return (
       <Wrapper>
-        <MainLink floating={floating} to="/how-to-buy">How to buy</MainLink>
+        <MainLink floating={floating} to="/coaching">Coaching</MainLink>
       </Wrapper>
     );
   }
 }
-
-export default HowToBuyMenu;

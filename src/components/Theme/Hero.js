@@ -31,8 +31,10 @@ const Wrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
-  background-color: ${p => p.color || p.theme.black};
-  background-image: url('${p => p.src && Validator.isImage(p.src) ? p.src : null}');
+  background: ${p => p.color || "linear-gradient(to right, " + p.theme.brandInfo + ", " +  p.theme.brandPrimary + ")"};
+  ${p => p.src && Validator.isImage(p.src) ?
+    'background-image: url(' + p.src + ');'
+  : null}
 
   ${media.greaterThan('medium')`
     min-height: ${minHeightMixin};

@@ -6,9 +6,6 @@ import styled from 'styled-components';
 import _ from 'lodash';
 
 const Content = styled.div`
-  width: 900px;
-  margin: 100px auto;
-
   h1 {
     --x-height-multiplier: 0.363;
     --baseline-multiplier: 0.157;
@@ -60,7 +57,7 @@ const Content = styled.div`
     --baseline-multiplier: 0.179;
     font-weight: 400;
     font-style: normal;
-    font-size: ${p => p.theme.fontSize};
+    font-size: ${p => p.theme.fontSize}px;
     font-family: ${p => p.theme.fontFamily};
     color: ${p => p.theme.darkGray};
     line-height: 1.58;

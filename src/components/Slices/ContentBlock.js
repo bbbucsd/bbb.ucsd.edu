@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import RichText from 'components/Theme/RichText'
+import {
+  Container,
+  Row,
+  Column
+} from 'styled-bootstrap-components';
 
 
 class ContentBlock extends Component {
@@ -8,9 +13,13 @@ class ContentBlock extends Component {
     const data = slice.primary;
 
     return (
-      <div>
-        <RichText body={ data.content } />
-      </div>
+      <Container>
+        <Row justifyContent="center">
+          <Column lg={9} alignContent="center">
+            <RichText body={ data.content } />
+          </Column>
+        </Row>
+      </Container>
     )
   }
 }

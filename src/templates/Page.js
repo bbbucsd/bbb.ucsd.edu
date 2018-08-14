@@ -30,6 +30,7 @@ export const pageQuery = graphql`
         footer
         body {
           ...StandardHero
+          ...SimpleHero
           ...DoubleBlock
           ...HighlightHero
           ...LogoBlock

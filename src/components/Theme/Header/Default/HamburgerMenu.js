@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import Link from 'components/Theme/Link';
 import Styles, { styled, css} from 'components/Theme/Styles';
 import ProductMenu from './HamburgerMenu/ProductMenu';
 import IndustriesMenu from './HamburgerMenu/IndustriesMenu';
-import SupportMenu from './HamburgerMenu/SupportMenu';
+import WorkWithMeMenu from './HamburgerMenu/WorkWithMeMenu';
 
 const Menu = styled.ul`
   margin-top: 130px;
@@ -19,7 +19,7 @@ const Header = styled.li`
 `;
 
 const Item = styled.li`
-  
+
 `;
 
 
@@ -27,13 +27,13 @@ class HamburgerMenu extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <Menu>
           <ProductMenu  />
           <IndustriesMenu />
-          <SupportMenu />
+          <WorkWithMeMenu />
         </Menu>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
