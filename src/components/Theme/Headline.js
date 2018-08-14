@@ -3,31 +3,31 @@ import Styles, { styled, css} from './Styles';
 import _ from 'lodash';
 
 const H1 = styled.h1`
-  color: ${p => p.color || p.theme.black};
+  color: ${p => p.color || p.theme.brandPrimary};
   font-family: ${p => p.theme.fontFamilyTitle};
   font-size: ${p => p.theme.h1FontSize}px;
   margin:0;
-  font-weight: 300;
+  font-weight: bold;
   font-style: normal;
   width:100%;
 `;
 
 const H2 = styled.h2`
-  color: ${p => p.color || p.theme.black};
+  color: ${p => p.color || p.theme.brandInfo};
   font-family: ${p => p.theme.fontFamilyTitle};
   font-size: ${p => p.theme.h2FontSize}px;
   margin:10px 0 0 0;
-  font-weight: 300;
+  font-weight: 500;
   font-style: normal;
   width:100%;
 `;
 
 const H3 = styled.h3`
-  color: ${p => p.color || p.theme.black};
+  color: ${p => p.color || p.theme.brandInfo};
   font-family: ${p => p.theme.fontFamilyTitle};
   font-size: ${p => p.theme.h3FontSize}px;
   margin:10px 0 0 0;
-  font-weight: 300;
+  font-weight: 500;
   font-style: normal;
   width:100%;
 `;

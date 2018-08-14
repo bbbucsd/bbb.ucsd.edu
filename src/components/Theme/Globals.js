@@ -8,26 +8,26 @@ global.shareImageHeight = "";
 
 const theme = {
   // colors,
-  white: '#FFFFFF',
-  lightGray: '#efefef',
-  gray: '#c6c8ca',
-  mediumGrey: '#5c5d5f',
-  darkGray: '#5c5d5f',
-  black: '#000',
-  lightSuccess: '#FFFFFF',
-  darkSuccess: '#000000',
-  brandPrimary: '#5b8edc',
-  brandSecondary: '#171F26',
-  brandSecondaryLinks: '#92A5B1',
-  brandSecondaryBorder: '#2F363C',
-  brandInfo: '#5b8edc',
-  brandSuccess: '#5b8edc',
-  brandWarning: '#ec663c',
-  brandDanger: '#ec663c',
-  brandLight: '#C2C3C4',
-  headerColor: '#5b8edc',
+  white:                '#FFFFFF',
+  lightGray:            '#EFEFEF',
+  gray:                 '#B5B6B7',
+  mediumGrey:           '#5C5D5F',
+  darkGray:             '#666',
+  black:                '#000',
+  lightSuccess:         '#E3EFEC',
+  darkSuccess:          '#3BA34F',
+  brandPrimary:         '#005089',
+  brandSecondary:       '#2D3B45',
+  brandSecondaryLinks:  '#2D3B45',
+  brandSecondaryBorder: '#2D3B45',
+  brandInfo:            '#1B98CA',
+  brandSuccess:         '#48C35F',
+  brandWarning:         '#F7B900',
+  brandDanger:          '#FF4E38',
+  brandLight:           '#C2C3C4',
+  headerColor:          '#2D3B45',
 
-  
+
   // general (in pixels)
   headerHeight: 56,
   maxWidth: 1200,
@@ -36,15 +36,16 @@ const theme = {
   blockPaddingLarge: 180,
   blockPaddingMedium: 100,
   blockPaddingSmall: 25,
-  
+
   // typography (in pixels)
-  h1FontSize: 60,
-  h2FontSize: 25,
-  h3FontSize: 18,
-  
-  fontFamilyLogo: `'Termina', sans-serif`,
-  fontFamilyTitle: `'Lato', sans-serif`,
-  fontFamily: `'Lato', sans-serif`
+  h1FontSize: 52,
+  h2FontSize: 40,
+  h3FontSize: 34,
+  fontSize:   21,
+
+  fontFamilyLogo: `'Open Sans', sans-serif`,
+  fontFamilyTitle: `'Oswald', sans-serif`,
+  fontFamily: `'Open Sans', sans-serif`
 }
 
 export default theme

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Config from '../../config';
+import State from '../../state';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 import moment from "moment";
@@ -11,7 +11,7 @@ class SchemaOrganization extends Component {
     if (slice && slice.schema_organization_name) {
       name = slice.schema_organization_name;
     } else {
-      name = Config.get("schemaOrganization").name;
+      name = State.get("schemaOrganization").name;
       if (_.isEmpty(name)) {
         name = null;
       }
@@ -24,7 +24,7 @@ class SchemaOrganization extends Component {
     if (slice && slice.schema_organization_url) {
       url = slice.schema_organization_url.url;
     } else {
-      url = Config.get("schemaOrganization").url;
+      url = State.get("schemaOrganization").url;
     }
 
     return url;
@@ -35,7 +35,7 @@ class SchemaOrganization extends Component {
     if (slice && slice.schema_organization_logo) {
       url = slice.schema_organization_logo.url;
     } else {
-      url = Config.get("schemaOrganization").logo;
+      url = State.get("schemaOrganization").logo;
     }
 
     return url;
@@ -46,7 +46,7 @@ class SchemaOrganization extends Component {
     if (slice && slice.schema_organization_founding_date) {
       date = slice.schema_organization_founding_date
     } else {
-      date = Config.get('schemaOrganization').foundingDate;
+      date = State.get('schemaOrganization').foundingDate;
     }
 
     if (!_.isEmpty(date)) {
@@ -61,7 +61,7 @@ class SchemaOrganization extends Component {
     if (slice && slice[`schema_organization_${field}`]) {
       jsonField = slice[`schema_organization_${field}`];
     } else {
-      jsonField = Config.get("schemaOrganization")[field];
+      jsonField = State.get("schemaOrganization")[field];
     }
 
     jsonField = jsonField || "";
@@ -70,7 +70,7 @@ class SchemaOrganization extends Component {
 
   getContactPoints() {
     const contacts = [];
-    (Config.get("schemaOrganization").contacts || []).forEach(contact => {
+    (State.get("schemaOrganization").contacts || []).forEach(contact => {
       contacts.push({
         "@type": "ContactPoint",
         "telephone": contact.phone,
@@ -94,7 +94,7 @@ class SchemaOrganization extends Component {
         }
       })
     } else {
-      sameAs = Config.get("schemaOrganization").sameAs;
+      sameAs = State.get("schemaOrganization").sameAs;
     }
 
     return sameAs;

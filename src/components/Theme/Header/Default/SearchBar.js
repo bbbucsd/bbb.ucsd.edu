@@ -19,8 +19,8 @@ const SearchIcon = styled(Search)`
   height:25px;
   width:20px;
   cursor:pointer;
-  color: ${props => props.floating ? '#000' : '#fff' };
-  
+  color: ${p => p.floating ? '#FFF' : '#fff' };
+
   ${media.lessThan("medium")`
     display:none;
   `}
@@ -30,10 +30,10 @@ const SearchField = styled.input`
   background:transparent;
   border:0;
   width:calc(100% - 20px);
-  border-bottom: 1px solid ${props => props.floating ? '#999' : '#fafafa' };;
-  color: ${props => props.floating ? '#000' : '#fff' };
+  border-bottom: 1px solid ${p => p.floating ? '#fafafa' : '#fafafa' };;
+  color: ${p => p.floating ? '#fff' : '#fff' };
   font-size:14px;
-  
+
   ${media.lessThan("medium")`
     display:none;
   `}

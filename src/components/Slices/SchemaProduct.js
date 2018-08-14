@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Config from '../../config';
+import State from '../../state';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
@@ -46,14 +46,14 @@ class SchemaProduct extends Component {
       "@type": "Product",
       "@id": "#product",
       "name": this.getField(slice, "name"),
-      "url": Config.get("currentUrl"),
+      "url": State.get("currentUrl"),
       "image": this.getImage(slice),
       "description": this.getField(slice, "description"),
       "sku": this.getField(slice, "sku"),
       "sameAs": this.getSameAs(slice),
       "brand": {
         "@type": "Thing",
-        "name": Config.get("schemaOrganization").name
+        "name": State.get("schemaOrganization").name
       },
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -68,7 +68,7 @@ class SchemaProduct extends Component {
         "availability": "http://schema.org/InStock",
         "seller": {
           "@type": "Organization",
-          "name": Config.get("schemaOrganization").name
+          "name": State.get("schemaOrganization").name
         }
       }
     };

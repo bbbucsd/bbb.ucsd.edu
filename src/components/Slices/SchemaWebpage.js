@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Config from '../../config';
+import State from '../../state';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
@@ -52,7 +52,7 @@ class SchemaWebpage extends Component {
       "headline": this.getField(slice.primary, "headline"),
       "name": name && name.text,
       "significantUrl": this.getSignificantUrl(slice),
-      "description": meta_description || Config.get("metaDescription"),
+      "description": meta_description || State.get("metaDescription"),
       "breadcrumb": {
         "@context": "http://schema.org",
         "@type": "BreadcrumbList",

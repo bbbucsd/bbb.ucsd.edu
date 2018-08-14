@@ -9,58 +9,85 @@ const Content = styled.div`
   width: 900px;
   margin: 100px auto;
 
-  h2 {
-    color: $black;
-    font-family: $fontFamilyTitle;
-    font-size: $h1FontSize / 1.3;
-    text-transform: uppercase;
-    margin:0;
-    font-weight: 200;
+  h1 {
+    --x-height-multiplier: 0.363;
+    --baseline-multiplier: 0.157;
+    color: $theme-primary;
     font-style: normal;
-    letter-spacing: -3px;
+    font-family: ${p => p.theme.fontFamilyTitle};
+    font-size: ${p => p.theme.h2FontSize}px;
+    color: ${p => p.theme.brandPrimary};
+    margin-left: -2.5px;
+    line-height: 1.2;
+    letter-spacing: -.028em;
+  }
+
+  h2 {
+    font-family: ${p => p.theme.fontFamilyTitle};
+    font-size: ${p => p.theme.h2FontSize}px;
+    color: ${p => p.theme.brandSuccess};
+    --x-height-multiplier: 0.363;
+    --baseline-multiplier: 0.157;
+    margin-top: 63px;
+    margin-left: -2.5px;
+    line-height: 1.04;
+    letter-spacing: -.03em;
   }
 
   h3 {
-    color: $black;
-    font-family: $fontFamilyTitle;
-    font-size: $h3FontSize;
-    margin:10px 0 0 0;
-    font-weight: 300;
-    font-style: normal;
+    font-family: ${p => p.theme.fontFamilyTitle};
+    color: ${p => p.theme.brandInfo};
+    --x-height-multiplier: 0.363;
+    --baseline-multiplier: 0.157;
+    margin-top: 34px;
+    font-size: ${p => p.theme.h3FontSize}px;
+    line-height: 1.15;
+    letter-spacing: -.02em;
   }
 
   h4 {
+    --x-height-multiplier: 0.363;
+    --baseline-multiplier: 0.157;
+    color: ${p => p.theme.brandSecondary};
     margin-top: 30px;
     margin-left: -1.5px;
     line-height: 1.22;
-    letter-spacing: -0.018em;
+    letter-spacing: -.018em;
   }
 
   div,  p,  ul,  ol,  a {
-    font-family: $fontFamily;
+    --x-height-multiplier: 0.35;
+    --baseline-multiplier: 0.179;
+    font-weight: 400;
+    font-style: normal;
+    font-size: ${p => p.theme.fontSize};
+    font-family: ${p => p.theme.fontFamily};
+    color: ${p => p.theme.darkGray};
+    line-height: 1.58;
+    letter-spacing: -.003em;
   }
 
   a,  a:hover {
     text-decoration: none;
-    color: $brandPrimary;
     border-bottom: 2px solid;
-    -o-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+    font-family: ${p => p.theme.brandInfo};
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
   }
 
   img {
     max-width: 100%;
   }
 
-  * > ul, * > ol,  > ul,  > ol {
+  * > ul, * > ol,  & > ul,  & > ol {
     padding-top: 15px;
   }
 
-  * > ul li, * > ol li,  > ul li,  > ol li {
-    text-indent: -0.7em;
+  * > ul li, * > ol li,  & > ul li,  & > ol li {
+    text-indent: -.7em;
     margin-left: 30px;
     position: relative;
     margin-bottom: 0px;
@@ -78,6 +105,7 @@ const Content = styled.div`
     margin: 0 0 30px 0;
     list-style: none;
     padding: 30px;
+    border: 3px dashed ${p => p.theme.brandSecondary};
     border-radius: 5px;
     display: block;
     width: fit-content;
@@ -85,6 +113,10 @@ const Content = styled.div`
 
   *:not(li) > ul li, *:not(li) > ol li, :not(li) > ul li, :not(li) > ol li {
     margin-bottom: 14px;
+  }
+
+  *:not(li) > ul li:before, *:not(li) > ol li:before, :not(li) > ul li:before, :not(li) > ol li:before {
+    color: ${p => p.theme.brandInfo};
   }
 
   *:not(li) > ol, :not(li) > ol {

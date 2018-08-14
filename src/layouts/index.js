@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import PrismicConfig from 'utils/prismicHelper';
 import Helmet from 'react-helmet';
 import Modal from '../components/Theme/Modal';
-import Config from '../config';
+import State from '../state';
 import { ThemeProvider } from 'styled-components';
 import theme, { fonts } from 'components/Theme/Globals';
+import _ from 'lodash';
+import Img from "gatsby-image";
 
 import 'components/Theme/Fonts.css'; // https://github.com/styled-components/styled-components/issues/1593
 import 'components/Theme/Normalize';
@@ -22,8 +24,9 @@ class Layout extends Component {
   constructor(props) {
     super(props);
     // Set defaults for meta data (OpenGraph, Twitter, etc)
-    Config.set(Object.assign({}, {
-      currentUrl: this.getCurrentUrl(props.data.site.siteMetadata.siteUrl, props.location)
+    State.set(Object.assign({}, {
+      currentUrl: this.getCurrentUrl(props.data.site.siteMetadata.siteUrl, props.location),
+      images: _.map(props.data.allFile.edges, (img) => img.node),
     }, props.data.site.siteMetadata));
   }
 
@@ -119,6 +122,19 @@ export const siteQuery = graphql`
           url
           image
           sameAs
+        }
+      }
+    }
+    allFile(filter: { relativeDirectory: { regex: "/logos/"}}) {
+      edges {
+        node {
+          relativeDirectory
+          name
+          childImageSharp {
+            sizes(maxWidth: 1240) {
+              ...GatsbyImageSharpSizes_tracedSVG
+            }
+          }
         }
       }
     }

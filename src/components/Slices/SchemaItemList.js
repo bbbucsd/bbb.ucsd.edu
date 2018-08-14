@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Config from '../../config';
+import State from '../../state';
 import _ from 'lodash';
 
 class SchemaItemList extends Component {

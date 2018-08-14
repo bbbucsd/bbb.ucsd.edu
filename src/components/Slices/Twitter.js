@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Config from '../../config';
+import State from '../../state';
 import _ from 'lodash';
 
 class Twitter extends Component {
@@ -30,7 +30,7 @@ class Twitter extends Component {
     if (slice && slice.twitter_site) {
       site = slice.twitter_site;
     } else {
-      site = Config.get('twitter').site;
+      site = State.get('twitter').site;
     }
     return (
       <meta key="twitter_site" property="twitter:site" content={site} />
@@ -42,7 +42,7 @@ class Twitter extends Component {
     if (slice && slice.twitter_creator) {
       creator = slice.twitter_creator;
     } else {
-      creator = Config.get('twitter').creator;
+      creator = State.get('twitter').creator;
     }
     return (
       <meta key="twitter_creator" property="twitter:creator" content={creator} />
@@ -50,7 +50,7 @@ class Twitter extends Component {
   }
 
   setTitle(slice) {
-    let title = Config.get('title');
+    let title = State.get('title');
     if (slice && slice.twitter_title) {
       title = slice.twitter_title
     }
@@ -64,7 +64,7 @@ class Twitter extends Component {
     if (slice && slice.twitter_description) {
       metaDescription = slice.twitter_description
     } else {
-      metaDescription = Config.get('metaDescription');
+      metaDescription = State.get('metaDescription');
     }
     return (
       <meta key="twitter_description" property="twitter:description" content={metaDescription} />
@@ -72,8 +72,8 @@ class Twitter extends Component {
   }
 
   setUrl() {
-    let { pathname } = Config.get("currentUrl");
-    let url = Config.get("siteUrl");
+    let { pathname } = State.get("currentUrl");
+    let url = State.get("siteUrl");
 
     if (pathname !== "/") {
       url = url + pathname;
@@ -89,7 +89,7 @@ class Twitter extends Component {
     if (slice && slice.twitter_image) {
       image = slice.twitter_image.url
     } else {
-      image = (Config.get("openGraph") && Config.get("openGraph").image) || Config.get('image');
+      image = (State.get("openGraph") && State.get("openGraph").image) || State.get('image');
     }
     return (
       <meta key="twitter_image" property="twitter:image" content={image} />

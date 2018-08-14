@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'airlytics';
 import _ from 'lodash';
-import Config from '../../config';
+import State from '../../state';
 import { styled, css, media } from 'components/Theme/Styles';
 import { Facebook } from 'styled-icons/fa-brands/Facebook.cjs'
 import { Twitter } from 'styled-icons/fa-brands/Twitter.cjs'
@@ -71,7 +71,7 @@ class SocialScroll extends Component {
   }
 
   shareTwitter = () => {
-    this.props.actions.shareTwitter(window.location.href, window.document.title, Config.get("twitter").site);
+    this.props.actions.shareTwitter(window.location.href, window.document.title, State.get("twitter").site);
   }
 
   getCounts(socialCounts) {

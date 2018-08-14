@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Config from '../../config';
+import State from '../../state';
 import _ from 'lodash';
 
 class SchemaArticle extends Component {
@@ -46,7 +46,7 @@ class SchemaArticle extends Component {
       "@type": "NewsArticle",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": Config.get("currentUrl")
+        "@id": State.get("currentUrl")
       },
       "headline": this.getField(slice, "headline"),
       "image": this.getImages(slice),
@@ -58,13 +58,13 @@ class SchemaArticle extends Component {
       },
       "publisher": {
         "@type": "Organization",
-        "name": Config.get("schemaOrganization").name,
+        "name": State.get("schemaOrganization").name,
         "logo": {
           "@type": "ImageObject",
-          "url": Config.get("schemaOrganization").logo
+          "url": State.get("schemaOrganization").logo
         }
       },
-      "description": meta_description || Config.get("metaDescription")
+      "description": meta_description || State.get("metaDescription")
     };
     return (
       <script>

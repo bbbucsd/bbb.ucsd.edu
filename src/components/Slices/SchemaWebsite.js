@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Config from '../../config';
+import State from '../../state';
 import Helmet from 'react-helmet';
 import _ from 'lodash';
 
@@ -28,7 +28,7 @@ class SchemaWebsite extends Component {
     let schema = {
       "@context": "http://schema.org",
       "@type": "WebSite",
-      "url": Config.get("currentUrl"),
+      "url": State.get("currentUrl"),
       "potentialAction": this.getPotentialAction(slice)
     };
     return (

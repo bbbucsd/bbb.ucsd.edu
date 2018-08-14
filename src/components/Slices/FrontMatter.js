@@ -1,12 +1,12 @@
 import React, { Fragment, Component } from 'react';
 import Helmet from 'react-helmet';
-import Config from '../../config';
+import State from '../../state';
 
 class FrontMatter extends Component {
 
   setTitle(title) {
     if (!title) {
-      title = Config.get('title');
+      title = State.get('title');
     }
     return (
       <title key="title">{title}</title>
@@ -15,7 +15,7 @@ class FrontMatter extends Component {
 
   setDescription(metaDescription) {
     if (!metaDescription) {
-      metaDescription = Config.get('metaDescription');
+      metaDescription = State.get('metaDescription');
     }
 
     return (
@@ -25,7 +25,7 @@ class FrontMatter extends Component {
 
   setCanonical(canonicalUrl) {
     if (!canonicalUrl) {
-      canonicalUrl = Config.get('currentUrl').replace(/\/$/, "");;
+      canonicalUrl = State.get('currentUrl').replace(/\/$/, "");;
     }
 
     return (

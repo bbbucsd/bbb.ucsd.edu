@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Config from '../../config';
+import State from '../../state';
 import _ from 'lodash';
 
 class OpenGraph extends Component {
@@ -19,7 +19,7 @@ class OpenGraph extends Component {
   }
 
   setFbAppId() {
-    let appId = Config.get("openGraph").fbAppId;
+    let appId = State.get("openGraph").fbAppId;
     return (
       <meta key="fb_app_id" property="fb:app_id" content={appId} />
     );
@@ -32,7 +32,7 @@ class OpenGraph extends Component {
   }
 
   setSiteName(slice) {
-    let siteName = Config.get('siteName');
+    let siteName = State.get('siteName');
     if (slice && slice.open_graph_site_name) {
       siteName = slice.open_graph_site_name
     }
@@ -46,7 +46,7 @@ class OpenGraph extends Component {
     if (slice && slice.open_graph_title) {
       title = slice.open_graph_title
     } else {
-      title = Config.get('title');
+      title = State.get('title');
     }
     return (
       <meta key="og_title" property="og:title" content={title} />
@@ -54,7 +54,7 @@ class OpenGraph extends Component {
   }
 
   setDescription(slice) {
-    let metaDescription = Config.get('metaDescription');
+    let metaDescription = State.get('metaDescription');
     if (slice && slice.open_graph_description) {
       metaDescription = slice.open_graph_description
     }
@@ -64,7 +64,7 @@ class OpenGraph extends Component {
   }
 
   setLocale() {
-    let locale = Config.get('locale');
+    let locale = State.get('locale');
     return (
       <meta key="og_locale" property="og:locale" content={locale} />
     );
@@ -86,7 +86,7 @@ class OpenGraph extends Component {
   }
 
   setUrl() {
-    const url = Config.get("currentUrl");
+    const url = State.get("currentUrl");
     return (
       <meta key="og_url" property="og:url" content={url} />
     );
@@ -97,7 +97,7 @@ class OpenGraph extends Component {
     if (slice && slice.open_graph_image) {
       image = slice.open_graph_image.url
     } else {
-      image = (Config.get("openGraph") && Config.get("openGraph").image) || Config.get('image');
+      image = (State.get("openGraph") && State.get("openGraph").image) || State.get('image');
     }
     return (
       <meta key="og_image" property="og:image" content={image} />
@@ -109,7 +109,7 @@ class OpenGraph extends Component {
     if (slice && slice.open_graph_image && slice.open_graph_image.dimensions) {
       height = slice.open_graph_image.dimensions.height
     } else {
-      height = (Config.get("openGraph") && Config.get("openGraph").imageHeight) || null;
+      height = (State.get("openGraph") && State.get("openGraph").imageHeight) || null;
     }
 
     if (!!parseInt(height)) {
@@ -126,7 +126,7 @@ class OpenGraph extends Component {
     if (slice && slice.open_graph_image && slice.open_graph_image.dimensions) {
       width = slice.open_graph_image.dimensions.width;
     } else {
-      width = (Config.get("openGraph") && Config.get("openGraph").imageWidth) || null;
+      width = (State.get("openGraph") && State.get("openGraph").imageWidth) || null;
     }
 
     if (!!parseInt(width)) {

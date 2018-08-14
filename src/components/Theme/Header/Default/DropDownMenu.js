@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import Styles, { styled, css} from 'components/Theme/Styles';
 import ProductMenu from './DropDownMenu/ProductMenu'
 import IndustriesMenu from './DropDownMenu/IndustriesMenu'
@@ -11,12 +11,12 @@ class DropDownMenu extends Component {
   render() {
     const { floating } = this.props
     return (
-      <React.Fragment>
+      <Fragment>
         <ProductMenu floating={floating} />
         <IndustriesMenu floating={floating} />
         <SupportMenu floating={floating} />
         <HowToBuyMenu floating={floating} />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

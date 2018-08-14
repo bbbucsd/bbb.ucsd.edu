@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Config from '../../config';
+import State from '../../state';
 import _ from 'lodash';
 
 class SchemaPerson extends Component {
@@ -9,7 +9,7 @@ class SchemaPerson extends Component {
     if (slice && slice.schema_person_name) {
       name = slice.schema_person_name;
     } else {
-      name = Config.get("schemaPerson").name;
+      name = State.get("schemaPerson").name;
       if (_.isEmpty(name)) {
         name = null;
       }
@@ -22,7 +22,7 @@ class SchemaPerson extends Component {
     if (slice && slice.schema_person_url) {
       url = slice.schema_person_url.url;
     } else {
-      url = Config.get("schemaPerson").url;
+      url = State.get("schemaPerson").url;
     }
 
     return url;
@@ -33,7 +33,7 @@ class SchemaPerson extends Component {
     if (slice && slice.schema_person_image) {
       url = slice.schema_person_image.url;
     } else {
-      url = Config.get("schemaPerson").image;
+      url = State.get("schemaPerson").image;
     }
 
     return url;
@@ -50,7 +50,7 @@ class SchemaPerson extends Component {
         }
       })
     } else {
-      sameAs = Config.get("schemaPerson").sameAs;
+      sameAs = State.get("schemaPerson").sameAs;
     }
 
     return sameAs;

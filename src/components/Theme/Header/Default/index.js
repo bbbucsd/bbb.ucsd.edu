@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { styled, css, media } from 'components/Theme/Styles';
-import Link from 'components/Theme/Link'
-import Waypoint from 'react-waypoint'
-import HamburgerMenu from './HamburgerMenu'
-import DropDownMenu from './DropDownMenu'
-import SearchBar from './SearchBar'
-
+import Logo from 'components/Theme/Logo';
+import Link from 'components/Theme/Link';
+import Waypoint from 'react-waypoint';
+import HamburgerMenu from './HamburgerMenu';
+import DropDownMenu from './DropDownMenu';
+import SearchBar from './SearchBar';
 
 const Header = styled.div`
   position: fixed;
@@ -13,13 +13,12 @@ const Header = styled.div`
   left: 0;
   padding: 20px;
   z-index: 99;
-  background-color: transparent;
   width: 100%;
   color: white;
   transition: all 0.5s;
-  
-  ${props => props.floating ? 'background-color: #f0f0f0;' : null }
-  
+
+  background-color: ${p => p.floating ? p.theme.headerColor : 'transparent' };
+
   ${media.lessThan("medium")`
     padding:10px;
     background-color:#ffffff;
@@ -31,7 +30,7 @@ const NavBar = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  height: 75px;
+  height: 60px;
   width:90%;
   margin: 0 auto;
   ${media.lessThan("medium")`
@@ -57,38 +56,14 @@ const ListItem = styled.li`
   font-style: normal;
   line-height: 32px;
   display:flex;
-  flex-direction:row;  
+  flex-direction:row;
   &:hover {
     color: white;
   }
 `;
 
-const Logo = styled.span`
-  font-family: 'Termina',serif;
-  font-size: 20px;
-  display:inline-block;
-  position: relative;
-  font-weight: 600;
-  font-style: normal;
-  transform: scaleX(.8);
-  color: ${props => props.floating ? '#000' : '#fff' };
-  ${media.lessThan("medium")`
-    left:-13px;
-    color:#000;
-    z-index:110;
-  `}
-`;
-
-const Tm = styled.span`
-  font-size:12px;
-  vertical-align: super;
-  position:relative;
-  left:4px;
-  top:-2px;
-  
-  ${media.lessThan("medium")`
-    
-  `}
+const LogoLink = styled(Link)`
+  width: 175px;
 `;
 
 const navItems = 4;
@@ -100,11 +75,11 @@ const NavBarCenter = styled.ul`
   width: ${navBarCenterWidth}px;
   position:relative;
   top:2px;
-  
+
   ${media.lessThan("medium")`
     display:none;
   `}
-  
+
   ${media.greaterThan("medium")`
     display:flex;
   `}
@@ -132,17 +107,17 @@ const HamburgerMenuIcon = styled.div`
   transition: all 0.25s;
   transform: ${p => p.open ? 'rotate(90deg)' : null };
   z-index:105;
-  
+
   span {
     background-color: #000;
   }
-  
+
   &:hover {
     span {
       background-color: #999;
     }
   }
-  
+
   ${media.greaterThan("medium")`
     display:none;
   `}
@@ -226,15 +201,13 @@ class Default extends Component {
     }
 
     render() {
-
-
       return (
         <div>
           <Header floating={this.state.floating}>
             <NavBar>
               <NavBarLeft>
                 <ListItem>
-                  <Logo floating={this.state.floating}><Link to="/">PROLUXE<Tm>™</Tm></Link></Logo>
+                  <LogoLink to="/"><Logo /></LogoLink>
                 </ListItem>
               </NavBarLeft>
 

@@ -4,10 +4,10 @@ var _ = require('lodash');
 
 // dot env
 if (process.env.NODE_ENV != 'production') {
+  require('dotenv').config({
+    path: `.env`,
+  })
 };
-require('dotenv').config({
-  path: `.env`,
-})
 
 
 
@@ -67,10 +67,18 @@ module.exports = {
 
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-transformer-remark',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-react-next',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     'gatsby-plugin-resolve-src',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `img`,
+        path: `${__dirname}/static/images/`
+      }
+    },
     {
       resolve: '@ericraio/gatsby-source-prismic',
       options: {

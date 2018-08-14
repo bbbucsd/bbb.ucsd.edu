@@ -1,4 +1,4 @@
-import Config from '../config';
+import State from '../state';
 
 export default class Validator {
 
@@ -25,7 +25,7 @@ export default class Validator {
   }
 
   static isCurrentSite(url) {
-    return url && url.match(Config.get("hostname")) || !url.match('http');
+    return url && url.match(State.get("hostname")) || !url.match('http');
   }
 
   static isExternalSite(url) {
