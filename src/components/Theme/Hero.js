@@ -61,14 +61,7 @@ class Hero extends Component {
       align,
     } = this.props;
 
-    if (align.match(/left/i)) {
-      return (
-        <Wrapper {...this.props}>
-          { this.isVideo && <Video src={src} /> }
-          {children}
-        </Wrapper>
-      );
-    } else if (align.match(/right/i)) {
+    if (!align) {
       return (
         <Wrapper {...this.props}>
           { this.isVideo && <Video src={src} /> }
@@ -76,12 +69,28 @@ class Hero extends Component {
         </Wrapper>
       );
     } else {
-      return (
-        <Wrapper {...this.props}>
-          { this.isVideo && <Video src={src} /> }
-          {children}
-        </Wrapper>
-      );
+      if (align.match(/left/i)) {
+        return (
+          <Wrapper {...this.props}>
+            { this.isVideo && <Video src={src} /> }
+            {children}
+          </Wrapper>
+        );
+      } else if (align.match(/right/i)) {
+        return (
+          <Wrapper {...this.props}>
+            { this.isVideo && <Video src={src} /> }
+            {children}
+          </Wrapper>
+        );
+      } else {
+        return (
+          <Wrapper {...this.props}>
+            { this.isVideo && <Video src={src} /> }
+            {children}
+          </Wrapper>
+        );
+      }
     }
   }
 }
