@@ -57,8 +57,8 @@ class Hero extends Component {
   render() {
     const {
       children,
-      src
-      align
+      src,
+      align,
     } = this.props;
 
     if (align.match(/left/i)) {
