@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import Styles, { styled, css} from './Styles';
 import _ from 'lodash';
+import titlize from 'utils/titlize';
 
 const H1 = styled.h1`
   color: ${p => p.color || p.theme.brandPrimary};
@@ -9,7 +10,7 @@ const H1 = styled.h1`
   margin:0 auto;
   font-weight: bold;
   font-style: normal;
-  width: 75%;
+  width: 50%;
 `;
 
 const H2 = styled.h2`
@@ -45,9 +46,9 @@ class Headline extends Component {
 
     return (
       <Fragment>
-        { h1 && <H1 {...this.props}>{this.textCopy()}</H1> }
-        { h2 && <H2 {...this.props}>{this.textCopy()}</H2> }
-        { h3 && <H3 {...this.props}>{this.textCopy()}</H3> }
+        { h1 && <H1 {...this.props}>{titlize(this.textCopy())}</H1> }
+        { h2 && <H2 {...this.props}>{titlize(this.textCopy())}</H2> }
+        { h3 && <H3 {...this.props}>{titlize(this.textCopy())}</H3> }
       </Fragment>
     );
   }
