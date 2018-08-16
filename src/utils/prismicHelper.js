@@ -17,7 +17,7 @@ module.exports = {
           return `/`
         } else {
           if (doc.data && doc.data.parent) {
-            return `/${(doc.data.parent && doc.data.parent.document && doc.data.parent.document[0].uid) || 'uncategorized'}/${doc.uid}`;
+            return `${(doc.data.parent && doc.data.parent.document && '/' + doc.data.parent.document[0].uid)}/${doc.uid}`;
           } else {
             return `/${slug}`;
           }
