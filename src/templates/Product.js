@@ -27,6 +27,7 @@ export const productQuery = graphql`
       last_publication_date
       data {
         body {
+          ...ContentBlock
           ...FeatureBlock
           ...SingleImageBlock
           ...StandardHero

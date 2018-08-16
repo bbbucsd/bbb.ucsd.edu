@@ -204,6 +204,7 @@ class Default extends Component {
     }
 
     componentWillMount() {
+      if (typeof window === "undefined") { return; }
       this.displayHeader();
       window.addEventListener('scroll', this.displayHeader.bind(this));
     }

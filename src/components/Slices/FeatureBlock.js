@@ -49,12 +49,16 @@ class FeatureBlock extends Component {
 
   render() {
     const { slice } = this.props;
-    const data = slice.primary;
+    const {
+      height,
+      justify,
+      align
+    } = slice.primary
     const items = slice.items;
 
     return (
-      <Block height={data.height}>
-        <Section align={data.align} justify={data.justify}>
+      <Block height={height}>
+        <Section align={align} justify={justify}>
           <Container>
             {( items || [] ).map((item) =>
               <Feature>
