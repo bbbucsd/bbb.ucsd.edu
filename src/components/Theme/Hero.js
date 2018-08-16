@@ -55,14 +55,34 @@ class Hero extends Component {
     return this.props.src && Validator.isVideo(this.props.src)
   }
   render() {
-    const { children, src } = this.props;
+    const {
+      children,
+      src
+      align
+    } = this.props;
 
-    return (
-      <Wrapper {...this.props}>
-        { this.isVideo && <Video src={src} /> }
-        {children}
-      </Wrapper>
-    );
+    if (align.match(/left/i)) {
+      return (
+        <Wrapper {...this.props}>
+          { this.isVideo && <Video src={src} /> }
+          {children}
+        </Wrapper>
+      );
+    } else if (align.match(/right/i)) {
+      return (
+        <Wrapper {...this.props}>
+          { this.isVideo && <Video src={src} /> }
+          {children}
+        </Wrapper>
+      );
+    } else {
+      return (
+        <Wrapper {...this.props}>
+          { this.isVideo && <Video src={src} /> }
+          {children}
+        </Wrapper>
+      );
+    }
   }
 }
 
