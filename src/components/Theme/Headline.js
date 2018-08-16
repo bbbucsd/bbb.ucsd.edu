@@ -10,7 +10,7 @@ const H1 = styled.h1`
   margin:0 auto;
   font-weight: bold;
   font-style: normal;
-  width: 75%;
+  width: 50%;
 `;
 
 const H2 = styled.h2`

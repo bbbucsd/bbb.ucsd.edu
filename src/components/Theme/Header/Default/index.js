@@ -228,7 +228,7 @@ class Default extends Component {
 
               <NavBarRight>
                 <ListItem>
-                  <SearchBar floating={this.state.floating} />
+                  {/* <SearchBar floating={this.state.floating} /> */}
                   <HamburgerMenuIcon open={this.state.drawer} onClick={this.toggleDrawer} floating={this.state.floating}>
                     <TopLine open={this.state.drawer} />
                     <BottomLine open={this.state.drawer} />
