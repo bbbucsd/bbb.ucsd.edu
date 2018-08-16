@@ -13,7 +13,7 @@ const Headline = styled(ThemeHeadline)`
 
 const Subheadline = styled(ThemeHeadline)`
   font-weight:300;
-  color:${p => p.color || p.theme.brandSecondary};
+  color:${p => p.color || p.theme.white};
   ${media.lessThan("medium")`
     font-size: ${p => p.theme.h2FontSize / 2}px;
   `}
