@@ -5,7 +5,7 @@ import Link from 'components/Theme/Link';
 import HamburgerMenu from './HamburgerMenu';
 import MainMenu from './MainMenu';
 import SearchBar from './SearchBar';
-import { BrowserView } from "react-device-detect";
+import { isMobile } from "react-device-detect";
 
 const Header = styled.div`
   position: fixed;
@@ -218,7 +218,7 @@ class Default extends Component {
               <NavBarLeft>
                 <ListItem>
                   <LogoLink to="/">
-                    {BrowserView ? (
+                    {isMobile ? (
                       <Logo color={this.state.floating ? 'blueWhite' : 'white'} />
                     ) : (
                       <Logo />
