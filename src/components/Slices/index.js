@@ -24,7 +24,7 @@ import SchemaProduct from './SchemaProduct';
 import SchemaWebsite from './SchemaWebsite';
 import SchemaItemList from './SchemaItemList';
 import FormBlock from './FormBlock';
-//import HighlightContentBlock from './HighlightContentBlock';
+import HighlightContentBlock from './HighlightContentBlock';
 //import HorizontalFormBlock from './HorizontalFormBlock';
 
 const Slice = (props) => {
@@ -47,8 +47,8 @@ const Slice = (props) => {
       return <LogoBlockInline slice={data} />
     case 'ContentBlock':
       return <ContentBlock slice={data} />
-    // case 'HighlighContentBlock':
-    //   return <HighlightContentBlock slice={data} />
+   case 'HighlightContentBlock':
+     return <HighlightContentBlock slice={data} />
     // case 'HorizontalFormBlock':
     //   return <HorizontalFormBlock slice={data} />
     case 'FrontMatter':

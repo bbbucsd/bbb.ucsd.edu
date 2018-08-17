@@ -37,6 +37,7 @@ export const postQuery = graphql`
         body {
           ...SimpleHero
           ...ContentBlock
+          ...HighlightContentBlock
         }
         body1 {
           ...FrontMatter
