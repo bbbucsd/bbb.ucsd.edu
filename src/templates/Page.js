@@ -35,6 +35,7 @@ export const pageQuery = graphql`
           ...HighlightHero
           ...LogoBlock
           ...LogoBlockInline
+          ...HighlightContentBlock
           ...ContentBlock
           ...StatementBlock
           ...FeatureBlock
