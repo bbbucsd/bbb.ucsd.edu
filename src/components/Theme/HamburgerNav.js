@@ -17,14 +17,14 @@ const Wrapper = styled.div`
 
 const MainLink = styled(Link)`
   font-size: ${p => p.theme.h2FontSize}px;
-  color:${p => p.theme.black};
+  color:${p => p.theme.white};
   border-bottom:1px solid #cacaca;
   width:100%;
   display:flex;
   flex-direction: row;
   justify-content: space-between;
   &:visited {
-    color:${p => p.theme.black};
+    color:${p => p.theme.white};
   }
 `;
 
@@ -45,7 +45,7 @@ const Menu = styled.div`
   transition: all 0.5s;
   will-change: transform;
   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  color:#000;
+  color: ${p => p.theme.white};
   ${p => p.open ? `
     opacity: 1;
     max-height:500px;

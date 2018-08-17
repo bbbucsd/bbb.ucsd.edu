@@ -5,7 +5,7 @@ import Link from 'components/Theme/Link';
 import HamburgerMenu from './HamburgerMenu';
 import MainMenu from './MainMenu';
 import SearchBar from './SearchBar';
-import { isMobile } from "react-device-detect";
+import { isMobileOnly } from "react-device-detect";
 
 const Header = styled.div`
   position: fixed;
@@ -64,6 +64,10 @@ const ListItem = styled.li`
 
 const LogoLink = styled(Link)`
   width: 175px;
+  ${media.between("medium", "large")`
+    width: 120px;
+    margin-left: 25px;
+  `}
 `;
 
 const navItems = 4;
@@ -78,6 +82,13 @@ const NavBarCenter = styled.ul`
 
   ${media.lessThan("medium")`
     display:none;
+  `}
+
+  ${media.between("medium", "large")`
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
   `}
 
   ${media.greaterThan("medium")`
@@ -149,7 +160,7 @@ const BottomLine = styled.span`
 
 const Drawer = styled.div`
   position: fixed;
-  background-color: #FFFFFF;
+  background-color: ${p => p.theme.brandSecondary};
   right:0;
   top:0;
   left:0;
@@ -218,7 +229,7 @@ class Default extends Component {
               <NavBarLeft>
                 <ListItem>
                   <LogoLink to="/">
-                    {isMobile ? (
+                    {isMobileOnly ? (
                       <Logo />
                     ) : (
                       <Logo color={this.state.floating ? 'blueWhite' : 'white'} />

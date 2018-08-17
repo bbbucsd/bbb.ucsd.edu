@@ -7,7 +7,7 @@ import WorkWithMeMenu from './HamburgerMenu/WorkWithMeMenu';
 
 const Menu = styled.ul`
   margin-top: 130px;
-  color: #999;
+  color: ${p => p.theme.white};
   width: 100%;
   font-size: 14px;
   font-weight: 300;
