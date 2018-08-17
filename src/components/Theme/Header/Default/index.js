@@ -5,6 +5,7 @@ import Link from 'components/Theme/Link';
 import HamburgerMenu from './HamburgerMenu';
 import MainMenu from './MainMenu';
 import SearchBar from './SearchBar';
+import { BrowserView } from "react-device-detect";
 
 const Header = styled.div`
   position: fixed;
@@ -20,7 +21,7 @@ const Header = styled.div`
 
   ${media.lessThan("medium")`
     padding:10px;
-    background-color:#ffffff;
+    background-color: ${p => p.theme.headerColor};
   `}
 `;
 
@@ -108,7 +109,7 @@ const HamburgerMenuIcon = styled.div`
   z-index:105;
 
   span {
-    background-color: #000;
+    background-color: ${p => p.theme.white};
   }
 
   &:hover {
@@ -216,7 +217,13 @@ class Default extends Component {
             <NavBar>
               <NavBarLeft>
                 <ListItem>
-                  <LogoLink to="/"><Logo color={this.state.floating ? 'blueWhite' : 'white'} /></LogoLink>
+                  <LogoLink to="/">
+                    {BrowserView ? (
+                      <Logo color={this.state.floating ? 'blueWhite' : 'white'} />
+                    ) : (
+                      <Logo />
+                    )}
+                  </LogoLink>
                 </ListItem>
               </NavBarLeft>
 
