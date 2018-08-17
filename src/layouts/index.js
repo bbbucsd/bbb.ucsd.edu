@@ -54,7 +54,7 @@ class Layout extends Component {
         <Fragment>
           <Helmet>
             <script>{`window.prismic = { endpoint: '${PrismicConfig.apiEndpoint}' }`}</script>
-            <script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js"></script>
+            <script async type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js"></script>
           </Helmet>
 
           <div>

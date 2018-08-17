@@ -7,7 +7,6 @@ class DoubleTestimonialBlock extends Component {
   render() {
     const { slice } = this.props;
     const data = slice.primary;
-    console.log(data)
     const testimonialOne = data.testimonial_one.document[0].data;
     const testimonialTwo = data.testimonial_two.document[0].data;
 
