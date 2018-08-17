@@ -219,9 +219,9 @@ class Default extends Component {
                 <ListItem>
                   <LogoLink to="/">
                     {isMobile ? (
-                      <Logo color={this.state.floating ? 'blueWhite' : 'white'} />
-                    ) : (
                       <Logo />
+                    ) : (
+                      <Logo color={this.state.floating ? 'blueWhite' : 'white'} />
                     )}
                   </LogoLink>
                 </ListItem>
