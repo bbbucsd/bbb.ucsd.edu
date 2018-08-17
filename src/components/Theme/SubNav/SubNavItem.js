@@ -4,6 +4,7 @@ import Styles, { styled, css} from '../Styles';
 
 const Item = styled.li`
   padding: 1px 0;
+  cursor: pointer;
   font-size: 14px;
   width: 100%;
   display: flex;
@@ -13,7 +14,7 @@ const Item = styled.li`
   align-items: center;
   justify-content: flex-start;
   text-decoration: none;
-  
+
   a {
     color: ${props => props.theme.black};
   }

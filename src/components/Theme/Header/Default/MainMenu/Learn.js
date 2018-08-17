@@ -1,30 +1,21 @@
-import React, { Component } from 'react'
-import Link from 'components/Theme/Link'
-import Styles, { styled, css} from 'components/Theme/Styles';
+import React, { Component } from 'react';
+import SubNav, { SubNavGroup, SubNavItem } from 'components/Theme/SubNav';
 
-const Wrapper = styled.div`
-  position: relative;
-  padding: 20px;
-  white-space: nowrap;
-`;
-
-const MainLink = styled(Link)`
-  font-weight: 400;
-  color:${props => props.floating ? props.theme.white : props.theme.white};
-  &:visited {
-    color:${props => props.floating ? props.theme.white : props.theme.white};
-  }
-`;
-
-export default class extends Component {
+class LearnMenu extends Component {
 
   render() {
     const { floating } = this.props;
 
     return (
-      <Wrapper>
-        <MainLink floating={floating} to="/learn">Learn</MainLink>
-      </Wrapper>
+      <SubNav text="Learn" to="/learn" floating={floating} menuWidth={280} offsetY={85} padding={40}>
+        <SubNavGroup>
+          <SubNavItem to="/learn/brand-identity">Brand & Identity</SubNavItem>
+          <SubNavItem to="/learn/marketing-measurement">Marketing & Measurement</SubNavItem>
+          <SubNavItem to="/learn/business-operations">Business & Operations</SubNavItem>
+        </SubNavGroup>
+      </SubNav>
     );
   }
 }
+
+export default LearnMenu;

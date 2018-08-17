@@ -16,9 +16,10 @@ const Wrapper = styled.div`
 
 const MainLink = styled(Link)`
   font-weight: 400;
-  color:${props => props.floating ? props.theme.black : props.theme.white};
+  color:${props => props.floating ? props.theme.white : props.theme.white};
+  cursor: pointer;
   &:visited {
-    color:${props => props.floating ? props.theme.black : props.theme.white};
+    color:${props => props.floating ? props.theme.white : props.theme.white};
   }
 `;
 
