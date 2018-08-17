@@ -84,7 +84,7 @@ class LogoBlockInline extends Component {
           {items.map((item, i) => {
               return (
                 <LogoItem>
-                  <Logo alt={item.logo.alt} src={item.logo.url} />
+                  <Logo alt={item.logo.alt || (item.logo.url && item.logo.url.split("_")[1].split(".")[0])} src={item.logo.url} />
                 </LogoItem>
               )
             }
