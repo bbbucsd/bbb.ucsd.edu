@@ -92,7 +92,7 @@ class FeatureBlock extends Component {
     return (
       <Link to={item.cta_link}>
         <Container>
-          <FeatureCard width="18rem" textAlign="left" backgroundColor={item.background_color}>
+          <FeatureCard width="18rem" backgroundColor={item.background_color}>
             <CardBody>
               {item.icon ? (
                 <FeatureIcon name={item.icon} size="75" />
