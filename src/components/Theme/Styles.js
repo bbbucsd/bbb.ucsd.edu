@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import Validator from 'utils/validator'
+import React, { Component } from 'react';
+import Validator from 'utils/validator';
 import styled, { css } from 'styled-components';
+import { screenSize } from 'styled-config';
 
 const sizes = {
-  desktop: '(min-width: 1200px)',
-  tablet: '(min-width: 481px) and (max-width: 1199px)',
-  mobile: '(max-width: 480px)'
+  desktop: `(min-width: ${screenSize.lg})`,
+  tablet: `(min-width: ${screenSize.md})`,
+  mobile: `(min-width: ${screenSize.sm})`
 }
 
 class Styles extends Component {

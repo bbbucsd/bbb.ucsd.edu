@@ -1,18 +1,57 @@
 import React, { Component } from 'react';
 import Link from 'components/Theme/Link';
+import Logo from 'components/Theme/Logo';
 import flag from './american-flag.png'
 import Styles, { styled, css, media } from 'components/Theme/Styles';
-import { Youtube } from 'styled-icons/fa-brands/Youtube.cjs'
-import { Facebook } from 'styled-icons/fa-brands/Facebook.cjs'
-import { Twitter } from 'styled-icons/fa-brands/Twitter.cjs'
-import { Linkedin } from 'styled-icons/fa-brands/Linkedin.cjs'
+import { Instagram } from 'styled-icons/fa-brands/Instagram.cjs';
+import { Facebook } from 'styled-icons/fa-brands/Facebook.cjs';
+import { Twitter } from 'styled-icons/fa-brands/Twitter.cjs';
+import { Linkedin } from 'styled-icons/fa-brands/Linkedin.cjs';
+import {
+  ListGroup,
+  ListGroupItem,
+  Container,
+  Row,
+  Column
+} from 'styled-bootstrap-components';
 
-const FooterWrapper = styled.div`
-  background-color: ${props => props.theme.brandSecondary};
-  width: 100%;
-  color: ${props => props.theme.brandSecondaryLinks};
-  ${media.greaterThan("medium")`
-    height: 500px;
+const FooterLink = styled(Link)`
+  color: ${p => p.theme.brandLight};
+  display: block;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  font-size: 12px;
+  word-break: break-word;
+  border-bottom: 1px solid #27333C;
+`;
+
+const FooterContainer = styled.div`
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: ${p => p.theme.brandSecondary};
+  color: ${p => p.theme.brandLight};
+`;
+
+const NavTitle = styled.h5`
+  margin-top: 0;
+  word-break: break-word;
+  color: ${p => p.theme.brandInfo};
+  margin-bottom: 0;
+  font-size: 18px;
+  ${media.greaterThan('large')`
+    font-size: 21px;
+  `}
+  ${media.between("medium", "large")`
+    font-size: 16px;
+  `};
+`;
+
+const Divider = styled.hr`
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: ${p => p.theme.brandLight}
+  ${media.greaterThan('small')`
+    display: none;
   `}
 `;
 
@@ -21,11 +60,11 @@ const SocialSection = styled.div`
   flex-direction: row;
   height: 75px;
   width: 100%;
-  border-bottom: 1px solid ${props => props.theme.brandSecondaryBorder};
-  
+
   ${media.lessThan("medium")`
-    justify-content:center;
+    justify-content: center;
   `};
+
 `;
 
 const SocialSpacer = styled.div`
@@ -35,212 +74,132 @@ const SocialSpacer = styled.div`
   `}
 `
 const SocialLink = styled.div`
-  border-left: 1px solid ${props => props.theme.brandSecondaryBorder};
   width: 75px;
   flex: 0 0 auto;
   font-size: 28px;
-  color: ${props => props.theme.brandSecondaryLinks};
+  color: ${props => props.theme.brandLight};
   text-align: center;
   line-height: 75px;
-  
-  a {
-    color: ${props => props.theme.brandSecondaryLinks};
-  }
-  
-  ${media.lessThan("medium")`
-    &:nth-child(2) {
-      border-left: none;
-    }
+  ${media.between("medium", "large")`
+    width:55px;
   `};
-  
+
+  a {
+    color: ${props => props.theme.brandLight};
+  }
+
   svg {
     fill: ${props => props.theme.white};
     width:30px;
     height:30px;
+    ${media.between("medium", "large")`
+      width:30px;
+      height:30px;
+    `};
     position:relative;
     top:4px;
   }
 `;
 
-const Nav = styled.div`
-  display: flex;
-  width: 100%;
-  margin-top: 30px;
-  flex-direction: row;
-  justify-content: space-around;
+const LinkColumn = styled(Column)`
+  display: initial;
+  ${media.between('small', 'medium')`
+    display: none;
+  `}
+`;
+
+const LogoLink = styled(Link)`
   ${media.lessThan("medium")`
-    flex-direction: column;
-  `};
-`;
+    justify-content: center;
+    display: flex;
+  `}
 
-const Section = styled.div`
-  margin: 0 25px;
-  width: 200px;
-`;
-
-const Header = styled.h3`
-  width: 100%;
-  text-align: left;
-  color: #fafafa;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 13px;
-  padding-bottom: 25px;
-  border-bottom: 1px solid ${props => props.theme.brandSecondaryBorder};
-  margin-bottom: 5px;
-  padding-left: 0;
-  padding-right: 0;
-  text-transform: uppercase;
-  
-  ${media.lessThan("medium")`
-    padding-bottom:10px;
-    margin-bottom: 0px;
-  `};
-`;
-
-const Links = styled.ul`
-  list-style-type: none;
-  margin: 25px 0;
-  padding: 0;
-  text-align: left;
-  font-size: 14px;
-  line-height: 24px;
-  
-  a {
-    color: #fafafa;
+  .gatsby-image-wrapper {
+    width: 175px;
+    ${media.between("medium", "large")`
+      width: 150px;
+      margin-left: 25px;
+      max-width: 150px;
+    `}
   }
-  
+`;
+
+const BrandColumn = styled(Column)`
   ${media.lessThan("medium")`
-    margin: 10px 0;
-  `};
+    flex: 0 0 100%;
+    justify-content: center;
+    align-content: center;
+  `}
 `;
 
-const Legal = styled.div`
-  border-top: 1px solid ${props => props.theme.brandSecondaryBorder};
-  display: flex;
-  width: 100%;
-  margin-top: 30px;
-  padding-top: 30px;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 14px;
-  
-  ${media.lessThan("medium")`
-    flex-direction:column-reverse;
-    justify-content: space-around;
-  `};
-`;
-
-const LegalLeft = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  text-align: left;
-  margin-left:50px;
-  
-  ${media.lessThan("medium")`
-    flex-direction:row-reverse;
-    margin:25px;
-    justify-content: space-between;
-  `};
-`;
-
-const LegalLink = styled.div`
-  ${media.greaterThan("medium")`
-    margin-right: 50px;
-  `};
-`;
-
-const LegalRight = styled.div`
-  flex-direction: row;
-  justify-content: flex-end;
-  text-align: left;
-  margin-right:50px;
-  
-  ${media.lessThan("medium")`
-    flex-direction:column;
-    margin:25px;
-    text-align:center;
-  `};
-`;
-
-const Flag = styled.img`
-  height: 14px;
-  margin-left: 5px;
-  position: relative;
-  top: 2px;
-`
-
-
+//.footer {
+  //.navbar-brand {
+    //max-width: 150px;
+    //padding: 0;
+    //margin: 0;
+  //}
+//}
 
 class Footer extends Component {
   render() {
-
     return (
-      <div>
-        <FooterWrapper>
-          <SocialSection>
-            <SocialSpacer />
-            <SocialLink><Link to="https://www.youtube.com/user/proluxe"><Youtube /></Link></SocialLink>
-            <SocialLink><Link to="https://www.facebook.com/Proluxe"><Facebook /></Link></SocialLink>
-            <SocialLink><Link to="https://twitter.com/proluxe"><Twitter /></Link></SocialLink>
-            <SocialLink><Link to="https://www.linkedin.com/company/doughpro"><Linkedin /></Link></SocialLink>
-          </SocialSection>
+      <FooterContainer>
+        <div className="footer-above">
+          <Container>
+            <Row>
+              <BrandColumn sm={4} justifyContent="center" alignContent="left">
+                <LogoLink to="/">
+                  <Logo />
+                </LogoLink>
+                <SocialSection>
+                  <SocialLink><Link to="https://twitter.com/ericraio"><Twitter /></Link></SocialLink>
+                  <SocialLink><Link to="https://www.facebook.com/AutomateYourBrand"><Facebook /></Link></SocialLink>
+                  <SocialLink><Link to="https://www.instagram.com/ericraio"><Instagram /></Link></SocialLink>
+                  <SocialLink><Link to="https://www.linkedin.com/in/ericraio"><Linkedin /></Link></SocialLink>
+                </SocialSection>
 
+                <Divider />
+              </BrandColumn>
 
-          <div>
-            <Nav>
-              <Section>
-                <Header>Company</Header>
-                <Links>
-                  <li><Link to="/about">About Us</Link></li>
-                  <li><Link to="/press">Press</Link></li>
-                  <li><Link to="/blog">Blog</Link></li>
-                  <li><Link to="/careers">Careers</Link></li>
-                </Links>
-              </Section>
-              <Section>
-                <Header>Products</Header>
-                <Links>
-                  <li><Link to="/products/smart-ovens">Smart Ovens</Link></li>
-                  <li><Link to="/products/pizza-presses">Pizza Presses</Link></li>
-                  <li><Link to="/products/tortilla-presses">Tortilla Presses</Link></li>
-                  <li><Link to="/products/grills">Grills</Link></li>
-                  <li><Link to="/products/bun-carmalizers">Bun Carmalizers</Link></li>
-                </Links>
-              </Section>
-              <Section>
-                <Header>Service &amp; Support</Header>
-                <Links>
-                  <li><Link to="/help/training">Training</Link></li>
-                  <li><Link to="/help/technical-support">Technical Support</Link></li>
-                  <li><Link to="/help/find-service-provider">Find a Service Provider</Link></li>
-                  <li><Link to="/contact-us">Contact Us</Link></li>
-                </Links>
-              </Section>
-              <Section>
-                <Header>Resources</Header>
-                <Links>
-                  <li><Link to="/resources/demos">Demos</Link></li>
-                  <li><Link to="/resources/events">Events</Link></li>
-                  <li><Link to="/resources/downloads">Downloads</Link></li>
-                </Links>
-              </Section>
-            </Nav>
+              <LinkColumn sm={2}>
+                <NavTitle>Start Here</NavTitle>
+                <FooterLink to="/start">
+                  Getting Started
+                </FooterLink>
+                <FooterLink to="/about">
+                  About
+                </FooterLink>
+              </LinkColumn>
 
-            <Legal>
-              <LegalLeft>
-                <LegalLink>&copy; Proluxe, Inc {new Date().getFullYear()}</LegalLink>
-                <LegalLink><Link to="/terms">Terms of use</Link></LegalLink>
-                <LegalLink><Link to="/privacy">Privacy Policy</Link></LegalLink>
-              </LegalLeft>
-              <LegalRight>
-                Designed &amp; Manufactured in California <Flag alt="Made in California" src={flag} />
-              </LegalRight>
-            </Legal>
-          </div>
-        </FooterWrapper>
-      </div>
+              <LinkColumn sm={3}>
+                <NavTitle>Get Involved</NavTitle>
+                <FooterLink to="/share">
+                  Share Automate Your Brand
+                </FooterLink>
+                <FooterLink to="/community">
+                  Join The Community
+                </FooterLink>
+              </LinkColumn>
+
+              <LinkColumn sm={3}>
+                <NavTitle>Learn</NavTitle>
+                <FooterLink to="/resource">
+                  Resources
+                </FooterLink>
+                <FooterLink to="/learn/marketing-measurement">
+                  Marketing & Measurement
+                </FooterLink>
+                <FooterLink to="/learn/brand-identity">
+                  Brand & Identity
+                </FooterLink>
+                <FooterLink to="/learn/business-operations">
+                  Business & Operations
+                </FooterLink>
+              </LinkColumn>
+            </Row>
+          </Container>
+        </div>
+      </FooterContainer>
     );
   }
 }

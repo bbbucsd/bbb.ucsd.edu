@@ -55,7 +55,7 @@ export default class extends Component {
     if (attrs.href) {
       return ( <a {...attrs}>{this.props.children}</a> )
     } else {
-      return ( <Link {...attrs}>{this.props.children}</Link> )
+      return ( <Link style={{ cursor: 'pointer' }} {...attrs}>{this.props.children}</Link> )
     }
   }
 }

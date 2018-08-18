@@ -29,6 +29,8 @@ const Content = styled.div`
     margin-left: -2.5px;
     line-height: 1.04;
     letter-spacing: -.03em;
+     word-wrap: break-word;
+     word-break: break-word;
   }
 
   h3 {
@@ -40,6 +42,8 @@ const Content = styled.div`
     font-size: ${p => p.theme.h3FontSize}px;
     line-height: 1.15;
     letter-spacing: -.02em;
+    word-wrap: break-word;
+    word-break: break-word;
   }
 
   h4 {
@@ -50,6 +54,8 @@ const Content = styled.div`
     margin-left: -1.5px;
     line-height: 1.22;
     letter-spacing: -.018em;
+     word-wrap: break-word;
+     word-break: break-word;
   }
 
   div,  p,  ul,  ol,  a {
@@ -62,6 +68,8 @@ const Content = styled.div`
     color: ${p => p.theme.darkGray};
     line-height: 1.58;
     letter-spacing: -.003em;
+    word-wrap: break-word;
+    word-break: break-word;
   }
 
   a,  a:hover {
@@ -73,6 +81,8 @@ const Content = styled.div`
     -moz-transition:.5s;
     -webkit-transition:.5s;
     transition:.5s;
+    word-wrap: break-word;
+    word-break: break-word;
   }
 
   img {

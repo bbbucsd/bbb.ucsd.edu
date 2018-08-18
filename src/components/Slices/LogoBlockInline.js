@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Styles, { styled, css} from 'components/Theme/Styles';
+import { styled, css, media } from 'components/Theme/Styles';
 import Globals from 'components/Theme/Globals';
 
 const Container = styled.div`
@@ -8,6 +8,10 @@ const Container = styled.div`
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  padding: 1rem;
+  ${media.greaterThan("small")`
+    padding: 0;
+  `}
 `;
 
 const Logos = styled.ul`
@@ -24,14 +28,15 @@ const Logos = styled.ul`
   margin: 0 auto;
   max-width: 75rem;
   width: 87.08333333%;
-  padding: 3em;
+  ${media.greaterThan("small")`
+    padding: 3em;
+  `}
 `;
 
 const Label = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: .8em;
   font-weight; bold;
   letter-spacing: .05em;
   text-align: left;
@@ -41,6 +46,24 @@ const Label = styled.li`
   max-width: 75rem;
   width: 100%;
   color: ${p => p.theme.white};
+  margin-bottom: 10px;
+  font-size: .5em;
+  ${media.greaterThan("small")`
+    font-size: .8em;
+    margin-bottom: 0px;
+  `}
+  ${media.lessThan("medium")`
+    display: none;
+  `}
+`;
+
+const MobileLabel = styled(Label)`
+  ${media.lessThan("medium")`
+    display: flex;
+  `}
+  ${media.greaterThan("small")`
+    display: none;
+  `}
 `;
 
 const LogoItem = styled.li`
@@ -59,9 +82,12 @@ const LogoItem = styled.li`
 const Logo = styled.img`
   max-width: 100%;
   height: auto;
-  max-height: 50px;
   padding-left: 2vw;
   padding-right: 2vw;
+  max-height: 30px;
+  ${media.greaterThan("small")`
+    max-height: 50px;
+  `}
 `;
 
 class LogoBlockInline extends Component {
@@ -79,6 +105,7 @@ class LogoBlockInline extends Component {
 
     return (
       <Container>
+        <MobileLabel>{label}</MobileLabel>
         <Logos>
           <Label>{label}:</Label>
           {items.map((item, i) => {
