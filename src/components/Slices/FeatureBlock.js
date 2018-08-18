@@ -37,7 +37,7 @@ const Feature = styled.div`
 
    ${media.lessThan("medium")`
       &:nth-child(even) {
-        margin:80px 0;
+        margin: 10px 0;
       }
    `}
 `;
