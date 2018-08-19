@@ -38,7 +38,7 @@ const convertInput = (node, index) => {
 }
 
 const processNode = (node, index) => {
-  switch (node.name.toLowerCase()) {
+  switch (node.name) {
     case 'a':
       return convertLink(node, index);
     case 'textarea':
