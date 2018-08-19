@@ -1,0 +1,28 @@
+
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:9
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+
+      - run:
+          name: install-deps
+          command: npm install
+
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+
+      - run:
+          name: build
+          command: gatsby build
+
+      - run:
+          name: deploy
+          command: npm run deploy
