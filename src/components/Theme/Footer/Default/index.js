@@ -103,7 +103,7 @@ const SocialLink = styled.div`
 
 const LinkColumn = styled(Column)`
   display: initial;
-  ${media.between('small', 'medium')`
+  ${media.lessThan('medium')`
     display: none;
   `}
 `;
