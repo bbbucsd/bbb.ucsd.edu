@@ -11,8 +11,20 @@ import {
 } from 'styled-bootstrap-components';
 
 const FeatureImage = styled.img`
-  max-height: 450px;
-  transform: translateX(50%);
+  max-height: 300px;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+
+  ${media.greaterThan('medium')`
+    max-height: 450px;
+    float: right;
+  `}
+  ${media.between('medium', 'large')`
+    float: none;
+    max-height: 450px;
+  `}
 `;
 
 const FeatureContainer = styled(Container)`
@@ -62,6 +74,25 @@ const Primary = styled(Section)`
 const CTAButton = styled(Button)`
   float: left;
   margin-top: 15px;
+  transform: initial;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  button {
+    text-align: center;
+    width: 100%;
+  }
+
+  ${media.greaterThan('medium')`
+    display: flex;
+    button {
+      text-align: center;
+      width: initial;
+    }
+  `}
 `;
 
 
@@ -83,7 +114,7 @@ class SingleFeatureBlock extends Component {
       <Block color={background_color}>
         <FeatureContainer color={background_color}>
           <Row>
-            <Column md={6}>
+            <Column lg={6}>
               <Superheadline color={superheadline_color}>{superheadline.text}</Superheadline>
               <Headline color={headline_color}>{headline.text}</Headline>
                 <Caption color={caption_color}>
@@ -91,11 +122,11 @@ class SingleFeatureBlock extends Component {
                     {caption.html}
                   </InnerHTML>
                 </Caption>
-              {cta_label && cta_link &&
-                <CTAButton arrow={false} to={cta_link}>{cta_label}</CTAButton>
+                {cta_label && cta_link &&
+                  <CTAButton arrow={false} to={cta_link}>{cta_label}</CTAButton>
                 }
               </Column>
-              <Column md={6}>
+              <Column lg={6}>
                 <FeatureImage src={asset.url} />
               </Column>
             </Row>

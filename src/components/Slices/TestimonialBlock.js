@@ -4,6 +4,10 @@ import Testimonial from 'components/Theme/Testimonial';
 import { styled, media } from 'components/Theme/Styles';
 
 const Primary = styled(Section)`
+ ${media.lessThan("large")`
+   padding-top: 50px;
+   padding-bottom: 50px;
+ `}
   ${media.greaterThan('small')`
      & > * {
       width: 50%;
