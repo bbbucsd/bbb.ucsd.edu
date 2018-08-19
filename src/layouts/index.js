@@ -49,6 +49,7 @@ class Layout extends Component {
   render() {
     const { location } = this.props;
     const isModal = this.isInModal()
+    State.set({ children: this.props.children })
     return (
       <ThemeProvider theme={theme}>
         <Fragment>
@@ -58,7 +59,8 @@ class Layout extends Component {
           </Helmet>
 
           <div>
-            {isModal ? this.props.children({ ...this.props, location: { pathname: location.state.page } }) : this.props.children()}
+            {isModal ? this.props.children({ ...this.props,
+              location: { pathname: location.state.page } }) : this.props.children()}
           </div>
 
           <div>

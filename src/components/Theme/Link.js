@@ -1,10 +1,19 @@
-import React, { Component } from 'react';
-import PrismicHelper from 'utils/prismicHelper'
-import Link from 'gatsby-link'
+import React, { Fragment, Component } from 'react';
+import PrismicHelper from 'utils/prismicHelper';
+import Link from 'gatsby-link';
 import Validator from 'utils/validator';
+import Modal from 'components/Theme/Modal';
+import State from '../../state';
 import _ from 'lodash';
 
 export default class extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      hideModal: true
+    };
+  }
 
   buildAttrs() {
     var href = this.sanitizeDataSource(this.props.to || '#');
@@ -32,11 +41,11 @@ export default class extends Component {
   }
 
   linkToExternal(href) {
-    return {...this.props, href: href, target: '_blank', rel: 'noopener' };
+    return {...this.props, href: href, target: '_blank', rel: 'noopener', isExternal: true};
   }
 
   linkToModal(href) {
-    return {...this.props, to: {pathname: href.replace('modal://', '#'), state: { isInModal: true, page: this.currentPath()  } } };
+    return {...this.props, href: href.replace('modal://', '#'), isModal: true };
   }
 
   linkToExplicit(href) {
@@ -49,13 +58,32 @@ export default class extends Component {
     }
   }
 
+  showModal() {
+    this.setState({ hideModal: false });
+  }
+
+  onClose() {
+    this.setState({ hideModal: true });
+  }
+
   render() {
     const attrs = _.omit(this.buildAttrs(), 'floating') // used as prop in header, gatsby link whines about it
 
-    if (attrs.href) {
+    if (attrs.isModal) {
+      delete attrs.isModal;
+      return (
+        <Fragment>
+          <a onClick={this.showModal.bind(this)} {...attrs}>{this.props.children}</a>
+          <Modal hidden={this.state.hideModal} onClose={this.onClose.bind(this)} location={{hash: attrs.href }}>
+            {State.get('children')}
+          </Modal>
+        </Fragment>
+      );
+    } else if(attrs.isExternal) {
+      delete attrs.isExternal;
       return ( <a {...attrs}>{this.props.children}</a> )
     } else {
-      return ( <Link style={{ cursor: 'pointer' }} {...attrs}>{this.props.children}</Link> )
+      return ( <Link {...attrs}>{this.props.children}</Link> )
     }
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from 'components/Theme/Header';
-import Slices from 'components/Slices'
+import Slices from 'components/Slices';
 import Footer from 'components/Theme/Footer';
 import connectPreview from 'lib/connectPreview';
 

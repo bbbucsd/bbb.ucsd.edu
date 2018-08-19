@@ -19,6 +19,7 @@ import { Stars } from 'styled-icons/material/Stars.cjs';
 // Font Awesome Solid
 import { ChartLine } from 'styled-icons/fa-solid/ChartLine.cjs';
 import { UsersCog } from 'styled-icons/fa-solid/UsersCog.cjs';
+import { TimesCircle } from 'styled-icons/fa-solid/TimesCircle.cjs';
 
 // Font Awesome Brands
 import { Instagram } from 'styled-icons/fa-brands/Instagram.cjs';
@@ -73,6 +74,8 @@ export default class Icon extends Component {
         return DeveloperBoard;
       case 'stars':
         return Stars;
+      case 'timescircle':
+        return TimesCircle;
       default:
         return null;
     }

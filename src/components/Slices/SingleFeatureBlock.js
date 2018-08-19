@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import Block, { Section } from 'components/Theme/Block';
+import Link from 'components/Theme/Link';
 import Button from 'components/Theme/Button';
 import ShortDivider from 'components/Theme/ShortDivider';
 import { styled, media } from 'components/Theme/Styles';
@@ -13,17 +14,21 @@ import {
 const FeatureImage = styled.img`
   max-height: 300px;
   margin-top: 25px;
+  margin-bottom: 25px;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 5px;
   display: flex;
+  transition: all .2s ease-in-out;
+  &:hover { transform: scale(1.05); z-index: 90; }
 
   ${media.greaterThan('medium')`
-    max-height: 450px;
+    max-height: 430px;
     float: right;
   `}
   ${media.between('medium', 'large')`
     float: none;
-    max-height: 450px;
+    max-height: 430px;
   `}
 `;
 
@@ -33,7 +38,7 @@ const FeatureContainer = styled(Container)`
 `;
 
 const Headline = styled.h3`
-  font-size: ${props => props.theme.h2FontSize}px;
+  font-size: 35px;
   color: ${props => props.color || props.theme.black};
   font-family: ${p => p.theme.fontFamily};
   text-align: left;
@@ -59,11 +64,12 @@ const Caption = styled.div`
   color: ${props => props.color || props.theme.black};
   h6 {
    font-size: 20px;
-   font-weight: initial;
+   font-weight: 100;
    margin: 0;
   }
   p {
    font-size: 13px;
+   font-weight: 100;
   }
 `;
 
@@ -127,7 +133,15 @@ class SingleFeatureBlock extends Component {
                 }
               </Column>
               <Column lg={6}>
-                <FeatureImage src={asset.url} />
+                {cta_link ? (
+                  <Fragment>
+                    <Link to={cta_link}>
+                      <FeatureImage src={asset.url} />
+                    </Link>
+                  </Fragment>
+                ) : (
+                  <FeatureImage src={asset.url} />
+                )}
               </Column>
             </Row>
           </FeatureContainer>

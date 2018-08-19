@@ -39,16 +39,26 @@ module.exports = {
   // -- Links Resolver
   // This function will be used to generate links to Prismic documents
   linkResolver(linkDoc) {
-    if (linkDoc.document && linkDoc.document.length) {
-      const doc = linkDoc.document[0];
-      doc.type = doc.type || _.snakeCase(doc.__typename);
-      if (doc.type === 'modal') {
-        return 'modal://' + this.pathResolver(doc);
-      } else {
-        return this.pathResolver(doc);
-      }
-    } else {
+    let doc;
+
+    if (linkDoc.url) {
       return linkDoc.url || '/'
+    }
+
+    if (linkDoc.raw && !linkDoc.document) {
+      doc = linkDoc.raw
+      doc.type = doc.type || _.snakeCase(doc.__typename);
+    }
+
+    if (linkDoc.document && linkDoc.document.length) {
+      doc = linkDoc.document[0];
+      doc.type = doc.type || _.snakeCase(doc.__typename);
+    }
+
+    if (doc.type === 'modal') {
+      return 'modal://' + this.pathResolver(doc);
+    } else {
+      return this.pathResolver(doc);
     }
   },
 

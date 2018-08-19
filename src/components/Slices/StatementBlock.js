@@ -11,9 +11,12 @@ const Spacer = styled.div`
 `;
 
 const Headline = styled(ThemeHeadline)`
-  font-size: ${props => props.theme.h2FontSize}px;
   font-family: ${p => p.theme.fontFamilyTitle};
   color: ${props => props.color || props.theme.black};
+  font-size: 30px;
+  ${media.greaterThan('small')`
+    font-size: ${props => props.theme.h2FontSize}px;
+  `}
 `;
 
 const Subheadline = styled.div`

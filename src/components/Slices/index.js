@@ -5,6 +5,7 @@ import StandardHero from './StandardHero';
 import SimpleHero from './SimpleHero';
 import HighlightHero from './HighlightHero';
 import DoubleBlock from './DoubleBlock';
+import DoubleColumnContentForm from './DoubleColumnContentForm';
 import LogoBlock from './LogoBlock';
 import LogoBlockInline from './LogoBlockInline';
 import ContentBlock from './ContentBlock';
@@ -38,6 +39,8 @@ const Slice = (props) => {
       return <StandardHero slice={data} />
     case 'SimpleHero':
       return <SimpleHero slice={data} />
+    case 'DoubleColumnContentForm':
+      return <DoubleColumnContentForm slice={data} />
     case 'DoubleBlock':
       return <DoubleBlock slice={data} />
     case 'HighlightHero':
@@ -98,11 +101,13 @@ class Slices extends Component {
 
     return (
       <Fragment>
-        <Helmet>
-          {( document.data.body1 || document.data.body2 || [] ).map((slice, i) => <Slice data={slice} key={`meta_${i}`} /> )}
-        </Helmet>
+        {document.data && (document.data.body1 || document.data.body2) ? (
+          <Helmet>
+            {( (document.data.body1 || document.data.body2) || [] ).map((slice, i) => <Slice data={slice} key={`meta_${i}`} /> )}
+          </Helmet>
+        ) : null}
 
-        {( document.data.body || [] ).map((slice, i) => <Slice data={slice} key={`ui_${i}`} /> )}
+        {( (document.data && document.data.body) || [] ).map((slice, i) => <Slice data={slice} key={`ui_${i}`} /> )}
       </Fragment>
     )
   }

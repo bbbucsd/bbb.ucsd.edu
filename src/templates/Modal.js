@@ -1,5 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import Helmet from 'react-helmet';
+import Slices from 'components/Slices';
+import State from '../state';
 
 class Modal extends Component {
   renderMeta() {
@@ -12,10 +14,12 @@ class Modal extends Component {
   render() {
     return (
       <Fragment>
-        <Helmet>
-          {this.renderMeta()}
-        </Helmet>
-        <div>Hello World</div>
+        {State.get('currentUrl').match(this.props.location.pathname) ? (
+          <Helmet>
+            {this.renderMeta()}
+          </Helmet>
+        ) : null}
+        <Slices document={this.props.data.modal} />
       </Fragment>
     );
   }
@@ -27,6 +31,11 @@ export const modalQuery = graphql`
   query ModalQuery($uid: String!) {
     modal(uid: { eq: $uid }) {
       uid
+      data {
+        body {
+          ...DoubleColumnContentForm
+        }
+      }
     }
   }
 `
