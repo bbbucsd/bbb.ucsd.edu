@@ -44,7 +44,7 @@ const Feature = styled.div`
 `;
 
 const FeatureCard = styled(Card)`
-  background-color: ${p => p.backgroundColor};
+  background-color: ${p => p.backgroundColor} !Important;
   margin: 5px;
   -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
@@ -55,9 +55,9 @@ const FeatureCard = styled(Card)`
 `;
 
 const FeatureCardTitle = styled(CardTitle)`
-  color: ${p => p.theme.white};
-  font-family: ${p => p.subtitle ? p.theme.fontFamily : p.theme.fontFamilyTitle };
-  font-size: ${p => p.subtitle ? '18px' : '20px'};
+  color: ${p => p.theme.white} !Important;
+  font-family: ${p => p.subtitle ? p.theme.fontFamily : p.theme.fontFamilyTitle } !important;
+  font-size: ${p => p.subtitle ? '18px' : '20px'} !important;
   text-align: left;
 `;
 
