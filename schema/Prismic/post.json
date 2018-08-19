@@ -13,12 +13,20 @@
         "label" : "Slug"
       }
     },
-    "post_category" : {
+    "category" : {
       "type" : "Link",
       "config" : {
         "select" : "document",
-        "customtypes" : [ "post_category" ],
-        "label" : "Post Category"
+        "customtypes" : [ "category" ],
+        "label" : "Category"
+      }
+    },
+    "featured_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Featured Image"
       }
     },
     "body" : {
@@ -79,6 +87,30 @@
                   "multi" : "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
                   "label" : "Content",
                   "placeholder" : "2/3 Column Content"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "simple_hero" : {
+            "type" : "Slice",
+            "fieldset" : "Simple Hero",
+            "description" : "Headline, Subheadline",
+            "icon" : "adjust",
+            "display" : "list",
+            "non-repeat" : {
+              "headline" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1",
+                  "label" : "Headline"
+                }
+              },
+              "subheadline" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading2",
+                  "label" : "Subheadline"
                 }
               }
             },
@@ -328,6 +360,43 @@
                 "type" : "Link",
                 "config" : {
                   "label" : "Schema Webpage Breadcrumb URL"
+                }
+              }
+            }
+          },
+          "schema___person" : {
+            "type" : "Slice",
+            "fieldset" : "Schema > Person",
+            "description" : "Schema Person Configuration",
+            "icon" : "face",
+            "display" : "list",
+            "non-repeat" : {
+              "schema_person_name" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Schema Person Name"
+                }
+              },
+              "schema_person_url" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Schema Person URL"
+                }
+              },
+              "schema_person_image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Schema Person Image"
+                }
+              }
+            },
+            "repeat" : {
+              "schema_person_same_as_link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Schema Person Same As Link"
                 }
               }
             }
