@@ -9,8 +9,9 @@ import LogoBlock from './LogoBlock';
 import LogoBlockInline from './LogoBlockInline';
 import ContentBlock from './ContentBlock';
 import StatementBlock from './StatementBlock';
+import SingleFeatureBlock from './SingleFeatureBlock';
 import FeatureBlock from './FeatureBlock';
-// import TestimonialBlock from './TestimonialBlock';
+import TestimonialBlock from './TestimonialBlock';
 // import DoubleTestimonialBlock from './DoubleTestimonialBlock';
 import SingleImageBlock from './SingleImageBlock';
 import FrontMatter from './FrontMatter';
@@ -55,10 +56,12 @@ const Slice = (props) => {
       return <FrontMatter slice={data} />
     case 'StatementBlock':
       return <StatementBlock slice={data} />
+    case 'SingleFeatureBlock':
+      return <SingleFeatureBlock slice={data} />
     case 'FeatureBlock':
       return <FeatureBlock slice={data} />
-    // case 'TestimonialBlock':
-    //   return <TestimonialBlock slice={data} />
+   case 'TestimonialBlock':
+     return <TestimonialBlock slice={data} />
     // case 'DoubleTestimonialBlock':
     //   return <DoubleTestimonialBlock slice={data} />
     case 'SingleImageBlock':

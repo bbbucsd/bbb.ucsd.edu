@@ -9,13 +9,13 @@ const minHeightMixin = css`
     case 'XL':
       return '100vh';
     case 'Large':
-      return '70vh';
+      return '95vh';
     case 'Medium':
       return '50vh';
     case 'Small':
       return '30vh';
     default:
-      return '80vh';
+      return '50vh';
   }}}
 `;
 

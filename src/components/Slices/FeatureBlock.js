@@ -32,6 +32,7 @@ const FeaturesContainer = styled.div`
 `;
 
 const Feature = styled.div`
+   cursor: pointer;
    text-align: center;
    max-width:300px;
 
@@ -50,7 +51,7 @@ const FeatureCard = styled(Card)`
   border: 0;
   font-weight: 400;
   transition: all .2s ease-in-out;
-  &:hover { transform: scale(1.05); z-index: 100; }
+  &:hover { transform: scale(1.05); z-index: 90; }
 `;
 
 const FeatureCardTitle = styled(CardTitle)`

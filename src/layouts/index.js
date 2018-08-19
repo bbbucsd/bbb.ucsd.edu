@@ -125,7 +125,7 @@ export const siteQuery = graphql`
         }
       }
     }
-    allFile(filter: { relativeDirectory: { regex: "/logos/"}}) {
+    allFile(filter: { relativeDirectory: { regex: "/logos|indicators/"}}) {
       edges {
         node {
           relativeDirectory

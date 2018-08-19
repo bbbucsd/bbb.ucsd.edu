@@ -18,7 +18,9 @@ class MainMenu extends Component {
         <About floating={floating} />
         <Learn floating={floating} />
         <Resources floating={floating} />
+        {/*
         <Coaching floating={floating} />
+        */}
         <Contact floating={floating} />
       </Fragment>
     );

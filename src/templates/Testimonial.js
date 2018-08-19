@@ -20,37 +20,37 @@ class Testimonial extends Component {
 
 export default connectPreview('testimonial')(Testimonial);
 
-export const testimonialQuery = graphql`
-  query TestimonialQuery($uid: String!) {
-    testimonial(uid: { eq: $uid }) {
-      uid
-      first_publication_date
-      last_publication_date
-      data {
-        title
-        full_name {
-          text
-        }
-        website {
-          url
-        }
-        picture {
-          url
-        }
-        company {
-          text
-        }
-        company_logo {
-          url
-        }
-        role_occupation
-        body1 {
-          ...FrontMatter
-          ...SchemaPerson
-        }
-      }
-    }
-  }
-`
+//export const testimonialQuery = graphql`
+  //query TestimonialQuery($uid: String!) {
+    //testimonial(uid: { eq: $uid }) {
+      //uid
+      //first_publication_date
+      //last_publication_date
+      //data {
+        //title
+        //full_name {
+          //text
+        //}
+        //website {
+          //url
+        //}
+        //picture {
+          //url
+        //}
+        //company {
+          //text
+        //}
+        //company_logo {
+          //url
+        //}
+        //role_occupation
+        //body1 {
+          //...FrontMatter
+          //...SchemaPerson
+        //}
+      //}
+    //}
+  //}
+//`
 
 

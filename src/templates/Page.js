@@ -38,10 +38,11 @@ export const pageQuery = graphql`
           ...HighlightContentBlock
           ...ContentBlock
           ...StatementBlock
+          ...SingleFeatureBlock
           ...FeatureBlock
           ...SingleImageBlock
           ...FormBlock
-#          ...TestimonialBlock
+          ...TestimonialBlock
 #          ...DoubleTestimonialBlock
         }
         body2 {

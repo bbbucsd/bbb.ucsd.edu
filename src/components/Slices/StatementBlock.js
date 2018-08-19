@@ -2,16 +2,26 @@ import React, { Component } from 'react';
 import Block, { Section } from 'components/Theme/Block';
 import ThemeHeadline from 'components/Theme/Headline';
 import ThemeButton from 'components/Theme/Button';
-import { styled, css } from 'components/Theme/Styles';
+import ShortDivider from 'components/Theme/ShortDivider';
+import { styled, media } from 'components/Theme/Styles';
+
+const Spacer = styled.div`
+  padding-top: 15px;
+  padding-bottom: 15px;
+`;
 
 const Headline = styled(ThemeHeadline)`
-  font-size:${props => props.theme.h2FontSize * 1.5}px;
+  font-size: ${props => props.theme.h2FontSize}px;
+  font-family: ${p => p.theme.fontFamilyTitle};
   color: ${props => props.color || props.theme.black};
 `;
 
-const Subheadline = styled(ThemeHeadline)`
-  font-size:${props => props.theme.h2FontSize / 1.1}px;
+const Subheadline = styled.div`
   color: ${props => props.color || props.theme.black};
+  margin: 25px 0;
+  ${media.greaterThan('small')`
+    width: 50%;
+  `}
 `;
 
 const Button = styled(ThemeButton)`
@@ -19,7 +29,7 @@ const Button = styled(ThemeButton)`
 `;
 
 const Primary = styled(Section)`
-  & > div { width:70%; }
+  & > div { width:80%; }
 `;
 
 
@@ -41,10 +51,17 @@ class StatementBlock extends Component {
       <Block color={background_color} height={height}>
         <Primary align={align} justify={justify}>
           <Headline h2 color={headline_color} text={headline} />
-          <Subheadline h3 color={subheadline_color} text={subheadline} />
+          {subheadline && subheadline.text ? (
+            <Subheadline color={subheadline_color}>
+              {subheadline.text}
+            </Subheadline>
+          ) : (
+            <Spacer />
+          )}
           {cta_label &&
-            <Button to={cta_link} onClick={this.handleClickOpen}>{cta_label}</Button>
+            <Button to={cta_link}>{cta_label}</Button>
           }
+          <ShortDivider />
         </Primary>
       </Block>
     );

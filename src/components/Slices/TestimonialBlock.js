@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import Block, { Section } from 'components/Theme/Block';
 import Testimonial from 'components/Theme/Testimonial';
+import { styled, media } from 'components/Theme/Styles';
+
+const Primary = styled(Section)`
+  ${media.greaterThan('small')`
+     & > * {
+      width: 50%;
+     }
+  `}
+`;
 
 class TestimonialBlock extends Component {
 
@@ -14,9 +23,9 @@ class TestimonialBlock extends Component {
 
     return (
       <Block color={background_color} height="Medium">
-        <Section align={align} justify={justify}>
+        <Primary align={align} justify={justify}>
           <Testimonial backgroundColor={background_color} data={testimonial} />
-        </Section>
+        </Primary>
       </Block>
     );
   }
