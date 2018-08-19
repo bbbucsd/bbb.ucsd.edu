@@ -57,7 +57,7 @@ const FeatureCard = styled(Card)`
 const FeatureCardTitle = styled(CardTitle)`
   color: ${p => p.theme.white} !Important;
   font-family: ${p => p.subtitle ? p.theme.fontFamily : p.theme.fontFamilyTitle } !important;
-  font-size: ${p => p.subtitle ? '18px' : '20px'} !important;
+  font-size: ${p => p.subtitle ? '16px' : '20px'} !important;
   text-align: left;
 `;
 
