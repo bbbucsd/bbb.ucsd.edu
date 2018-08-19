@@ -1,7 +1,15 @@
 import React from 'react';
 import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
 import Link from 'components/Theme/Link';
+import BlockQuote from 'components/Theme/BlockQuote';
 
+const convertBlockQuote = (node, index) => {
+  return (
+    <BlockQuote key={index + Math.random()}>
+      {node.children[0] ? node.children[0].data : null}
+    </BlockQuote>
+  );
+}
 
 const convertLink = (node, index) => {
   return (
@@ -30,13 +38,15 @@ const convertInput = (node, index) => {
 }
 
 const processNode = (node, index) => {
-  switch (node.name) {
+  switch (node.name.toLowerCase()) {
     case 'a':
       return convertLink(node, index);
     case 'textarea':
       return convertTextArea(node, index);
     case 'input':
       return convertInput(node, index);
+    case 'blockquote':
+      return convertBlockQuote(node, index);
     default:
       return convertNodeToElement(node, index, (childNode, childIndex) => {
         return processNode(childNode, childIndex);

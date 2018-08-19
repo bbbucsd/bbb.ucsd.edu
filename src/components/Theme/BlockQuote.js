@@ -1,4 +1,14 @@
+import State from '../../state';
+import _ from 'lodash'
 import Styles, { styled, css, media, keyframes } from './Styles';
+
+function getLeftQuote(props) {
+  return _.find(State.get('images'), (i) => i.name === 'quotation-marks-left').childImageSharp.sizes.tracedSVG;
+}
+
+function getRightQuote(props) {
+  return _.find(State.get('images'), (i) => i.name === 'quotation-marks-right').childImageSharp.sizes.tracedSVG;
+}
 
 export default styled.div`
     border: none;
@@ -8,7 +18,7 @@ export default styled.div`
     padding: 15px;
 
     &:before {
-      background: transparent url(./quotation-marks-left.png) no-repeat 0 0;
+      background: url("${getLeftQuote}") no-repeat 0 0;
       content: "";
       position: absolute;
       width: 71px;
@@ -21,7 +31,7 @@ export default styled.div`
     }
 
     &:after {
-      background: transparent url(./quotation-marks-right.png) no-repeat 0 0;
+      background: url("${getRightQuote}") no-repeat 0 0;
       content: "";
       background-repeat: no-repeat;
       background-position: bottom right;
