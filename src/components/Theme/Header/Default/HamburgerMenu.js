@@ -1,9 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import Link from 'components/Theme/Link';
 import Styles, { styled, css} from 'components/Theme/Styles';
-import ProductMenu from './HamburgerMenu/ProductMenu';
-import IndustriesMenu from './HamburgerMenu/IndustriesMenu';
-import WorkWithMeMenu from './HamburgerMenu/WorkWithMeMenu';
+import HamburgerLink from 'components/Theme/HamburgerLink';
 
 const Menu = styled.ul`
   margin-top: 130px;
@@ -14,28 +12,21 @@ const Menu = styled.ul`
   font-style: normal;
 `
 
-const Header = styled.li`
-  font-size:${p => p.theme.h2FontSize*2}px;
-`;
-
-const Item = styled.li`
-
-`;
-
-
 class HamburgerMenu extends Component {
 
   render() {
     return (
       <Fragment>
         <Menu>
-          <ProductMenu  />
-          <IndustriesMenu />
-          <WorkWithMeMenu />
+          <HamburgerLink to="/about">About</HamburgerLink>
+          <HamburgerLink to="/volunteer">Volunteer</HamburgerLink>
+          <HamburgerLink to="/inside-the-prison">Inside The Prison</HamburgerLink>
+          <HamburgerLink to="/contact">Contact</HamburgerLink>
         </Menu>
       </Fragment>
     );
   }
+
 }
 
 export default HamburgerMenu;
