@@ -12,7 +12,6 @@ const ThemeButton = styled.button`
   text-align: center;
   color: white;
   drop-shadow: 10px 10px 10px red;
-  border-radius: 30px;
   background-color: ${p => p.theme.brandSuccess};
   text-transform: none;
   min-height: auto;

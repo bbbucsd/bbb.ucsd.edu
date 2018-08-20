@@ -112,8 +112,7 @@ const Content = styled.div`
     margin: 0 0 30px 0;
     list-style: none;
     padding: 30px;
-    border: 3px dashed ${p => p.theme.brandSecondary};
-    border-radius: 5px;
+    border: 3px double ${p => p.theme.brandSecondary};
     display: block;
     width: fit-content;
   }
