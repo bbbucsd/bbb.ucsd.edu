@@ -160,7 +160,6 @@ export const query = graphql`
       subheadline {
         text
       }
-      cta_label
       cta_link {
         url
         raw {
