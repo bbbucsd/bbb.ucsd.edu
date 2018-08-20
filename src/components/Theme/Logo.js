@@ -16,7 +16,7 @@ export default class extends Component {
   }
 
   render() {
-    const title = "Automate Your Brand";
+    const title = State.get("siteName");
     let img;
     switch (this.props.color) {
       case 'colorWhite':
