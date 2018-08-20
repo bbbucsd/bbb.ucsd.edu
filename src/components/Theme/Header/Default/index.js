@@ -232,7 +232,7 @@ class Default extends Component {
                     {isMobileOnly ? (
                       <Logo />
                     ) : (
-                      <Logo color={this.state.floating ? 'blueWhite' : 'white'} />
+                      <Logo color={this.state.floating ? 'colorWhite' : 'white'} />
                     )}
                   </LogoLink>
                 </ListItem>

@@ -19,23 +19,14 @@ export default class extends Component {
     const title = "Automate Your Brand";
     let img;
     switch (this.props.color) {
-      case 'blueWhite':
-        img = this.findImage('automate-your-brand-logo-blue-white');
+      case 'colorWhite':
+        img = this.findImage('books-beyond-boundaries-color-white');
         break;
       case 'white':
         img = this.findImage('automate-your-brand-logo-white');
         break;
-      case 'grayWhite':
-        img = this.findImage('automate-your-brand-logo-gray-white');
-        break;
-      case 'blue':
-        img = this.findImage('automate-your-brand-logo');
-        break;
-      case 'blue':
-        img = this.findImage('automate-your-brand-logo');
-        break;
       default:
-        img = this.findImage('automate-your-brand-logo-blue-white');
+        img = this.findImage('books-beyond-boundaries-color-white');
         break;
     }
     return (
