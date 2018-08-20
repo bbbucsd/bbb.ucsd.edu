@@ -187,7 +187,7 @@ class Footer extends Component {
             </Row>
             <Row>
               <FooterBelow>
-                Website by: <a href="https://automateyourbrand.com">Automate Your Brand</a>
+                Website by: <a href="https://automateyourbrand.com" target="_blank">Automate Your Brand</a>
               </FooterBelow>
             </Row>
           </Container>
