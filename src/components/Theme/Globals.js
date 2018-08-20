@@ -22,7 +22,7 @@ const theme = {
   brandSecondaryBorder: '#0C1B30',
   brandTertiary:        '#0098C9',
   brandInfo:            '#F68936',
-  brandSuccess:         '#529548',
+  brandSuccess:         '#529543',
   brandWarning:         '#F7B900',
   brandDanger:          '#FF4E38',
   brandLight:           '#C2C3C4',
