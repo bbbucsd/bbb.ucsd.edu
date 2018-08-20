@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react';
 import Styles, { styled, css} from 'components/Theme/Styles';
 import About from './MainMenu/About';
 import Volunteer from './MainMenu/Volunteer';
-import Resources from './MainMenu/Resources';
+import InsideThePrison from './MainMenu/InsideThePrison';
 import Contact from './MainMenu/Contact';
 
 
@@ -14,7 +14,7 @@ class MainMenu extends Component {
       <Fragment>
         <About floating={floating} />
         <Volunteer floating={floating} />
-        <Resources floating={floating} />
+        <InsideThePrison floating={floating} />
         <Contact floating={floating} />
       </Fragment>
     );

@@ -149,20 +149,14 @@ class Footer extends Component {
                 <LogoLink to="/">
                   <Logo />
                 </LogoLink>
-                <SocialSection>
-                  <SocialLink><Link to="https://twitter.com/ericraio"><Twitter /></Link></SocialLink>
-                  <SocialLink><Link to="https://www.facebook.com/AutomateYourBrand"><Facebook /></Link></SocialLink>
-                  <SocialLink><Link to="https://www.instagram.com/ericraio"><Instagram /></Link></SocialLink>
-                  <SocialLink><Link to="https://www.linkedin.com/in/ericraio"><Linkedin /></Link></SocialLink>
-                </SocialSection>
 
                 <Divider />
               </BrandColumn>
 
               <LinkColumn sm={2}>
                 <NavTitle>Start Here</NavTitle>
-                <FooterLink to="/start">
-                  Getting Started
+                <FooterLink to="/volunteer">
+                  Volunteer
                 </FooterLink>
                 <FooterLink to="/about">
                   About
@@ -172,26 +166,20 @@ class Footer extends Component {
               <LinkColumn sm={3}>
                 <NavTitle>Get Involved</NavTitle>
                 <FooterLink to="/share">
-                  Share Automate Your Brand
+                  Share Books Beyond Boundaries
                 </FooterLink>
-                <FooterLink to="/community">
-                  Join The Community
+                <FooterLink to="/newsletter">
+                  Join The Newsletter
                 </FooterLink>
               </LinkColumn>
 
               <LinkColumn sm={3}>
-                <NavTitle>Learn</NavTitle>
-                <FooterLink to="/resource">
-                  Resources
+                <NavTitle>Resources</NavTitle>
+                <FooterLink to="/inside-the-prison">
+                  Inside The Prison
                 </FooterLink>
-                <FooterLink to="/learn/marketing-measurement">
-                  Marketing & Measurement
-                </FooterLink>
-                <FooterLink to="/learn/brand-identity">
-                  Brand & Identity
-                </FooterLink>
-                <FooterLink to="/learn/business-operations">
-                  Business & Operations
+                <FooterLink to="/volunteer">
+                  How To Volunteer
                 </FooterLink>
               </LinkColumn>
             </Row>
