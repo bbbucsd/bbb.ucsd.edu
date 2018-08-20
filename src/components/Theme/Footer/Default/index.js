@@ -15,6 +15,10 @@ import {
   Column
 } from 'styled-bootstrap-components';
 
+const FooterBelow = styled.div`
+  font-size: 12px;
+`;
+
 const FooterLink = styled(Link)`
   color: ${p => p.theme.brandLight};
   display: block;
@@ -109,8 +113,6 @@ const LinkColumn = styled(Column)`
 `;
 
 const LogoLink = styled(Link)`
-  justify-content: center;
-  display: flex;
 
   .gatsby-image-wrapper {
     width: 175px;
@@ -165,10 +167,10 @@ class Footer extends Component {
 
               <LinkColumn sm={3}>
                 <NavTitle>Get Involved</NavTitle>
-                <FooterLink to="/share">
+                <FooterLink to="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbbb.ucsd.edu">
                   Share Books Beyond Boundaries
                 </FooterLink>
-                <FooterLink to="/newsletter">
+                <FooterLink to="https://ucsd.us12.list-manage.com/subscribe?u=3f52e7d7a72ee5f354cac7ec5&id=bfc189490d">
                   Join The Newsletter
                 </FooterLink>
               </LinkColumn>
@@ -182,6 +184,11 @@ class Footer extends Component {
                   How To Volunteer
                 </FooterLink>
               </LinkColumn>
+            </Row>
+            <Row>
+              <FooterBelow>
+                Website by: <a href="https://automateyourbrand.com">Automate Your Brand</a>
+              </FooterBelow>
             </Row>
           </Container>
         </div>
