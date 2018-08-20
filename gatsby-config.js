@@ -4,12 +4,10 @@ var _ = require('lodash');
 
 // dot env
 if (process.env.NODE_ENV != 'production') {
+  require('dotenv').config({
+    path: `.env`,
+  })
 };
-require('dotenv').config({
-  path: `.env`,
-})
-
-
 
 // Leave objects as defaults to disable meta data
 var config = _.cloneDeep({
