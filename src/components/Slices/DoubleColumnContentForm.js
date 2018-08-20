@@ -6,14 +6,23 @@ import { styled, css, media } from 'components/Theme/Styles';
 import {
   Container,
   Row,
-  Column
+  Column,
+  FormGroup,
+  Label,
+  FormControl
 } from 'styled-bootstrap-components';
+import { connect} from 'airlytics';
+
+const ModalRow = styled(Row)`
+  height: 100%;
+`;
 
 const ModalContainer = styled(Container)`
   padding: 25px;
   border-radius: 5px;
   border-top: 4px solid ${p => p.theme.brandInfo};
-  min-width: 600px;
+  width: 800px;
+  min-height: 200px;
   background: white;
   &:before {
     content: ' ';
@@ -55,20 +64,24 @@ class DoubleColumnContentForm extends Component {
 
     return (
       <ModalContainer>
-        <Row>
+        <ModalRow>
           <LeftColumn>
             <RichText body={content} />
           </LeftColumn>
           <RightColumn>
-            Test
+            <form>
+              <FormGroup>
+                <FormControl type="email" placeholder="name@example.com" />
+              </FormGroup>
+            </form>
           </RightColumn>
-        </Row>
+        </ModalRow>
       </ModalContainer>
     );
   }
 }
 
-export default DoubleColumnContentForm;
+export default connect()(DoubleColumnContentForm);
 
 export const query = graphql`
   fragment DoubleColumnContentForm on DoubleColumnContentForm {

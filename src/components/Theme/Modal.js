@@ -16,6 +16,16 @@ const Overlay = styled.div`
   overflow-x: hidden; /* Disable horizontal scroll */
 `;
 
+const ThemeModalContent = styled(ModalContent)`
+    max-width: 800px;
+    max-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    margin: 0 auto;
+`;
+
 const CloseButton = styled(Button)`
   position: absolute;
   top: -20px;
@@ -53,7 +63,7 @@ export default class extends Component {
       <Modal hidden={this.isHidden()}>
         <Overlay onClick={this.onClose.bind(this)}/>
         <ModalDialog>
-          <ModalContent>
+          <ThemeModalContent>
             <ThemeModalBody>
               {this.props.disableCloseButton ? null : (
                 <CloseButton onClick={() => this.onClose()}>
@@ -64,7 +74,7 @@ export default class extends Component {
                 location: Object.assign({}, this.props.location, { pathname }),
               })}
             </ThemeModalBody>
-          </ModalContent>
+          </ThemeModalContent>
         </ModalDialog>
       </Modal>
     )
