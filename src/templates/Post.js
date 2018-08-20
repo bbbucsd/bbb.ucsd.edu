@@ -44,7 +44,6 @@ export const postQuery = graphql`
           ...OpenGraph
           ...Twitter
           ...SchemaArticle
-          ...SchemaPerson
           ...SchemaWebpage
         }
       }

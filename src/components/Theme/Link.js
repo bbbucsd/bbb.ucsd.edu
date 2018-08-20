@@ -116,15 +116,5 @@ export const query = graphql`
         }
       }
     }
-    ... on Product {
-      uid
-      data {
-        category {
-          document {
-            uid
-          }
-        }
-      }
-    }
   }
 `;

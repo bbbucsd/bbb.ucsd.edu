@@ -41,9 +41,6 @@ export const pageQuery = graphql`
           ...SingleFeatureBlock
           ...FeatureBlock
           ...SingleImageBlock
-          ...FormBlock
-          ...TestimonialBlock
-#          ...DoubleTestimonialBlock
         }
         body2 {
           ...OpenGraph
