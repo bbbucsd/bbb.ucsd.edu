@@ -23,7 +23,7 @@ export default class extends Component {
         img = this.findImage('books-beyond-boundaries-color-white');
         break;
       case 'white':
-        img = this.findImage('automate-your-brand-logo-white');
+        img = this.findImage('books-beyond-boundaries-white');
         break;
       default:
         img = this.findImage('books-beyond-boundaries-color-white');

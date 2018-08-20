@@ -63,9 +63,9 @@ const ListItem = styled.li`
 `;
 
 const LogoLink = styled(Link)`
-  width: 175px;
+  width: 250px;
   ${media.between("medium", "large")`
-    width: 120px;
+    width: 150px;
     margin-left: 25px;
   `}
 `;

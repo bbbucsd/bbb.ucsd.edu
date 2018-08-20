@@ -109,10 +109,8 @@ const LinkColumn = styled(Column)`
 `;
 
 const LogoLink = styled(Link)`
-  ${media.lessThan("medium")`
-    justify-content: center;
-    display: flex;
-  `}
+  justify-content: center;
+  display: flex;
 
   .gatsby-image-wrapper {
     width: 175px;
