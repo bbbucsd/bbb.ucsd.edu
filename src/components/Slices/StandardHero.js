@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import { graphql } from 'gatsby';
 import Hero from 'components/Theme/Hero';
 import ThemeHeadline from 'components/Theme/Headline';
 import ThemeButton from 'components/Theme/Button';
-import { styled, css, media } from 'components/Theme/Styles';
+import { styled, media } from 'components/Theme/Styles';
 
 const Headline = styled(ThemeHeadline)`
   color:${p => p.color || p.theme.white};
   ${media.lessThan("medium")`
     font-weight:400;
+    font-size: ${p => p.theme.h1FontSize / 1.5}px;
   `}
 `;
 
@@ -15,7 +17,7 @@ const Subheadline = styled(ThemeHeadline)`
   font-weight:300;
   color:${p => p.color || p.theme.white};
   ${media.lessThan("medium")`
-    font-size: ${p => p.theme.h2FontSize / 2}px;
+    font-size: ${p => p.theme.h2FontSize / 1.5}px;
   `}
 `;
 
@@ -46,7 +48,7 @@ class StandardHero extends Component {
         <Subheadline h2 color={subheadline_color} text={subheadline} />
 
         {cta_label &&
-          <Button to={cta_link}>{cta_label}</Button>
+          <Button large to={cta_link}>{cta_label}</Button>
         }
       </Hero>
     );

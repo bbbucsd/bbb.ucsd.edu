@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
 import Link from './Link';
-import Styles, { styled, css, media, keyframes } from './Styles';
-import { KeyboardArrowRight } from 'styled-icons/material/KeyboardArrowRight.cjs'
-
-const ButtonLink = styled(Link)`
-  text-decoration: none;
-  display: inline-block;
-`
+import { styled, keyframes } from './Styles';
+import { KeyboardArrowRight } from 'styled-icons/material/KeyboardArrowRight.cjs';
+import _ from 'lodash';
 
 const ThemeButton = styled.button`
   text-align: center;
+  justify-content: center;
   color: white;
   drop-shadow: 10px 10px 10px red;
   background-color: ${p => p.theme.brandSuccess};
   text-transform: none;
   min-height: auto;
-  min-width: auto;
+  min-width: ${p => p.fullWidth ? '100%' : 'auto'};
   font-family: ${p => p.theme.fontFamily};
-  font-size: ${p => p.small ? 12 : 14}px;
-  padding: ${p => p.small ? '6px 10px' : `${p.theme.padding / 2}px ${p.theme.padding}px`};
+  font-size: ${p => (p.small && 12) || (p.large && 18) || 14}px;
+  padding: ${p => (p.large && p.arrow && '12px 90px 12px 110px') || (p.small && '6px 10px') || (p.large && '12px 100px') || `${p.theme.padding / 2}px ${p.theme.padding}px`};
   display: inline-flex;
   align-items: center;
   cursor:pointer;
+  opacity: ${p => p.disabled ? '0.5' : '1'};
+  text-transform: ${p => p.large ? 'uppercase' :  'initial'};
   &:hover {
-    background-color: ${p => p.theme.darkSuccess};
+    background-color: ${p => !p.disabled && p.theme.darkSuccess};
   }
   &:focus {
     outline:0;
@@ -49,7 +48,7 @@ const Arrow = styled(KeyboardArrowRight)`
   font-size: 24px;
   fill: ${p => p.theme.white};
   top: 1px;
-  height: ${p => p.small ? 20 : 28 }px;
+  height: ${p => (p.small && 20) || (p.large && 38) || 28 }px;
   animation: ${p => p.animate ? Bounce : null } 2s infinite;
 `;
 
@@ -65,24 +64,23 @@ class Button extends Component {
   }
 
   render() {
-    const {children, small, className } = this.props;
+    const { arrow, children, large, small, fullWidth, disabled, className } = this.props;
 
     return (
-      <ButtonLink to={ this.props.to } onMouseOver={this.toggleArrow} onMouseOut={this.toggleArrow} {...this.props}>
-        <ThemeButton small={small} aria-label={children} className={className}>
+      <Link style={{
+        textDecoration: 'none',
+        display: 'inline-block',
+        width: fullWidth ? '100%' : 'auto'
+      }} to={ this.props.to } onMouseOver={this.toggleArrow} onMouseOut={this.toggleArrow}>
+        <ThemeButton arrow={arrow} large={large} small={small} fullWidth={fullWidth} aria-label={children} className={className} disabled={_.isBoolean(disabled) ? disabled : false} >
           {children}
-          {this.props.arrow === false ? null : (
-            <Arrow animate={this.state.animateArrow} small={small} />
+          {arrow === false ? null : (
+            <Arrow animate={this.state.animateArrow} small={small} large={large} />
           )}
         </ThemeButton>
-      </ButtonLink>
+      </Link>
     )
   }
 }
 
-
 export default Button;
-
-
-
-
