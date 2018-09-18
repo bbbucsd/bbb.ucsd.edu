@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   text-align: center;
   background-repeat: no-repeat;
   background-position: top center;
-  background: ${p => p.color || "linear-gradient(to right, " + p.theme.brandInfo + ", " +  p.theme.brandPrimary + ")"};
+  background: ${p => p.color || "linear-gradient(to bottom right, " + p.theme.brandSecondary + ", " +  p.theme.brandPrimary + ", " + p.theme.brandTertiary + ")"};
   ${p => p.src && Validator.isImage(p.src) ?
     'background-image: url(' + p.src + ');'
   : null}

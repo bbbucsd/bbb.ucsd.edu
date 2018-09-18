@@ -16,16 +16,17 @@ const theme = {
   black:                '#000',
   lightSuccess:         '#E3EFEC',
   darkSuccess:          '#3BA34F',
-  brandPrimary:         '#005089',
-  brandSecondary:       '#2D3B45',
-  brandSecondaryLinks:  '#2D3B45',
-  brandSecondaryBorder: '#2D3B45',
-  brandInfo:            '#1B98CA',
-  brandSuccess:         '#48C35F',
+  brandPrimary:         '#1A2853',
+  brandSecondary:       '#0C1B30',
+  brandSecondaryLinks:  '#0C1B30',
+  brandSecondaryBorder: '#0C1B30',
+  brandTertiary:        '#0098C9',
+  brandInfo:            '#F68936',
+  brandSuccess:         '#529543',
   brandWarning:         '#F7B900',
   brandDanger:          '#FF4E38',
   brandLight:           '#C2C3C4',
-  headerColor:          '#2D3B45',
+  headerColor:          '#0C1B30',
 
 
   // general (in pixels)
@@ -44,7 +45,7 @@ const theme = {
   fontSize:   21,
 
   fontFamilyLogo: `'Open Sans', sans-serif`,
-  fontFamilyTitle: `'Oswald', sans-serif`,
+  fontFamilyTitle: `'', sans-serif`,
   fontFamily: `'Open Sans', sans-serif`
 }
 
