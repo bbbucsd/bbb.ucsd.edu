@@ -64,13 +64,17 @@ export default class extends Component {
                   break;
     }
             }
-            return (
-              <Img
-                title={title}
-                alt={title}
-                fluid={img.node.childImageSharp.fluid}
-              />
-            );
+            if (img) {
+              return (
+                <Img
+                  title={title}
+                  alt={title}
+                  fluid={img.node.childImageSharp.fluid}
+                />
+                );
+            } else {
+              return null;
+            }
           }}
         />
     );
