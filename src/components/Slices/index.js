@@ -27,8 +27,6 @@ const Slice = (props) => {
       return <HighlightHero events={events} slice={data} />
 
     // BLOCKS
-    case 'DoubleBlock':
-      return <DoubleBlock events={events} slice={data} />
     case 'LogoBlock':
       return <LogoBlock events={events} slice={data} />
     case 'LogoBlockInline':
