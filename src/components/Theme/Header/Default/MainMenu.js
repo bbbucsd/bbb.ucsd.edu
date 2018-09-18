@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import StartHere from './MainMenu/StartHere';
+import Volunteer from './MainMenu/Volunteer';
 import About from './MainMenu/About';
 import Contact from './MainMenu/Contact';
 
@@ -10,8 +10,8 @@ class MainMenu extends Component {
     let { floating, color = "#FFFFFF" } = this.props;
     return (
       <Fragment>
-        <StartHere floating={floating} color={color} />
         <About floating={floating} color={color} />
+        <Volunteer floating={floating} color={color} />
         <Contact floating={floating} color={color} />
       </Fragment>
     );
