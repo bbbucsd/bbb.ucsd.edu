@@ -25,6 +25,8 @@ const autoMarginMixin = css`
           return '10vh 0 25vh 0'
         case 'Bottom':
           return '25vh 0 10vh 0'
+        default:
+          return null;
       }
     }
   }}
@@ -35,7 +37,7 @@ const padding = (selectorLeft, selectorRight, blockPadding) => {
     & > ${selectorLeft} {
       padding-left: ${blockPadding}px;
     }
-    
+
     & > ${selectorRight} {
       padding-right: ${blockPadding}px;
     }
@@ -53,12 +55,12 @@ const BlockWrapper = styled.div`
   min-height: ${minHeightMixin};
   margin: ${autoMarginMixin};
   flex-flow:${p => (p.direction && p.direction.match(/left/i)) ? 'row-reverse' : null};
-  
-  
+
+
   // finishing
   ${p => (p.finishing && p.finishing === 'Frame') ? 'border:25px solid #FFFFFF' : null};
-  
- 
+
+
   // paddings
   ${media.greaterThan("large")`
     ${p => padding(':first-child', ':last-child', p.theme.blockPaddingLarge)}
@@ -67,7 +69,7 @@ const BlockWrapper = styled.div`
   ${media.greaterThan("medium")`
     ${p => padding(':first-child', ':last-child', p.theme.blockPaddingMedium)}
   `}
-  
+
   ${media.lessThan("medium")`
     flex-flow:column;
     ${p => padding('div', 'div', p.theme.blockPaddingSmall)}

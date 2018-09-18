@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 const SPLIT_RE = /(\S+)(\s+|\s*$)/g;
 const SPACE = ' ';
 const ARTICLES = 'a an the';
@@ -23,11 +21,12 @@ function isExceptional(s) {
   return EXCEPTIONAL.indexOf(SPACE + s + SPACE) >= 0;
 }
 
-export default function titlize(s) {
+module.exports = function titlize(s) {
   if (s) {
+    s = s.replace(/-/g, ' ');
     var title = s.replace(SPLIT_RE, _titlize);
     return title.slice(0,title.length-1);
   } else {
     return "";
   }
-}
+};

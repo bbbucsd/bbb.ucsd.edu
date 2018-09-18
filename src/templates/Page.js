@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
+import Layout from 'components/Layout';
 import Header from 'components/Theme/Header';
+import Features from 'components/Features';
 import Slices from 'components/Slices';
+import Meta from 'components/Meta';
 import Footer from 'components/Theme/Footer';
 import connectPreview from 'lib/connectPreview';
+import { graphql } from 'gatsby';
+
 
 class Page extends Component {
   render() {
-    const { document } = this.props;
+    const { location, document } = this.props;
     return (
-      <div>
-        <Header display={document.data.header} />
+      <Layout {...this.props}>
+        <Header document={document} />
+        <Meta type="page" location={location} document={document} />
+        <Features document={document} />
         <Slices document={document} />
         <Footer display={document.data.footer} />
-      </div>
+      </Layout>
     );
   }
 }
@@ -25,6 +32,7 @@ export const pageQuery = graphql`
       uid
       first_publication_date
       last_publication_date
+      ...Features
       data {
         header
         footer
@@ -39,10 +47,17 @@ export const pageQuery = graphql`
           ...ContentBlock
           ...StatementBlock
           ...SingleFeatureBlock
+          ...SimpleSingleFeatureBlock
           ...FeatureBlock
+          ...FeatureDocumentsRow
+          ...DocumentsRow
+          ...SocialRow
           ...SingleImageBlock
+          ...TestimonialBlock
+#          ...DoubleTestimonialBlock
         }
-        body2 {
+        body1 {
+          ...FrontMatter
           ...OpenGraph
           ...Twitter
           ...SchemaWebpage
@@ -51,5 +66,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-

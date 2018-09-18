@@ -7,6 +7,9 @@ import { CalendarCheck } from 'styled-icons/fa-regular/CalendarCheck.cjs';
 
 // Octicons
 import { Graph } from 'styled-icons/octicons/Graph.cjs';
+import { MailRead } from 'styled-icons/octicons/MailRead.cjs';
+import { FileZip } from 'styled-icons/octicons/FileZip.cjs';
+import { Gift } from 'styled-icons/octicons/Gift.cjs';
 
 // Material
 import { GraphEq } from 'styled-icons/material/GraphicEq.cjs';
@@ -15,6 +18,7 @@ import { PermIdentity } from 'styled-icons/material/PermIdentity.cjs';
 import { BrandingWatermark } from 'styled-icons/material/BrandingWatermark.cjs';
 import { DeveloperBoard } from 'styled-icons/material/DeveloperBoard.cjs';
 import { Stars } from 'styled-icons/material/Stars.cjs';
+import { KeyboardArrowRight } from 'styled-icons/material/KeyboardArrowRight.cjs';
 
 // Font Awesome Solid
 import { ChartLine } from 'styled-icons/fa-solid/ChartLine.cjs';
@@ -30,64 +34,59 @@ import { Linkedin } from 'styled-icons/fa-brands/Linkedin.cjs';
 
 export default class Icon extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
-  renderIcon() {
+  render() {
+    if (!this.props.name) { return null; }
     switch (this.props.name.toLowerCase()) {
       case 'instagram':
-        return Instagram;
+        return <Instagram {...this.props} />
       case 'facebook':
-        return Facebook;
+        return <Facebook {...this.props} />
       case 'twitter':
-        return Twitter;
+        return <Twitter {...this.props} />
       case 'linkedin':
-        return Linkedin;
+        return <Linkedin {...this.props} />
       case 'youtube':
         return null;
       case 'bell':
-        return Bell;
+        return <Bell {...this.props} />
       case 'building':
-        return Building;
+        return <Building {...this.props} />
       case 'calendar':
-        return Calendar;
+        return <Calendar {...this.props} />
       case 'calendaralt':
-        return CalendarAlt;
+        return <CalendarAlt {...this.props} />
       case 'calendarcheck':
-        return CalendarCheck;
+        return <CalendarCheck {...this.props} />
       case 'chartline':
-        return ChartLine;
+        return <ChartLine {...this.props} />
       case 'graph':
-        return Graph;
+        return <Graph {...this.props} />
       case 'grapheq':
-        return GraphEq;
+        return <GraphEq {...this.props} />
+      case 'filezip':
+        return <FileZip {...this.props} />
+      case 'gift':
+        return <Gift {...this.props} />
       case 'mailoutline':
-        return MailOutline;
+        return <MailOutline {...this.props} />
+      case 'mailread':
+        return <MailRead {...this.props} />
       case 'permidentity':
-        return PermIdentity;
+        return <PermIdentity {...this.props} />
       case 'userscog':
-        return UsersCog;
+        return <UsersCog {...this.props} />
       case 'brandingwatermark':
-        return BrandingWatermark;
+        return <BrandingWatermark {...this.props} />
       case 'developerboard':
-        return DeveloperBoard;
+        return <DeveloperBoard {...this.props} />
       case 'stars':
-        return Stars;
+        return <Stars {...this.props} />
       case 'timescircle':
-        return TimesCircle;
+        return <TimesCircle {...this.props} />
+      case 'keyboardarrowright':
+        return <KeyboardArrowRight {...this.props} />
       default:
         return null;
-    }
-  }
-
-  render() {
-    if (!this.props.name) { return null; }
-    let icon = this.renderIcon();
-    if (icon) {
-      return React.createElement(icon, ...this.props);
-    } else {
-      return null;
     }
   }
 

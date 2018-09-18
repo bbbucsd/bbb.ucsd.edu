@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ThemeHeadline from './Headline';
-import Styles, { styled, css} from './Styles';
+import { styled } from './Styles';
 
 const Headline = styled(ThemeHeadline)`
   margin: 0;

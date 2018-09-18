@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-import processHtml from 'utils/processHTML'
-import ReactHtmlParser from 'react-html-parser'
-import PrismicDOM from 'prismic-dom'
-import styled from 'styled-components';
-import _ from 'lodash';
+import InnerHTML from 'utils/InnerHTML';
+import { styled, media } from './Styles';
 
 const Content = styled.div`
   h1 {
     --x-height-multiplier: 0.363;
     --baseline-multiplier: 0.157;
-    color: $theme-primary;
     font-style: normal;
     font-family: ${p => p.theme.fontFamilyTitle};
     font-size: ${p => p.theme.h2FontSize}px;
     color: ${p => p.theme.brandPrimary};
+    margin-top: 63px;
     margin-left: -2.5px;
+    margin-bottom: 0;
     line-height: 1.2;
     letter-spacing: -.028em;
+    ${media.lessThan('medium')`
+      font-size: 25px;
+    `}
   }
 
   h2 {
@@ -27,10 +28,14 @@ const Content = styled.div`
     --baseline-multiplier: 0.157;
     margin-top: 63px;
     margin-left: -2.5px;
+    margin-bottom: 0;
     line-height: 1.04;
     letter-spacing: -.03em;
-     word-wrap: break-word;
-     word-break: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    ${media.lessThan('medium')`
+      font-size: 25px;
+    `}
   }
 
   h3 {
@@ -39,43 +44,80 @@ const Content = styled.div`
     --x-height-multiplier: 0.363;
     --baseline-multiplier: 0.157;
     margin-top: 34px;
+    margin-bottom: 0;
     font-size: ${p => p.theme.h3FontSize}px;
     line-height: 1.15;
     letter-spacing: -.02em;
     word-wrap: break-word;
     word-break: break-word;
+    ${media.lessThan('medium')`
+      font-size: 25px;
+    `}
   }
 
   h4 {
     --x-height-multiplier: 0.363;
     --baseline-multiplier: 0.157;
     color: ${p => p.theme.brandSecondary};
+    font-size: 25px;
     margin-top: 30px;
+    margin-bottom: 0;
     margin-left: -1.5px;
     line-height: 1.22;
     letter-spacing: -.018em;
-     word-wrap: break-word;
-     word-break: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    ${media.lessThan('medium')`
+      font-size: 25px;
+    `}
   }
 
-  div,  p,  ul,  ol,  a {
+  ul + h1,
+  ol + h1,
+
+  ul + h2,
+  ol + h2,
+
+  ul + h3,
+  ol + h3,
+
+  ul + h4,
+  ol + h4 {
+    margin-top: 0;
+  }
+
+  div,  p,  ul,  ol,  a, strong {
     --x-height-multiplier: 0.35;
     --baseline-multiplier: 0.179;
     font-weight: 400;
     font-style: normal;
-    font-size: ${p => p.theme.fontSize}px;
     font-family: ${p => p.theme.fontFamily};
     color: ${p => p.theme.darkGray};
     line-height: 1.58;
     letter-spacing: -.003em;
     word-wrap: break-word;
     word-break: break-word;
+    font-size: 18px;
+    ${media.greaterThan('small')`
+      font-size: ${p => p.text === "smaller" ? '14' : p.theme.fontSize}px;
+    `}
+  }
+
+  ${media.lessThan('medium')`
+    iframe {
+      width: 100%;
+    }
+  `}
+
+  strong {
+    color: ${p => p.theme.brandSecondary};
+    font-weight: 900;
   }
 
   a,  a:hover {
     text-decoration: none;
     border-bottom: 2px solid;
-    font-family: ${p => p.theme.brandInfo};
+    color: ${p => p.theme.brandInfo};
     -o-transition:.5s;
     -ms-transition:.5s;
     -moz-transition:.5s;
@@ -105,16 +147,21 @@ const Content = styled.div`
     content: " ";
     font-weight: bold;
     display: inline-block;
-    margin-right: 15px;
+    margin-right: 5px;
+    position: relative;
+    top: 5px;
   }
 
   *:not(li) > ul, *:not(li) > ol, :not(li) > ul, :not(li) > ol {
     margin: 0 0 30px 0;
     list-style: none;
     padding: 30px;
-    border: 3px double ${p => p.theme.brandSecondary};
+    border-radius: 5px;
     display: block;
     width: fit-content;
+    ${media.lessThan('medium')`
+      padding: 0;
+    `}
   }
 
   *:not(li) > ul li, *:not(li) > ol li, :not(li) > ul li, :not(li) > ol li {
@@ -135,12 +182,12 @@ const Content = styled.div`
   }
 
   *:not(li) > ul > li:before, :not(li) > ul > li:before {
-    font-size: 30px;
+    font-size: ${p => p.text === "smaller" ? 14 : 30}px;
     content: "•";
   }
 
   p.small, div.small {
-    font-size: 16px;
+    font-size: ${p => p.text === "smaller" ? 12 : 16}px;
   }
 
   div, div:focus, p, p:focus {
@@ -155,7 +202,7 @@ const Content = styled.div`
   h1 + div,
   h2 + div,
   h3 + div {
-    margin-top: 10px;
+    margin-top: 5px;
   }
 
   h4 + p,
@@ -212,17 +259,14 @@ const Content = styled.div`
 
 class RichText extends Component {
   render() {
-    const { className } = this.props
-
-    let body = _.isArray(this.props.body) ? PrismicDOM.RichText.asHtml(this.props.body) : this.props.body.html
+    const { body, className, text } = this.props
 
     return (
-      <Content className={className}>
-        { ReactHtmlParser((body || this.props.children), { transform: processHtml }) }
+      <Content className={className} text={text}>
+        <InnerHTML html={(body || this.props.children)} />
       </Content>
     );
   }
 }
-
 
 export default RichText;

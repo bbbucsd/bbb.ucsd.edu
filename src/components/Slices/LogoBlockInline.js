@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { styled, css, media } from 'components/Theme/Styles';
-import Globals from 'components/Theme/Globals';
+import { graphql } from 'gatsby';
+import { styled, media } from 'components/Theme/Styles';
 
 const Container = styled.div`
   background-color: ${p => p.theme.brandSecondary};
@@ -88,6 +88,9 @@ const Logo = styled.img`
   ${media.greaterThan("small")`
     max-height: 50px;
   `}
+  ${media.greaterThan("medium")`
+    max-height: 80px;
+  `}
 `;
 
 class LogoBlockInline extends Component {
@@ -97,9 +100,6 @@ class LogoBlockInline extends Component {
     const items = slice.items;
 
     const {
-      height,
-      align,
-      justify,
       label,
     } = slice.primary
 
@@ -110,7 +110,7 @@ class LogoBlockInline extends Component {
           <Label>{label}:</Label>
           {items.map((item, i) => {
               return (
-                <LogoItem>
+                <LogoItem key={`logo_inline_${i}`}>
                   <Logo alt={item.logo.alt || (item.logo.url && item.logo.url.split("_")[1].split(".")[0])} src={item.logo.url} />
                 </LogoItem>
               )
@@ -129,7 +129,6 @@ export const query = graphql`
     __typename
     primary {
       label
-      height
       align
       justify
     }

@@ -1,7 +1,21 @@
-import React from 'react';
-import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
+import React, { Fragment } from 'react';
+import { convertNodeToElement } from 'react-html-parser';
 import Link from 'components/Theme/Link';
 import BlockQuote from 'components/Theme/BlockQuote';
+import Code from 'components/Theme/Code';
+import LazyLoad from 'react-lazyload';
+import CodeBlock from 'react-copy-code';
+
+const convertImg = (node, index) => {
+  const el = convertNodeToElement(node, index);
+  return (
+    <Fragment>
+      <LazyLoad>
+        <img alt="" key={index + Math.random()} {...Object.assign({}, el.props, { children: null })} />
+      </LazyLoad>
+    </Fragment>
+  );
+}
 
 const convertBlockQuote = (node, index) => {
   return (
@@ -9,6 +23,20 @@ const convertBlockQuote = (node, index) => {
       {node.children[0] ? node.children[0].data : null}
     </BlockQuote>
   );
+}
+
+const convertPre = (node, index) => {
+  if (process.browser) {
+    return (
+      <CodeBlock highlight key={index + Math.random()}>
+        <Code>
+          {node.children[0] ? node.children[0].data : null}
+        </Code>
+      </CodeBlock>
+    );
+  } else {
+    return null;
+  }
 }
 
 const convertLink = (node, index) => {
@@ -47,6 +75,10 @@ const processNode = (node, index) => {
       return convertInput(node, index);
     case 'blockquote':
       return convertBlockQuote(node, index);
+    case 'img':
+      return convertImg(node, index);
+    case 'pre':
+      return convertPre(node, index);
     default:
       return convertNodeToElement(node, index, (childNode, childIndex) => {
         return processNode(childNode, childIndex);

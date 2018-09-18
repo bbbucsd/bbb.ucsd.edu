@@ -1,18 +1,12 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
+import { graphql } from 'gatsby';
 import Block, { Section } from 'components/Theme/Block';
-import Styles, { styled, css, media } from 'components/Theme/Styles';
-import ThemeButton from 'components/Theme/Button';
-import ThemeHeadline from 'components/Theme/Headline';
+import { styled, media } from 'components/Theme/Styles';
 import Link from 'components/Theme/Link';
 import Icon from 'components/Theme/Icon';
 import {
-  A,
   Card,
   CardBody,
-  CardFooter,
-  CardHeader,
-  CardImageHeader,
-  CardText,
   CardTitle,
   Container,
 } from 'styled-bootstrap-components';
@@ -69,24 +63,6 @@ const FeatureIcon = styled(Icon)`
   margin: 25px auto;
 `;
 
-const Button = styled(ThemeButton)`
-  ${media.lessThan("medium")`
-    margin-top: 10px;
-  `}
-
-  ${media.greaterThan("medium")`
-    margin-top: 30px;
-  `}
-`;
-
-const Headline = styled(ThemeHeadline)`
-  color: ${props => props.theme.white};
-`;
-
-const Subheadline = styled(ThemeHeadline)`
-  color: ${props => props.theme.white};
-`;
-
 class FeatureBlock extends Component {
 
   renderFeature(item) {
@@ -126,8 +102,8 @@ class FeatureBlock extends Component {
       <Block height={height}>
         <Section align={align} justify={justify}>
           <FeaturesContainer>
-            {( items || [] ).map((item) =>
-              <Feature>
+            {( items || [] ).map((item, index) =>
+              <Feature key={`feature_${index}`}>
                 {this.renderFeature(item)}
               </Feature>
             )}
@@ -160,11 +136,11 @@ export const query = graphql`
       subheadline {
         text
       }
+      cta_label
       cta_link {
         url
-        raw {
-          type
-          slug
+        document {
+          ...Link
         }
       }
     }

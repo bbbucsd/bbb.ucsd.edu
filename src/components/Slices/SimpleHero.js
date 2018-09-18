@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import { graphql } from 'gatsby'
 import Hero from 'components/Theme/Hero';
 import ThemeHeadline from 'components/Theme/Headline';
-import { styled, css, media } from 'components/Theme/Styles';
+import { styled, media } from 'components/Theme/Styles';
 
 const Headline = styled(ThemeHeadline)`
   color:${p => p.color || p.theme.white};
   ${media.lessThan("medium")`
     font-weight:400;
     font-size: ${p => p.theme.h1FontSize / 2}px;
+  `}
+  ${media.lessThan('large')`
+    width: 100%;
   `}
 `;
 

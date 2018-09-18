@@ -11,7 +11,7 @@
       "type" : "UID",
       "config" : {
         "label" : "Slug",
-        "placeholder" : "Use periods as slashes"
+        "placeholder" : "URL Slug"
       }
     },
     "parent" : {
@@ -22,20 +22,18 @@
         "label" : "Parent"
       }
     },
-    "header" : {
-      "type" : "Select",
+    "featured_headline" : {
+      "type" : "Text",
       "config" : {
-        "options" : [ "Default", "No Header", "No Header with Back Button" ],
-        "default_value" : "Default",
-        "label" : "Header"
+        "label" : "Featured Headline"
       }
     },
-    "footer" : {
-      "type" : "Select",
+    "featured_image" : {
+      "type" : "Image",
       "config" : {
-        "options" : [ "Default", "No Footer" ],
-        "default_value" : "Default",
-        "label" : "Footer"
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Featured Image"
       }
     },
     "body" : {
@@ -256,6 +254,30 @@
             "icon" : "format_align_left",
             "display" : "list",
             "non-repeat" : {
+              "full_width" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "No", "Yes" ],
+                  "default_value" : "No",
+                  "label" : "Full Width"
+                }
+              },
+              "padding_top" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Yes", "No" ],
+                  "default_value" : "Yes",
+                  "label" : "Padding Top"
+                }
+              },
+              "padding_bottom" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "No", "Yes" ],
+                  "default_value" : "No",
+                  "label" : "Padding Bottom"
+                }
+              },
               "content" : {
                 "type" : "StructuredText",
                 "config" : {
@@ -635,22 +657,6 @@
             },
             "repeat" : { }
           },
-          "tabs" : {
-            "type" : "Slice",
-            "fieldset" : "Tabs",
-            "description" : "Tab System",
-            "icon" : "create_new_folder",
-            "display" : "list",
-            "non-repeat" : { },
-            "repeat" : {
-              "label" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Label"
-                }
-              }
-            }
-          },
           "standard_hero" : {
             "type" : "Slice",
             "fieldset" : "Standard Hero",
@@ -728,24 +734,6 @@
             },
             "repeat" : { }
           },
-          "form_block" : {
-            "type" : "Slice",
-            "fieldset" : "Form Block",
-            "description" : "Form Block",
-            "icon" : "border_color",
-            "display" : "list",
-            "non-repeat" : {
-              "form" : {
-                "type" : "Link",
-                "config" : {
-                  "select" : "document",
-                  "customtypes" : [ "form" ],
-                  "label" : "Form"
-                }
-              }
-            },
-            "repeat" : { }
-          },
           "simple_hero" : {
             "type" : "Slice",
             "fieldset" : "Simple Hero",
@@ -807,16 +795,173 @@
                   "label" : "Content",
                   "placeholder" : "2/3 Column Content"
                 }
+              },
+              "full_width" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "No", "Yes" ],
+                  "default_value" : "No",
+                  "label" : "Full Width"
+                }
+              },
+              "padding_top" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "No", "Yes" ],
+                  "default_value" : "No",
+                  "label" : "Padding Top"
+                }
+              },
+              "padding_bottom" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "No", "Yes" ],
+                  "default_value" : "No",
+                  "label" : "Padding Bottom"
+                }
               }
             },
             "repeat" : { }
+          },
+          "feature_documents_row" : {
+            "type" : "Slice",
+            "fieldset" : "Feature Documents Row",
+            "description" : "Feature and Highlight Documents",
+            "icon" : "featured_play_list",
+            "display" : "list",
+            "non-repeat" : {
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading2, heading3, heading4, heading5",
+                  "label" : "Title"
+                }
+              },
+              "description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Description"
+                }
+              },
+              "background_color" : {
+                "type" : "Color",
+                "config" : {
+                  "label" : "Background Color"
+                }
+              },
+              "cta_label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "CTA Label"
+                }
+              },
+              "cta_link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "CTA Link"
+                }
+              }
+            },
+            "repeat" : {
+              "featured_document" : {
+                "type" : "Link",
+                "config" : {
+                  "select" : "document",
+                  "customtypes" : [ "page", "post", "category" ],
+                  "label" : "Featured Document"
+                }
+              }
+            }
+          },
+          "simple_single_feature_block" : {
+            "type" : "Slice",
+            "fieldset" : "Simple Single Feature Block",
+            "description" : "Title, Content and CTA",
+            "icon" : "star",
+            "display" : "grid",
+            "non-repeat" : {
+              "feature_title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading3, heading4, heading5, heading6",
+                  "label" : "Feature Title"
+                }
+              },
+              "content" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, embed, list-item, o-list-item, o-list-item",
+                  "label" : "Content"
+                }
+              },
+              "cta_label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "CTA Label"
+                }
+              },
+              "cta_link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "CTA Link"
+                }
+              },
+              "border_top" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "No", "Yes" ],
+                  "default_value" : "No",
+                  "label" : "Border Top"
+                }
+              },
+              "border_bottom" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "No", "Yes" ],
+                  "default_value" : "No",
+                  "label" : "Border Bottom"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "documents_row" : {
+            "type" : "Slice",
+            "fieldset" : "Documents Row",
+            "description" : "A Row of Documents",
+            "icon" : "view_list",
+            "display" : "list",
+            "non-repeat" : {
+              "headline" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading3, heading4, heading5, heading6",
+                  "label" : "Headline"
+                }
+              },
+              "background_color" : {
+                "type" : "Color",
+                "config" : {
+                  "label" : "Background Color"
+                }
+              }
+            },
+            "repeat" : {
+              "document_item" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Document Item"
+                }
+              }
+            }
           }
         }
       }
     }
   },
   "Meta" : {
-    "body2" : {
+    "body1" : {
       "type" : "Slices",
       "fieldset" : "Slice zone",
       "config" : {
@@ -957,13 +1102,6 @@
                   },
                   "thumbnails" : [ ],
                   "label" : "Twitter Image"
-                }
-              },
-              "twitter_site" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Twitter Site",
-                  "placeholder" : "The Organization"
                 }
               },
               "twitter_creator" : {
@@ -1137,6 +1275,42 @@
         "options" : [ "Yes", "No" ],
         "default_value" : "Yes",
         "label" : "Cookie Policy Enabled"
+      }
+    },
+    "header" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Default", "No Header", "No Header with Back Button" ],
+        "default_value" : "Default",
+        "label" : "Header"
+      }
+    },
+    "footer" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Default", "No Footer" ],
+        "default_value" : "Default",
+        "label" : "Footer"
+      }
+    },
+    "header_link_color" : {
+      "type" : "Color",
+      "config" : {
+        "label" : "Header Link Color"
+      }
+    },
+    "header_logo_color": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "White",
+          "Black",
+          "Blue",
+          "Blue White",
+          "Gray White"
+        ],
+        "default_value": "White",
+        "label": "Header Logo Color"
       }
     }
   }

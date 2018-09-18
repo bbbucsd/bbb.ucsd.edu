@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { styled, css, media } from 'components/Theme/Styles';
+import LazyLoad from 'react-lazyload';
+import { styled } from 'components/Theme/Styles';
 import GradientBorder from './GradientBorder';
 import BlockQuote from './BlockQuote';
+import PrismicHelper from 'utils/prismicHelper';
 
 const CompanyLogoPlacement = styled.div`
   width: 150px;
@@ -79,7 +81,9 @@ export default class Testimonial extends Component {
       <GradientBorder innerColor={this.props.backgroundColor}>
         <CompanyLogoPlacement>
           <LeftBracket />
-          <CompanyLogo src={company_logo.url} />
+          <LazyLoad>
+            <CompanyLogo alt={PrismicHelper.extractNameFromURL(company_logo.url)} src={company_logo.url} />
+          </LazyLoad>
           <RightBracket />
         </CompanyLogoPlacement>
         <Body>
@@ -89,7 +93,9 @@ export default class Testimonial extends Component {
         </Body>
         <Person>
           <PicturePlacement>
-            <Picture src={picture.url} />
+            <LazyLoad>
+              <Picture src={picture.url} />
+            </LazyLoad>
           </PicturePlacement>
           <Credentials>
             {full_name.text}<br />

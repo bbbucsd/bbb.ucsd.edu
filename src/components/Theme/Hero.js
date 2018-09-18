@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Validator from 'utils/validator';
 import Video from './Video'
-import Styles, { styled, css, media } from 'components/Theme/Styles';
+import { styled, css, media } from 'components/Theme/Styles';
 
 const minHeightMixin = css`
   ${ props => {
@@ -29,9 +29,8 @@ const Wrapper = styled.div`
   justify-content: center;
   text-align: center;
   background-repeat: no-repeat;
-  background-size: cover;
   background-position: top center;
-  background: ${p => p.color || "linear-gradient(to bottom right, " + p.theme.brandSecondary + ", " +  p.theme.brandPrimary + ", " + p.theme.brandTertiary + ")"};
+  background: ${p => p.color || "linear-gradient(to right, " + p.theme.brandInfo + ", " +  p.theme.brandPrimary + ")"};
   ${p => p.src && Validator.isImage(p.src) ?
     'background-image: url(' + p.src + ');'
   : null}
@@ -40,14 +39,15 @@ const Wrapper = styled.div`
     min-height: ${minHeightMixin};
     text-align: ${p => p.align ? p.align.toLowerCase() : 'center'};
     text-indent: ${p => p.align && !!p.align.match(/Left/i) ? '150px' : null };
-   `}
 
+   `}
   ${media.lessThan('medium')`
     min-height: ${minHeightMixin};
     padding-top:30px;
-    text-indent: none;
+    text-indent: initial;
     text-align: center;
   `}
+  background-size: cover;
 `
 
 class Hero extends Component {

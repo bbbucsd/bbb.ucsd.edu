@@ -1,21 +1,26 @@
 import React, { Fragment, Component } from 'react';
-import Styles, { styled, css} from 'components/Theme/Styles';
+import StartHere from './MainMenu/StartHere';
 import About from './MainMenu/About';
-import Volunteer from './MainMenu/Volunteer';
-import InsideThePrison from './MainMenu/InsideThePrison';
+import Learn from './MainMenu/Learn';
+//import Coaching from './MainMenu/Coaching';
+import Resources from './MainMenu/Resources';
 import Contact from './MainMenu/Contact';
 
 
 class MainMenu extends Component {
 
   render() {
-    const { floating } = this.props
+    let { floating, color = "#FFFFFF" } = this.props;
     return (
       <Fragment>
-        <About floating={floating} />
-        <Volunteer floating={floating} />
-        <InsideThePrison floating={floating} />
-        <Contact floating={floating} />
+        <StartHere floating={floating} color={color} />
+        <About floating={floating} color={color} />
+        <Learn floating={floating} color={color} />
+        <Resources floating={floating} color={color} />
+        {/*
+        <Coaching floating={floating} color={color} />
+        */}
+        <Contact floating={floating} color={color} />
       </Fragment>
     );
   }

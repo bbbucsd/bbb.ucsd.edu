@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Validator from 'utils/validator';
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import { screenSize } from 'styled-config';
 
 const sizes = {
@@ -9,7 +9,7 @@ const sizes = {
   mobile: `(min-width: ${screenSize.sm})`
 }
 
-class Styles extends Component {
+class Styles extends React.Component {
 
   // Iterate through the sizes and create a media template
   static media = Object.keys(sizes).reduce((acc, label) => {

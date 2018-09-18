@@ -1,4 +1,4 @@
-import Styles, { media, styled } from './Styles';
+import { media, styled } from './Styles';
 
 const ShortDivider = styled.div`
   background-image: -webkit-gradient(radial, right top, 10, 90% 0%, 150, from(${p => p.theme.brandSuccess}), to(${p => p.theme.brandInfo}));
@@ -8,6 +8,7 @@ const ShortDivider = styled.div`
   -moz-border-radius: 4px;
   height: 3px;
   width: 100%;
+  margin: 0 auto;
   ${media.greaterThan('small')`
     width: 30%;
   `}

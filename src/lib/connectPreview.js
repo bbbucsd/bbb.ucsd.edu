@@ -11,13 +11,28 @@ export default function connectPreview(type) {
       constructor(props) {
         super(props);
         this.state = {
-          document: props.data[type]
+          type,
+          document: props.data[type],
+          isPreview: false
         };
       }
 
-      componentWillMount() {
-        PrismicHelper.previewData(`my.${type}.uid`, this.props.data[type].uid, (data) => {
-          this.setState({ document: data });
+      static getDerivedStateFromProps(props, currentState) {
+        if (currentState.isPreview) {
+          return {
+            isPreview: false,
+            document: currentState.document
+          };
+        } else {
+          return {
+            document: props.data[currentState.type]
+          };
+        }
+      }
+
+      componentDidMount() {
+        PrismicHelper.previewData(`my.${type}.uid`, this.props.data[type].uid, (document) => {
+          this.setState({ document, isPreview: true });
         });
       }
 

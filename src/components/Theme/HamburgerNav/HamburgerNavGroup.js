@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Styles, { styled, css} from '../Styles';
+import { styled } from '../Styles';
 
 const Wrapper = styled.ul`
   flex-direction: column;
@@ -30,8 +30,9 @@ const Title = styled.li`
   font-size: 11px;
   font-weight: bold;
   width:90%;
+  margin-top: 25px;
   text-transform: uppercase;
-  color:#555;
+  color: ${p => p.theme.white};
   padding-bottom:10px;
   line-height: 12px;
 `;

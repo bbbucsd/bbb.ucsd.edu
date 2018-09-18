@@ -9,7 +9,8 @@ const Headline = styled(ThemeHeadline)`
   color:${p => p.color || p.theme.white};
   ${media.lessThan("medium")`
     font-weight:400;
-    font-size: ${p => p.theme.h1FontSize / 1.5}px;
+    font-size: 30px;
+    width: 75%;
   `}
 `;
 
@@ -17,12 +18,15 @@ const Subheadline = styled(ThemeHeadline)`
   font-weight:300;
   color:${p => p.color || p.theme.white};
   ${media.lessThan("medium")`
-    font-size: ${p => p.theme.h2FontSize / 1.5}px;
+    font-size: 18px;
+    width: 75%;
   `}
 `;
 
 const Button = styled(ThemeButton)`
   margin-top: 30px;
+  max-width: 500px;
+  align-self: center;
 `;
 
 class StandardHero extends Component {
@@ -41,14 +45,14 @@ class StandardHero extends Component {
       cta_link} = slice.primary
 
     let bg = hero_asset && hero_asset.url
-
+    let showArrow = cta_link && ((cta_link.type || cta_link.__typename) !== "modal");
     return (
       <Hero align={align} src={bg} height={height} color={background_color}>
         <Headline h1 color={headline_color} text={headline} />
         <Subheadline h2 color={subheadline_color} text={subheadline} />
 
         {cta_label &&
-          <Button large to={cta_link}>{cta_label}</Button>
+          <Button large arrow={showArrow} to={cta_link}>{cta_label}</Button>
         }
       </Hero>
     );

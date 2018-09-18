@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { graphql } from 'gatsby';
 import Block, { Section } from 'components/Theme/Block';
 import ThemeHeadline from 'components/Theme/Headline';
 import ThemeButton from 'components/Theme/Button';
-import { styled, css, media } from 'components/Theme/Styles';
+import { styled, media } from 'components/Theme/Styles';
 
 const BlockWrapper = styled(Block)`
   text-align: center;
@@ -102,7 +103,6 @@ class LogoBlock extends Component {
 
 export default LogoBlock;
 
-// language=GraphQL
 export const query = graphql`
   fragment LogoBlock on LogoBlock {
     __typename
@@ -113,9 +113,8 @@ export const query = graphql`
       }
       cta_link {
         url
-        raw {
-          type
-          slug
+        document {
+          ...Link
         }
       }
       cta_label

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { graphql } from 'gatsby';
 import Block, { Section } from 'components/Theme/Block';
 import ThemeHeadline from 'components/Theme/Headline'
 import Video from 'components/Theme/Video';
@@ -8,8 +9,9 @@ import { styled, media } from 'components/Theme/Styles';
 const Headline = styled(ThemeHeadline)`
   font-size: 38px;
   line-height: 42px;
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0 auto;
+  font-family: ${p => p.theme.fontFamilyTitle};
   ${media.lessThan("medium")`
     font-size: 28px;
     color:${p => p.theme.white};
@@ -36,15 +38,17 @@ const Primary = styled(Section)`
 
 const Secondary = styled(Section)`
   background-image: url('${p => p.src}');
- 
+
   ${media.lessThan("medium")`
     display:none;
   `}
 `;
 
 const Copy = styled.div`
+  width: 100%;
+  padding: 100px 0;
   ${media.greaterThan("medium")`
-    text-align:left;
+    text-align: center;
     padding-right:${p => p.theme.blockPaddingMedium}px;
   `}
 `;

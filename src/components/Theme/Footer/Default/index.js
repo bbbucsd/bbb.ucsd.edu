@@ -1,23 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Link from 'components/Theme/Link';
 import Logo from 'components/Theme/Logo';
-import flag from './american-flag.png'
-import Styles, { styled, css, media } from 'components/Theme/Styles';
-import { Instagram } from 'styled-icons/fa-brands/Instagram.cjs';
-import { Facebook } from 'styled-icons/fa-brands/Facebook.cjs';
-import { Twitter } from 'styled-icons/fa-brands/Twitter.cjs';
-import { Linkedin } from 'styled-icons/fa-brands/Linkedin.cjs';
+import Icon from 'components/Theme/Icon';
+import Button from 'components/Theme/Button';
+import { styled, media } from 'components/Theme/Styles';
 import {
-  ListGroup,
-  ListGroupItem,
   Container,
   Row,
   Column
 } from 'styled-bootstrap-components';
-
-const FooterBelow = styled.div`
-  font-size: 12px;
-`;
+import { connect } from 'airlytics';
 
 const FooterLink = styled(Link)`
   color: ${p => p.theme.brandLight};
@@ -51,9 +43,15 @@ const NavTitle = styled.h5`
 `;
 
 const Divider = styled.hr`
+  margin-top: 25px;
+  margin-bottom: 50px;
+  width: 90%;
+  background-color: ${p => p.theme.brandLight}
+`;
+
+const MobileDivider = styled(Divider)`
   margin-top: 15px;
   margin-bottom: 15px;
-  background-color: ${p => p.theme.brandLight}
   ${media.greaterThan('small')`
     display: none;
   `}
@@ -71,12 +69,6 @@ const SocialSection = styled.div`
 
 `;
 
-const SocialSpacer = styled.div`
-  ${media.greaterThan("medium")`
-    flex: 1 1 auto;
-    width: auto;
-  `}
-`
 const SocialLink = styled.div`
   width: 75px;
   flex: 0 0 auto;
@@ -113,6 +105,10 @@ const LinkColumn = styled(Column)`
 `;
 
 const LogoLink = styled(Link)`
+  ${media.lessThan("medium")`
+    justify-content: center;
+    display: flex;
+  `}
 
   .gatsby-image-wrapper {
     width: 175px;
@@ -132,33 +128,101 @@ const BrandColumn = styled(Column)`
   `}
 `;
 
-//.footer {
-  //.navbar-brand {
-    //max-width: 150px;
-    //padding: 0;
-    //margin: 0;
-  //}
-//}
+const FooterBelow = styled.div`
+  justify-content: center;
+  display: flex;
+  font-size: 12px;
+  margin-top: 15px;
+  a {
+    color: ${props => props.theme.brandLight};
+    &:visited,
+    &:hover {
+      color: ${props => props.theme.brandLight};
+    }
+  }
+`;
+
+const FooterAbove = styled.div`
+  padding: 25px 25px 50px 25px;
+  justify-content: center;
+  display: flex;
+  a {
+    color: ${props => props.theme.brandLight};
+    &:visited,
+    &:hover {
+      color: ${props => props.theme.brandLight};
+    }
+  }
+  svg {
+    fill: ${props => props.theme.brandInfo};
+    width:50px;
+    height:50px;
+    ${media.between("medium", "large")`
+      width:50px;
+      height:50px;
+    `};
+    position:relative;
+    top:4px;
+  }
+`;
 
 class Footer extends Component {
   render() {
+    const isNonSubscriber = this.props.subscriber ? this.props.subscriber.current.anonymous : true;
     return (
       <FooterContainer>
-        <div className="footer-above">
+        {isNonSubscriber && (
+          <Fragment>
+            <FooterAbove>
+              <Container>
+                <Row justifyContent="center">
+                  <Column md={4} textAlign="center">
+                    <Icon name="MailRead" />
+                    <h4>Get Quick Wins</h4>
+                    <div>
+                      Are you ready to grow faster?<br /><br />Get personalized actionable content every Thursday designed to lead you into the next level.
+                    </div>
+                    <br />
+                    <Button to={{ type: 'modal', uid: 'newsletter' }} arrow={false}>Heck Yes!</Button>
+                  </Column>
+                  <Column md={2}>
+                  </Column>
+                  <Column md={4} textAlign="center">
+                    <Icon name="Gift" />
+                    <h4>Don't Leave Empty Handed</h4>
+                    <div>
+                      Want superhuman powers?<br /><br />Download the Top 5 Tools that I use to automate my business. You will get more done in a fraction of the time.
+                    </div>
+                    <br />
+                    <Button to={{ type: 'modal', uid: 'tool-guide' }} arrow={false}>Claim My Free Guide</Button>
+                  </Column>
+                </Row>
+              </Container>
+            </FooterAbove>
+            <Divider />
+          </Fragment>
+        )}
+        <div>
           <Container>
             <Row>
               <BrandColumn sm={4} justifyContent="center" alignContent="left">
                 <LogoLink to="/">
                   <Logo />
                 </LogoLink>
+                <SocialSection>
+                  <SocialLink><Link to="https://twitter.com/ericraio"><Icon name="twitter" /></Link></SocialLink>
+                  <SocialLink><Link to="https://www.facebook.com/AutomateYourBrand"><Icon name="facebook" /></Link></SocialLink>
+                  <SocialLink><Link to="https://www.instagram.com/ericraio"><Icon name="instagram" /></Link></SocialLink>
+                  <SocialLink><Link to="https://www.linkedin.com/in/ericraio"><Icon name="linkedin" /></Link></SocialLink>
+                </SocialSection>
 
-                <Divider />
+                <MobileDivider />
               </BrandColumn>
 
               <LinkColumn sm={2}>
                 <NavTitle>Start Here</NavTitle>
-                <FooterLink to="/volunteer">
-                  Volunteer
+                <FooterLink to="/start">
+                  Getting Started
                 </FooterLink>
                 <FooterLink to="/about">
                   About
@@ -167,34 +231,38 @@ class Footer extends Component {
 
               <LinkColumn sm={3}>
                 <NavTitle>Get Involved</NavTitle>
-                <FooterLink to="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbbb.ucsd.edu">
-                  Share Books Beyond Boundaries
+                <FooterLink to="/share">
+                  Share Automate Your Brand
                 </FooterLink>
-                <FooterLink to="https://ucsd.us12.list-manage.com/subscribe?u=3f52e7d7a72ee5f354cac7ec5&id=bfc189490d">
-                  Join The Newsletter
+                <FooterLink to="/community">
+                  Join The Community
                 </FooterLink>
               </LinkColumn>
 
               <LinkColumn sm={3}>
-                <NavTitle>Resources</NavTitle>
-                <FooterLink to="/inside-the-prison">
-                  Inside The Prison
+                <NavTitle>Learn</NavTitle>
+                <FooterLink to="/resources">
+                  Resources
                 </FooterLink>
-                <FooterLink to="/volunteer">
-                  How To Volunteer
+                <FooterLink to="/learn/marketing-measurement">
+                  Marketing & Measurement
+                </FooterLink>
+                <FooterLink to="/learn/brand-identity">
+                  Brand & Identity
+                </FooterLink>
+                <FooterLink to="/learn/business-operations">
+                  Business & Operations
                 </FooterLink>
               </LinkColumn>
             </Row>
-            <Row>
-              <FooterBelow>
-                Website by: <a href="https://automateyourbrand.com" target="_blank">Automate Your Brand</a>
-              </FooterBelow>
-            </Row>
           </Container>
         </div>
+        <FooterBelow>
+          &copy; Atro Studios LLC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/legal/privacy">Privacy Policy</Link>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<Link to="/legal/terms">Terms of Service</Link>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<Link to="/legal/affiliate-disclaimer">Affiliate Disclaimer</Link>
+        </FooterBelow>
       </FooterContainer>
     );
   }
 }
 
-export default Footer;
+export default connect()(Footer);

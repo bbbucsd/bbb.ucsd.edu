@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Link from 'components/Theme/Link'
-import Styles, { styled, css} from 'components/Theme/Styles';
+import { styled } from 'components/Theme/Styles';
 
 const Wrapper = styled.div`
   position: relative;
@@ -10,20 +10,20 @@ const Wrapper = styled.div`
 
 const MainLink = styled(Link)`
   font-weight: 400;
-  color:${props => props.floating ? props.theme.white : props.theme.white};
+  color:${props => props.floating ? props.theme.white : (props.color || props.theme.white)};
   &:visited {
-    color:${props => props.floating ? props.theme.white : props.theme.white};
+    color:${props => props.floating ? props.theme.white : (props.color || props.theme.white)};
   }
 `;
 
 export default class extends Component {
 
   render() {
-    const { floating } = this.props;
+    const { floating, color } = this.props;
 
     return (
       <Wrapper>
-        <MainLink floating={floating} to="/about">About</MainLink>
+        <MainLink color={color} floating={floating} to="/about">About</MainLink>
       </Wrapper>
     );
   }

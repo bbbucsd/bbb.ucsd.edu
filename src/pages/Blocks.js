@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Block, { Section } from 'components/Theme/Block';
-import { styled, css} from 'components/Theme/Styles';
+import { styled } from 'components/Theme/Styles';
 import Headline from 'components/Theme/Headline';
 
 const Container = styled.div`
@@ -40,7 +40,7 @@ const StyledSection = styled(Section)`
   background-clip: content-box, padding-box;
 `;
 
-export default class Blocks extends React.Component {
+export default class Blocks extends Component {
 
   render() {
     return (

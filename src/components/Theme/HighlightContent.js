@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Styles, { styled, css, media } from './Styles';
+import { styled } from './Styles';
+import _ from 'lodash';
 
 const Container = styled.div`
   width: inherit;
@@ -23,9 +24,9 @@ const Content = styled.div`
    font-style: normal;
    line-height: 1.58;
    letter-spacing: -0.003em;
-   div,  p,  a, li {
+   strong, b, div,  p,  a, li {
      font-size: 16px;
-     margin-left: 15px;
+     margin-left: 7.5px;
    }
     * > ul,
     * > ol,  > ul,  > ol {
@@ -67,10 +68,12 @@ const Content = styled.div`
     *:not(li) > ol > li:before, :not(li) > ol > li:before {
      counter-increment: section;
      content: counters(section, ".") ".";
+     color: ${p => p.theme.darkGray};
    }
     *:not(li) > ul > li:before, :not(li) > ul > li:before {
      font-size: 30px;
      content: "•";
+     color: ${p => p.theme.darkGray};
    }
 `;
 
@@ -128,7 +131,7 @@ export default class HighlightContent extends Component {
         <BorderBottomLeft />
         <BorderBottomRight />
         <Content>
-          <Headline>{this.props.headline}</Headline>
+          <Headline>{_.isArray(this.props.headline) ? this.props.headline[0] && this.props.headline[0].text : this.props.headline.text }</Headline>
           {this.props.children}
         </Content>
       </Container>

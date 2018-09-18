@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Link from '../Link';
-import Styles, { styled, css} from '../Styles';
+import { styled } from '../Styles';
 
 const Item = styled.li`
-  padding: 1px 0;
+  padding: 15px 0;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
+  cursor: pointer;
   width: 100%;
   display: flex;
   position: relative;

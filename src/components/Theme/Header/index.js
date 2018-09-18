@@ -6,27 +6,32 @@ import SimpleBackButton from './SimpleBackButton/index'
 class Header extends Component {
 
   displayHeader() {
-    switch(this.props.display) {
-      case 'Default':
-        return <Default />
+    const document = this.props.document;
+    if(document) {
+      if(document.data.header) {
+        switch(document.data.header) {
+          case 'Default':
+            return <Default document={document} />
 
-      case 'No Header':
-        return null;
+          case 'No Header':
+            return null;
 
-      case 'No Header with Back Button':
-        return <SimpleBackButton />
+          case 'No Header with Back Button':
+            return <SimpleBackButton />
 
-      default:
-        return <Default />
+          default:
+            return <Default document={document} />
+        }
+      } else {
+        return <Default document={document} />
+      }
+    } else {
+      return <Default />
     }
   }
 
   render() {
-    return (
-      <div>
-        { this.displayHeader() }
-      </div>
-    );
+    return this.displayHeader();
   }
 }
 

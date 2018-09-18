@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
+import { graphql } from 'gatsby';
 import Block, { Section } from 'components/Theme/Block';
 import ThemeHeadline from 'components/Theme/Headline';
+import Text from 'components/Theme/Text';
 import ThemeButton from 'components/Theme/Button';
 import ShortDivider from 'components/Theme/ShortDivider';
 import { styled, media } from 'components/Theme/Styles';
+import { isMobileOnly } from "react-device-detect";
 
 const Spacer = styled.div`
   padding-top: 15px;
@@ -13,8 +16,7 @@ const Spacer = styled.div`
 const Headline = styled(ThemeHeadline)`
   font-family: ${p => p.theme.fontFamilyTitle};
   color: ${props => props.color || props.theme.black};
-  font-size: 30px;
-  ${media.greaterThan('small')`
+  ${media.greaterThan('medium')`
     font-size: ${props => props.theme.h2FontSize}px;
   `}
 `;
@@ -33,6 +35,9 @@ const Button = styled(ThemeButton)`
 
 const Primary = styled(Section)`
   & > div { width:80%; }
+  ${media.lessThan('large')`
+    padding: 0 !Important;
+  `}
 `;
 
 
@@ -45,7 +50,6 @@ class StatementBlock extends Component {
             headline,
             headline_color,
             subheadline,
-            subheadline_color,
             cta_label,
             cta_link
     } = this.props.slice.primary
@@ -55,16 +59,20 @@ class StatementBlock extends Component {
         <Primary align={align} justify={justify}>
           <Headline h2 color={headline_color} text={headline} />
           {subheadline && subheadline.text ? (
-            <Subheadline color={subheadline_color}>
-              {subheadline.text}
+            <Subheadline color={headline_color}>
+              <Text body={subheadline} />
             </Subheadline>
           ) : (
             <Spacer />
           )}
-          {cta_label &&
-            <Button to={cta_link}>{cta_label}</Button>
-          }
-          <ShortDivider />
+          {cta_label ? (
+            <Fragment>
+              <Button large fullWidth={isMobileOnly} arrow={false} to={cta_link}>{cta_label}</Button>
+              <Spacer />
+            </Fragment>
+          ) : (
+            <ShortDivider />
+          )}
         </Primary>
       </Block>
     );
@@ -80,6 +88,7 @@ export const query = graphql`
       height
       align
       justify
+      background_color
       headline_color
       headline {
         text
@@ -90,9 +99,8 @@ export const query = graphql`
       cta_label
       cta_link {
         url
-        raw {
-          type
-          slug
+        document {
+          ...Link
         }
       }
     }

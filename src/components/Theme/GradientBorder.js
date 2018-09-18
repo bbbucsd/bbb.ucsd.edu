@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import Styles, { styled, css} from './Styles';
+import { styled } from './Styles';
 
 export default styled.div`
   position: relative;

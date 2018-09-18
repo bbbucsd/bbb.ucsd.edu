@@ -1,57 +1,47 @@
-import React from 'react';
-import ReactDOM from 'react-dom'
-import { Router } from 'react-router-dom'
+import React  from 'react';
 import { Provider, configureStore }  from 'airlytics';
+import bugsnag from 'bugsnag-js';
+import createPlugin from 'bugsnag-react';
+import { anchorate } from 'anchorate';
 
-const store = configureStore()
-
-export const onClientEntry = () => {
-  //console.log("We've started!")
+let store;
+let bugsnagClient;
+let ErrorBoundary;
+if (process.env.NODE_ENV === "production") {
+  bugsnagClient = bugsnag('8a1895fea0bdc8faabc6b37430f7cbff');
+  ErrorBoundary = bugsnagClient.use(createPlugin(React));
+  store = configureStore({
+  });
+} else {
+  store = configureStore({
+  });
 }
 
-export const onInitialClientRender = () => {
-  //console.log("ReactDOM.render has executed")
-}
+export const wrapRootElement = ({ element }) => {
 
-export const onRouteUpdate = ({ location }) => {
-  //console.log('new pathname', location.pathname)
-}
-
-export const replaceHydrateFunction = () => {
-  return (element, container, callback) => {
-    //console.log("rendering!");
-    ReactDOM.render(element, container, callback);
-  };
-};
-
-export const replaceRouterComponent = ({ history }) => {
-
-  const ConnectedRouterWrapper = ({ children }) => (
-    <Provider store={store}>
-      <Router history={history}>{children}</Router>
-    </Provider>
-  )
-
-  return ConnectedRouterWrapper
-}
-
-export const shouldUpdateScroll = (args) => {
-  var hadModal, isModal
-
-  if (args.prevRouterProps &&
-      args.prevRouterProps.location &&
-      args.prevRouterProps.location.pathname &&
-      args.prevRouterProps.location.pathname.match(/\/_/)) {
-    hadModal = true
-  }
-
-  if (args.pathname.match(/\/_/)) {
-    isModal = true
-  }
-
-  if (hadModal || isModal) {
-    return false
+  if (process.env.NODE_ENV === "production") {
+    return (
+      <Provider store={store}>
+        <ErrorBoundary>
+          {element}
+        </ErrorBoundary>
+      </Provider>
+    );
   } else {
-    return true
+    return (
+      <Provider store={store}>
+        {element}
+      </Provider>
+    );
   }
+}
+
+export const onRouteUpdate = () => {
+  anchorate({
+    scroller: function (element) {
+      if (!element) return false
+      element.scrollIntoView({ behavior: 'smooth' })
+      return true
+    }
+  })
 }

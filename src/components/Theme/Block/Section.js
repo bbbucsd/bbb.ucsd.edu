@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Styles, { styled, css, media } from '../Styles';
+import { styled } from '../Styles';
 import _ from 'lodash';
 
 const justify = (keyword) => {
@@ -14,6 +14,8 @@ const justify = (keyword) => {
       return 'flex-end;'
     case 'bottomish':
       return 'flex-end;'
+    default:
+      return null;
   }
 }
 
@@ -25,6 +27,8 @@ const align = (keyword) => {
       return 'flex-start'
     case 'right':
       return 'flex-end;'
+    default:
+      return null;
   }
 }
 
@@ -34,6 +38,8 @@ const justifyIsh = (keyword) => {
       return 'padding-top:15vh;'
     case 'bottomish':
       return 'padding-bottom: 15vh;'
+    default:
+      return null;
   }
 }
 
@@ -66,9 +72,12 @@ const SectionWrapper = styled.div`
 const SectionInner = styled.div`
   display:flex;
   flex-direction: column;
-  align-content: center;
+  flex: 0 0 100%;
+  width: 100%;
   align-items: ${p => p.align ? align(p.align.toLowerCase())  : 'center'};
   text-align: ${p => (p.align && p.align.toLowerCase() === 'center') ? 'center' : 'left'};
+  align-content: center;
+  justify-content: center;
 `;
 
 class Section extends Component {

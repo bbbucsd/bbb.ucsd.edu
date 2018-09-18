@@ -1,8 +1,11 @@
 const path = require(`path`);
 const PrismicHelper = require('./src/utils/prismicHelper');
+var webpack = require('webpack');
+require('core-js');
+require('isomorphic-fetch');
 
-exports.createPages = async ({ graphql, boundActionCreators }) => {
-  const { createRedirect, createPage } = boundActionCreators
+exports.createPages = async ({ graphql, actions }) => {
+  const { createRedirect, createPage } = actions;
 
   //
   // Category ---------------------------------------------------------------------
@@ -13,8 +16,16 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
       allCategory {
         edges {
           node {
-            type
+            id
             uid
+            type
+            data {
+              parent {
+                document {
+                  uid
+                }
+              }
+            }
           }
         }
       }
@@ -33,34 +44,39 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   })
 
   //
-  // Testimonials ----------------------------------------------------------------
+  // Products --------------------------------------------------------------------
   //
 
-  // TODO: This is a data-only type, doesnt need to build a page & route for it
-  // TODO: (cont) the data should be pulled in from a UI slice
+  const products = await graphql(`
+    {
+      allProduct {
+        edges {
+          node {
+            type
+            uid
+            data {
+              category {
+                document {
+                  uid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 
-  // const testimonial = await graphql(`
-  //   {
-  //     allTestimonial {
-  //       edges {
-  //         node {
-  //           type
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-  //
-  // const testimonialComponent = path.resolve(`./src/templates/Testimonial.js`)
-  // testimonial.data.allTestimonial.edges.forEach(edge => {
-  //   createPage({
-  //     path: PrismicHelper.pathResolver(edge.node),
-  //     component: testimonialComponent,
-  //     context: {
-  //       uid: edge.node.uid
-  //     },
-  //   })
-  // })
+  const productComponent = path.resolve(`./src/templates/Product.js`)
+  products.data.allProduct.edges.forEach(edge => {
+    createPage({
+      path: PrismicHelper.pathResolver(edge.node),
+      component: productComponent,
+      context: {
+        uid: edge.node.uid
+      },
+    })
+  })
 
   //
   // Posts ----------------------------------------------------------------
@@ -135,15 +151,14 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   })
 
   //
-  // Modals --------------------------------------------------------------------
+  // Landing Pages ---------------------------------------------------------------------
   //
 
-  const modals = await graphql(`
+  const landingPages = await graphql(`
     {
-      allModal {
+      allLandingPage {
         edges {
           node {
-            id
             uid
             type
           }
@@ -152,11 +167,11 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     }
   `)
 
-  const modalComponent = path.resolve(`./src/templates/Modal.js`)
-  modals.data.allModal.edges.forEach(edge => {
+  const landingPageComponent = path.resolve(`./src/templates/LandingPage.js`)
+  landingPages.data.allLandingPage.edges.forEach(edge => {
     createPage({
-      path: `_modal-${edge.node.uid}`,
-      component: modalComponent,
+      path: PrismicHelper.pathResolver(edge.node),
+      component: landingPageComponent,
       context: {
         uid: edge.node.uid
       },
@@ -182,7 +197,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   `)
 
   const interstitialComponent = path.resolve(`./src/templates/Interstitial.js`);
-  (redirect.data.redirects || []).forEach(redirect => {
+  redirect.data.redirect.data.redirects.forEach(redirect => {
     switch (redirect.type) {
       case 'Permanent':
         createRedirect({
@@ -219,10 +234,42 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
         break;
     }
   })
+  createRedirect({
+    fromPath: 'https://automateyourbrand.netlify.com/*',
+    isPermanent: true,
+    redirectInBrowser: false,
+    toPath: 'https://automateyourbrand.com/:splat'
+  });
 }
 
+exports.onCreateBabelConfig = ({ stage, actions }, pluginOptions) => {
+  actions.setBabelPlugin({
+    name: `babel-plugin-styled-components`,
+    stage,
+    options: {
+      ...pluginOptions,
+      ssr: stage === `build-html`,
+    },
+  })
+  actions.setBabelPlugin({
+    name: '@babel/plugin-proposal-export-default-from',
+  })
+}
 
-exports.modifyBabelrc = ({ babelrc }) => ({
-  ...babelrc,
-  plugins: babelrc.plugins.concat([['babel-plugin-styled-components', { ssr: true }]]),
-})
+exports.onCreateWebpackConfig = ({ stage, actions, plugins }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
+    },
+  });
+
+  actions.setWebpackConfig({
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env': {
+          BRANCH: JSON.stringify(process.env.BRANCH ? process.env.BRANCH : 'production')
+        }
+      })
+    ],
+  });
+}

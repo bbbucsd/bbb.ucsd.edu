@@ -1,8 +1,9 @@
 import React, { Fragment, Component } from 'react';
-import Block, { Section } from 'components/Theme/Block';
+import { graphql } from 'gatsby'
+import Block from 'components/Theme/Block';
 import Link from 'components/Theme/Link';
+import Text from 'components/Theme/Text';
 import Button from 'components/Theme/Button';
-import ShortDivider from 'components/Theme/ShortDivider';
 import { styled, media } from 'components/Theme/Styles';
 import InnerHTML from 'utils/InnerHTML';
 import {
@@ -10,6 +11,8 @@ import {
   Row,
   Column
 } from 'styled-bootstrap-components';
+import LazyLoad from 'react-lazyload';
+import { isMobileOnly } from "react-device-detect";
 
 const FeatureImage = styled.img`
   max-height: 300px;
@@ -38,12 +41,14 @@ const FeatureContainer = styled(Container)`
 `;
 
 const Headline = styled.h3`
-  font-size: 35px;
   color: ${props => props.color || props.theme.black};
   font-family: ${p => p.theme.fontFamily};
   text-align: left;
   margin-top: 0;
   margin-bottom: 5px;
+  ${media.greaterThan('small')`
+    font-size: 35px;
+  `}
 `;
 
 const Superheadline = styled.div`
@@ -62,19 +67,19 @@ const Superheadline = styled.div`
 const Caption = styled.div`
   text-align: left;
   color: ${props => props.color || props.theme.black};
-  h6 {
-   font-size: 20px;
+  h5, h6 {
+   font-size: 15px;
    font-weight: 100;
    margin: 0;
+   margin-top: 5px;
+  ${media.greaterThan('small')`
+     font-size: 20px;
+  `}
   }
-  p {
-   font-size: 13px;
+  div, p {
+   font-size: 15px;
    font-weight: 100;
   }
-`;
-
-const Primary = styled(Section)`
-  & > div { width:80%; }
 `;
 
 const CTAButton = styled(Button)`
@@ -121,31 +126,44 @@ class SingleFeatureBlock extends Component {
         <FeatureContainer color={background_color}>
           <Row>
             <Column lg={6}>
-              <Superheadline color={superheadline_color}>{superheadline.text}</Superheadline>
-              <Headline color={headline_color}>{headline.text}</Headline>
-                <Caption color={caption_color}>
-                  <InnerHTML>
-                    {caption.html}
-                  </InnerHTML>
-                </Caption>
-                {cta_label && cta_link &&
-                  <CTAButton arrow={false} to={cta_link}>{cta_label}</CTAButton>
-                }
-              </Column>
-              <Column lg={6}>
                 {cta_link ? (
                   <Fragment>
                     <Link to={cta_link}>
-                      <FeatureImage src={asset.url} />
+                      <Superheadline color={superheadline_color}><Text body={superheadline} /></Superheadline>
+                    </Link>
+                    <Link to={cta_link}>
+                      <Headline color={headline_color}><Text body={headline} /></Headline>
+                    </Link>
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    <Superheadline color={superheadline_color}><Text body={superheadline} /></Superheadline>
+                    <Headline color={headline_color}><Text body={headline} /></Headline>
+                  </Fragment>
+                )}
+              <Caption color={caption_color}>
+                <InnerHTML html={caption} />
+              </Caption>
+              {cta_label && cta_link &&
+                <CTAButton fullWidth={isMobileOnly} arrow={false} to={cta_link}>{cta_label}</CTAButton>
+              }
+            </Column>
+            <Column lg={6}>
+              <LazyLoad>
+                {cta_link ? (
+                  <Fragment>
+                    <Link to={cta_link}>
+                        <FeatureImage src={asset.url} />
                     </Link>
                   </Fragment>
                 ) : (
                   <FeatureImage src={asset.url} />
                 )}
-              </Column>
-            </Row>
-          </FeatureContainer>
-        </Block>
+              </LazyLoad>
+            </Column>
+          </Row>
+        </FeatureContainer>
+      </Block>
     );
   }
 }
@@ -178,9 +196,8 @@ export const query = graphql`
       cta_label
       cta_link {
         url
-        raw {
-          type
-          slug
+        document {
+          ...Link
         }
       }
     }

@@ -1,79 +1,69 @@
 import React, { Component } from 'react';
-import Hero from 'components/Theme/Hero';
-import Button from 'components/Theme/Button';
+import { graphql } from 'gatsby';
+import ModalContainer from 'components/Theme/ModalContainer';
+import ModalForm from 'components/Theme/ModalForm';
 import RichText from 'components/Theme/RichText';
-import { styled, css, media } from 'components/Theme/Styles';
+import { styled, media } from 'components/Theme/Styles';
 import {
-  Container,
-  Row,
   Column,
-  FormGroup,
-  Label,
-  FormControl
+  Row,
 } from 'styled-bootstrap-components';
-import { connect} from 'airlytics';
+
+const Headline = styled.h4`
+  font-family: ${p => p.theme.fontFamilyTitle};
+  font-size: 25px;
+  position: relative;
+  top: -25px;
+  margin-bottom: -25px;
+`;
 
 const ModalRow = styled(Row)`
   height: 100%;
+  text-align: left;
 `;
 
-const ModalContainer = styled(Container)`
-  padding: 25px;
-  border-radius: 5px;
-  border-top: 4px solid ${p => p.theme.brandInfo};
-  width: 800px;
-  min-height: 200px;
-  background: white;
-  &:before {
-    content: ' ';
-    position: absolute;
-    top: -1px;
-    border-top: 5px solid ${p => p.theme.brandInfo};
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    width: 100%;
-    left: 0;
-    z-index: 0;
-  }
-`;
 
 const LeftColumn = styled(Column)`
   min-height: 250px;
-  width: 50%;
-  flex: 0 0 50%;
-  border-right: 4px solid ${p => p.theme.brandLight}
+  flex: 0 0 100%;
+  width: 100%;
+  ${media.greaterThan('small')`
+    border-right: 1px solid ${p => p.theme.brandLight};
+    width: 50%;
+    flex: 0 0 50%;
+  `}
 `;
 
 const RightColumn = styled(Column)`
   min-height: 250px;
-  width: 50%;
-  flex: 0 0 50%;
+  width: 100%;
+  flex: 0 0 100%;
+  ${media.greaterThan('small')`
+    width: 50%;
+    flex: 0 0 50%;
+  `}
 `;
 
 class DoubleColumnContentForm extends Component {
+
   render() {
-    const { slice } = this.props;
+    const { events, slice } = this.props;
     const {
       headline,
-      content_direction,
-      enable_first_name_field,
-      content,
-      redirect_url
+      content
     } = slice.primary;
 
-
     return (
-      <ModalContainer>
+      <ModalContainer width="800">
         <ModalRow>
           <LeftColumn>
-            <RichText body={content} />
+            {headline && (
+              <Headline>{headline}</Headline>
+            )}
+            <RichText body={content} text="smaller" />
           </LeftColumn>
           <RightColumn>
-            <form>
-              <FormGroup>
-                <FormControl type="email" placeholder="name@example.com" />
-              </FormGroup>
-            </form>
+            <ModalForm data={slice.primary} events={events} />
           </RightColumn>
         </ModalRow>
       </ModalContainer>
@@ -81,7 +71,7 @@ class DoubleColumnContentForm extends Component {
   }
 }
 
-export default connect()(DoubleColumnContentForm);
+export default DoubleColumnContentForm;
 
 export const query = graphql`
   fragment DoubleColumnContentForm on DoubleColumnContentForm {
@@ -90,6 +80,8 @@ export const query = graphql`
       headline
       content_direction
       enable_first_name_field
+      cta_label
+      close_message
       content {
         html
       }
@@ -98,6 +90,9 @@ export const query = graphql`
         document {
           ...Link
         }
+      }
+      download {
+        url
       }
     }
   }

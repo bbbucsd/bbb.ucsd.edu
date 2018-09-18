@@ -1,22 +1,45 @@
 import React, { Fragment, Component } from 'react';
+import { styled, media } from 'components/Theme/Styles';
+import { FacebookF } from 'styled-icons/fa-brands/FacebookF.cjs';
+import { Twitter } from 'styled-icons/fa-brands/Twitter.cjs';
+import { LinkedinIn } from 'styled-icons/fa-brands/LinkedinIn.cjs';
 import { connect } from 'airlytics';
+import { StaticQuery, graphql } from 'gatsby';
 import _ from 'lodash';
-import State from '../../state';
-import { styled, css, media } from 'components/Theme/Styles';
-import { Facebook } from 'styled-icons/fa-brands/Facebook.cjs'
-import { Twitter } from 'styled-icons/fa-brands/Twitter.cjs'
-import { Linkedin } from 'styled-icons/fa-brands/Linkedin.cjs'
 
-const Count = styled.div`
-  font-size: 40px;
+const ShareMessage = styled.div`
+  font-size: 14px;
+  color: ${p => p.theme.gray};
+  text-transform: uppercase;
+  text-align: center;
+  ${media.lessThan('medium')`
+    position: relative;
+    right: 15px;
+    display: inline-block;
+  `}
 `;
 
-const Widget = styled.div`
+const Count = styled.div`
+  font-size: 30px;
+  color: ${p => p.theme.gray};
+  text-align: center;
+  ${media.lessThan('medium')`
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    font-size: 20px;
+  `}
+`;
+
+const Ribbon = styled.div`
   position: fixed;
   z-index: 9999;
+  width: 100%;
   right: auto;
-  left: 75px;
-  top: 45vh;
+  top: auto;
+  left: auto;
+  bottom: 0;
+  text-align: center;
   visibility: hidden;
   -webkit-transition: opacity 1s ease-in;
   -moz-transition: opacity 1s ease-in;
@@ -24,35 +47,79 @@ const Widget = styled.div`
   -ms-transition: opacity 1s ease-in;
   transition: opacity 1s ease-in;
 
+  ${media.greaterThan('medium')`
+    display: none;
+  `}
+
   ${p => p.show ? `
     visibility: visible;
     opacity: 1;
   ` : null }
 
-  ${media.lessThan('medium')`
-    width: 100%;
-    right: auto;
-    top: auto;
-    left: auto;
-    padding: 25px 0;
-    bottom: 0;
-    text-align: center;
+  ${p => _.isBoolean(p.show) && !p.show ? `
+    opacity: 0;
+  ` : null }
+
+  padding: 0;
+  background-color: white;
+`;
+
+const Widget = styled.div`
+  position: fixed;
+  z-index: 9999;
+  right: auto;
+  left: 75px;
+  top: 35vh;
+  visibility: hidden;
+  -webkit-transition: opacity 1s ease-in;
+  -moz-transition: opacity 1s ease-in;
+  -o-transition: opacity 1s ease-in;
+  -ms-transition: opacity 1s ease-in;
+  transition: opacity 1s ease-in;
+  ${media.between("small", "medium")`
+    left: 5px;
+  `}
+  ${media.lessThan("medium")`
+    display: none;
   `}
 
+  ${p => p.show ? `
+    visibility: visible;
+    opacity: 1;
+  ` : null }
+
+  ${p => _.isBoolean(p.show) && !p.show ? `
+    opacity: 0;
+  ` : null }
 `;
 
 const SocialLink = styled.div`
+  text-align: center;
+  position: relative;
+  top: 2px;
+  left: 1px;
+
   svg {
-    width:30px;
-    height:30px;
+    width:20px;
+    height:20px;
   }
 `;
 
 const Share = styled.div`
   cursor: pointer;
+  background-color: ${p => p.color || 'transparent'};
+  border-radius: 100px;
+  padding: 12px 14px;
+  margin: 2px 2px 10px 2px;
+  position: relative;
+  left: 2px;
+  ${media.lessThan('medium')`
+    display: inline-block;
+    margin-left: 15px;
+  `}
 `;
 
-const SCROLL_PERCENTAGE_THRESHOLD = 10;
+const SCROLL_PERCENTAGE_THRESHOLD = 7;
 
 class SocialScroll extends Component {
 
@@ -70,15 +137,15 @@ class SocialScroll extends Component {
     this.props.actions.shareLinkedIn(window.location.href);
   }
 
-  shareTwitter = () => {
-    this.props.actions.shareTwitter(window.location.href, window.document.title, State.get("twitter").site);
+  shareTwitter = (config) => {
+    this.props.actions.shareTwitter(window.location.href, window.document.title, config.twitter.site);
   }
 
   getCounts(socialCounts) {
     return _.sum(_.values(socialCounts));
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (typeof window === "undefined") { return; }
     this.props.actions.getSocialCounts();
     this.setState({
@@ -125,7 +192,7 @@ class SocialScroll extends Component {
     this.previousPosition = value;
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     if (this.props.lastAction.type !== props.lastAction.type) {
       if(props.lastAction.type === "GET_SOCIAL_COUNTS_SUCCESS") {
         this.setState({
@@ -136,30 +203,68 @@ class SocialScroll extends Component {
   }
 
   renderCount() {
-    return (
-      <Count>{this.state.count}</Count>
-    );
+    if (this.state.count > 10) {
+      return (
+        <Count>{this.state.count}</Count>
+      );
+    } else {
+      return null;
+    }
   }
 
   render() {
     return (
       <Fragment>
-        <Widget show={this.state.showWidget}>
-          {this.renderCount()}
-          <Share onClick={this.shareTwitter}>
-            <SocialLink><Twitter color="#55ACEE" /></SocialLink>
-          </Share>
-          <div onClick={this.shareFacebook}>
-            <SocialLink><Facebook color="#3B5998" /></SocialLink>
-          </div>
-          <div onClick={this.shareLinkedIn}>
-            <SocialLink><Linkedin color="#0077B5" /></SocialLink>
-          </div>
-        </Widget>
-      </Fragment>
-    );
-  }
+        <StaticQuery
+          query={graphql`
+            query SocialScrollQuery {
+              site {
+                siteMetadata {
+                  twitter {
+                    site
+                  }
+                }
+              }
+            }
+          `}
+          render={data => {
+            const config = data.site.siteMetadata;
+            return (
+              <Fragment>
+                <Widget show={this.state.showWidget}>
+                  <ShareMessage>Share</ShareMessage>
+                  {this.renderCount()}
+                  <Share color="#55ACEE" onClick={() => { this.shareTwitter(config) }}>
+                    <SocialLink><Twitter color="white" /></SocialLink>
+                  </Share>
+                  <Share color="#4267B2" onClick={this.shareFacebook}>
+                    <SocialLink ><FacebookF color="white" /></SocialLink>
+                  </Share>
+                  <Share color="#0077B5" onClick={this.shareLinkedIn}>
+                    <SocialLink><LinkedinIn color="white" /></SocialLink>
+                  </Share>
+                </Widget>
 
+                <Ribbon show={this.state.showRibbon}>
+                  <ShareMessage>Share</ShareMessage>
+                  {this.renderCount()}
+                  <Share onClick={() => { this.shareTwitter(config) }}>
+                    <SocialLink><Twitter color="#55ACEE" /></SocialLink>
+                  </Share>
+                  <Share onClick={this.shareFacebook}>
+                    <SocialLink><FacebookF color="#4267B2" /></SocialLink>
+                  </Share>
+                  <Share onClick={this.shareLinkedIn}>
+                    <SocialLink><LinkedinIn color="#0077B5" /></SocialLink>
+                  </Share>
+                </Ribbon>
+              </Fragment>
+              )
+          }}
+        />
+      </Fragment>
+    )
+  }
 }
 
 export default connect()(SocialScroll);

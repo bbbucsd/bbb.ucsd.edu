@@ -1,5 +1,6 @@
 import State from '../state';
 
+/* eslint-disable */
 export default class Validator {
 
   static IMAGE_REGEX = /^.*\.(?:gif|jpg|jpeg|tiff|png|webp)$/i;
@@ -21,7 +22,7 @@ export default class Validator {
   }
 
   static isEmail(str) {
-    return path && !!str.match(this.EMAIL_REGEX);
+    return str && !!str.match(this.EMAIL_REGEX);
   }
 
   static isCurrentSite(url) {
@@ -33,7 +34,7 @@ export default class Validator {
   }
 
   static isPageLink(url) {
-    return url && !!url.match('page://');
+    return ((url && !!url.match('page://')) || this.isCurrentSite(url)) && !this.isModalLink(url);
   }
 
   static isModalLink(url) {

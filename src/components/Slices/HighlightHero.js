@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { graphql } from 'gatsby';
 import Hero from 'components/Theme/Hero';
 import ThemeHeadline from 'components/Theme/Headline';
-import ThemeButton from 'components/Theme/Button';
+//import ThemeButton from 'components/Theme/Button';
 import Highlight from 'components/Theme/Highlight'
-import Styles, { styled, css} from 'components/Theme/Styles';
+import { styled } from 'components/Theme/Styles';
 
 const Headline = styled(ThemeHeadline)`
   // enter styles here
@@ -13,9 +14,9 @@ const Subheadline = styled(ThemeHeadline)`
   // enter styles here
 `;
 
-const Button = styled(ThemeButton)`
-  margin-top: 30px;
-`;
+//const Button = styled(ThemeButton)`
+  //margin-top: 30px;
+//`;
 
 const HighlightGroup = styled.div`
   display: flex;
@@ -43,17 +44,17 @@ class HighlightHero extends Component {
     const { slice } = this.props;
     const data = slice.primary;
 
+          //{data.cta_link && data.cta_label ? (
+            //<div className={style.cta}>
+              //<Button to={data.cta_link.url} text={data.cta_label}></Button>
+            //</div>
+          //) : null }
     return (
       <Hero src={data.hero_asset.url}>
         <div>
           <Headline h3>{data.superheadline.text}</Headline>
           <Subheadline h1>{data.headline.text}</Subheadline>
 
-          {data.cta_link && data.cta_label ? (
-            <div className={style.cta}>
-              <Button to={data.cta_link.url} text={data.cta_label}></Button>
-            </div>
-          ) : null }
 
           <HighlightGroup>
             <Highlight largeText="#1" smallText="Best Selling Press" color="white" />

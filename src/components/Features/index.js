@@ -1,18 +1,18 @@
 import React, { Fragment, Component } from 'react';
+import { graphql } from 'gatsby'
 import SocialScroll from './SocialScroll';
 import CookiePolicy from './CookiePolicy';
 
 class Features extends Component {
 
   render() {
-    const { page } = this.props;
-
+    const { document } = this.props;
     return (
       <Fragment>
-        {page.social_scroll_enabled === "Yes" ? (
+        {document.data.social_scroll_enabled === "Yes" ? (
           <SocialScroll />
         ) : null}
-        {page.cookie_policy_enabled === "Yes" ? (
+        {document.data.cookie_policy_enabled === "Yes" ? (
           <CookiePolicy />
         ) : null}
       </Fragment>
@@ -23,10 +23,23 @@ class Features extends Component {
 export default Features;
 
 export const query = graphql`
-  fragment Features on Page {
-    data {
-      social_scroll_enabled
-      cookie_policy_enabled
+  fragment Features on Node {
+    __typename
+    ... on Post {
+      data {
+        social_scroll_enabled
+        cookie_policy_enabled
+        header_link_color
+        header_logo_color
+      }
+    }
+    ... on Page {
+      data {
+        social_scroll_enabled
+        cookie_policy_enabled
+        header_link_color
+        header_logo_color
+      }
     }
   }
 `;

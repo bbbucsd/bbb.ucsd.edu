@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Modal, ModalDialog, ModalHeader, ModalTitle, Button, ModalBody, ModalFooter, ModalContent } from 'styled-bootstrap-components';
-import Styles, { styled, css, media } from 'components/Theme/Styles';
-import Icon from 'components/Theme/Icon';
-import Helmet from 'react-helmet';
+import _ from 'lodash';
+import State from 'state';
+
+import { Modal, ModalDialog, ModalBody, ModalContent } from 'styled-bootstrap-components';
+import { styled, media } from 'components/Theme/Styles';
+import Slices from 'components/Slices';
+import PrismicHelper from 'utils/prismicHelper';
 
 const Overlay = styled.div`
   height: 100%;
@@ -17,21 +20,17 @@ const Overlay = styled.div`
 `;
 
 const ThemeModalContent = styled(ModalContent)`
-    max-width: 800px;
-    max-height: 600px;
+    width: 100%;
+    height: 100%;
+    ${media.greaterThan('small')`
+      max-width: 800px;
+      max-height: 600px;
+    `}
     display: flex;
     justify-content: center;
     align-items: center;
     align-self: center;
     margin: 0 auto;
-`;
-
-const CloseButton = styled(Button)`
-  position: absolute;
-  top: -20px;
-  right: -22.5px;
-  background: transparent;
-  z-index: 5;
 `;
 
 const ThemeModalBody = styled(ModalBody)`
@@ -44,35 +43,56 @@ export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hidden: null
+      hidden: null,
+      document: null,
+      isRequesting: false
     };
+    this._notificationSystem = null;
+  }
+
+  componentDidMount() {
+    this._notificationSystem = State.get("notificationSystem");
+    this.fetchModal();
+  }
+
+  fetchModal() {
+    if (this.state.isRequesting) { return; }
+    this.setState({ isRequesting: true });
+    PrismicHelper.query('modal', this.props.location.hash.replace('#', '')).then((document) => {
+      this.setState({ document });
+    });
   }
 
   isHidden() {
-    return this.state.hidden === null ? this.props.hidden : this.state.hidden;
+    return _.isBoolean(this.state.hidden) ? this.state.hidden : this.props.hidden;
   }
 
   onClose() {
     this.props.onClose && this.props.onClose();
   }
 
+  handleScroll() {
+    if (typeof document === "undefined") { return }
+    if (!this.isHidden()) {
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    } else {
+      document.getElementsByTagName("body")[0].style.overflow = "scroll";
+    }
+  }
+
   render() {
-    const hash = this.props.location.hash || this.props.location.pathname;
-    const pathname = hash.replace('#', '_modal-').replace(/^\/?/, '/');;
+    if (!this.state.document) { return null; }
+    this.handleScroll();
     return (
       <Modal hidden={this.isHidden()}>
         <Overlay onClick={this.onClose.bind(this)}/>
         <ModalDialog>
           <ThemeModalContent>
             <ThemeModalBody>
-              {this.props.disableCloseButton ? null : (
-                <CloseButton onClick={() => this.onClose()}>
-                  <span aria-hidden="true"><Icon name="timescircle" size="20" css="color: black; background-color: white; padding: 1px; border-radius: 50px;" /></span>
-                </CloseButton>
-              )}
-              {this.props.children({
-                location: Object.assign({}, this.props.location, { pathname }),
-              })}
+              <Slices document={this.state.document} events={{
+                close: this.onClose.bind(this),
+                notificationSystem: this._notificationSystem
+              }} />
             </ThemeModalBody>
           </ThemeModalContent>
         </ModalDialog>

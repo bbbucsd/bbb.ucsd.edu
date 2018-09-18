@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import { Component } from 'react';
 
 class CookiePolicy extends Component {
 

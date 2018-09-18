@@ -7,13 +7,6 @@
         "label" : "Name"
       }
     },
-    "name1" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "heading1",
-        "label" : "Name"
-      }
-    },
     "uid" : {
       "type" : "UID",
       "config" : {
@@ -25,17 +18,50 @@
       "fieldset" : "Slice zone",
       "config" : {
         "choices" : {
-          "standard_form" : {
+          "headline_form" : {
             "type" : "Slice",
-            "fieldset" : "Standard Form",
-            "description" : "Standard Form",
-            "icon" : "aspect_ratio",
+            "fieldset" : "Headline Form",
+            "description" : "Headline + Form",
+            "icon" : "content_paste",
             "display" : "list",
             "non-repeat" : {
               "headline" : {
                 "type" : "Text",
                 "config" : {
                   "label" : "Headline"
+                }
+              },
+              "enable_first_name_field" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Yes", "No" ],
+                  "default_value" : "Yes",
+                  "label" : "Enable First Name Field"
+                }
+              },
+              "cta_label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "CTA Label"
+                }
+              },
+              "close_message" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Close Message"
+                }
+              },
+              "download" : {
+                "type" : "Link",
+                "config" : {
+                  "select" : "media",
+                  "label" : "Download"
+                }
+              },
+              "redirect_url" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Redirect URL"
                 }
               }
             },
@@ -75,6 +101,25 @@
                 "config" : {
                   "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
                   "label" : "Content"
+                }
+              },
+              "cta_label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "CTA Label"
+                }
+              },
+              "close_message" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Close Message"
+                }
+              },
+              "download" : {
+                "type" : "Link",
+                "config" : {
+                  "select" : "media",
+                  "label" : "Download"
                 }
               },
               "redirect_url" : {

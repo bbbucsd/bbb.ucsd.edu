@@ -13,7 +13,6 @@ injectGlobal`
     min-height:100%;
     overflow-x: hidden;
     width: 100%;
-    font-smoothing: antialiased;
     letter-spacing: .02em;
     margin:0;
     word-wrap: break-word;

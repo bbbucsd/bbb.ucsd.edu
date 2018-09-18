@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Styles, { styled, css} from './Styles';
+import { styled } from './Styles';
 import Validator from 'utils/validator';
 
 const BackgroundVideo = styled.video`

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Styles, { styled, css} from 'components/Theme/Styles';
+import { styled } from 'components/Theme/Styles';
 import { KeyboardArrowLeft } from 'styled-icons/material/KeyboardArrowLeft.cjs'
 
 const BackButton = styled.a`

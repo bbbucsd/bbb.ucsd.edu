@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { graphql } from 'gatsby';
 import Block, { Section } from 'components/Theme/Block';
-import { styled, css} from 'components/Theme/Styles';
+import { styled } from 'components/Theme/Styles';
 import ThemeRichText from 'components/Theme/RichText'
 import ThemeButton from 'components/Theme/Button';
 import Validator from 'utils/validator';
@@ -71,9 +72,8 @@ export const query = graphql`
       cta_label
       cta_link {
         url
-        raw {
-          type
-          slug
+        document {
+          ...Link
         }
       }
     }

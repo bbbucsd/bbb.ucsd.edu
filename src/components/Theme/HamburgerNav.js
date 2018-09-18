@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
-import Link from './Link';
-import Styles, { styled, css } from './Styles';
+import { styled } from './Styles';
 import { KeyboardArrowRight } from 'styled-icons/material/KeyboardArrowRight.cjs'
-
-var menuWidth = 900;
-var offsetY = 200;
-var offsetX = 96; //isn't this offsetY (vertical)?
-var arrowSize = 8;
-var padding = 15;
 
 const Wrapper = styled.div`
   position: relative;
@@ -15,14 +8,15 @@ const Wrapper = styled.div`
   white-space: nowrap;
 `;
 
-const MainLink = styled(Link)`
-  font-size: ${p => p.theme.h2FontSize}px;
+const MainLink = styled.span`
+  font-size: 35px;
   color:${p => p.theme.white};
   border-bottom:1px solid #cacaca;
   width:100%;
   display:flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-bottom: 10px;
   &:visited {
     color:${p => p.theme.white};
   }
@@ -51,23 +45,6 @@ const Menu = styled.div`
     max-height:500px;
     visibility: visible;
   ` : null}
-`;
-
-const MenuItemsWrapper = styled.ul`
-  position: absolute;
-  background-color: #f6f6f6;
-  box-shadow: 0px 40px 100px rgba(0, 0, 0, 0.15);
-  border-radius: 2px;
-  width: 100%;
-  color: #000;
-  padding: ${p => p.padding || 50}px;
-`;
-
-const MenuItems = styled.li`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
 `;
 
 class HamburgerNav extends Component {

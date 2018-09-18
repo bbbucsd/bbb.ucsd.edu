@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'airlytics';
+import Layout from 'components/Layout';
+import Header from 'components/Theme/Header';
+import Footer from 'components/Theme/Footer';
+import StandardHero from 'components/Slices/StandardHero';
+import { actionDispatch } from 'airlytics';
+import titlize from 'utils/titlize';
 
-const ARTIFICIAL_WAIT = 1000;
+const ARTIFICIAL_WAIT = 500;
 
 class Interstitial extends Component {
 
@@ -10,28 +15,34 @@ class Interstitial extends Component {
   }
 
   _delay(ms) {
-    var start = +new Date;
-    while ((+new Date - start) < ms);
+    var start = +new Date();
+    while ((+new Date() - start) < ms);
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     if (typeof window === "undefined") { return; }
-    if (!this.props.pathContext.to) { return; }
+    if (!this.props.pageContext.to) { return; }
     if (this.state.redirecting) { return; }
     this.setState({ redirecting: true });
     var _this = this;
     setTimeout(() => {
       ['unload', 'beforeunload'].forEach((name) => {
         window.addEventListener(name, (e) => {
-          _this._delay(ARTIFICIAL_WAIT - 1000);
+          const actions = actionDispatch();
+          const name = titlize(this.props.location.pathname.replace("/", ""))
+          actions.track("Affiliate Click", {
+            tags: "Affiliate - " + name,
+            name
+          });
+          _this._delay(ARTIFICIAL_WAIT - 500);
         });
       });
-      window.location = this.props.pathContext.to;
+      window.location = this.props.pageContext.to;
     }, 1000);
   }
 
   render() {
-    if (!this.props.pathContext.to) {
+    if (!this.props.pageContext.to) {
       return (
         <div>
           Error: No URL to redirect to
@@ -39,13 +50,13 @@ class Interstitial extends Component {
       );
     } else {
       return (
-        <div>
-          Redirecting...
-        </div>
+        <Layout {...this.props}>
+          <StandardHero slice={{ primary: { headline_color: 'white', height: 'XL', headline: "Sit tight, we're redirecting.."}}} />
+        </Layout>
       );
     }
   }
 
 }
 
-export default connect()(Interstitial);
+export default Interstitial;

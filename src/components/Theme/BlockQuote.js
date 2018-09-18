@@ -1,16 +1,18 @@
-import State from '../../state';
+import React, { Component } from 'react';
+import { graphql } from 'gatsby'
+import { StaticQuery } from 'gatsby';
 import _ from 'lodash'
-import Styles, { styled, css, media, keyframes } from './Styles';
+import { styled } from './Styles';
 
 function getLeftQuote(props) {
-  return _.find(State.get('images'), (i) => i.name === 'quotation-marks-left').childImageSharp.sizes.tracedSVG;
+  return _.find(props.images, (i) => i.node.name === 'quotation-marks-left').node.childImageSharp.fluid.tracedSVG;
 }
 
 function getRightQuote(props) {
-  return _.find(State.get('images'), (i) => i.name === 'quotation-marks-right').childImageSharp.sizes.tracedSVG;
+  return _.find(props.images, (i) => i.node.name === 'quotation-marks-right').node.childImageSharp.fluid.tracedSVG;
 }
 
-export default styled.div`
+const Quotes = styled.div`
     border: none;
     position: relative;
     z-index: 1;
@@ -47,3 +49,37 @@ export default styled.div`
       opacity: .5;
     }
 `
+
+export default class extends Component {
+  render() {
+    return (
+      <StaticQuery
+        query={graphql`
+              query QuoteQuery {
+                allFile(filter: { relativeDirectory: { regex: "/indicators/"}}) {
+                  edges {
+                    node {
+                      relativeDirectory
+                      name
+                      childImageSharp {
+                        fluid(maxWidth: 1240) {
+                          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+          `}
+          render={data => {
+            const images = data.allFile.edges;
+            return (
+              <Quotes images={images}>
+                {this.props.children}
+              </Quotes>
+            );
+          }}
+        />
+    );
+  }
+}

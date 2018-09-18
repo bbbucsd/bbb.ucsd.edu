@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import Link from '../Link';
-import Styles, { styled, css} from '../Styles';
+import { styled } from '../Styles';
 
 const Item = styled.li`
   padding: 1px 0;
@@ -13,20 +13,33 @@ const Item = styled.li`
   align-items: center;
   justify-content: flex-start;
   text-decoration: none;
-  
+  margin-top: 25px;
+
   a {
-    color: ${props => props.theme.black};
     line-height: 25px;
-    font-size:${p => p.theme.h2FontSize / 1.3}px;
+    font-size: 20px;
+    color: ${p => p.theme.white};
+    text-decoration-color: ${p => p.theme.white};
+    &:visited {
+      color: ${p => p.theme.white}
+    }
   }
 `;
 
 class HamburgerNavItem extends Component {
+  isActive() {
+    if (typeof window === "undefined") { return false; }
+    return !!this.props.to.match(new RegExp(window.location.pathname))
+  }
+
   render() {
+    const { onClick } = this.props;
     return (
-      <Item>
-        { this.props.to ? <Link to={this.props.to || ''}>{this.props.children}</Link> : this.props.children }
-      </Item>
+      <Fragment>
+        <Item onClick={onClick} isActive={this.isActive()}>
+          { this.props.to ? <Link to={this.props.to || ''}>{this.props.children}</Link> : this.props.children }
+        </Item>
+      </Fragment>
     );
   }
 }

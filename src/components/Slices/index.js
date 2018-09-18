@@ -1,94 +1,109 @@
 import React, { Fragment, Component } from 'react';
 import _ from 'lodash';
-import Helmet from 'react-helmet';
+import State from 'state';
+
 import StandardHero from './StandardHero';
 import SimpleHero from './SimpleHero';
 import HighlightHero from './HighlightHero';
-import DoubleBlock from './DoubleBlock'; import DoubleColumnContentForm from './DoubleColumnContentForm';
+import DoubleBlock from './DoubleBlock';
+import DoubleColumnContentForm from './DoubleColumnContentForm';
+import HeadlineForm from './HeadlineForm';
 import LogoBlock from './LogoBlock';
 import LogoBlockInline from './LogoBlockInline';
+import BonusBox from './BonusBox';
+import Disqus from './Disqus';
 import ContentBlock from './ContentBlock';
 import StatementBlock from './StatementBlock';
 import SingleFeatureBlock from './SingleFeatureBlock';
+import SimpleSingleFeatureBlock from './SimpleSingleFeatureBlock';
 import FeatureBlock from './FeatureBlock';
+import FeatureDocumentsRow from './FeatureDocumentsRow';
+import DocumentsRow from './DocumentsRow';
+import SocialRow from './SocialRow';
+import TestimonialBlock from './TestimonialBlock';
+// import DoubleTestimonialBlock from './DoubleTestimonialBlock';
 import SingleImageBlock from './SingleImageBlock';
-import FrontMatter from './FrontMatter';
-import OpenGraph from './OpenGraph';
-import Twitter from './Twitter';
-import SchemaOrganization from './SchemaOrganization';
-import SchemaArticle from './SchemaArticle';
-import SchemaWebpage from './SchemaWebpage';
-import SchemaWebsite from './SchemaWebsite';
 import HighlightContentBlock from './HighlightContentBlock';
-//import HorizontalFormBlock from './HorizontalFormBlock';
 
 const Slice = (props) => {
-  let { data } = props
+  let { data, events } = props
 
   var type = data.__typename || _.upperFirst(_.camelCase(data.slice_type));
 
   switch (type) {
+    // HEROES
     case 'StandardHero':
-      return <StandardHero slice={data} />
+      return <StandardHero events={events} slice={data} />
     case 'SimpleHero':
-      return <SimpleHero slice={data} />
-    case 'DoubleColumnContentForm':
-      return <DoubleColumnContentForm slice={data} />
-    case 'DoubleBlock':
-      return <DoubleBlock slice={data} />
+      return <SimpleHero events={events} slice={data} />
     case 'HighlightHero':
-      return <HighlightHero slice={data} />
+      return <HighlightHero events={events} slice={data} />
+
+    // MODALS
+    case 'DoubleColumnContentForm':
+      return <DoubleColumnContentForm events={events} slice={data} />
+    case 'HeadlineForm':
+      return <HeadlineForm events={events} slice={data} />
+
+    // BLOCKS
+    case 'DoubleBlock':
+      return <DoubleBlock events={events} slice={data} />
     case 'LogoBlock':
-      return <LogoBlock slice={data} />
+      return <LogoBlock events={events} slice={data} />
     case 'LogoBlockInline':
-      return <LogoBlockInline slice={data} />
+      return <LogoBlockInline events={events} slice={data} />
     case 'ContentBlock':
-      return <ContentBlock slice={data} />
-   case 'HighlightContentBlock':
-     return <HighlightContentBlock slice={data} />
-    // case 'HorizontalFormBlock':
-    //   return <HorizontalFormBlock slice={data} />
-    case 'FrontMatter':
-      return <FrontMatter slice={data} />
-    case 'StatementBlock':
-      return <StatementBlock slice={data} />
+      return <ContentBlock events={events} slice={data} />
+    case 'HighlightContentBlock':
+      return <HighlightContentBlock events={events} slice={data} />
+    case 'BonusBox':
+      return <BonusBox events={events} slice={data} />
     case 'SingleFeatureBlock':
-      return <SingleFeatureBlock slice={data} />
+      return <SingleFeatureBlock events={events} slice={data} />
     case 'FeatureBlock':
-      return <FeatureBlock slice={data} />
+      return <FeatureBlock events={events} slice={data} />
+    case 'StatementBlock':
+      return <StatementBlock events={events} slice={data} />
+    case 'SimpleSingleFeatureBlock':
+      return <SimpleSingleFeatureBlock events={events} slice={data} />
     case 'SingleImageBlock':
-      return <SingleImageBlock slice={data} />
-    case 'SchemaWebpage':
-      return <SchemaWebpage slice={data} />
-    case 'SchemaArticle':
-      return <SchemaArticle slice={data} />
-    case 'SchemaWebsite':
-      return <SchemaWebsite slice={data} />
-    case 'OpenGraph':
-      return <OpenGraph slice={data} />
-    case 'Twitter':
-      return <Twitter slice={data} />
-    case 'SchemaOrganization':
-      return <SchemaOrganization slice={data} />
+      return <SingleImageBlock events={events} slice={data} />
+    case 'TestimonialBlock':
+      return <TestimonialBlock events={events} slice={data} />
+      // case 'DoubleTestimonialBlock':
+      //   return <DoubleTestimonialBlock events={events} slice={data} />
+
+    // ROWS
+    case 'FeatureDocumentsRow':
+      return <FeatureDocumentsRow events={events} slice={data} />
+    case 'DocumentsRow':
+      return <DocumentsRow events={events} slice={data} />
+    case 'SocialRow':
+      return <SocialRow events={events} slice={data} />
+
+    case 'Disqus':
+      return <Disqus events={events} slice={data} />
+
     default:
       return null;
-  };
+  }; // eslint-disable-line no-unreachable
 }
 
 class Slices extends Component {
 
+  _notificationSystem = null;
+
+  componentDidMount() {
+    this._notificationSystem = State.get("notificationSystem")
+  }
+
   render() {
-    const { document } = this.props;
+    let { document, events } = this.props;
+    events = Object.assign({}, events, { notificationSystem: this._notificationSystem })
 
     return (
       <Fragment>
-        {document.data && (document.data.body1 || document.data.body2) ? (
-          <Helmet>
-            {( (document.data.body1 || document.data.body2) || [] ).map((slice, i) => <Slice data={slice} key={`meta_${i}`} /> )}
-          </Helmet>
-        ) : null}
-
-        {( (document.data && document.data.body) || [] ).map((slice, i) => <Slice data={slice} key={`ui_${i}`} /> )}
+        {( (document.data && document.data.body) || [] ).map((slice, i) => <Slice data={slice} events={events} key={`ui_${i}`} /> )}
       </Fragment>
     )
   }

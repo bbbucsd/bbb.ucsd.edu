@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Styles, { styled, css} from '../Styles';
+import { styled } from '../Styles';
 
 const Wrapper = styled.ul`
   flex-direction: column;

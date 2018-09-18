@@ -4,7 +4,7 @@ import Logo from 'components/Theme/Logo';
 import Link from 'components/Theme/Link';
 import HamburgerMenu from './HamburgerMenu';
 import MainMenu from './MainMenu';
-import SearchBar from './SearchBar';
+//import SearchBar from './SearchBar';
 import { isMobileOnly } from "react-device-detect";
 
 const Header = styled.div`
@@ -63,22 +63,14 @@ const ListItem = styled.li`
 `;
 
 const LogoLink = styled(Link)`
-  width: 250px;
-  ${media.between("medium", "large")`
-    width: 150px;
-    margin-left: 25px;
-  `}
+  width: 175px;
 `;
 
-const navItems = 4;
-const navBarCenterWidth = 500;
-
 const NavBarCenter = styled.ul`
-  flex-direction: row;
-  justify-content: space-around;
-  width: ${navBarCenterWidth}px;
-  position:relative;
-  top:2px;
+  position: absolute;
+  top: 15px;
+  left: auto;
+  right: auto;
 
   ${media.lessThan("medium")`
     display:none;
@@ -86,9 +78,7 @@ const NavBarCenter = styled.ul`
 
   ${media.between("medium", "large")`
     font-size: 14px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    right: 0;
   `}
 
   ${media.greaterThan("medium")`
@@ -100,7 +90,7 @@ const NavBarRight = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  flex: 0 0 150px;
+  flex: 0 0 30%;
   margin-left: auto;
 `;
 
@@ -178,6 +168,9 @@ const Drawer = styled.div`
     height:100vh;
     visibility: visible;
   ` : null}
+  ${media.greaterThan("medium")`
+    visibility: hidden;
+  `}
 `;
 
 
@@ -208,17 +201,64 @@ class Default extends Component {
         html.clientHeight, html.scrollHeight, html.offsetHeight );
       let max = docHeight - winHeight;
       let percent = (value / max) * 100;
-      if (percent > 5) {
+      if (percent > 4) {
         this.floatHeader()
       } else {
         this.unFloatHeader()
       }
     }
 
-    componentWillMount() {
+    static getDerivedStateFromProps(props, currentState) {
+      if (typeof window === "undefined") { return currentState; }
+      let pathname = window.location.pathname;
+      if (currentState.pathname !== pathname) {
+        currentState.drawer = false;
+      }
+
+      currentState.pathname = pathname;
+      return currentState;
+    }
+
+    componentDidMount() {
       if (typeof window === "undefined") { return; }
       this.displayHeader();
       window.addEventListener('scroll', this.displayHeader.bind(this));
+    }
+
+    componentWillUnmount() {
+      window.removeEventListener('scroll', this.displayHeader.bind(this));
+    }
+
+    getNonFloatingHeaderLogoColor() {
+      const { document } = this.props;
+      if (document) {
+        const color = document.data.header_logo_color;
+        switch (color) {
+          case 'White':
+            return 'white'
+          case 'Black':
+            return 'black'
+          case 'Blue':
+            return 'blue'
+          case 'Blue White':
+            return 'blueWhite'
+          case 'Gray White':
+            return 'grayWhite'
+          default:
+            return 'white'
+        }
+      } else {
+        return 'white';
+      }
+    }
+
+    getNonFloatingHeaderLinkColor() {
+      const { document } = this.props;
+      if (document) {
+        return document.data.header_link_color || '#FFFFFF';
+      } else {
+        return '#FFFFFF';
+      }
     }
 
     render() {
@@ -232,7 +272,7 @@ class Default extends Component {
                     {isMobileOnly ? (
                       <Logo />
                     ) : (
-                      <Logo color={this.state.floating ? 'colorWhite' : 'white'} />
+                      <Logo color={this.state.floating ? 'blueWhite' : this.getNonFloatingHeaderLogoColor()} />
                     )}
                   </LogoLink>
                 </ListItem>
@@ -240,7 +280,7 @@ class Default extends Component {
 
               <NavBarCenter>
                 <ListItem>
-                  <MainMenu floating={this.state.floating} />
+                  <MainMenu floating={this.state.floating} color={this.getNonFloatingHeaderLinkColor()} />
                 </ListItem>
               </NavBarCenter>
 
@@ -253,7 +293,7 @@ class Default extends Component {
                   </HamburgerMenuIcon>
 
                   <Drawer open={this.state.drawer} >
-                    <HamburgerMenu />
+                    <HamburgerMenu onClick={this.toggleDrawer.bind(this)} />
                   </Drawer>
                 </ListItem>
               </NavBarRight>

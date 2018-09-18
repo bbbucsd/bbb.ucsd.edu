@@ -1,30 +1,26 @@
 import React, { Component } from 'react';
-import Default from './Default/index'
+import Default from './Default';
+import Slim from './Slim';
 
 
 class Footer extends Component {
 
-  displayFooter() {
+  render() {
     switch(this.props.display) {
       case 'Default':
         return <Default />
+
+      case 'Slim':
+        return <Slim />
 
       case 'No Footer':
         return null;
 
       default:
         return <Default />
-
     }
   }
 
-  render() {
-    return (
-      <div>
-        { this.displayFooter() }
-      </div>
-    );
-  }
 }
 
 
