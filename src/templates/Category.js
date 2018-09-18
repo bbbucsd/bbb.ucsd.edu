@@ -31,8 +31,6 @@ export const categoryQuery = graphql`
       first_publication_date
       last_publication_date
       data {
-        header_link_color
-        header_logo_color
         body {
           ...StandardHero
           ...SimpleHero
