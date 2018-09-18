@@ -116,34 +116,6 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   //
-  // Landing Pages ---------------------------------------------------------------------
-  //
-
-  const landingPages = await graphql(`
-    {
-      allLandingPage {
-        edges {
-          node {
-            uid
-            type
-          }
-        }
-      }
-    }
-  `)
-
-  const landingPageComponent = path.resolve(`./src/templates/LandingPage.js`)
-  landingPages.data.allLandingPage.edges.forEach(edge => {
-    createPage({
-      path: PrismicHelper.pathResolver(edge.node),
-      component: landingPageComponent,
-      context: {
-        uid: edge.node.uid
-      },
-    })
-  })
-
-  //
   // Redirect ---------------------------------------------------------------------
   //
 
