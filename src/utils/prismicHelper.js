@@ -1,4 +1,4 @@
-const prismicRepoName = 'automate-your-brand';
+const prismicRepoName = 'books-beyond-boundaries';
 
 var Prismic = require('prismic-javascript');
 var Cookies = require('js-cookie');
