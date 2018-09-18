@@ -87,7 +87,6 @@ export const postQuery = graphql`
         body {
           ...StandardHero
           ...SimpleHero
-          ...BonusBox
           ...ContentBlock
           ...StatementBlock
           ...HighlightContentBlock
@@ -95,7 +94,6 @@ export const postQuery = graphql`
           ...SimpleSingleFeatureBlock
           ...DocumentsRow
           ...SocialRow
-          ...Disqus
         }
         body1 {
           ...FrontMatter

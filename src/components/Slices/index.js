@@ -10,8 +10,6 @@ import DoubleColumnContentForm from './DoubleColumnContentForm';
 import HeadlineForm from './HeadlineForm';
 import LogoBlock from './LogoBlock';
 import LogoBlockInline from './LogoBlockInline';
-import BonusBox from './BonusBox';
-import Disqus from './Disqus';
 import ContentBlock from './ContentBlock';
 import StatementBlock from './StatementBlock';
 import SingleFeatureBlock from './SingleFeatureBlock';
@@ -56,8 +54,6 @@ const Slice = (props) => {
       return <ContentBlock events={events} slice={data} />
     case 'HighlightContentBlock':
       return <HighlightContentBlock events={events} slice={data} />
-    case 'BonusBox':
-      return <BonusBox events={events} slice={data} />
     case 'SingleFeatureBlock':
       return <SingleFeatureBlock events={events} slice={data} />
     case 'FeatureBlock':
@@ -80,9 +76,6 @@ const Slice = (props) => {
       return <DocumentsRow events={events} slice={data} />
     case 'SocialRow':
       return <SocialRow events={events} slice={data} />
-
-    case 'Disqus':
-      return <Disqus events={events} slice={data} />
 
     default:
       return null;
