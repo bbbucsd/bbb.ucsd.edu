@@ -272,7 +272,7 @@ class Default extends Component {
                     {isMobileOnly ? (
                       <Logo />
                     ) : (
-                      <Logo color={this.state.floating ? 'blueWhite' : this.getNonFloatingHeaderLogoColor()} />
+                      <Logo color={this.state.floating ? 'colorWhite' : this.getNonFloatingHeaderLogoColor()} />
                     )}
                   </LogoLink>
                 </ListItem>
