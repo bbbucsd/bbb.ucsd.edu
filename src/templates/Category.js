@@ -38,10 +38,7 @@ export const categoryQuery = graphql`
           ...ContentBlock
           ...LogoBlock
           ...LogoBlockInline
-          ...SingleImageBlock
-          ...FeatureBlock
           ...StatementBlock
-          ...DoubleBlock
         }
         body1 {
           ...FrontMatter

@@ -13,7 +13,6 @@ import StatementBlock from './StatementBlock';
 import FeatureBlock from './FeatureBlock';
 import TestimonialBlock from './TestimonialBlock';
 // import DoubleTestimonialBlock from './DoubleTestimonialBlock';
-import SingleImageBlock from './SingleImageBlock';
 import HighlightContentBlock from './HighlightContentBlock';
 
 const Slice = (props) => {
@@ -45,8 +44,6 @@ const Slice = (props) => {
       return <FeatureBlock events={events} slice={data} />
     case 'StatementBlock':
       return <StatementBlock events={events} slice={data} />
-    case 'SingleImageBlock':
-      return <SingleImageBlock events={events} slice={data} />
 
     default:
       return null;
