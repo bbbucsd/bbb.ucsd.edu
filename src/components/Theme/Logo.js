@@ -7,7 +7,7 @@ import { StaticQuery } from 'gatsby';
 export default class extends Component {
 
   findImage(data, type) {
-    return _.find(data, (img) => img.node.childImageSharp && img.node.name === type);
+    return _.find(data, (img) => img && img.node && img.node.childImageSharp && img.node.name === type);
   }
 
   render() {
