@@ -35,7 +35,6 @@ export const categoryQuery = graphql`
           ...StandardHero
           ...SimpleHero
           ...HighlightContentBlock
-          ...SocialRow
           ...ContentBlock
           ...LogoBlock
           ...LogoBlockInline
