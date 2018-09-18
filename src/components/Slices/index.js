@@ -6,8 +6,6 @@ import StandardHero from './StandardHero';
 import SimpleHero from './SimpleHero';
 import HighlightHero from './HighlightHero';
 import DoubleBlock from './DoubleBlock';
-import DoubleColumnContentForm from './DoubleColumnContentForm';
-import HeadlineForm from './HeadlineForm';
 import LogoBlock from './LogoBlock';
 import LogoBlockInline from './LogoBlockInline';
 import ContentBlock from './ContentBlock';
@@ -34,12 +32,6 @@ const Slice = (props) => {
       return <SimpleHero events={events} slice={data} />
     case 'HighlightHero':
       return <HighlightHero events={events} slice={data} />
-
-    // MODALS
-    case 'DoubleColumnContentForm':
-      return <DoubleColumnContentForm events={events} slice={data} />
-    case 'HeadlineForm':
-      return <HeadlineForm events={events} slice={data} />
 
     // BLOCKS
     case 'DoubleBlock':
