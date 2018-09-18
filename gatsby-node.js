@@ -115,68 +115,6 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  //
-  // Redirect ---------------------------------------------------------------------
-  //
-
-  const redirect = await graphql(`
-    {
-      redirect(uid: { eq: "redirect"}) {
-        data {
-          redirects {
-            to
-            from
-            type
-          }
-        }
-      }
-    }
-  `)
-
-  const interstitialComponent = path.resolve(`./src/templates/Interstitial.js`);
-  redirect.data.redirect.data.redirects.forEach(redirect => {
-    switch (redirect.type) {
-      case 'Permanent':
-        createRedirect({
-          fromPath: redirect.from,
-          isPermanent: true,
-          redirectInBrowser: false,
-          toPath: redirect.to,
-        })
-        break;
-      case 'Temporary':
-        createRedirect({
-          fromPath: redirect.from,
-          isPermanent: false,
-          redirectInBrowser: false,
-          toPath: redirect.to,
-        })
-        break;
-      case 'Browser':
-        createRedirect({
-          fromPath: redirect.from,
-          isPermanent: false,
-          redirectInBrowser: true,
-          toPath: redirect.to,
-        })
-        break;
-      case 'Interstitial':
-        createPage({
-          path: redirect.from,
-          component: interstitialComponent ,
-          context: {
-            to: redirect.to
-          },
-        })
-        break;
-    }
-  })
-  createRedirect({
-    fromPath: 'https://automateyourbrand.netlify.com/*',
-    isPermanent: true,
-    redirectInBrowser: false,
-    toPath: 'https://automateyourbrand.com/:splat'
-  });
 }
 
 exports.onCreateBabelConfig = ({ stage, actions }, pluginOptions) => {
