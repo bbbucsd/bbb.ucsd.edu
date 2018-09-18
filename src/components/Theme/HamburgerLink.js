@@ -28,7 +28,7 @@ const MainLink = styled(Link)`
   }
 `;
 
-class HamburgerNav extends Component {
+class HamburgerLink extends Component {
   render() {
     const { to, children } = this.props;
 
