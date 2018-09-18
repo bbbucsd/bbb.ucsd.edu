@@ -1,9 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { styled } from 'components/Theme/Styles';
 import Logo from 'components/Theme/Logo';
-import StartMenu from './HamburgerMenu/StartMenu';
-import LearnMenu from './HamburgerMenu/LearnMenu';
-import WorkWithMeMenu from './HamburgerMenu/WorkWithMeMenu';
+import HamburgerLink from 'components/Theme/HamburgerLink';
 import Link from 'components/Theme/Link';
 
 const Menu = styled.ul`
@@ -33,9 +31,7 @@ class HamburgerMenu extends Component {
               <Logo />
             </Link>
           </LogoContainer>
-          <StartMenu onClick={onClick} />
-          <LearnMenu onClick={onClick} />
-          <WorkWithMeMenu onClick={onClick} />
+          <HamburgerLink to="/about" onClick={onClick}>About</HamburgerLink>
         </Menu>
       </Fragment>
     );
