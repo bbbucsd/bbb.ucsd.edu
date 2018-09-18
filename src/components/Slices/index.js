@@ -10,9 +10,6 @@ import LogoBlock from './LogoBlock';
 import LogoBlockInline from './LogoBlockInline';
 import ContentBlock from './ContentBlock';
 import StatementBlock from './StatementBlock';
-import FeatureBlock from './FeatureBlock';
-import TestimonialBlock from './TestimonialBlock';
-// import DoubleTestimonialBlock from './DoubleTestimonialBlock';
 import HighlightContentBlock from './HighlightContentBlock';
 
 const Slice = (props) => {
@@ -40,8 +37,6 @@ const Slice = (props) => {
       return <ContentBlock events={events} slice={data} />
     case 'HighlightContentBlock':
       return <HighlightContentBlock events={events} slice={data} />
-    case 'FeatureBlock':
-      return <FeatureBlock events={events} slice={data} />
     case 'StatementBlock':
       return <StatementBlock events={events} slice={data} />
 
