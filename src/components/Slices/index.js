@@ -11,7 +11,6 @@ import LogoBlockInline from './LogoBlockInline';
 import ContentBlock from './ContentBlock';
 import StatementBlock from './StatementBlock';
 import FeatureBlock from './FeatureBlock';
-import FeatureDocumentsRow from './FeatureDocumentsRow';
 import DocumentsRow from './DocumentsRow';
 import SocialRow from './SocialRow';
 import TestimonialBlock from './TestimonialBlock';
@@ -52,8 +51,6 @@ const Slice = (props) => {
       return <SingleImageBlock events={events} slice={data} />
 
     // ROWS
-    case 'FeatureDocumentsRow':
-      return <FeatureDocumentsRow events={events} slice={data} />
     case 'DocumentsRow':
       return <DocumentsRow events={events} slice={data} />
     case 'SocialRow':
