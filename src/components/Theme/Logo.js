@@ -53,25 +53,16 @@ export default class extends Component {
               }
             } else {
               switch (this.props.color) {
-                case 'blueWhite':
-                  img = this.findImage(images, 'automate-your-brand-logo-blue-white');
+                case 'colorWhite':
+                  img = this.findImage('books-beyond-boundaries-color-white');
                   break;
                 case 'white':
-                  img = this.findImage(images, 'automate-your-brand-logo-white');
-                  break;
-                case 'black':
-                  img = this.findImage(images, 'automate-your-brand-logo-black');
-                  break;
-                case 'grayWhite':
-                  img = this.findImage(images, 'automate-your-brand-logo-gray-white');
-                  break;
-                case 'blue':
-                  img = this.findImage(images, 'automate-your-brand-logo');
+                  img = this.findImage('books-beyond-boundaries-white');
                   break;
                 default:
-                  img = this.findImage(images, 'automate-your-brand-logo-blue-white');
+                  img = this.findImage('books-beyond-boundaries-color-white');
                   break;
-              }
+    }
             }
             return (
               <Img
