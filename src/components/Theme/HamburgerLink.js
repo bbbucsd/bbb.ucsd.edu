@@ -30,11 +30,11 @@ const MainLink = styled(Link)`
 
 class HamburgerLink extends Component {
   render() {
-    const { to, children } = this.props;
+    const { to, children, onClick } = this.props;
 
     return (
       <Wrapper>
-        <MainLink to={to}>{children}</MainLink>
+        <MainLink onClick={onClick} to={to}>{children}</MainLink>
       </Wrapper>
     );
   }
