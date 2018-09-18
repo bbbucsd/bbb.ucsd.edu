@@ -29,16 +29,12 @@ export const query = graphql`
       data {
         social_scroll_enabled
         cookie_policy_enabled
-        header_link_color
-        header_logo_color
       }
     }
     ... on Page {
       data {
         social_scroll_enabled
         cookie_policy_enabled
-        header_link_color
-        header_logo_color
       }
     }
   }
