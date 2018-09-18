@@ -85,15 +85,9 @@ export const postQuery = graphql`
           }
         }
         body {
-          ...StandardHero
           ...SimpleHero
           ...ContentBlock
-          ...StatementBlock
           ...HighlightContentBlock
-          ...SingleFeatureBlock
-          ...SimpleSingleFeatureBlock
-          ...DocumentsRow
-          ...SocialRow
         }
         body1 {
           ...FrontMatter

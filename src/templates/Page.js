@@ -46,15 +46,6 @@ export const pageQuery = graphql`
           ...HighlightContentBlock
           ...ContentBlock
           ...StatementBlock
-          ...SingleFeatureBlock
-          ...SimpleSingleFeatureBlock
-          ...FeatureBlock
-          ...FeatureDocumentsRow
-          ...DocumentsRow
-          ...SocialRow
-          ...SingleImageBlock
-          ...TestimonialBlock
-#          ...DoubleTestimonialBlock
         }
         body1 {
           ...FrontMatter
