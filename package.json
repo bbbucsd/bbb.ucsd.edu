@@ -80,7 +80,7 @@
     "develop": "gatsby develop --host=0.0.0.0",
     "format": "prettier --write 'src/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "sftp-deploy"
+    "deploy": "node ./node_modules/sftp-deploy/index.js"
   },
   "devDependencies": {
     "gatsby-cli": "^1.1.58",
