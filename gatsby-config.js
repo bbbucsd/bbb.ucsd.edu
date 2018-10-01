@@ -87,7 +87,7 @@ module.exports = {
         background_color: `#2D3B45`,
         theme_color: `#107BB0`,
         display: `minimal-ui`,
-        icon: `static/images/icons/icon.png`, // This path is relative to the root of the site.
+        icon: `static/images/icons/favicon.png`, // This path is relative to the root of the site.
       },
     },
     {
@@ -104,12 +104,6 @@ module.exports = {
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
       },
     },
-    //{
-      //resolve: `gatsby-plugin-offline`,
-      //options: {
-        //navigateFallbackWhitelist: [],
-      //}
-    //},
     // make sure to put last in the array
     {
       resolve: `gatsby-plugin-netlify`,

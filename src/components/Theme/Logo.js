@@ -54,15 +54,15 @@ export default class extends Component {
             } else {
               switch (this.props.color) {
                 case 'colorWhite':
-                  img = this.findImage('books-beyond-boundaries-color-white');
+                  img = this.findImage(images, 'books-beyond-boundaries-color-white');
                   break;
                 case 'white':
-                  img = this.findImage('books-beyond-boundaries-white');
+                  img = this.findImage(images, 'books-beyond-boundaries-color-white');
                   break;
                 default:
-                  img = this.findImage('books-beyond-boundaries-color-white');
+                  img = this.findImage(images, 'books-beyond-boundaries-color-white');
                   break;
-    }
+              }
             }
             if (img) {
               return (
