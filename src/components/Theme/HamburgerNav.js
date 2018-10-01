@@ -74,4 +74,3 @@ class HamburgerNav extends Component {
 export HamburgerNavGroup from './HamburgerNav/HamburgerNavGroup';
 export HamburgerNavItem from './HamburgerNav/HamburgerNavItem';
 export default HamburgerNav;
-

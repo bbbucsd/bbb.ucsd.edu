@@ -32,6 +32,9 @@ class HamburgerMenu extends Component {
             </Link>
           </LogoContainer>
           <HamburgerLink to="/about" onClick={onClick}>About</HamburgerLink>
+          <HamburgerLink to="/inside-the-prison" onClick={onClick}>Inside The Prison</HamburgerLink>
+          <HamburgerLink to="/volunteer" onClick={onClick}>Volunteer</HamburgerLink>
+          <HamburgerLink to="/contact" onClick={onClick}>Contact</HamburgerLink>
         </Menu>
       </Fragment>
     );
