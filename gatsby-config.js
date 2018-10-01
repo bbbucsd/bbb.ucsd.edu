@@ -10,13 +10,13 @@ if (process.env.NODE_ENV != 'production' || process.env.LOCAL_BUILD) {
 };
 
 var config = _.cloneDeep({
-  title: "Automate Your Brand: Helping You Grow an Automated Business",
+  title: "Books Beyond Boundaries: Reducing Recidivism",
   siteUrl: process.env.SITE_URL,
   siteName: process.env.SITE_NAME,
   hostname: process.env.HOSTNAME,
   searchUrl: "",
   locale: "en_US",
-  metaDescription: "Learn how to automate the way you make money for your business. Free articles, guides, courses, and more for online business owners.",
+  metaDescription: "Come join us to reduce recidivism in San Diego by connecting with inmates at Donovan Prison.",
   image: "",
   openGraph: {
     fbAppId: process.env.FB_APP_ID || "",
@@ -26,13 +26,13 @@ var config = _.cloneDeep({
     imageWidth: "",
   },
   twitter: {
-    site: "EricRaio", // organization twitter
-    creator: "EricRaio", // content creator
+    site: "", // organization twitter
+    creator: "", // content creator
     image: ""
   },
   schemaOrganization: {
-    name: "Automate Your Brand",
-    url: "https://automateyourbrand.com",
+    name: "Books Beyond Boundaries",
+    url: "http://bbb.ucsd.edu",
     logo: "",
     street: "20281 Harville Ave.",
     city: "Perris",
@@ -42,7 +42,7 @@ var config = _.cloneDeep({
     email: "hello@automateyourbrand.com",
     description: "",
     foundingDate: "2018-09-01T00:00:00.000Z",
-    sameAs: [ "https://facebook.com/AutomateYourBrand", "https://twitter.com/EricRaio", "https://linkedin.com/in/ericraio", "https://instagram.com/ericraio" ],
+    sameAs: [ "https://facebook.com/bbbucsd" ],
     contacts: [
       {
         phone: "",
@@ -52,10 +52,10 @@ var config = _.cloneDeep({
     ]
   },
   schemaPerson: {
-    name: "Eric Raio",
-    url: "https://automateyourbrand.com",
+    name: "Madeleine Hill",
+    url: "http://bbb.ucsd.edu",
     image: "",
-    sameAs: [ "https://facebook.com/AutomateYourBrand", "https://twitter.com/EricRaio", "https://linkedin.com/in/ericraio", "https://instagram.com/ericraio" ],
+    sameAs: [ "https://facebook.com/bbbucsd" ],
   },
   prismicEndpoint: PrismicConfig.apiEndpoint,
 });
@@ -81,8 +81,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Automate Your Brand`,
-        short_name: `AYB`,
+        name: `Books Beyond Boundaries`,
+        short_name: `BBB`,
         start_url: `/`,
         background_color: `#2D3B45`,
         theme_color: `#107BB0`,
