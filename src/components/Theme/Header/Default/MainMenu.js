@@ -13,9 +13,9 @@ class MainMenu extends Component {
     return (
       <Fragment>
         <About floating={floating} color={color} />
-        <InsideThePrison floating={floating} color={color} />
         <HowWeWork floating={floating} color={color} />
         <Volunteer floating={floating} color={color} />
+        <InsideThePrison floating={floating} color={color} />
         <Contact floating={floating} color={color} />
       </Fragment>
     );
