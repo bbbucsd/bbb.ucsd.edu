@@ -171,7 +171,7 @@ class Footer extends Component {
                   About Us
                 </FooterLink>
                 <FooterLink to="/how-we-work">
-                  How we Work
+                  How We Work
                 </FooterLink>
               </LinkColumn>
 
