@@ -29,6 +29,16 @@ const FooterLink = styled(Link)`
   border-bottom: 1px solid #27333C;
 `;
 
+const FooterExternalLink = styled.a`
+  color: ${p => p.theme.brandLight};
+  display: block;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  font-size: 12px;
+  word-break: break-word;
+  border-bottom: 1px solid #27333C;
+`;
+
 const FooterContainer = styled.div`
   padding-top: 25px;
   padding-bottom: 25px;
@@ -170,9 +180,9 @@ class Footer extends Component {
                 <FooterLink to="/how-to-volunteer">
                   How to Volunteer
                 </FooterLink>
-                <FooterLink to="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbbb.ucsd.edu">
+                <FooterExternalLink href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbbb.ucsd.edu" target="_blank">
                   Share Books Beyond Boundaries
-                </FooterLink>
+                </FooterExternalLink>
                 <FooterLink to="https://ucsd.us12.list-manage.com/subscribe?u=3f52e7d7a72ee5f354cac7ec5&id=bfc189490d">
                   Join The Newsletter
                 </FooterLink>

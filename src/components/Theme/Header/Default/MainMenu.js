@@ -4,6 +4,7 @@ import InsideThePrison from './MainMenu/InsideThePrison';
 import HowWeWork from './MainMenu/HowWeWork';
 import About from './MainMenu/About';
 import Contact from './MainMenu/Contact';
+import FAQ from './MainMenu/FAQ';
 
 
 class MainMenu extends Component {
@@ -16,6 +17,7 @@ class MainMenu extends Component {
         <HowWeWork floating={floating} color={color} />
         <Volunteer floating={floating} color={color} />
         <InsideThePrison floating={floating} color={color} />
+        <FAQ floating={floating} color={color} />
         <Contact floating={floating} color={color} />
       </Fragment>
     );
