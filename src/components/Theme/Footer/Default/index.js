@@ -180,9 +180,6 @@ class Footer extends Component {
                 <FooterLink to="/how-to-volunteer">
                   How to Volunteer
                 </FooterLink>
-                <FooterExternalLink href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbbb.ucsd.edu" target="_blank">
-                  Share Books Beyond Boundaries
-                </FooterExternalLink>
                 <FooterLink to="https://ucsd.us12.list-manage.com/subscribe?u=3f52e7d7a72ee5f354cac7ec5&id=bfc189490d">
                   Join The Newsletter
                 </FooterLink>
