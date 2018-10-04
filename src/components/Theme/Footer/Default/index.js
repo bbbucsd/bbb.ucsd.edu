@@ -157,16 +157,19 @@ class Footer extends Component {
 
               <LinkColumn sm={2}>
                 <NavTitle>Start Here</NavTitle>
-                <FooterLink to="/volunteer">
-                  Volunteer
+                <FooterLink to="/about-us">
+                  About Us
                 </FooterLink>
-                <FooterLink to="/about">
-                  About
+                <FooterLink to="/how-we-work">
+                  How we Work
                 </FooterLink>
               </LinkColumn>
 
               <LinkColumn sm={3}>
                 <NavTitle>Get Involved</NavTitle>
+                <FooterLink to="/how-to-volunteer">
+                  How to Volunteer
+                </FooterLink>
                 <FooterLink to="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbbb.ucsd.edu">
                   Share Books Beyond Boundaries
                 </FooterLink>
@@ -177,18 +180,13 @@ class Footer extends Component {
 
               <LinkColumn sm={3}>
                 <NavTitle>Resources</NavTitle>
-                <FooterLink to="/inside-the-prison">
-                  Inside The Prison
+                <FooterLink to="/prison-rules">
+                  Prison Rules
                 </FooterLink>
-                <FooterLink to="/volunteer">
-                  How To Volunteer
+                <FooterLink to="/contact-info">
+                  Contact Info
                 </FooterLink>
               </LinkColumn>
-            </Row>
-            <Row>
-              <FooterBelow>
-                Website by: <a href="https://automateyourbrand.com" target="_blank">Automate Your Brand</a>
-              </FooterBelow>
             </Row>
           </Container>
         </div>
