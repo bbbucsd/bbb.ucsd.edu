@@ -48,7 +48,9 @@ class StandardHero extends Component {
     let showArrow = cta_link && ((cta_link.type || cta_link.__typename) !== "modal");
     return (
       <Hero align={align} src={bg} height={height} color={background_color}>
-        <img style={{ maxWidth: 100, margin: '0 auto' }} src="/images/icons/icon.png" />
+        {typeof window !== undefined && window.location.pathname === "/"  &&
+          <img style={{ maxWidth: 100, margin: '0 auto' }} src="/images/icons/icon.png" />
+        }
         <Headline h1 color={headline_color} text={headline} />
         <Subheadline h2 color={subheadline_color} text={subheadline} />
 
