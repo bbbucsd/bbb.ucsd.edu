@@ -149,7 +149,6 @@ const Content = styled.div`
     display: inline-block;
     margin-right: 5px;
     position: relative;
-    top: 5px;
   }
 
   *:not(li) > ul, *:not(li) > ol, :not(li) > ul, :not(li) > ol {
