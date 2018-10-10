@@ -23,7 +23,7 @@ const Content = styled.div`
   h2 {
     font-family: ${p => p.theme.fontFamilyTitle};
     font-size: ${p => p.theme.h2FontSize}px;
-    color: ${p => p.theme.brandSuccess};
+    color: ${p => p.theme.brandInfo};
     --x-height-multiplier: 0.363;
     --baseline-multiplier: 0.157;
     margin-top: 63px;
@@ -40,7 +40,7 @@ const Content = styled.div`
 
   h3 {
     font-family: ${p => p.theme.fontFamilyTitle};
-    color: ${p => p.theme.brandSuccess};
+    color: ${p => p.theme.brandInfo};
     --x-height-multiplier: 0.363;
     --baseline-multiplier: 0.157;
     margin-top: 34px;
@@ -58,7 +58,7 @@ const Content = styled.div`
   h4 {
     --x-height-multiplier: 0.363;
     --baseline-multiplier: 0.157;
-    color: ${p => p.theme.brandSuccess};
+    color: ${p => p.theme.brandInfo};
     font-size: 25px;
     margin-top: 30px;
     margin-bottom: 0;
