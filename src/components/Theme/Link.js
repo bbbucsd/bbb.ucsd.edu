@@ -98,7 +98,7 @@ export default class extends Component {
         delete attrs.to;
         return ( <a {...attrs}>{this.props.children}</a> )
       } else {
-        attrs.to = attrs.to.replace("https://automateyourbrand.com", "");
+        attrs.to = attrs.to.replace("http://bbb.ucsd.edu", "");
         return ( <Link {...attrs}>{this.props.children}</Link> )
       }
     }
