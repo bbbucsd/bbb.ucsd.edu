@@ -155,7 +155,7 @@ const Content = styled.div`
   *:not(li) > ul, *:not(li) > ol, :not(li) > ul, :not(li) > ol {
     margin: 0 0 30px 0;
     list-style: none;
-    padding: 30px;
+    padding: 0 30px 30px 30px;
     border-radius: 5px;
     display: block;
     width: fit-content;
