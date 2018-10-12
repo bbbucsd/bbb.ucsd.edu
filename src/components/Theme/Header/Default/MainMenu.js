@@ -19,6 +19,7 @@ class MainMenu extends Component {
         <Volunteer floating={floating} color={color} />
         <InsideThePrison floating={floating} color={color} />
         <FAQ floating={floating} color={color} />
+        <BookSuggestions floating={floating} color={color} />
         <Contact floating={floating} color={color} />
       </Fragment>
     );
