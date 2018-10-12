@@ -3,6 +3,7 @@ import Volunteer from './MainMenu/Volunteer';
 import InsideThePrison from './MainMenu/InsideThePrison';
 import HowWeWork from './MainMenu/HowWeWork';
 import About from './MainMenu/About';
+import BookSuggestions from './MainMenu/BookSuggestions';
 import Contact from './MainMenu/Contact';
 import FAQ from './MainMenu/FAQ';
 

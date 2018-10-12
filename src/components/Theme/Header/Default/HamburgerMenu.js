@@ -35,6 +35,7 @@ class HamburgerMenu extends Component {
           <HamburgerLink to="/how-we-work" onClick={onClick}>How We Work</HamburgerLink>
           <HamburgerLink to="/how-to-volunteer" onClick={onClick}>How to Volunteer</HamburgerLink>
           <HamburgerLink to="/prison-rules" onClick={onClick}>Prison Rules</HamburgerLink>
+          <HamburgerLink to="/book-suggestions" onClick={onClick}>Book Suggestions</HamburgerLink>
           <HamburgerLink to="/contact-info" onClick={onClick}>Contact Info</HamburgerLink>
         </Menu>
       </Fragment>
