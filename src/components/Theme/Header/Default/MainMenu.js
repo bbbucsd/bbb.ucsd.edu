@@ -3,7 +3,7 @@ import Volunteer from './MainMenu/Volunteer';
 import InsideThePrison from './MainMenu/InsideThePrison';
 import HowWeWork from './MainMenu/HowWeWork';
 import About from './MainMenu/About';
-import BookSuggestions from './MainMenu/BookSuggestions';
+import Books from './MainMenu/Books';
 import Contact from './MainMenu/Contact';
 import FAQ from './MainMenu/FAQ';
 
@@ -19,7 +19,7 @@ class MainMenu extends Component {
         <Volunteer floating={floating} color={color} />
         <InsideThePrison floating={floating} color={color} />
         <FAQ floating={floating} color={color} />
-        <BookSuggestions floating={floating} color={color} />
+        <Books floating={floating} color={color} />
         <Contact floating={floating} color={color} />
       </Fragment>
     );
