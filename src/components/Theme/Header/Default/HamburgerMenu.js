@@ -31,12 +31,13 @@ class HamburgerMenu extends Component {
               <Logo />
             </Link>
           </LogoContainer>
-          <HamburgerLink to="/about-us" onClick={onClick}>About Us</HamburgerLink>
+          <HamburgerLink to="/about" onClick={onClick}>About</HamburgerLink>
           <HamburgerLink to="/how-we-work" onClick={onClick}>How We Work</HamburgerLink>
-          <HamburgerLink to="/how-to-volunteer" onClick={onClick}>How to Volunteer</HamburgerLink>
+          <HamburgerLink to="/volunteer" onClick={onClick}>Volunteer</HamburgerLink>
           <HamburgerLink to="/prison-rules" onClick={onClick}>Prison Rules</HamburgerLink>
           <HamburgerLink to="/books" onClick={onClick}>Books</HamburgerLink>
-          <HamburgerLink to="/contact-info" onClick={onClick}>Contact Info</HamburgerLink>
+          <HamburgerLink to="/faq" onClick={onClick}>FAQ</HamburgerLink>
+          <HamburgerLink to="/contact" onClick={onClick}>Contact Info</HamburgerLink>
         </Menu>
       </Fragment>
     );

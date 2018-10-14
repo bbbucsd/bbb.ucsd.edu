@@ -23,7 +23,7 @@ export default class extends Component {
 
     return (
       <Wrapper>
-        <MainLink color={color} floating={floating} to="/how-to-volunteer">Volunteer</MainLink>
+        <MainLink color={color} floating={floating} to="/volunteer">Volunteer</MainLink>
       </Wrapper>
     );
   }
