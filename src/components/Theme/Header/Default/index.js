@@ -67,12 +67,12 @@ const LogoLink = styled(Link)`
 `;
 
 const NavBarCenter = styled.ul`
+  position: absolute;
+  top: 15px;
+  left: auto;
+  right: auto;
   font-size: 14px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  flex: 0 0 30%;
-  margin-left: auto;
+  right: 0;
 
   ${media.lessThan("medium")`
     display:none;
