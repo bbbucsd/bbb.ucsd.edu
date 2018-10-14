@@ -117,6 +117,7 @@ class FrontMatter extends Component {
             return (
               <Helmet>
                 {metaTags}
+                <link rel="shortcut icon" href="/images/icons/favicon.png">
               </Helmet>
            );
           }
