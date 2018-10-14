@@ -71,14 +71,11 @@ const NavBarCenter = styled.ul`
   top: 15px;
   left: auto;
   right: auto;
+  font-size: 14px;
+  right: 0;
 
   ${media.lessThan("medium")`
     display:none;
-  `}
-
-  ${media.between("medium", "large")`
-    font-size: 14px;
-    right: 0;
   `}
 
   ${media.greaterThan("medium")`
