@@ -193,6 +193,7 @@ const Content = styled.div`
     margin-top: 29px;
     word-break: break-word;
     word-wrap: break-word;
+    word-break: initial;
   }
 
   h1 + p,
